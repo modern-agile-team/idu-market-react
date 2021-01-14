@@ -1,11 +1,183 @@
-.header-title {
-    font-size: 2rem;
-    font-family: 'Fredoka One', cursive;
-    font-weight: 700;
-    letter-spacing: 3px;
-    margin-left: 2rem;
-    span {
-        font-family: 'Fredoka One', cursive;
-        color: #af8560;
+.header{
+    // position: fixed;
+    width: 100%;
+    height: 65px;
+    background: #f3f3f3;
+    z-index: 100;
+
+    .container {
+        padding: 0 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
+
+    .header-title {
+        font-size: 2rem;
+        font-family: 'Fredoka One', cursive;
+        font-weight: 700;
+        letter-spacing: 3px;
+        margin-left: 2rem;
+        &:hover{
+            color: #222;
+        }
+        span {
+            font-family: 'Fredoka One', cursive;
+            color: #af8560;
+        }
+    }
+
+    .header-nav{
+        display: flex;
+        align-items: center;
+        
+
+        .header-list{
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .header-menu{
+            position: relative;
+            font-size: 1rem;
+            width: 180px;
+            text-align: center;
+            font-weight: 600;
+            padding: 20px 50px;
+            cursor: pointer;
+            &:hover{
+                border-bottom: 4px solid #b8b6b6;
+            }
+            a {
+                font-family: 'Nunito', sans-serif;
+                padding: 20px;
+            }
+        }
+
+        .header-menu-drop {
+            position: absolute;
+            width: 90%;
+            top: 70px;
+            left: 5%;
+            z-index: 10;
+            background: #e4e3e3;
+            text-align: center;
+            overflow: hidden;
+        }
+        .header-menu-drop li {
+            height: 50px;
+            border-bottom: 1px solid  #b8b6b6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header-menu-drop li:last-child {
+            border-bottom: none;
+        }
+        .header-menu-drop li a {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            padding: 10px 50px;
+            &:hover {
+                color: #5c5c5c;
+            }
+        }
+    }
+    .login-btn {
+        color: #5c5c5c;
+        font-family: 'Nunito', sans-serif;
+        margin-right: 50px;
+        margin-left: 30px;
+        border: 2px solid #b8b6b6;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-weight: 600;
+        &:hover {
+            background: #b8b6b6;
+            color: #222
+        }
+    }
+    .menuToggle {
+        display: none;
+        padding: 20px;
+    }
+
+
+    /* 0 ~ 1550 : 데스크탑1  */
+    @media (max-width: 1550px) {}
+    /* 0 ~ 1220 : 데스크탑2  */
+    @media (max-width: 1220px) {
+        .header-nav{ 
+            display: none;
+        }
+        .menuToggle {
+            display: flex;
+            font-size: 1.5rem;
+        }
+        .header-nav.active {
+            width: 30%;
+            height: 100vh;
+            position: fixed;
+            top: 80px;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            background: rgba(241, 241, 241, 0.97);
+
+            .header-menu {
+                width: 100%;
+                margin-top: 20px;
+                padding: 10px;
+                &:hover{
+                    border-left: 4px solid #b8b6b6;
+                    border-bottom: none;
+                }
+            }
+            .header-menu-drop {
+                position: static;
+                margin: 10px auto;
+            }
+            
+        }
+        .header-nav.active .header-list {
+            display: flex;
+            flex-direction: column;
+        }
+        .login-btn {
+            text-align: center;
+            width: 90%;
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+    }
+    /* 0 ~ 1024 : 데스크탑3  */
+    @media (max-width: 1024px) {}
+    /* 0 ~ 960 : 테블릿1  */
+    @media (max-width: 960px){}
+    /* 0 ~ 768px : 테블릿2 */
+    @media (max-width: 768px){
+        .header-nav.active {
+            width: 50%;
+        }
+    }
+    /* 0 ~ 670px : 테블릿3 */
+    @media (max-width: 670px){}
+    /* 0 ~ 480px : 모바일1 */
+    @media (max-width: 480px){
+        .header-nav.active {
+            width: 100%;
+
+            .header-menu {
+                width: 80%;
+                &:hover{
+                    color: #5c5c5c;
+                    border-left: none;
+                }
+            }
+        }
+    }
+    /* 0 ~ 360px : 모바일1 */
+    @media (max-width: 360px){}
 }
+
