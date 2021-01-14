@@ -4,7 +4,8 @@ import Header from '../components/Header/Header';
 const HomePage = () => {
     return (
         <>
-            <Header></Header>   
+            <Header></Header>
+            <h1>홈 페이지</h1>
         </>
     );
 };

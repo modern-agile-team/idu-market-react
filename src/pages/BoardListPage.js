@@ -1,10 +1,12 @@
 import React from 'react';
+import Header from '../components/Header/Header';
 
 const BoardListPage = () => {
     return (
-        <div>
-            게시판 리스트
-        </div>
+        <>
+            <Header></Header>
+            게시판리스트
+        </>
     );
 };
 
