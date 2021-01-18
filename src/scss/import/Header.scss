@@ -41,17 +41,16 @@
         .header-menu{
             position: relative;
             font-size: 1rem;
-            width: 180px;
             text-align: center;
             font-weight: 600;
-            padding: 20px 50px;
+            padding: 20px 30px;
             cursor: pointer;
-            &:hover{
-                border-bottom: 4px solid #b8b6b6;
-            }
-            a {
+            & > a {
                 font-family: 'Nunito', sans-serif;
-                padding: 20px;
+                padding: 20px 40px;
+                &:hover{
+                    border-bottom: 3px solid #b8b6b6;
+                }
             }
         }
 
@@ -131,6 +130,8 @@
                 padding: 10px;
                 &:hover{
                     border-left: 4px solid #b8b6b6;
+                }
+                & > a {
                     border-bottom: none;
                 }
             }
