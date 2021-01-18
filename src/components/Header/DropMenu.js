@@ -11,7 +11,7 @@ const DropMenu = ({ item }) => {
             <li 
                 className="header-menu" 
                 onClick={item.subMenu && showDropMneu}>
-                <Link to={item.path}>{item.title}</Link>
+                <Link to={item.path ? item.path : ''}>{item.title}</Link>
 
                 <ul className="header-menu-drop">
                 {dropMenu && item.subMenu.map((item, index) => {

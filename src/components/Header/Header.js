@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { HeaderMenuData } from './HeaderMenuData';
 import DropMenu from './DropMenu';
 import '../../scss/import/Header.scss';
-
-
 
 const Header = () => {
     const [sidebar, setSidebar] = useState(false);
