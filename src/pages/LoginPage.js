@@ -1,11 +1,12 @@
 import React from 'react';
 import Header from '../components/Header/Header';
+import LoginComponent from '../components/Login/LoginComponent';
 
 const LoginPage = () => {
     return (
         <>
             <Header></Header>
-            <h1>로그인 페이지</h1>
+            <LoginComponent></LoginComponent>
         </>
     );
 };

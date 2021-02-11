@@ -1,0 +1,210 @@
+#main-banner {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.banner-img {
+    overflow: hidden;
+    margin-right: 100px;
+    width: 550px;
+
+    img {
+        opacity: 0;
+        width: 30%;
+        background: #d1bdab;
+        border-radius: 100px;
+        transition: 1.2s all;
+    }
+
+    img.show{
+        opacity: 1;
+        width: 100%;
+    }
+}
+
+.banner-title {
+    position: relative;
+
+    span, h1, p, em {
+        font-family: 'Fredoka One', cursive;
+    }
+
+    h1 {
+        position: relative;
+        top: -50px;
+        font-size: 3.8rem;
+
+        span, em {
+            color: #cfac8c;
+        }
+
+        em {
+            position: absolute;
+            margin-left: 5px;
+            animation: text2 1s;
+            transform: rotate(25deg);
+            font-style: normal;
+        }
+    }
+
+    p {
+        position: relative;
+        text-align: right;
+        top: -50px;
+    }
+
+    a { 
+        font-size: 3rem;
+        position: absolute;
+        right: 0;
+        top: 150px;
+        &:hover {
+            color: #cfac8c;
+        }
+        &:hover::before {
+            font-family: 'Fredoka One', cursive;
+            content: "IUAM";
+            position: absolute;
+            right: 60px;
+            top: 20px;
+            font-size: 1rem;
+        }
+    }
+}
+
+/* 0 ~ 1450 : 데스크탑1  */
+@media screen and (max-width: 1450px) {
+    .banner-img {
+        width: 450px;
+    }
+
+    .banner-title {
+        h1{
+            font-size: 3.2rem;
+        }
+
+        a {
+            font-size: 2.5rem;
+            &:hover::before {
+                top: 15px;
+                right: 50px;
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+/* 0 ~ 1220 : 데스크탑2  */
+@media screen and (max-width: 1220px) {
+    .banner-img {
+        width: 400px;
+    }
+
+    .banner-title {
+        h1{
+            font-size: 2.3rem;
+        }
+        a {
+            top: 120px;
+            font-size: 2rem;
+            &:hover::before {
+                top: 10px;
+                right: 40px;
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
+
+/* 0 ~ 960 : 테블릿1  */
+@media screen and (max-width: 960px){
+    .banner-img {
+        display: none;
+    }
+
+    .banner-title {
+        h1 {
+            font-size: 3.75rem;
+        }
+        a {
+            top: 300px;
+            font-size: 2.5rem;
+            &:hover::before {
+                right: 50px;
+                top: 15px;
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+/* 0 ~ 768px : 테블릿2 */
+@media screen and (max-width: 768px){
+    .banner-title {
+        h1 {
+            font-size: 3rem;
+        }
+    }
+}
+/* 0 ~ 670px : 테블릿3 */
+@media screen and (max-width: 670px){
+    section {
+        padding: 0 20px;
+    }
+
+    .banner-title {
+        h1 {
+            font-size: 2.2rem;
+        }
+        a {
+            font-size: 2rem;
+            top: 200px;
+            &:hover::before {
+                top: 10px;
+                right: 40px;
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
+/* 0 ~ 480px : 모바일1 */
+@media screen and (max-width: 480px){
+    .banner-title {
+        h1 {
+            font-size: 1.7rem;
+        }
+
+        a {
+            font-size: 1.5rem;
+            top: 70px;
+            right: -10px;
+            &:hover::before {
+                top: 8px;
+                right: 30px;
+                font-size: 0.7rem;
+            }
+        }
+
+        p {
+            font-size: 0.7rem;
+        }
+    }
+}
+
+@keyframes text2 {
+    from {
+        transform: rotate(0deg);
+        color: #222;
+    }
+
+    to {
+        transform: rotate(25deg);
+        color:#cfac8c;
+    }
+
+}
+

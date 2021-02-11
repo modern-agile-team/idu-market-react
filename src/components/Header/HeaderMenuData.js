@@ -1,17 +1,6 @@
-import React from 'react';
-import * as RiIcons from 'react-icons/ri';
-
 export const HeaderMenuData = [
     {
-        title: 'Home',
-        path: '/',
-        iconClosed: <RiIcons.RiArrowDownSFill />,
-        iconOpened: <RiIcons.RiArrowUpSFill />,
-    },
-    {
         title: 'Menu2',
-        iconClosed: <RiIcons.RiArrowDownSFill />,
-        iconOpened: <RiIcons.RiArrowUpSFill />,
         subMenu: [
             {
                 title: 'Board1',
@@ -29,8 +18,6 @@ export const HeaderMenuData = [
     },
     {
         title: 'Menu3',
-        iconClosed: <RiIcons.RiArrowDownSFill />,
-        iconOpened: <RiIcons.RiArrowUpSFill />,
         subMenu: [
             {
                 title: 'Board1',
@@ -48,8 +35,6 @@ export const HeaderMenuData = [
     },
     {
         title: 'Menu4',
-        iconClosed: <RiIcons.RiArrowDownSFill />,
-        iconOpened: <RiIcons.RiArrowUpSFill />,
         subMenu: [
             {
                 title: 'Board1',

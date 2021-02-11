@@ -1,12 +1,15 @@
 import React from 'react';
 import Header from '../components/Header/Header';
+import FunctionComponent from '../components/HomePage/Section/FunctionComponent';
+import MainBannerComponent from '../components/HomePage/Section/MainBannerComponent';
 
 
 const HomePage = () => {
     return (
         <>
             <Header></Header>
-            <h1>홈 페이지</h1>
+            <MainBannerComponent></MainBannerComponent>
+            <FunctionComponent></FunctionComponent>
         </>
     );
 };
