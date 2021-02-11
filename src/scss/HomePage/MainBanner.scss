@@ -8,21 +8,14 @@
 }
 
 .banner-img {
-    overflow: hidden;
     margin-right: 100px;
     width: 550px;
 
     img {
-        opacity: 0;
-        width: 30%;
+        width: 100%;
         background: #d1bdab;
         border-radius: 100px;
-        transition: 1.2s all;
-    }
-
-    img.show{
-        opacity: 1;
-        width: 100%;
+        animation: img 1s;
     }
 }
 
@@ -205,6 +198,16 @@
         transform: rotate(25deg);
         color:#cfac8c;
     }
+}
 
+@keyframes img {
+    from {
+        opacity: 0;
+        width: 30%;
+    }
+    to {
+        opacity: 1;
+        width: 100%;
+    }
 }
 

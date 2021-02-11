@@ -17,7 +17,7 @@ const Header = () => {
 
                 <div className="menuToggle">
                     {sidebar ? 
-                    <AiIcons.AiOutlineClose onClick={showSidebar} /> : <FaIcons.FaBars onClick={showSidebar} />}
+                    <AiIcons.AiOutlineClose onClick={showSidebar} /> : <FaIcons.FaBars  onClick={showSidebar} />}
                 </div>
 
                 <nav className={sidebar ? 'header-nav active' : 'header-nav'}>

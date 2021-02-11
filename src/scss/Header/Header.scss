@@ -27,7 +27,7 @@
 
     span {
         font-family: 'Fredoka One', cursive;
-        color: #af8560;
+        color: #c79463;
     }
 }
 
@@ -118,6 +118,11 @@
     display: none;
     padding: 20px;
     cursor: pointer;
+    .outline-close {
+        &:hover {
+            transform: rotate(45deg);
+        }
+    }
 }
 
 
