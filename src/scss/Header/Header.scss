@@ -53,7 +53,8 @@
             font-family: 'Nunito', sans-serif;
             padding: 20px 40px;
             &:hover{
-                border-bottom: 3px solid #b8b6b6;
+                border-bottom: 3px solid #333;
+                color: #222;
             }
         }
     }
@@ -93,17 +94,15 @@
 }
 
 .header-btn {
-    color: #5c5c5c;
+    color: #cfac8c;
     font-family: 'Nunito', sans-serif;
     margin: 0 20px;
-    border: 2px solid #b8b6b6;
     padding: 5px 15px;
-    border-radius: 50px;
     font-weight: 600;
+    font-size: 1.2rem;
 
     &:hover {
-        background: #b8b6b6;
-        color: #222
+        color: #c79463;
     }
 }
 
@@ -129,7 +128,7 @@
          width: 100%;
          height: 60vh;
          position: fixed;
-         top: 80px;
+         top: 70px;
          right: 0;
          display: flex;
          flex-direction: column;
@@ -158,10 +157,15 @@
          display: flex;
      }
      .header-btn {
+         border: 2px solid #cfac8c;
          text-align: center;
          width: 30%;
          margin: 10px 0;
          font-size: 1.2rem;
+         &:hover {
+             background-color: #cfac8c;
+             color: #fff;
+         }
      }
  }
  /* 0 ~ 1024 : 데스크탑3  */
@@ -192,14 +196,18 @@
     .header-nav.active {
         .header-menu {
             height: 180px;
+            margin: 50px 0 100px 0;
         }
     }
-    .header-nav .header-menu-drop li a {
-        font-size: 0.8rem;
-    }
+
     .header-nav .header-menu-drop li {
         height: 45px;
+
+        a {
+            font-size: 0.8rem;
+        }
     }
+
     .header-btn {
         width: 50%;
         font-size: 1rem;
