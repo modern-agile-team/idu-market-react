@@ -65,17 +65,25 @@
         top: 70px;
         left: 5%;
         z-index: 10;
-        background: #e4e3e3;
         text-align: center;
         overflow: hidden;
     }
 
     .header-menu-drop li {
+        background: #e4e3e3;
         height: 50px;
         border-bottom: 1px solid  #b8b6b6;
         display: flex;
         justify-content: center;
         align-items: center;
+        &:first-child {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        &:last-child{
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
     }
 
     .header-menu-drop li:last-child {
