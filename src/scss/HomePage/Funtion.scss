@@ -1,6 +1,6 @@
 #function {
     width: 100%;
-    height: 35vh;
+    height: 40vh;
     background-color: #e7dad0;
     
     .container {
@@ -16,12 +16,12 @@
     justify-content: space-around;
     align-items: center;
     overflow: hidden;
+    padding-bottom: 20px;
 
     .function-item {
         width: 200px;
-        height: 220px;
+        height: 200px;
         opacity: 0;
-
         img { width: 100%; }
 
         p {
@@ -45,5 +45,64 @@
     }
     to {
         transform: translateY(0);
+    }
+}
+
+/* 0 ~ 1220 : 데스크탑2  */
+@media screen and (max-width: 1220px) {
+    .function-items {
+        padding-bottom: 0;
+        .function-item {
+            width: 180px;
+            p {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+/* 0 ~ 960 : 테블릿1  */
+@media screen and (max-width: 960px){
+    .function-items {
+        .function-item {
+            width: 150px;
+            p {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+/* 0 ~ 768px : 테블릿2 */
+@media screen and (max-width: 768px){
+    #function { 
+        height: 25vh;
+    }
+    .function-items {
+        .function-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 110px;
+            p {
+                font-size: 0;
+            }
+            &:hover p {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
+
+/* 0 ~ 480px : 모바일1 */
+@media screen and (max-width: 480px){
+    .function-items {
+        .function-item {
+            width: 80px;
+            &:hover p {
+                font-size: 0.5rem;
+            }
+        }
     }
 }
