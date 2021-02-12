@@ -165,13 +165,17 @@
          }
      }
  }
+
  /* 0 ~ 1024 : 데스크탑3  */
  @media screen and (max-width: 1024px) {}
+
  /* 0 ~ 960 : 테블릿1  */
  @media screen and (max-width: 960px){}
+
  /* 0 ~ 768px : 테블릿2 */
  @media screen and (max-width: 768px){
  }
+
  /* 0 ~ 670px : 테블릿3 */
  @media screen and (max-width: 670px){
     .header-nav.active {
@@ -184,6 +188,7 @@
         } 
     }
  }
+ 
  /* 0 ~ 480px : 모바일1 */
  @media screen and (max-width: 480px){
     .header-nav.active {

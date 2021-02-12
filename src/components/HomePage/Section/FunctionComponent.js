@@ -34,7 +34,9 @@ const FunctionComponent = () => {
                     </div>
                     <div className="function-item information">
                         <img src={information} alt="정보"/>
-                        <p>Information</p>
+                        <p>University <br />
+                        Information
+                        </p>
                     </div>
                 </div>
             </div>

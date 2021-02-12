@@ -22,8 +22,8 @@
         width: 200px;
         height: 200px;
         opacity: 0;
-        img { width: 100%; }
 
+        img { width: 100%; }
         p {
             font-family: 'Fredoka One', cursive;
             text-align: center;
@@ -32,13 +32,106 @@
         }
     }
 }
+
 .function-items.show {
-    .function-item { opacity: 1; }
-    .function-item.shopping { animation: slide 1s; }
-    .function-item.communication { animation: slide 1.4s; }
-    .function-item.information { animation: slide 1.8s; }
+    .function-item { 
+        opacity: 1; 
+        &.shopping { animation: slide 1s; }
+        &.communication { animation: slide 1.4s; }
+        &.information { animation: slide 1.8s; }
+    }
 }
 
+
+//반응형
+/* 0 ~ 1220 : 데스크탑2  */
+@media screen and (max-width: 1220px) {
+    .function-items {
+        padding-bottom: 0;
+        .function-item {
+            width: 180px;
+
+            p { font-size: 1.2rem; }
+        }
+    }
+}
+
+/* 0 ~ 960 : 테블릿1  */
+@media screen and (max-width: 960px){
+    #function { 
+        height: 35vh;
+        .container {
+            width: 100%;
+        }
+    }
+    .function-items {
+        .function-item {
+            width: 150px;
+
+            p { font-size: 1rem; }
+        }
+    }
+}
+
+
+/* 0 ~ 768px : 테블릿2 */
+@media screen and (max-width: 768px){
+    #function { 
+        height: 600px;
+        background: #fdfdfd;
+
+        .container {
+            padding: 20px 0;
+        }
+    }
+    .function-items {
+        width: 100%;
+        flex-direction: column;
+
+        .function-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            justify-content: start;
+            padding: 0 50px 0 80px;
+            opacity: 0;
+            width: 100%;
+
+            img { width: 28%; }
+            p { 
+                font-size: 1.5rem; 
+                margin-left: 30px;
+            }
+        }
+    }
+
+    .function-items.show {
+        .function-item.shopping { animation: slide2 1s; }
+        .function-item.communication { animation: slide2 1.4s; }
+        .function-item.information { animation: slide2 1.8s; }
+    }
+}
+
+/* 0 ~ 480px : 모바일1 */
+@media screen and (max-width: 480px){
+    #function { 
+        height: 400px;
+        background: #fdfdfd;
+    }
+    .function-items {
+        .function-item {
+            padding: 0 50px;
+
+            img { width: 30%; }
+            p { font-size: 1.2rem;}
+            &.shopping { border-right: none; }
+            &.communication { border-right: none; }
+        }
+    }
+}
+
+//애니메이션
 @keyframes slide {
     from {
         transform: translateY(300px);
@@ -48,61 +141,11 @@
     }
 }
 
-/* 0 ~ 1220 : 데스크탑2  */
-@media screen and (max-width: 1220px) {
-    .function-items {
-        padding-bottom: 0;
-        .function-item {
-            width: 180px;
-            p {
-                font-size: 1.2rem;
-            }
-        }
+@keyframes slide2 {
+    from {
+        transform: translateX(-300px);
     }
-}
-
-/* 0 ~ 960 : 테블릿1  */
-@media screen and (max-width: 960px){
-    .function-items {
-        .function-item {
-            width: 150px;
-            p {
-                font-size: 1rem;
-            }
-        }
-    }
-}
-
-/* 0 ~ 768px : 테블릿2 */
-@media screen and (max-width: 768px){
-    #function { 
-        height: 25vh;
-    }
-    .function-items {
-        .function-item {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            width: 110px;
-            p {
-                font-size: 0;
-            }
-            &:hover p {
-                font-size: 0.8rem;
-            }
-        }
-    }
-}
-
-/* 0 ~ 480px : 모바일1 */
-@media screen and (max-width: 480px){
-    .function-items {
-        .function-item {
-            width: 80px;
-            &:hover p {
-                font-size: 0.5rem;
-            }
-        }
+    to {
+        transform: translateX(0);
     }
 }
