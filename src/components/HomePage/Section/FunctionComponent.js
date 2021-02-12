@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../../scss/HomePage/Funtion.scss';
 import communication from '../../../img/communication-2.png'
 import information from '../../../img/information-2.png'
