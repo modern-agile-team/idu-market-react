@@ -10,6 +10,7 @@ const Header = () => {
     const [sidebar, setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar);
 
+
     return (
         <header id="header" className="header">
             <div className="container">
@@ -28,6 +29,7 @@ const Header = () => {
                             );
                         })}
                     </ul>
+
                     <Link to="/login" className="header-btn">Login</Link>
                     <Link to="/register" className="header-btn">SignUp</Link>
                 </nav>

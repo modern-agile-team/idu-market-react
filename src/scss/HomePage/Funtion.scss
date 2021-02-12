@@ -1,5 +1,49 @@
 #function {
     width: 100%;
-    height: 100vh;
-    background-color: #999;
+    height: 35vh;
+    background-color: #e7dad0;
+    
+    .container {
+        width: 80%;
+        height: 100%;
+        margin: 0 auto;
+    }
+}
+
+.function-items {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
+
+    .function-item {
+        width: 200px;
+        height: 220px;
+        opacity: 0;
+
+        img { width: 100%; }
+
+        p {
+            font-family: 'Fredoka One', cursive;
+            text-align: center;
+            color: #c97f4e;
+            font-size: 1.5rem;
+        }
+    }
+}
+.function-items.show {
+    .function-item { opacity: 1; }
+    .function-item.shopping { animation: slide 1s; }
+    .function-item.communication { animation: slide 1.4s; }
+    .function-item.information { animation: slide 1.8s; }
+}
+
+@keyframes slide {
+    from {
+        transform: translateY(300px);
+    }
+    to {
+        transform: translateY(0);
+    }
 }

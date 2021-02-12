@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import BannerImage from '../../../img/shopping.png'
 import { FiArrowDownCircle } from "react-icons/fi";
 import '../../../scss/HomePage/MainBanner.scss';
 
 const MainBannerComponent = () => {
 
-
-    
     return (
         <section id="main-banner" className="main-banner">
             <div className="banner-img">

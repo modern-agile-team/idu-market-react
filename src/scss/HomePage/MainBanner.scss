@@ -13,9 +13,9 @@
 
     img {
         width: 100%;
-        background: #d1bdab;
+        background: #e7dad0;
         border-radius: 100px;
-        animation: img 1s;
+        animation: img 1.5s;
     }
 }
 
@@ -31,9 +31,7 @@
         top: -50px;
         font-size: 3.8rem;
 
-        span, em {
-            color: #cfac8c;
-        }
+        span, em { color: #cfac8c; }
 
         em {
             position: absolute;
@@ -55,9 +53,7 @@
         position: absolute;
         right: 0;
         top: 150px;
-        &:hover {
-            color: #cfac8c;
-        }
+        &:hover { color: #db9668; }
         &:hover::before {
             font-family: 'Fredoka One', cursive;
             content: "IUAM";
@@ -71,14 +67,10 @@
 
 /* 0 ~ 1450 : 데스크탑1  */
 @media screen and (max-width: 1450px) {
-    .banner-img {
-        width: 450px;
-    }
+    .banner-img { width: 450px; }
 
     .banner-title {
-        h1{
-            font-size: 3.2rem;
-        }
+        h1 { font-size: 3.2rem; }
 
         a {
             font-size: 2.5rem;
@@ -93,14 +85,10 @@
 
 /* 0 ~ 1220 : 데스크탑2  */
 @media screen and (max-width: 1220px) {
-    .banner-img {
-        width: 400px;
-    }
+    .banner-img { width: 400px; }
 
     .banner-title {
-        h1{
-            font-size: 2.3rem;
-        }
+        h1 { font-size: 2.3rem; }
         a {
             top: 120px;
             font-size: 2rem;
@@ -115,14 +103,10 @@
 
 /* 0 ~ 960 : 테블릿1  */
 @media screen and (max-width: 960px){
-    .banner-img {
-        display: none;
-    }
+    .banner-img { display: none; }
 
     .banner-title {
-        h1 {
-            font-size: 3.75rem;
-        }
+        h1 { font-size: 3.75rem; }
         a {
             top: 300px;
             font-size: 2.5rem;
@@ -138,21 +122,15 @@
 /* 0 ~ 768px : 테블릿2 */
 @media screen and (max-width: 768px){
     .banner-title {
-        h1 {
-            font-size: 3rem;
-        }
+        h1 { font-size: 3rem; }
     }
 }
 /* 0 ~ 670px : 테블릿3 */
 @media screen and (max-width: 670px){
-    section {
-        padding: 0 20px;
-    }
+    section { padding: 0 20px; }
 
     .banner-title {
-        h1 {
-            font-size: 2.2rem;
-        }
+        h1 { font-size: 2.2rem; }
         a {
             font-size: 2rem;
             top: 200px;
@@ -167,9 +145,7 @@
 /* 0 ~ 480px : 모바일1 */
 @media screen and (max-width: 480px){
     .banner-title {
-        h1 {
-            font-size: 1.7rem;
-        }
+        h1 { font-size: 1.7rem; }
 
         a {
             font-size: 1.5rem;
@@ -182,9 +158,7 @@
             }
         }
 
-        p {
-            font-size: 0.7rem;
-        }
+        p { font-size: 0.7rem; }
     }
 }
 

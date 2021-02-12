@@ -21,9 +21,7 @@
     letter-spacing: 3px;
     margin-left: 2rem;
 
-    &:hover{
-        color: #222;
-    }
+    &:hover{ color: #222; }
 
     span {
         font-family: 'Fredoka One', cursive;
@@ -52,7 +50,7 @@
         & > a {
             font-family: 'Nunito', sans-serif;
             padding: 20px 40px;
-            &:hover{
+            &:hover {
                 border-bottom: 3px solid #333;
                 color: #222;
             }
@@ -80,24 +78,20 @@
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
         }
-        &:last-child{
+        &:last-child {
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
         }
     }
 
-    .header-menu-drop li:last-child {
-        border-bottom: none;
-    }
+    .header-menu-drop li:last-child { border-bottom: none; }
 
     .header-menu-drop li a {
         font-family: 'Nunito', sans-serif;
         font-size: 1rem;
         padding: 10px 50px;
 
-        &:hover {
-            color: #5c5c5c;
-        }
+        &:hover { color: #5c5c5c; }
     }
 }
 
@@ -109,9 +103,7 @@
     font-weight: 600;
     font-size: 1.2rem;
 
-    &:hover {
-        color: #c79463;
-    }
+    &:hover { color: #c79463; }
 }
 
 .menuToggle {
@@ -119,20 +111,16 @@
     padding: 20px;
     cursor: pointer;
     .outline-close {
-        &:hover {
-            transform: rotate(45deg);
-        }
+        &:hover { transform: rotate(45deg); }
     }
 }
 
 
  /* 0 ~ 1550 : 데스크탑1  */
- @media (max-width: 1550px) {}
+ @media screen and (max-width: 1550px) {}
  /* 0 ~ 1220 : 데스크탑2  */
- @media (max-width: 1220px) {
-     .header-nav{ 
-         display: none;
-     }
+ @media screen and (max-width: 1220px) {
+     .header-nav{ display: none; }
      .menuToggle {
          display: flex;
          font-size: 1.5rem;
@@ -156,9 +144,7 @@
                  border-bottom: none;
                  padding: 5px 10px;
              }
-             & > a:hover {
-                 border-bottom: 3px solid #b8b6b6;
-             }
+             & > a:hover { border-bottom: 3px solid #b8b6b6; }
          }
          .header-menu-drop {
              position: static;
@@ -166,9 +152,7 @@
          }
          
      }
-     .header-nav.active .header-list {
-         display: flex;
-     }
+     .header-nav.active .header-list { display: flex; }
      .header-btn {
          border: 2px solid #cfac8c;
          text-align: center;
@@ -182,30 +166,26 @@
      }
  }
  /* 0 ~ 1024 : 데스크탑3  */
- @media (max-width: 1024px) {}
+ @media screen and (max-width: 1024px) {}
  /* 0 ~ 960 : 테블릿1  */
- @media (max-width: 960px){}
+ @media screen and (max-width: 960px){}
  /* 0 ~ 768px : 테블릿2 */
- @media (max-width: 768px){
+ @media screen and (max-width: 768px){
  }
  /* 0 ~ 670px : 테블릿3 */
- @media (max-width: 670px){
+ @media screen and (max-width: 670px){
     .header-nav.active {
     
         .header-menu {
-            & > a {
-                padding: 10px 20px;
-            }
+            & > a { padding: 10px 20px; }
         }
         .header-menu-drop{
-            li a {
-                padding: 10px 30px;
-            }
+            li a { padding: 10px 30px; }
         } 
     }
  }
  /* 0 ~ 480px : 모바일1 */
- @media (max-width: 480px){
+ @media screen and (max-width: 480px){
     .header-nav.active {
         .header-menu {
             height: 180px;
@@ -216,9 +196,7 @@
     .header-nav .header-menu-drop li {
         height: 45px;
 
-        a {
-            font-size: 0.8rem;
-        }
+        a { font-size: 0.8rem; }
     }
 
     .header-btn {
@@ -227,4 +205,4 @@
     }
  }
  /* 0 ~ 360px : 모바일1 */
- @media (max-width: 360px){}
+ @media screen and (max-width: 360px){}
