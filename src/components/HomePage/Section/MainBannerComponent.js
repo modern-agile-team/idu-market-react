@@ -18,13 +18,13 @@ const MainBannerComponent = () => {
                 <div className="banner-title">
                     <h1><span>Idu</span> Used Article Marke<em>t</em></h1>
                     <p className={show ? "show" : ""}>by. Woowahan Agile</p>
-                    <a href="#function" className="banner-btn">
-                        <VscArrowDown></VscArrowDown>
-                    </a>
                 </div>
                 <div className="banner-img">
                     <img className="show" src={BannerImage} alt="배너 이미지"/>
                 </div>
+                <a href="#function" className="banner-btn">
+                        <VscArrowDown></VscArrowDown>
+                </a>
         </section>
     );
 };

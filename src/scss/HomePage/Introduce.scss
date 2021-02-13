@@ -1,5 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Thasadith&display=swap');
+
 #introduce {
     width: 100%;
     height: 100vh;
-    background-color: #999;
+    background-color: #fdfdfd;
+
+    .container {
+        position: relative;
+        width: 90%;
+        height: 100%;
+        margin: 0 auto;
+    }
+}
+
+.intro-box {
+    position: absolute;
+    width: 200px;
+    height: 550px;
+    padding-top: 20px;
+    top: 50px;
+    left: 15%;
+    border-radius: 10px;
+    background-color: #e2c9b6;
+    line-height: 60px;
+    opacity: 0;
+
+    &.show {
+        opacity: 1;
+        animation: box 1.2s;
+    }
+
+    h1:nth-child(1) { color: #222; }
+    h1 { 
+        span { 
+            font-family: 'Thasadith', sans-serif; 
+            color: #c79463;
+        }
+        text-align: center;
+        font-family: 'Thasadith', sans-serif;
+        font-size: 4.2rem;
+        color: #fdfdfd;
+    }
+}
+
+.youtube-box {
+    position: absolute;
+    width: 850px;
+    height: 500px;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+    opacity: 1;
+
+    iframe{
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        border: 4px solid #e7dad0;
+        box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    &.show {
+        iframe {
+            animation: fadeIn 1.2s;
+            opacity: 1;
+        }
+    }
+}
+
+.intro-bg-box {
+    position: absolute;
+    bottom: 25px;
+    right: 15%;
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    background-color: #c4a48c;
+}
+
+.intro-btn { 
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    border: 2.5px solid #222;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+
+    &:hover { 
+        color: #db9668; 
+        border: 2px solid #db9668;
+    }
+}
+
+ /* 0 ~ 1550 : 데스크탑1  */
+@media screen and (max-width: 1550px) {
+    .intro-bg-box { right: 10%; }
+    .youtube-box { width: 750px; height: 450px; }
+}
+
+ /* 0 ~ 1220 : 데스크탑2  */
+@media screen and (max-width: 1220px) { 
+    .intro-box { left: 5%;}
+    .intro-bg-box { right: 5%; }
+}
+
+/* 0 ~ 960 : 테블릿1  */
+@media screen and (max-width: 960px) {
+    #introduce {
+        .container { width: 100%; }
+    }
+    .youtube-box { width: 700px; height: 450px; }
+    .intro-bg-box {
+        width: 200px;
+        height: 200px;
+        bottom: 80px;
+    }
+}
+
+/* 0 ~ 768px : 테블릿2 */
+@media screen and (max-width: 768px) {
+    #introduce {
+        .container { padding: 0 10px; }
+    }
+    .intro-box { 
+        width: 100%;
+        height: 120px;
+        left: 0;
+        padding-top: 0;
+        border-radius: 0;
+        display: flex;
+        justify-content: center;
+        opacity: 1;
+        &.show { animation: none; }
+        h1 {
+            line-height: 120px;
+            font-size: 5rem;
+            margin: 0 5px;
+        }
+    }
+    .youtube-box { 
+        width: 600px; 
+        height: 400px;
+        iframe { opacity: 1; }
+        &.show {
+            iframe {
+                animation: none;
+            }
+
+        }
+    }
+    .intro-bg-box { display: none; }
+    .intro-btn {
+        bottom: 40px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.8rem;
+        line-height: 45px;
+    }
+}
+
+/* 0 ~ 670px : 테블릿3 */
+@media screen and (max-width: 670px){ 
+    .youtube-box {width: 450px; height: 350px;}
+    .intro-btn { 
+        font-size: 1.6rem;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        bottom: 150px;
+    }
+}
+
+/* 0 ~ 480px : 모바일1 */
+@media screen and (max-width: 480px){ 
+    .youtube-box { width: 400px; height: 250px; }
+    .intro-box {
+        h1 { font-size: 4rem;}
+    }
+}
+
+//애니메이션
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        width: 0;
+    }
+    to {
+        opacity: 1;
+        width: 100%;
+    }
+}
+
+@keyframes box {
+    from { height: 0; }
+    to { height: 550px; }
 }

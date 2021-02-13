@@ -12,25 +12,30 @@
 }
 
 .banner-img {
-    width: 500px;
-    margin-top: 40px;
+    width: 420px;
+    height: 420px;
+    background-color: #e7dcd4;
+    border-radius: 50%;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
     img {
         width: 100%;
-        border-radius: 20%;
-        background: rgba(231, 218, 208, 0.2);
+        opacity: 0.8;
     }
 }
 
 .banner-title {
     position: relative;
     margin-top: 50px;
+    z-index: 99;
     span, h1, p, em {
         font-family: 'Fredoka One', cursive;
     }
 
     h1 {
         position: relative;
-        font-size: 4.5rem;
+        font-size: 4.8rem;
 
         span, em { color: #cfac8c; }
 
@@ -49,62 +54,53 @@
         text-align: right;
         transform: translateX(0);
         opacity: 0;
+
         &.show {
             animation: text 1.5s;
             opacity: 1;
         }
     }
+}
 
-    a { 
-        position: absolute;
-        right: 50%;
-        top: 600%;
-        width: 50px;
-        height: 50px;
-        transform: translateX(50%);
-        font-size: 2.5rem;
-        border: 2.5px solid #222;
-        text-align: center;
-        line-height: 50px;
-        border-radius: 50%;
+.banner-btn { 
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    width: 50px;
+    height: 50px;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    border: 2.5px solid #222;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
 
-        &:hover { 
-            color: #db9668; 
-            border: 2px solid #db9668;
-        }
+    &:hover { 
+        color: #db9668; 
+        border: 2px solid #db9668;
     }
 }
 
 /* 0 ~ 1450 : 데스크탑1  */
 @media screen and (max-width: 1450px) {
-    .banner-title {
-        a {
-            font-size: 2.5rem;
-        }
-    }
 }
 
 /* 0 ~ 1220 : 데스크탑2  */
 @media screen and (max-width: 1220px) {
-
-    .banner-title {
-        a {
-            top: 620%;
-            font-size: 2rem;
-        }
+    .banner-btn {
+        font-size: 2rem;
     }
 }
 
 /* 0 ~ 960 : 테블릿1  */
 @media screen and (max-width: 960px){
-    .banner-img { width: 400px; }
+    .banner-img { 
+        width: 400px; 
+        height: 400px;
+    }
 
     .banner-title {
         h1 { font-size: 3.75rem; }
-        a {
-            top: 620%;
-            font-size: 2.5rem;
-        }
     }
 }
 
@@ -114,17 +110,15 @@
         height: 76vh;
     }
     .banner-img {display: none;}
+
     .banner-title {
         h1 { font-size: 3rem; }
-        a {
-            font-size: 1.8rem;
-            width: 45px;
-            height: 45px;
-            line-height: 45px;
-            top: 300%;
-            right: 45%;
-            transform: translateX(50%);
-        }
+    }
+
+    .banner-btn {
+        font-size: 1.8rem;
+        width: 45px;
+        height: 45px;
     }
 }
 
@@ -134,18 +128,18 @@
 
     .banner-title {
         h1 { font-size: 2.2rem; }
-        a { font-size: 2rem; 
 
-            &:hover::before {
-                top: 12px;
-                right: 40px;
-                font-size: 0.9rem;
-            }
-        }
         p {
             font-size: 0.8rem;
             margin-top: -5px;
         }
+    }
+    .banner-btn {
+        font-size: 1.6rem;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        bottom: 100px;
     }
 }
 
@@ -154,13 +148,12 @@
     .banner-title {
         h1 { font-size: 1.7rem; }
         p { font-size: 0.7rem; }
-        a {
-            font-size: 1.6rem;
-            width: 35px;
-            height: 35px;
-            line-height: 35px;
-            top: 300%;
-        }
+    }
+    .banner-btn {
+        font-size: 1.4rem;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
     }
 }
 
@@ -185,16 +178,6 @@
     to {
         transform: rotate(25deg);
         color:#cfac8c;
-    }
-}
-
-@keyframes banner {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 100%;
     }
 }
 

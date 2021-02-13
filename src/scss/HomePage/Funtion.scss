@@ -24,6 +24,7 @@
         opacity: 0;
 
         img { width: 100%; }
+
         p {
             font-family: 'Fredoka One', cursive;
             text-align: center;
@@ -62,9 +63,7 @@
     #function { 
         height: 35vh;
 
-        .container {
-            width: 100%;
-        }
+        .container { width: 100%; }
     }
 
     .function-items {
@@ -83,9 +82,7 @@
         height: 600px;
         background: #fdfdfd;
 
-        .container {
-            padding: 20px 0;
-        }
+        .container { padding: 20px 0; }
     }
     .function-items {
         width: 100%;
@@ -101,7 +98,8 @@
             opacity: 0;
             width: 100%;
 
-            img { width: 28%; }
+            img { width: 25%; }
+
             p { 
                 font-size: 1.5rem; 
                 margin-left: 30px;
@@ -116,8 +114,17 @@
     }
 }
 
+/* 0 ~ 670px : 테블릿3 */
+@media screen and (max-width: 670px) {
+    .function-items {
+        .function-item {
+            p { font-size: 1.2rem; }
+        }
+    }
+}
+
 /* 0 ~ 480px : 모바일1 */
-@media screen and (max-width: 480px){
+@media screen and (max-width: 480px) {
     #function { 
         height: 400px;
         background: #fdfdfd;
@@ -127,7 +134,9 @@
             padding: 0 50px;
 
             img { width: 30%; }
+
             p { font-size: 1rem;}
+
             &.shopping { border-right: none; }
             &.communication { border-right: none; }
         }
@@ -136,19 +145,11 @@
 
 //애니메이션
 @keyframes slide {
-    from {
-        transform: translateY(300px);
-    }
-    to {
-        transform: translateY(0);
-    }
+    from { transform: translateY(300px); }
+    to { transform: translateY(0); }
 }
 
 @keyframes slide2 {
-    from {
-        transform: translateX(-300px);
-    }
-    to {
-        transform: translateX(0);
-    }
+    from { transform: translateX(-300px); }
+    to { transform: translateX(0); }
 }

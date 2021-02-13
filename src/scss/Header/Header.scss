@@ -2,7 +2,7 @@
     position: fixed;
     width: 100%;
     height: 65px;
-    background: transparent;
+    background: #fdfdfd;
     z-index: 100;
 
     .container {
@@ -47,6 +47,7 @@
         font-weight: 600;
         padding: 20px 20px;
         cursor: pointer;
+
         & > a {
             font-family: 'Nunito', sans-serif;
             padding: 20px 40px;
@@ -74,6 +75,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
         &:first-child {
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
@@ -110,6 +112,7 @@
     display: none;
     padding: 20px;
     cursor: pointer;
+
     .outline-close {
         &:hover { transform: rotate(45deg); }
     }
@@ -118,6 +121,7 @@
 
  /* 0 ~ 1550 : 데스크탑1  */
  @media screen and (max-width: 1550px) {}
+
  /* 0 ~ 1220 : 데스크탑2  */
  @media screen and (max-width: 1220px) {
      .header-nav{ display: none; }
@@ -146,19 +150,22 @@
              }
              & > a:hover { border-bottom: 3px solid #b8b6b6; }
          }
+
          .header-menu-drop {
              position: static;
              margin: 10px auto;
          }
-         
      }
+
      .header-nav.active .header-list { display: flex; }
+
      .header-btn {
          border: 2px solid #cfac8c;
          text-align: center;
          width: 30%;
          margin: 10px 0;
          font-size: 1.2rem;
+
          &:hover {
              background-color: #cfac8c;
              color: #fff;
@@ -179,10 +186,10 @@
  /* 0 ~ 670px : 테블릿3 */
  @media screen and (max-width: 670px){
     .header-nav.active {
-    
         .header-menu {
             & > a { padding: 10px 20px; }
         }
+
         .header-menu-drop{
             li a { padding: 10px 30px; }
         } 
@@ -200,7 +207,6 @@
 
     .header-nav .header-menu-drop li {
         height: 45px;
-
         a { font-size: 0.8rem; }
     }
 
@@ -209,5 +215,6 @@
         font-size: 1rem;
     }
  }
+ 
  /* 0 ~ 360px : 모바일1 */
  @media screen and (max-width: 360px){}
