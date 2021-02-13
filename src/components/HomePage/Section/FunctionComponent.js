@@ -8,10 +8,10 @@ const FunctionComponent = () => {
     const [scrollPosition, setScrollPosition] = useState(false);
 
     const handleScroll = () => {
-        let pageYOffset = window.scrollY;
+        let pageScrollY = window.scrollY;
 
-        if (pageYOffset / 10 >= 20) setScrollPosition(true);
-        else if (pageYOffset / 10 < 10) setScrollPosition(false);
+        if (pageScrollY / 10 >= 20) setScrollPosition(true);
+        else if (pageScrollY / 10 < 10) setScrollPosition(false);
     }
 
     useEffect(() => {

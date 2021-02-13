@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const DropMenu = ({ item }) => {
     const [dropMenu, setDropMenu] = useState(false);
-    const [upMenu, setUpMenu] = useState(true);
 
     const showDropMenu = () => {
         setDropMenu(!dropMenu);
