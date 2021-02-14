@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import BannerImage from '../../../img/shopping.png'
-import { VscArrowDown } from "react-icons/vsc";
 import '../../../scss/HomePage/MainBanner.scss';
 
 const MainBannerComponent = () => {
@@ -11,7 +10,6 @@ const MainBannerComponent = () => {
             setShow(!show);
         }, 400);
     }, [])
-    
 
     return (
         <section id="main-banner" className="main-banner">
@@ -21,10 +19,8 @@ const MainBannerComponent = () => {
                 </div>
                 <div className="banner-img">
                     <img className="show" src={BannerImage} alt="배너 이미지"/>
+                    <a href="#function">START</a>
                 </div>
-                <a href="#function" className="banner-btn">
-                        <VscArrowDown></VscArrowDown>
-                </a>
         </section>
     );
 };

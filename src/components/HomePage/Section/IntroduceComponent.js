@@ -10,7 +10,7 @@ const IntroduceComponent = () => {
     const handleScroll = () => {
         let pageScrollY = window.scrollY;
 
-        if (pageScrollY / 10 >= 85) {
+        if (pageScrollY / 10 >= 80) {
             setScrollActionIntro(true);
             setTimeout(() => {
                 setScrollActionYoutube(true);
@@ -33,14 +33,13 @@ const IntroduceComponent = () => {
         <section id="introduce" className="introduce">
             <div className="container">
                 <div className={scrollActionIntro ? "intro-box show" : "intro-box"}>
-                    <h1><span>I</span>UAM</h1>
                     <h1>INTRO</h1>
                 </div>
                 <div className={scrollActionYoutube ? "youtube-box show" : "youtube-box"}>
-                    <iframe src="https://www.youtube.com/embed/wYn8TeTMUL4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+                    <iframe title="iuam intro youtube"src="https://www.youtube.com/embed/xvep-cJW7zk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
                 </div>
                 <div className="intro-bg-box"></div>
-                <a href="#" className="intro-btn">
+                <a href="#introduce" className="intro-btn">
                         <VscArrowDown></VscArrowDown>
                 </a>
             </div>

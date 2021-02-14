@@ -8,26 +8,60 @@
     flex-direction: column;
     padding: 0 50px;
     background: #fdfdfd;
-
 }
 
 .banner-img {
-    width: 420px;
-    height: 420px;
-    background-color: #e7dcd4;
-    border-radius: 50%;
-    margin-top: 30px;
+    position: relative;
+    width: 520px;
+    height: 500px;
     display: flex;
     align-items: center;
+    overflow: hidden;
+
+    a {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        text-align: center;
+        transform: translate(350%, -50%) rotate(180deg);
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        border-radius: 50%;
+        background: #d3a887;
+        font-size: 1.3rem;
+        transition: .5s transform;
+        color: #fdfdfd;
+        font-family: 'Fredoka One', cursive;
+
+        &:hover::after {
+            content: "↓";
+            position: absolute;
+            top: 110%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            transform: translate(-50%, -50%);
+            font-size: 3.5rem;
+            color: #bb8053;
+            font-weight: bold;
+            border-radius: 50%;
+            animation: arrow 1.2s infinite ease;
+        }
+    }
+    &:hover a { transform: translate(-50%, -50%) rotate(0); }
+    &:hover img { opacity: 0.3; }
     img {
         width: 100%;
         opacity: 0.8;
+        transition: .5s opacity;
     }
 }
 
 .banner-title {
     position: relative;
-    margin-top: 50px;
+    margin-top: 150px;
     z-index: 99;
     span, h1, p, em {
         font-family: 'Fredoka One', cursive;
@@ -62,36 +96,6 @@
     }
 }
 
-.banner-btn { 
-    position: absolute;
-    left: 50%;
-    bottom: 30px;
-    width: 50px;
-    height: 50px;
-    transform: translateX(-50%);
-    font-size: 2.5rem;
-    border: 2.5px solid #222;
-    text-align: center;
-    line-height: 50px;
-    border-radius: 50%;
-
-    &:hover { 
-        color: #db9668; 
-        border: 2px solid #db9668;
-    }
-}
-
-/* 0 ~ 1450 : 데스크탑1  */
-@media screen and (max-width: 1450px) {
-}
-
-/* 0 ~ 1220 : 데스크탑2  */
-@media screen and (max-width: 1220px) {
-    .banner-btn {
-        font-size: 2rem;
-    }
-}
-
 /* 0 ~ 960 : 테블릿1  */
 @media screen and (max-width: 960px){
     .banner-img { 
@@ -106,19 +110,12 @@
 
 /* 0 ~ 768px : 테블릿2 */
 @media screen and (max-width: 768px){
-    #main-banner {
-        height: 76vh;
-    }
+    #main-banner { height: 76vh; }
+
     .banner-img {display: none;}
 
     .banner-title {
         h1 { font-size: 3rem; }
-    }
-
-    .banner-btn {
-        font-size: 1.8rem;
-        width: 45px;
-        height: 45px;
     }
 }
 
@@ -134,13 +131,6 @@
             margin-top: -5px;
         }
     }
-    .banner-btn {
-        font-size: 1.6rem;
-        width: 35px;
-        height: 35px;
-        line-height: 35px;
-        bottom: 100px;
-    }
 }
 
 /* 0 ~ 480px : 모바일1 */
@@ -148,12 +138,6 @@
     .banner-title {
         h1 { font-size: 1.7rem; }
         p { font-size: 0.7rem; }
-    }
-    .banner-btn {
-        font-size: 1.4rem;
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
     }
 }
 
@@ -181,3 +165,7 @@
     }
 }
 
+@keyframes arrow {
+    0% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
