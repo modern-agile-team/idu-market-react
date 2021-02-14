@@ -6,9 +6,7 @@ const MainBannerComponent = () => {
     const [show, setShow] = useState(false);
 
     useEffect(() => {
-        setTimeout(() => {
-            setShow(!show);
-        }, 400);
+        setTimeout(() => setShow(true), 400);
     }, [])
 
     return (

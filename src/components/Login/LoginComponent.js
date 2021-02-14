@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../scss/LoginPage/Login.scss';
 import { Link } from 'react-router-dom';
 
 const LoginComponent = () => {
+    const [idValue, setIdValue] = useState('');
+    const [pwdValue, setPwdValue] = useState('');
+
+    const onIdChange = e => setIdValue(e.target.value);
+    const onPwdChange = e => setPwdValue(e.target.value);
+
     return (
         <section id="login-form" className="login-form">
             <div className="container">
@@ -10,15 +16,15 @@ const LoginComponent = () => {
                     <h1 className="login-title">LOGIN</h1>
 
                     <div className="text-field">
-                        <input type="text" />
-                        <span></span>
-                        <label>ID</label>
+                        <input type="text" value={idValue} onChange={onIdChange} />
+                        <span className={idValue ? "input-border" : ""}/>
+                        <label className={idValue ? "fix" : ""}>ID</label>
                     </div>
 
                     <div className="text-field">
-                        <input type="password" />
-                        <span></span>
-                        <label>Password</label>
+                        <input type="password" value={pwdValue} onChange={onPwdChange} />
+                        <span className={pwdValue ? "input-border" : ""}/>
+                        <label className={pwdValue ? "fix" : ""}>Password</label>
                     </div>
 
                     <div className="search">

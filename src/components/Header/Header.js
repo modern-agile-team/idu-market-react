@@ -8,6 +8,7 @@ import '../../scss/Header/Header.scss';
 
 const Header = () => {
     const [sidebar, setSidebar] = useState(false);
+    
     const showSidebar = () => setSidebar(!sidebar);
 
 

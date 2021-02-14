@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../../../scss/HomePage/Funtion.scss';
 import communication from '../../../img/communication-2.png'
 import information from '../../../img/information-2.png'
@@ -6,12 +6,13 @@ import shopping from '../../../img/shopping-2.png'
 
 const FunctionComponent = () => {
     const [scrollAction, setScrollAction] = useState(false);
+    const refEl = useRef(null);
 
     const handleScroll = () => {
-        let pageScrollY = window.scrollY;
+        let pageScrollY = window.scrollY + (refEl.current.offsetTop * 0.7);
 
-        if (pageScrollY / 10 >= 18) setScrollAction(true);
-        else if (pageScrollY === 0) setScrollAction(false);
+        if (pageScrollY > refEl.current.offsetTop) setScrollAction(true);
+        else setScrollAction(false);
     }
 
     useEffect(() => {
@@ -21,7 +22,7 @@ const FunctionComponent = () => {
     },[]);
 
     return (
-        <section id="function" className="function">
+        <section id="function" className="function" ref={refEl}>
             <div className="container">
                 <div className={scrollAction ? "function-items show" : "function-items"}>
                     <div className="function-item shopping">
