@@ -8,9 +8,9 @@ import '../../scss/Header/Header.scss';
 
 const Header = () => {
     const [sidebar, setSidebar] = useState(false);
+    const [upMenu, setUpMenu] = useState(false);
     
     const showSidebar = () => setSidebar(!sidebar);
-
 
     return (
         <header id="header" className="header">
