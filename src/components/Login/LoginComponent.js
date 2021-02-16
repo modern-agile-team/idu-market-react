@@ -12,7 +12,7 @@ const LoginComponent = () => {
     return (
         <section id="login-form" className="login-form">
             <div className="container">
-                <form action="post" className="login-form">
+                <form className="login-form">
                     <h1 className="login-title">LOGIN</h1>
 
                     <div className="text-field">

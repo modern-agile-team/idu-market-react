@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Thasadith&display=swap');
+
+#home-notice {
+    height: 100vh;
+    background-color: #e7dfd9;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notice-box {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    top: 50px;
+    left: 22%;
+    background: #c4a48c;
+    border-radius: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    h1 {
+        font-family: 'Thasadith', sans-serif;
+        font-size: 3.5rem;
+        padding-left: 20px;
+        color: #fdfdfd;
+        line-height: 50px;
+    }
+}
+
+.notice-slide {
+    transition: 0.7s ease;
+    opacity: 0;
+    z-index: 99;
+
+    &.active {
+        opacity: 1;
+    }
+    .notice-image {
+        width: 750px;
+        height: 650px;
+    }
+}
+
+.right-arrow {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    font-size: 5rem;
+    color: #000;
+    z-index: 100;
+    cursor: pointer;
+    user-select: none;
+}
+  
+.left-arrow {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    font-size: 5rem;
+    color: #000;
+    z-index: 100;
+    cursor: pointer;
+    user-select: none;
+}
+
+.slide-btns {
+    display: flex;
+    flex-direction: column;
+
+    .slide-btn {
+        width: 15px;
+        height: 15px;
+        background-color:rgba(255,255,255,0.8);
+        margin: 15px 0;
+        border-radius: 5px;
+        &.active {
+            background: #c97f4e;
+        }
+    }
+}
+
+ /* 0 ~ 1550 : 데스크탑1  */
+ @media screen and (max-width: 1550px) {
+    .notice-box {
+        left: 15%;
+    }
+    .notice-slide {
+        .notice-image {
+            width: 750px;
+            height: 650px;
+        }
+    }
+}
+
+/* 0 ~ 1220 : 데스크탑2  */
+@media screen and (max-width: 1220px) {
+    .notice-box {
+        left: 10%;
+        width: 250px;
+        height: 250px;
+        h1 {
+            font-size: 2.8rem;
+        }
+    }
+    .notice-slide {
+        .notice-image {
+            width: 700px;
+            height: 600px;
+        }
+    }
+}
+
+/* 0 ~ 960 : 테블릿1  */
+@media screen and (max-width: 960px) {
+    #home-notice {
+        flex-direction: column;
+    }
+    .notice-box {
+        left: 5%;
+    }
+    .notice-slide {
+        .notice-image {
+            width: 600px;
+            height: 500px;
+        }
+    }
+    .slide-btns {
+        flex-direction: row;
+        .slide-btn { 
+            margin: 20px 10px 0 10px;
+        }
+    }
+}
+
+/* 0 ~ 768px : 테블릿2 */
+@media screen and (max-width: 768px) {
+    .notice-box {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 120px;
+        border-radius: 0;
+        padding-left: 0;
+        justify-content: center;
+        h1 {
+            font-size: 5rem;
+        }
+    }
+    .notice-slide {
+        .notice-image {
+            width: 550px;
+            height: 450px;
+        }
+    }
+    .right-arrow {
+        right: 20px;
+        font-size: 3.5rem;
+        
+    }
+      
+    .left-arrow {
+        left: 20px;
+        font-size: 3.5rem;
+    }
+}
+
+/* 0 ~ 670px : 테블릿2 */
+@media screen and (max-width: 670px) {
+    .notice-slide {
+        .notice-image {
+            width: 450px;
+            height: 350px;
+        }
+    }
+    .right-arrow {
+        right: 20px;
+        font-size: 3rem;
+        
+    }
+      
+    .left-arrow {
+        left: 20px;
+        font-size: 3rem;
+    }
+    .slide-btns {
+        .slide-btn {
+            width: 10px;
+            height: 10px;
+        }
+    }
+}
+
+/* 0 ~ 480px : 모바일1 */
+@media screen and (max-width: 480px){ 
+    .notice-slide {
+        .notice-image {
+            width: 400px;
+            height: 300px;
+        }
+    }
+
+    .right-arrow {
+        top: 70%;
+        font-size: 2.5rem;
+    }
+      
+    .left-arrow {
+        top: 70%;
+        font-size: 2.5rem;
+    }
+}

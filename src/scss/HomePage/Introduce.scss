@@ -21,7 +21,7 @@
     top: 50px;
     left: 15%;
     border-radius: 10px;
-    background-color: #e2c9b6;
+    background-color: #c4a48c;
     line-height: 60px;
     opacity: 0;
 
@@ -71,27 +71,27 @@
     width: 300px;
     height: 300px;
     border-radius: 10px;
-    background-color: #c4a48c;
+    background-color: #e2c9b6;
 }
 
-.intro-btn { 
-    position: absolute;
-    left: 50%;
-    bottom: 20px;
-    width: 50px;
-    height: 50px;
-    transform: translateX(-50%);
-    font-size: 2.5rem;
-    border: 2.5px solid #222;
-    text-align: center;
-    line-height: 50px;
-    border-radius: 50%;
+// .intro-btn { 
+//     position: absolute;
+//     left: 50%;
+//     bottom: 20px;
+//     width: 50px;
+//     height: 50px;
+//     transform: translateX(-50%);
+//     font-size: 2.5rem;
+//     border: 2.5px solid #222;
+//     text-align: center;
+//     line-height: 50px;
+//     border-radius: 50%;
 
-    &:hover { 
-        color: #db9668; 
-        border: 2px solid #db9668;
-    }
-}
+//     &:hover { 
+//         color: #db9668; 
+//         border: 2px solid #db9668;
+//     }
+// }
 
  /* 0 ~ 1550 : 데스크탑1  */
 @media screen and (max-width: 1550px) {

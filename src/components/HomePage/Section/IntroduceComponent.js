@@ -37,9 +37,9 @@ const IntroduceComponent = () => {
                     <iframe title="iuam intro youtube"src="https://www.youtube.com/embed/xvep-cJW7zk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
                 </div>
                 <div className="intro-bg-box"></div>
-                <a href="#introduce" className="intro-btn">
+                {/* <a href="#introduce" className="intro-btn">
                         <VscArrowDown></VscArrowDown>
-                </a>
+                </a> */}
             </div>
         </section>
     );
