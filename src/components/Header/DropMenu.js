@@ -18,7 +18,6 @@ const DropMenu = ({ item }) => {
         return () => window.removeEventListener('click', menuClickEvent);
     }, [dropMenu])
 
-
     return (
         <>
             <li 
