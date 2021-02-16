@@ -38,6 +38,7 @@
     &.active {
         opacity: 1;
     }
+
     .notice-image {
         width: 750px;
         height: 650px;
@@ -76,6 +77,8 @@
         background-color:rgba(255,255,255,0.8);
         margin: 15px 0;
         border-radius: 5px;
+        cursor: pointer;
+
         &.active {
             background: #c97f4e;
         }
@@ -87,6 +90,7 @@
     .notice-box {
         left: 15%;
     }
+
     .notice-slide {
         .notice-image {
             width: 750px;
@@ -105,6 +109,7 @@
             font-size: 2.8rem;
         }
     }
+
     .notice-slide {
         .notice-image {
             width: 700px;
@@ -118,15 +123,18 @@
     #home-notice {
         flex-direction: column;
     }
+
     .notice-box {
         left: 5%;
     }
+
     .notice-slide {
         .notice-image {
             width: 600px;
             height: 500px;
         }
     }
+
     .slide-btns {
         flex-direction: row;
         .slide-btn { 
@@ -149,12 +157,14 @@
             font-size: 5rem;
         }
     }
+
     .notice-slide {
         .notice-image {
             width: 550px;
             height: 450px;
         }
     }
+
     .right-arrow {
         right: 20px;
         font-size: 3.5rem;
@@ -175,6 +185,7 @@
             height: 350px;
         }
     }
+
     .right-arrow {
         right: 20px;
         font-size: 3rem;
@@ -185,6 +196,7 @@
         left: 20px;
         font-size: 3rem;
     }
+    
     .slide-btns {
         .slide-btn {
             width: 10px;

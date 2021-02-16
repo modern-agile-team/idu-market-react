@@ -1,4 +1,4 @@
-#function {
+#home-function {
     width: 100%;
     height: 40vh;
     background-color: #e7dad0;
@@ -60,7 +60,7 @@
 
 /* 0 ~ 960 : 테블릿1  */
 @media screen and (max-width: 960px) {
-    #function { 
+    #home-function { 
         height: 35vh;
 
         .container { width: 100%; }
@@ -78,7 +78,7 @@
 
 /* 0 ~ 768px : 테블릿2 */
 @media screen and (max-width: 768px){
-    #function { 
+    #home-function { 
         height: 600px;
         background: #fdfdfd;
 
@@ -125,7 +125,7 @@
 
 /* 0 ~ 480px : 모바일1 */
 @media screen and (max-width: 480px) {
-    #function { 
+    #home-function { 
         height: 400px;
         background: #fdfdfd;
     }

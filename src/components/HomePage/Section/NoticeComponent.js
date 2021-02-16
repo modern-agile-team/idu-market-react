@@ -5,6 +5,7 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 
 const NoticeComponent = ({ slides }) => {
     const SLIDES_LENGTH = slides.length;
+    
     const [currentImage, setCurrentImage] = useState(0);
     
 
@@ -16,9 +17,7 @@ const NoticeComponent = ({ slides }) => {
         setCurrentImage(currentImage === 0 ? SLIDES_LENGTH - 1 : currentImage - 1);
     }
 
-    if (!Array.isArray(slides) || SLIDES_LENGTH <= 0) {
-        return null;
-    }
+    if (!Array.isArray(slides) || SLIDES_LENGTH <= 0) return null;
 
     return (
         <section id="home-notice" className="home-notice">
@@ -39,10 +38,16 @@ const NoticeComponent = ({ slides }) => {
                     )
                 })}
 
-                <div className="slide-btns active">
-                    <div className={currentImage === 0 ? "slide-btn active": "slide-btn"}></div>
-                    <div className={currentImage === 1 ? "slide-btn active": "slide-btn"}></div>
-                    <div className={currentImage === 2 ? "slide-btn active": "slide-btn"}></div>
+                <div className="slide-btns">
+                    <div className={currentImage === 0 ? "slide-btn active": "slide-btn"}
+                        onClick={() => setCurrentImage(0)}
+                    />
+                    <div className={currentImage === 1 ? "slide-btn active": "slide-btn"}
+                        onClick={() => setCurrentImage(1)}
+                    />
+                    <div className={currentImage === 2 ? "slide-btn active": "slide-btn"}
+                        onClick={() => setCurrentImage(2)}
+                    />
                 </div>
         </section>
     );

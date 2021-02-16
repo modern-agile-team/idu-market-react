@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Thasadith&display=swap');
 
-#introduce {
+#home-introduce {
     width: 100%;
     height: 100vh;
     background-color: #fdfdfd;
@@ -74,25 +74,6 @@
     background-color: #e2c9b6;
 }
 
-// .intro-btn { 
-//     position: absolute;
-//     left: 50%;
-//     bottom: 20px;
-//     width: 50px;
-//     height: 50px;
-//     transform: translateX(-50%);
-//     font-size: 2.5rem;
-//     border: 2.5px solid #222;
-//     text-align: center;
-//     line-height: 50px;
-//     border-radius: 50%;
-
-//     &:hover { 
-//         color: #db9668; 
-//         border: 2px solid #db9668;
-//     }
-// }
-
  /* 0 ~ 1550 : 데스크탑1  */
 @media screen and (max-width: 1550px) {
     .intro-bg-box { right: 10%; }
@@ -107,7 +88,7 @@
 
 /* 0 ~ 960 : 테블릿1  */
 @media screen and (max-width: 960px) {
-    #introduce {
+    #home-introduce {
         .container { width: 100%; }
     }
     .youtube-box { width: 700px; height: 450px; }
@@ -120,7 +101,7 @@
 
 /* 0 ~ 768px : 테블릿2 */
 @media screen and (max-width: 768px) {
-    #introduce {
+    #home-introduce {
         .container { padding: 0 10px; }
     }
     .intro-box { 

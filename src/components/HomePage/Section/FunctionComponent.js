@@ -22,7 +22,7 @@ const FunctionComponent = () => {
     },[]);
 
     return (
-        <section id="function" className="function" ref={refEl}>
+        <section id="home-function" className="home-function" ref={refEl}>
             <div className="container">
                 <div className={scrollAction ? "function-items show" : "function-items"}>
                     <div className="function-item shopping">
