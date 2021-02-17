@@ -8,7 +8,7 @@ const IntroduceComponent = () => {
     const [scrollActionIntro, setScrollActionIntro] = useState(false);
     const refEl = useRef(null);
 
-    const handleScroll = () => {
+    const introduceHandleScroll = () => {
         let pageScrollY = window.scrollY + (refEl.current.offsetTop * 0.4);
 
         if (pageScrollY > refEl.current.offsetTop) {
@@ -22,9 +22,9 @@ const IntroduceComponent = () => {
     }
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', introduceHandleScroll);
 
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', introduceHandleScroll);
     },[]);
 
     return (

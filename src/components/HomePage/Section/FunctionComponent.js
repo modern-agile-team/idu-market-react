@@ -8,7 +8,7 @@ const FunctionComponent = () => {
     const [scrollActionFuntion, setScrollActionFunction] = useState(false);
     const refEl = useRef(null);
 
-    const handleScroll = () => {
+    const functionHandleScroll = () => {
         let pageScrollY = window.scrollY + (refEl.current.offsetTop * 0.7);
 
         if (pageScrollY > refEl.current.offsetTop) setScrollActionFunction(true);
@@ -16,9 +16,9 @@ const FunctionComponent = () => {
     }
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', functionHandleScroll);
 
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', functionHandleScroll);
     },[]);
 
     return (

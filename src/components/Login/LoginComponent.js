@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import '../../scss/LoginPage/Login.scss';
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import { loginUser } from '../../actions/user_action';
 
 const LoginComponent = (props) => {
+    const dispatch = useDispatch();
     const [idValue, setIdValue] = useState('');
     const [pwdValue, setPwdValue] = useState('');
+    const [errMsg, setErrMsg] = useState('');
 
     const onIdChange = e => setIdValue(e.target.value);
     const onPwdChange = e => setPwdValue(e.target.value);
@@ -14,23 +17,28 @@ const LoginComponent = (props) => {
     const onSubmitHandler = e => {
         e.preventDefault();
 
-        const body = {
+        let body = {
             id: idValue,
             psword: pwdValue,
         }
 
-        axios.post('/api/jwt', body)
+        dispatch(loginUser(body)) 
             .then(response => {
-                if (response.data.success) {
-                    console.log(response.data);
+                console.log(response);
+
+                if(response.payload.success) {
                     window.localStorage.setItem('userID', body.id);
                     props.history.push('/');
                 } else {
-                    console.log(response.data);
+                    console.err('error');
                 }
             })
             .catch(err => {
-                console.log(err);
+                const response = err.response;
+                if (response.status === 400) {
+                    setErrMsg(response.data.msg);
+                }
+                throw err;
             })
     }
 
@@ -51,6 +59,8 @@ const LoginComponent = (props) => {
                         <span className={pwdValue ? "input-border" : ""}/>
                         <label className={pwdValue ? "fix" : ""}>Password</label>
                     </div>
+
+                    <p className="login-err">{errMsg}</p>
 
                     <div className="search">
                         <Link to="/">아이디/비밀번호 찾기</Link>
