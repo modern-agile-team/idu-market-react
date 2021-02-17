@@ -1,13 +1,38 @@
 import React, { useState } from 'react';
 import '../../scss/LoginPage/Login.scss';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const LoginComponent = () => {
+const LoginComponent = (props) => {
     const [idValue, setIdValue] = useState('');
     const [pwdValue, setPwdValue] = useState('');
 
     const onIdChange = e => setIdValue(e.target.value);
     const onPwdChange = e => setPwdValue(e.target.value);
+
+    const onSubmitHandler = e => {
+        e.preventDefault();
+
+        const body = {
+            id: idValue,
+            psword: pwdValue,
+        }
+
+        axios.post('/api/jwt', body)
+            .then(response => {
+                if (response.data.success) {
+                    console.log(response.data);
+                    window.localStorage.setItem('userID', body.id);
+                    props.history.push('/');
+                } else {
+                    console.log(response.data);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
     return (
         <section id="login-form" className="login-form">
@@ -31,7 +56,7 @@ const LoginComponent = () => {
                         <Link to="/">아이디/비밀번호 찾기</Link>
                     </div>
 
-                    <input type="submit" value="Login" />
+                    <input type="submit" value="Login" onClick={onSubmitHandler}/>
 
                     <div className="signup-link">
                         Not a Member? <Link to="/register">Sign Up</Link>
@@ -42,4 +67,4 @@ const LoginComponent = () => {
     );
 };
 
-export default LoginComponent;
+export default withRouter(LoginComponent);
