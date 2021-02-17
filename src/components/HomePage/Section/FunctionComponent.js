@@ -5,14 +5,14 @@ import information from '../../../img/information-2.png'
 import shopping from '../../../img/shopping-2.png'
 
 const FunctionComponent = () => {
-    const [scrollAction, setScrollAction] = useState(false);
+    const [scrollActionFuntion, setScrollActionFunction] = useState(false);
     const refEl = useRef(null);
 
     const handleScroll = () => {
         let pageScrollY = window.scrollY + (refEl.current.offsetTop * 0.7);
 
-        if (pageScrollY > refEl.current.offsetTop) setScrollAction(true);
-        else setScrollAction(false);
+        if (pageScrollY > refEl.current.offsetTop) setScrollActionFunction(true);
+        else setScrollActionFunction(false);
     }
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const FunctionComponent = () => {
     return (
         <section id="home-function" className="home-function" ref={refEl}>
             <div className="container">
-                <div className={scrollAction ? "function-items show" : "function-items"}>
+                <div className={scrollActionFuntion ? "function-items show" : "function-items"}>
                     <div className="function-item shopping">
                         <img src={shopping} alt="중고거래"/>
                         <p>Deal With Article</p>

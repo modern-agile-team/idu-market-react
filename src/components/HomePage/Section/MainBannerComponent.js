@@ -17,7 +17,7 @@ const MainBannerComponent = () => {
                 </div>
                 <div className="banner-img">
                     <img className="show" src={BannerImage} alt="배너 이미지"/>
-                    <a href="#function">START</a>
+                    <a href="#home-function">START</a>
                 </div>
         </section>
     );
