@@ -1,17 +1,16 @@
-import React, {useState, useRef, useEffect}from 'react';
-import { VscArrowDown } from "react-icons/vsc";
+import React, {useState, useRef, useEffect } from 'react';
 import '../../../scss/HomePage/Introduce.scss';
 
 const IntroduceComponent = () => {
 
     const [scrollActionYoutube, setScrollActionYoutube] = useState(false);
     const [scrollActionIntro, setScrollActionIntro] = useState(false);
-    const refEl = useRef(null);
+    const introduceRefEl = useRef(null);
 
     const introduceHandleScroll = () => {
-        let pageScrollY = window.scrollY + (refEl.current.offsetTop * 0.4);
+        let pageScrollY = window.scrollY;
 
-        if (pageScrollY > refEl.current.offsetTop) {
+        if (pageScrollY > 600) {
             setScrollActionIntro(true);
             setTimeout(() => setScrollActionYoutube(true), 300);
         }
@@ -22,13 +21,14 @@ const IntroduceComponent = () => {
     }
 
     useEffect(() => {
+
         window.addEventListener('scroll', introduceHandleScroll);
 
         return () => window.removeEventListener('scroll', introduceHandleScroll);
-    },[]);
+    }, []);
 
     return (
-        <section id="home-introduce" className="home-introduce" ref={refEl}>
+        <section id="home-introduce" className="home-introduce" ref={introduceRefEl}>
             <div className="container">
                 <div className={scrollActionIntro ? "intro-box show" : "intro-box"}>
                     <h1>INTRO</h1>

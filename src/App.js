@@ -10,12 +10,12 @@ import WritePage from './pages/WritePage';
 function App() {
   return (
     <>
-      <Route component={HomePage} path="/" exact></Route>
-      <Route component={LoginPage} path="/login"></Route>
-      <Route component={RegisterPage} path="/register"></Route>
-      <Route component={WritePage} path="/write"></Route>
-      <Route component={BoardListPage} path="/boardlist"></Route>
-      <Route component={BoardPage} path="/board"></Route>
+      <Route component={HomePage} path="/" exact />
+      <Route component={LoginPage} path="/login" />
+      <Route component={RegisterPage} path="/register" />
+      <Route component={WritePage} path="/write" />
+      <Route component={BoardListPage} path="/boardlist" />
+      <Route component={BoardPage} path="/board" />
     </>
   );
 }

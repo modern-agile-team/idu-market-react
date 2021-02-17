@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../scss/LoginPage/Login.scss';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -13,7 +13,7 @@ const LoginComponent = (props) => {
 
     const onIdChange = e => setIdValue(e.target.value);
     const onPwdChange = e => setPwdValue(e.target.value);
-
+    
     const onSubmitHandler = e => {
         e.preventDefault();
 

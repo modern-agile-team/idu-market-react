@@ -23,7 +23,7 @@
 
     h1 {
         font-family: 'Thasadith', sans-serif;
-        font-size: 3.5rem;
+        font-size: 3.8rem;
         padding-left: 20px;
         color: #fdfdfd;
         line-height: 50px;
@@ -88,7 +88,8 @@
  /* 0 ~ 1550 : 데스크탑1  */
  @media screen and (max-width: 1550px) {
     .notice-box {
-        left: 15%;
+        left: 17%;
+        h1 { font-size: 3rem;}
     }
 
     .notice-slide {
@@ -102,11 +103,12 @@
 /* 0 ~ 1220 : 데스크탑2  */
 @media screen and (max-width: 1220px) {
     .notice-box {
-        left: 10%;
+        left: 12%;
         width: 250px;
         height: 250px;
         h1 {
             font-size: 2.8rem;
+            padding-left: 10px;
         }
     }
 
@@ -130,8 +132,8 @@
 
     .notice-slide {
         .notice-image {
-            width: 600px;
-            height: 500px;
+            width: 650px;
+            height: 550px;
         }
     }
 
@@ -145,6 +147,9 @@
 
 /* 0 ~ 768px : 테블릿2 */
 @media screen and (max-width: 768px) {
+    #home-notice {
+        height: 85vh;
+    }
     .notice-box {
         top: 0;
         left: 0;

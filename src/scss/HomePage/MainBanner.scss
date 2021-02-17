@@ -110,7 +110,7 @@
 
 /* 0 ~ 768px : 테블릿2 */
 @media screen and (max-width: 768px){
-    #main-banner { height: 76vh; }
+    #main-banner { height: 85vh; }
 
     .banner-img {display: none;}
 
@@ -121,6 +121,7 @@
 
 /* 0 ~ 670px : 테블릿3 */
 @media screen and (max-width: 670px){
+    #main-banner { height: 65vh; }
     #main-banner { padding: 0 20px; }
 
     .banner-title {
@@ -135,6 +136,7 @@
 
 /* 0 ~ 480px : 모바일1 */
 @media screen and (max-width: 480px){
+    // #main-banner { height: 60vh; }
     .banner-title {
         h1 { font-size: 1.7rem; }
         p { font-size: 0.7rem; }

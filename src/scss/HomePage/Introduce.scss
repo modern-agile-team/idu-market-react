@@ -102,6 +102,7 @@
 /* 0 ~ 768px : 테블릿2 */
 @media screen and (max-width: 768px) {
     #home-introduce {
+        height: 85vh;
         .container { padding: 0 10px; }
     }
     .intro-box { 
@@ -143,6 +144,7 @@
 
 /* 0 ~ 670px : 테블릿3 */
 @media screen and (max-width: 670px){ 
+    .intro-box { top: 0; }
     .youtube-box {width: 450px; height: 350px;}
     .intro-btn { 
         font-size: 1.6rem;

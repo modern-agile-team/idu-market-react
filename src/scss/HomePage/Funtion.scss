@@ -79,46 +79,47 @@
 /* 0 ~ 768px : 테블릿2 */
 @media screen and (max-width: 768px){
     #home-function { 
-        height: 600px;
+        height: 500px;
         background: #fdfdfd;
 
         .container { padding: 20px 0; }
     }
     .function-items {
         width: 100%;
-        flex-direction: column;
 
         .function-item {
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: flex-start;
-            padding: 0 50px 0 80px;
-            opacity: 0;
+            opacity: 1;
             width: 100%;
 
-            img { width: 25%; }
+            img { width: 70%; }
 
             p { 
-                font-size: 1.5rem; 
-                margin-left: 30px;
+                font-size: 1.2rem; 
+                margin-top: 10px;
             }
         }
     }
 
     .function-items.show {
-        .function-item.shopping { animation: slide2 1s; }
-        .function-item.communication { animation: slide2 1.4s; }
-        .function-item.information { animation: slide2 1.8s; }
+        .function-item.shopping { animation: none; }
+        .function-item.communication { animation: none; }
+        .function-item.information { animation: none; }
     }
 }
 
 /* 0 ~ 670px : 테블릿3 */
 @media screen and (max-width: 670px) {
+    #home-function { 
+        height: 350px;
+    }
     .function-items {
         .function-item {
-            p { font-size: 1.2rem; }
+            p { font-size: 1.1rem; }
         }
     }
 }
@@ -126,16 +127,18 @@
 /* 0 ~ 480px : 모바일1 */
 @media screen and (max-width: 480px) {
     #home-function { 
-        height: 400px;
+        height: 300px;
         background: #fdfdfd;
+        .container {
+            padding: 0;
+        }
     }
     .function-items {
         .function-item {
-            padding: 0 50px;
 
-            img { width: 30%; }
+            // img { width: 80%; }
 
-            p { font-size: 1rem;}
+            p { font-size: 0.8rem;}
 
             &.shopping { border-right: none; }
             &.communication { border-right: none; }

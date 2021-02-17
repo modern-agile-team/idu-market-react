@@ -6,23 +6,33 @@ import shopping from '../../../img/shopping-2.png'
 
 const FunctionComponent = () => {
     const [scrollActionFuntion, setScrollActionFunction] = useState(false);
-    const refEl = useRef(null);
+    const functionRefEl = useRef(null);
 
-    const functionHandleScroll = () => {
-        let pageScrollY = window.scrollY + (refEl.current.offsetTop * 0.7);
-
-        if (pageScrollY > refEl.current.offsetTop) setScrollActionFunction(true);
+    function functionHandleScroll() {
+        let pageScrollY = window.scrollY;
+        
+        if (pageScrollY > 350) setScrollActionFunction(true);
         else setScrollActionFunction(false);
     }
-
+    
     useEffect(() => {
-        window.addEventListener('scroll', functionHandleScroll);
+        window.addEventListener('scroll', functionHandleScroll, true);
+        
 
-        return () => window.removeEventListener('scroll', functionHandleScroll);
-    },[]);
+        console.log(functionHandleScroll);
+        console.log(functionRefEl);
+        console.log('hi');
+
+        return () => {
+            window.removeEventListener('scroll', functionHandleScroll, true);
+            console.log(functionHandleScroll);
+            console.log(functionRefEl);
+            console.log('ㅠㅠ');
+        }
+    }, [])
 
     return (
-        <section id="home-function" className="home-function" ref={refEl}>
+        <section id="home-function" className="home-function" ref={functionRefEl}>
             <div className="container">
                 <div className={scrollActionFuntion ? "function-items show" : "function-items"}>
                     <div className="function-item shopping">
