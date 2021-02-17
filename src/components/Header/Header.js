@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
@@ -8,9 +8,21 @@ import '../../scss/Header/Header.scss';
 
 const Header = () => {
     const [sidebar, setSidebar] = useState(false);
+    const [headerLogin, setHeaderLogin] = useState(false);
+
+    useEffect(() => {
+        if (window.localStorage.getItem('userID')) setHeaderLogin(true)
+        else setHeaderLogin(false)
+    }, [])
     
     const showSidebar = () => setSidebar(!sidebar);
 
+    const onLogoutHandler = () => {
+        if (window.localStorage.getItem('userID')) {
+            window.localStorage.removeItem('userID');
+        }
+    }
+    
     return (
         <header id="header" className="header">
             <div className="container">
@@ -29,9 +41,15 @@ const Header = () => {
                             );
                         })}
                     </ul>
-
-                    <Link to="/login" className="header-btn">Login</Link>
-                    <Link to="/register" className="header-btn">SignUp</Link>
+                    
+                    {headerLogin ? 
+                        <Link to="/login" className="header-btn" onClick={onLogoutHandler}>Logout</Link>
+                        :
+                        <>
+                            <Link to="/login" className="header-btn">Login</Link>
+                            <Link to="/register" className="header-btn">SignUp</Link>
+                        </>
+                    }
                 </nav>
             </div>
     </header>

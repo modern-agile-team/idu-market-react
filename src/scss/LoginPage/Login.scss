@@ -32,7 +32,7 @@
     .text-field {
         position: relative;
         border-bottom: 2px solid #adadad;
-        margin: 30px 0;
+        margin: 30px 0 20px 0;
 
         input {
             font-family: 'Montserrat', sans-serif;
@@ -130,5 +130,10 @@
             &:hover { text-decoration: underline; }
         }
     }
-    
+    .login-err {
+        color:red;
+        font-size: 0.8rem;
+        text-align: center;
+        margin-bottom: 15px;
+    }
 }
