@@ -121,7 +121,7 @@
 
 /* 0 ~ 670px : 테블릿3 */
 @media screen and (max-width: 670px){
-    #main-banner { height: 65vh; }
+    #main-banner { height: 68vh; }
     #main-banner { padding: 0 20px; }
 
     .banner-title {
@@ -138,7 +138,7 @@
 @media screen and (max-width: 480px){
     // #main-banner { height: 60vh; }
     .banner-title {
-        h1 { font-size: 1.7rem; }
+        h1 { font-size: 2rem; }
         p { font-size: 0.7rem; }
     }
 }

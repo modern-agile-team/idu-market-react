@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import '../../scss/LoginPage/Login.scss';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -43,18 +43,18 @@ const LoginComponent = (props) => {
     }
 
     return (
-        <section id="login-form" className="login-form">
+        <section id="login" className="login">
             <div className="container">
                 <form className="login-form">
                     <h1 className="login-title">LOGIN</h1>
 
-                    <div className="text-field">
+                    <div className="login-text-field">
                         <input type="text" value={idValue} onChange={onIdChange} />
                         <span className={idValue ? "input-border" : ""}/>
                         <label className={idValue ? "fix" : ""}>ID</label>
                     </div>
 
-                    <div className="text-field">
+                    <div className="login-text-field">
                         <input type="password" value={pwdValue} onChange={onPwdChange} />
                         <span className={pwdValue ? "input-border" : ""}/>
                         <label className={pwdValue ? "fix" : ""}>Password</label>
@@ -63,7 +63,11 @@ const LoginComponent = (props) => {
                     <p className="login-err">{errMsg}</p>
 
                     <div className="search">
-                        <Link to="/">아이디/비밀번호 찾기</Link>
+                        <p>
+                            <Link to="/">아이디</Link><p> / </p>
+                            <Link to="/">비밀번호</Link>
+                            <p>찾기</p>
+                        </p>
                     </div>
 
                     <input type="submit" value="Login" onClick={onSubmitHandler}/>

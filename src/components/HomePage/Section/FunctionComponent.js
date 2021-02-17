@@ -10,24 +10,16 @@ const FunctionComponent = () => {
 
     function functionHandleScroll() {
         let pageScrollY = window.scrollY;
-        
+
         if (pageScrollY > 350) setScrollActionFunction(true);
         else setScrollActionFunction(false);
     }
     
     useEffect(() => {
         window.addEventListener('scroll', functionHandleScroll, true);
-        
-
-        console.log(functionHandleScroll);
-        console.log(functionRefEl);
-        console.log('hi');
 
         return () => {
             window.removeEventListener('scroll', functionHandleScroll, true);
-            console.log(functionHandleScroll);
-            console.log(functionRefEl);
-            console.log('ㅠㅠ');
         }
     }, [])
 

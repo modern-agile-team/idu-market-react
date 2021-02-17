@@ -1,11 +1,13 @@
 import React from 'react';
-
+import Header from '../components/Header/Header';
+import RegisterComponent from '../components/Register/RegisterComponent';
 
 const RegisterPage = () => {
     return (
-        <div>
-            회원가입 페이지
-        </div>
+        <>
+            <Header></Header>
+            <RegisterComponent></RegisterComponent>
+        </>
     );
 };
 
