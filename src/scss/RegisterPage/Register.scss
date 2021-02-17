@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-#login {
+#register {
     width: 100%;
     height: 100vh;
     background-color: #eee5de;
@@ -15,13 +15,13 @@
     }
 }
 
-.login-form{
+.register-form{
     width: 400px;
     background-color: #fdfdfd;
     border-radius: 10px;
     padding: 0 40px;
 
-    .login-title {
+    .register-title {
         text-align: center;
         padding: 40px 0 10px 0;
         font-size: 2rem;
@@ -29,10 +29,10 @@
         color: #222;
     }
     
-    .login-text-field {
+    .register-text-field {
         position: relative;
         border-bottom: 2px solid #adadad;
-        margin: 40px 0;
+        margin: 30px 0 30px 0;
 
         input {
             font-family: 'Montserrat', sans-serif;
@@ -85,18 +85,6 @@
             }
         }
     }
-    
-    .search {
-        font-size: 0.8rem;
-        a {
-            margin: 0 2px;
-            &:hover {
-                color: #d3a887;
-                text-decoration: underline;
-            }
-        }
-        p { display: inline-block; }
-    }
 
     input[type="submit"] {
         font-family: 'Montserrat', sans-serif;
@@ -110,30 +98,28 @@
         font-weight: 700;
         cursor: pointer;
         outline: none;
-        margin: 20px 0 10px 0;
+        margin: 30px 0 15px 0;
     }
 
     input[type="submit"]:hover {
         background: rgb(204, 154, 115);
         transition: .5s;
     }
-
-    .signup-link {
-        font-family: 'Montserrat', sans-serif;
+    .question {
         margin: 20px 0;
         text-align: center;
-        font-size: 16px;
-        color: #666666;
-        
-        a {
+        p {
             font-family: 'Montserrat', sans-serif;
+            display: inline;
+        }
+        a { 
+            font-family: 'Montserrat', sans-serif;
+            margin-left: 10px;
             color: #d3a887;
-            text-decoration: none;
-
             &:hover { text-decoration: underline; }
         }
     }
-    .login-err {
+    .register-err {
         color:red;
         font-size: 0.8rem;
         text-align: center;
