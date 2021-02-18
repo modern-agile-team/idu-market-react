@@ -76,11 +76,11 @@ const RegisterComponent = (props) => {
                     <label className={pwdValue ? "fix" : ""}>Password</label>
                 </div>
 
-                <div className="register-text-field">
+                {/* <div className="register-text-field">
                     <input type="password" value={pwdCheckValue} onChange={onPwdCheckChange} />
                     <span className={pwdCheckValue ? "input-border" : ""}/>
                     <label className={pwdCheckValue ? "fix" : ""}>Confirm Password </label>
-                </div>
+                </div> */}
 
                 <p className="register-err">{errMsg}</p>
 

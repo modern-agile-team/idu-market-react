@@ -50,6 +50,7 @@
             animation: arrow 1.2s infinite ease;
         }
     }
+    
     &:hover a { transform: translate(-50%, -50%) rotate(0); }
     &:hover img { opacity: 0.3; }
     img {
@@ -63,9 +64,8 @@
     position: relative;
     margin-top: 150px;
     z-index: 99;
-    span, h1, p, em {
-        font-family: 'Fredoka One', cursive;
-    }
+
+    span, h1, p, em { font-family: 'Fredoka One', cursive; }
 
     h1 {
         position: relative;

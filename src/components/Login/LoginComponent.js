@@ -26,7 +26,7 @@ const LoginComponent = (props) => {
             .then(response => {
                 console.log(response);
 
-                if(response.payload.success) {
+                if (response.payload.success) {
                     window.localStorage.setItem('userID', body.id);
                     props.history.push('/');
                 } else {
@@ -35,9 +35,7 @@ const LoginComponent = (props) => {
             })
             .catch(err => {
                 const response = err.response;
-                if (response.status === 400) {
-                    setErrMsg(response.data.msg);
-                }
+                if (response.status === 400) setErrMsg(response.data.msg);
                 throw err;
             })
     }
