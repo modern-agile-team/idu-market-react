@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.scss';
 import BoardListPage from './pages/BoardListPage';
 import BoardPage from './pages/BoardPage';
@@ -10,12 +10,16 @@ import WritePage from './pages/WritePage';
 function App() {
   return (
     <>
-      <Route component={HomePage} path="/" exact />
-      <Route component={LoginPage} path="/login" />
-      <Route component={RegisterPage} path="/register" />
-      <Route component={WritePage} path="/write" />
-      <Route component={BoardListPage} path="/boardlist" />
-      <Route component={BoardPage} path="/board" />
+      <Router>
+        <Switch>
+          <Route component={HomePage} path="/" exact />
+          <Route component={LoginPage} path="/login" />
+          <Route component={RegisterPage} path="/register" />
+          <Route component={WritePage} path="/write" />
+          <Route component={BoardListPage} path="/boardlist" />
+          <Route component={BoardPage} path="/board" />
+        </Switch>
+      </Router>
     </>
   );
 }
