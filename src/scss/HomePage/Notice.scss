@@ -23,7 +23,7 @@
 
     h1 {
         font-family: 'Thasadith', sans-serif;
-        font-size: 3.8rem;
+        font-size: 3.7rem;
         padding-left: 20px;
         color: #fdfdfd;
         line-height: 50px;
@@ -31,24 +31,22 @@
 }
 
 .notice-slide {
-    transition: 0.7s ease;
+    transition: 1.5s ease;
     opacity: 0;
     z-index: 99;
 
-    &.active {
-        opacity: 1;
-    }
+    &.active { opacity: 1; }
 
     .notice-image {
-        width: 750px;
-        height: 650px;
+        width: 780px;
+        height: 680px;
     }
 }
 
 .right-arrow {
     position: absolute;
     top: 50%;
-    right: 50px;
+    right: 280px;
     font-size: 5rem;
     color: #000;
     z-index: 100;
@@ -59,7 +57,7 @@
 .left-arrow {
     position: absolute;
     top: 50%;
-    left: 50px;
+    left: 280px;
     font-size: 5rem;
     color: #000;
     z-index: 100;
@@ -98,6 +96,8 @@
             height: 650px;
         }
     }
+    .right-arrow { right: 150px;}
+    .left-arrow { left: 150px;}
 }
 
 /* 0 ~ 1220 : 데스크탑2  */
@@ -118,6 +118,8 @@
             height: 600px;
         }
     }
+    .right-arrow { right: 50px;}
+    .left-arrow { left: 50px;}
 }
 
 /* 0 ~ 960 : 테블릿1  */
