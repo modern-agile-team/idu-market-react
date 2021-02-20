@@ -5,10 +5,11 @@ import { withRouter } from 'react-router-dom';
 import { loginUser } from '../../actions/user_action';
 
 const LoginComponent = (props) => {
-    const dispatch = useDispatch();
     const [idValue, setIdValue] = useState('');
     const [pwdValue, setPwdValue] = useState('');
     const [errMsg, setErrMsg] = useState('');
+
+    const dispatch = useDispatch();
 
     const onIdChange = e => setIdValue(e.target.value);
     const onPwdChange = e => setPwdValue(e.target.value);

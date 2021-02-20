@@ -4,7 +4,6 @@ const IntroduceComponent = () => {
 
     const [scrollActionYoutube, setScrollActionYoutube] = useState(false);
     const [scrollActionIntro, setScrollActionIntro] = useState(false);
-    const introduceRefEl = useRef(null);
 
     const introduceHandleScroll = () => {
         let pageScrollY = window.scrollY;
@@ -20,22 +19,27 @@ const IntroduceComponent = () => {
     }
 
     useEffect(() => {
-
         window.addEventListener('scroll', introduceHandleScroll);
 
         return () => window.removeEventListener('scroll', introduceHandleScroll);
     }, []);
 
     return (
-        <section id="home-introduce" className="home-introduce" ref={introduceRefEl}>
+        <section id="home-introduce" className="home-introduce" >
             <div className="container">
                 <div className={scrollActionIntro ? "intro-box show" : "intro-box"}>
-                    <h1>INTRO</h1>
+                    <h1 className="intro-title">INTRO</h1>
                 </div>
                 <div className={scrollActionYoutube ? "youtube-box show" : "youtube-box"}>
-                    <iframe title="iuam intro youtube"src="https://www.youtube.com/embed/xvep-cJW7zk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                    <iframe 
+                        className="intro-youtube"
+                        title="iuam intro youtube"
+                        src="https://www.youtube.com/embed/xvep-cJW7zk" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen="true" 
+                    />
                 </div>
-                <div className="intro-bg-box"></div>
+                <div className="intro-bottom-box"></div>
             </div>
         </section>
     );

@@ -1,4 +1,4 @@
-import { LOGIN_USER } from '../actions/types';
+import { LOGIN_USER, REGISTER_USER } from '../actions/types';
 
 //리듀서 함수 정의
 export default function(state = {}, action) {
@@ -6,6 +6,9 @@ export default function(state = {}, action) {
         case LOGIN_USER:
             return {...state, loginSuccess: action.payload}
 
+        case REGISTER_USER:
+            return {...state, registerSuccess: action.payload}
+            
         default:
             return state;
     }
