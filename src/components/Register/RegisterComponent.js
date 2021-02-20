@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import '../../scss/RegisterPage/Register.scss'
 
 const RegisterComponent = (props) => {
     const [idValue, setIdValue] = useState('');

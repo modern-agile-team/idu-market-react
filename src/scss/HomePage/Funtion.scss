@@ -1,4 +1,4 @@
-#home-function {
+.home-function {
     width: 100%;
     height: 40vh;
     background-color: #e7dad0;
@@ -23,9 +23,8 @@
         height: 200px;
         opacity: 0;
 
-        img { width: 100%; }
-
-        p {
+        .function-img { width: 100%; }
+        .function-desc {
             font-family: 'Fredoka One', cursive;
             text-align: center;
             color: #c97f4e;
@@ -53,7 +52,7 @@
         .function-item {
             width: 180px;
 
-            p { font-size: 1.2rem; }
+            .function-desc { font-size: 1.2rem; }
         }
     }
 }
@@ -70,7 +69,7 @@
         .function-item {
             width: 150px;
 
-            p { font-size: 1rem; }
+            .function-desc { font-size: 1rem; }
         }
     }
 }
@@ -96,9 +95,9 @@
             opacity: 1;
             width: 100%;
 
-            img { width: 70%; }
+            .function-img { width: 70%; }
 
-            p { 
+            .function-desc { 
                 font-size: 1.2rem; 
                 margin-top: 10px;
             }
@@ -117,9 +116,10 @@
     #home-function { 
         height: 350px;
     }
+
     .function-items {
         .function-item {
-            p { font-size: 1.1rem; }
+            .function-desc { font-size: 1.1rem; }
         }
     }
 }
@@ -129,6 +129,7 @@
     #home-function { 
         height: 300px;
         background: #fdfdfd;
+        
         .container {
             padding: 0;
         }
@@ -138,7 +139,7 @@
 
             // img { width: 80%; }
 
-            p { font-size: 0.8rem;}
+            .function-desc { font-size: 0.8rem;}
 
             &.shopping { border-right: none; }
             &.communication { border-right: none; }

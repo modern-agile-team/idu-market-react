@@ -51,7 +51,10 @@
         }
     }
     
-    &:hover a { transform: translate(-50%, -50%) rotate(0); }
+    &:hover a { 
+        transform: translate(-50%, -50%) rotate(0); 
+        color: #fff;
+    }
     &:hover img { opacity: 0.3; }
     img {
         width: 100%;
