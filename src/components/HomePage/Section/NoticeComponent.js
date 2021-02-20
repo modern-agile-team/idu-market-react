@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../../../scss/HomePage/Notice.scss';
 import { SliderData } from '../../../lib/NoticeSliderData';
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 

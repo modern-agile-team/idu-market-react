@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../../scss/LoginPage/Login.scss';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import BannerImage from '../../../img/shopping.png'
-import '../../../scss/HomePage/MainBanner.scss';
+import BannerImage from '../../../img/main-banner.png'
 
 const MainBannerComponent = () => {
     const [show, setShow] = useState(false);

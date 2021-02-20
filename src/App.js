@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './App.scss';
 import BoardListPage from './pages/BoardListPage';
 import BoardPage from './pages/BoardPage';
 import HomePage from './pages/HomePage';
@@ -7,9 +6,12 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import WritePage from './pages/WritePage';
 
+import './App.scss';
+
 function App() {
   return (
     <>
+      
       <Router>
         <Switch>
           <Route component={HomePage} path="/" exact />
