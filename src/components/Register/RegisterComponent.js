@@ -1,7 +1,9 @@
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { registerUser } from '../../actions/user_action';
 
 const RegisterComponent = (props) => {
     const [idValue, setIdValue] = useState('');
@@ -10,6 +12,8 @@ const RegisterComponent = (props) => {
     const [pwdValue, setPwdValue] = useState('');
     const [pwdCheckValue, setPwdCheckValue] = useState('');
     const [errMsg, setErrMsg] = useState('');
+
+    const dispatch = useDispatch();
 
     const onIdChange = e => setIdValue(e.target.value);
     const onNameChange = e => setNameValue(e.target.value);
@@ -27,13 +31,14 @@ const RegisterComponent = (props) => {
             psword: pwdValue
         };
 
-        axios.post('/api/user', body)
+        dispatch(registerUser(body))
             .then(response => {
-                if (response.data.success) {
-                    console.log(response.data);
+
+                if (response.payload.success) {
+                    console.log(response.payload.data);
                     props.history.push('/login');
                 } else {
-                    console.error('error');
+                    console.error('Fail to sign up');
                 }
             })
             .catch(err => {
@@ -42,7 +47,24 @@ const RegisterComponent = (props) => {
                     setErrMsg(response.data.msg);
                 }
                 throw err;
-            })
+            });
+
+        // axios.post('/api/user', body)
+        //     .then(response => {
+        //         if (response.data.success) {
+        //             console.log(response.data);
+        //             props.history.push('/login');
+        //         } else {
+        //             console.error('error');
+        //         }
+        //     })
+        //     .catch(err => {
+        //         const response = err.response;
+        //         if (response.status === 409) {
+        //             setErrMsg(response.data.msg);
+        //         }
+        //         throw err;
+        //     });
     }
 
     return (

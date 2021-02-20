@@ -5,7 +5,6 @@ import shopping from '../../../img/shopping-2.png'
 
 const FunctionComponent = () => {
     const [scrollActionFuntion, setScrollActionFunction] = useState(false);
-    const functionRefEl = useRef(null);
 
     function functionHandleScroll() {
         let pageScrollY = window.scrollY;
@@ -23,7 +22,7 @@ const FunctionComponent = () => {
     }, [])
 
     return (
-        <section id="home-function" className="home-function" ref={functionRefEl}>
+        <section id="home-function" className="home-function">
             <div className="container">
                 <div className={scrollActionFuntion ? "function-items show" : "function-items"}>
                     <div className="function-item shopping">
