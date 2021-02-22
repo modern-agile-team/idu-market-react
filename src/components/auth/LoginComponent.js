@@ -42,27 +42,27 @@ const LoginComponent = (props) => {
     }
 
     return (
-        <section id="login" className="login">
+        <section id="form-template" className="form-template">
             <div className="container">
-                <form className="login-form">
-                    <h1 className="login-title">LOGIN</h1>
+                <form className="form-field">
+                    <h1 className="form-title">LOGIN</h1>
 
-                    <div className="login-text-field">
-                        <input type="text" name="id" onChange={onChange} />
-                        <span className={formValues.id ? "input-border" : ""}/>
-                        <label className={formValues.id ? "fix" : ""}>ID</label>
+                    <div className="text-field">
+                        <input type="text" name="id" onChange={onChange} className="input-text" />
+                        <span className={formValues.id ? "input-border fill" : "input-border"} />
+                        <label className={formValues.id ? "input-label fix" : "input-label"}>ID</label>
                     </div>
 
-                    <div className="login-text-field">
-                        <input type="password" name="psword" onChange={onChange} />
-                        <span className={formValues.psword ? "input-border" : ""}/>
-                        <label className={formValues.psword ? "fix" : ""}>Password</label>
+                    <div className="text-field">
+                        <input type="password" name="psword" onChange={onChange} className="input-text" />
+                        <span className={formValues.psword ? "input-border fill" : "input-border"}/>
+                        <label className={formValues.psword ? "input-label fix" : "input-label"}>Password</label>
 
                     </div>
 
-                    <p className="login-err">{errMsg}</p>
+                    <p className="form-errmsg">{errMsg}</p>
 
-                    <div className="search">
+                    <div className="form-search">
                         <p>
                             <Link to="/">아이디</Link><span> / </span>
                             <Link to="/">비밀번호</Link>
@@ -70,9 +70,9 @@ const LoginComponent = (props) => {
                         </p>
                     </div>
 
-                    <input type="submit" value="Login" onClick={onSubmitHandler}/>
+                    <input type="submit" value="Login" onClick={onSubmitHandler} className="form-submit"/>
 
-                    <div className="signup-link">
+                    <div className="form-signup-link">
                         Not a Member? <Link to="/register">Sign Up</Link>
                     </div>
                 </form>

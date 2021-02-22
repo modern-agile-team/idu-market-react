@@ -6,12 +6,11 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import WritePage from './pages/WritePage';
 
-import './App.scss';
+import './scss/main.scss';
 
 function App() {
   return (
     <>
-      
       <Router>
         <Switch>
           <Route component={HomePage} path="/" exact />

@@ -1,0 +1,14 @@
+//reset
+@import './base/reset';
+
+//Header
+@import './layout/header';
+
+//Login, Register form
+@import './layout/forms';
+
+//HomePage
+@import './pages/home/funtion';
+@import './pages/home/introduce';
+@import './pages/home/mainBanner';
+@import './pages/home/notice';
