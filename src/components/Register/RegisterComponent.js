@@ -1,70 +1,44 @@
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 import { registerUser } from '../../actions/user_action';
 
 const RegisterComponent = (props) => {
-    const [idValue, setIdValue] = useState('');
-    const [nameValue, setNameValue] = useState('');
-    const [emailValue, setEmailValue] = useState('');
-    const [pwdValue, setPwdValue] = useState('');
-    const [pwdCheckValue, setPwdCheckValue] = useState('');
     const [errMsg, setErrMsg] = useState('');
+    const [formValues, setFormValues] = useState({
+        id: "",
+        name: "",
+        email: "",
+        psword: "",
+    })
 
     const dispatch = useDispatch();
 
-    const onIdChange = e => setIdValue(e.target.value);
-    const onNameChange = e => setNameValue(e.target.value);
-    const onEamilChange = e => setEmailValue(e.target.value);
-    const onPwdChange = e => setPwdValue(e.target.value);
-    const onPwdCheckChange = e => setPwdCheckValue(e.target.value);
+    const onChange = e => {
+        setFormValues({
+            ...formValues,
+            [e.target.name]: e.target.value,
+        });
+    }
 
     const onSubmitHandler = e => {
-        e.preventDefault();
+        const {id, name, email, psword} = formValues;
+        const body = { id, name, email, psword };
 
-        let body = {
-            id: idValue,
-            name: nameValue,
-            email: emailValue,
-            psword: pwdValue
-        };
+        e.preventDefault();
 
         dispatch(registerUser(body))
             .then(response => {
-
                 if (response.payload.success) {
-                    console.log(response.payload.data);
+                    console.log(response.payload);
                     props.history.push('/login');
-                } else {
-                    console.error('Fail to sign up');
-                }
+                } else console.error('Fail to sign up');
             })
             .catch(err => {
                 const response = err.response;
-                if (response.status === 409) {
-                    setErrMsg(response.data.msg);
-                }
+                if (response.status === 409) setErrMsg(response.data.msg);
                 throw err;
             });
-
-        // axios.post('/api/user', body)
-        //     .then(response => {
-        //         if (response.data.success) {
-        //             console.log(response.data);
-        //             props.history.push('/login');
-        //         } else {
-        //             console.error('error');
-        //         }
-        //     })
-        //     .catch(err => {
-        //         const response = err.response;
-        //         if (response.status === 409) {
-        //             setErrMsg(response.data.msg);
-        //         }
-        //         throw err;
-        //     });
     }
 
     return (
@@ -74,27 +48,27 @@ const RegisterComponent = (props) => {
                 <h1 className="register-title">SignUp</h1>
 
                 <div className="register-text-field">
-                    <input type="text" value={idValue} onChange={onIdChange} />
-                    <span className={idValue ? "input-border" : ""}/>
-                    <label className={idValue ? "fix" : ""}>ID</label>
+                    <input type="text" name="id" onChange={onChange} />
+                    <span className={formValues.id ? "input-border" : ""}/>
+                    <label className={formValues.id ? "fix" : ""}>ID</label>
                 </div>
 
                 <div className="register-text-field">
-                    <input type="text" value={nameValue} onChange={onNameChange} />
-                    <span className={nameValue ? "input-border" : ""}/>
-                    <label className={nameValue ? "fix" : ""}>Name</label>
+                    <input type="text" name="name" onChange={onChange} />
+                    <span className={formValues.name ? "input-border" : ""}/>
+                    <label className={formValues.name ? "fix" : ""}>Name</label>
                 </div>
 
                 <div className="register-text-field">
-                    <input type="text" value={emailValue} onChange={onEamilChange} />
-                    <span className={emailValue ? "input-border" : ""}/>
-                    <label className={emailValue ? "fix" : ""}>Email</label>
+                    <input type="text" name="email" onChange={onChange} />
+                    <span className={formValues.email ? "input-border" : ""}/>
+                    <label className={formValues.email ? "fix" : ""}>Email</label>
                 </div>
 
                 <div className="register-text-field">
-                    <input type="password" value={pwdValue} onChange={onPwdChange} />
-                    <span className={pwdValue ? "input-border" : ""}/>
-                    <label className={pwdValue ? "fix" : ""}>Password</label>
+                    <input type="password" name="psword" onChange={onChange} />
+                    <span className={formValues.psword ? "input-border" : ""}/>
+                    <label className={formValues.psword ? "fix" : ""}>Password</label>
                 </div>
 
                 {/* <div className="register-text-field">
