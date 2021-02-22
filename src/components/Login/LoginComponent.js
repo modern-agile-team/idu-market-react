@@ -12,6 +12,7 @@ const LoginComponent = (props) => {
 
     const dispatch = useDispatch();
 
+
     const onChange = e => {
         setFormValues({
             ...formValues,
@@ -56,6 +57,7 @@ const LoginComponent = (props) => {
                         <input type="password" name="psword" onChange={onChange} />
                         <span className={formValues.psword ? "input-border" : ""}/>
                         <label className={formValues.psword ? "fix" : ""}>Password</label>
+
                     </div>
 
                     <p className="login-err">{errMsg}</p>

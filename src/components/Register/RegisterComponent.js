@@ -69,6 +69,7 @@ const RegisterComponent = (props) => {
                     <input type="password" name="psword" onChange={onChange} />
                     <span className={formValues.psword ? "input-border" : ""}/>
                     <label className={formValues.psword ? "fix" : ""}>Password</label>
+
                 </div>
 
                 {/* <div className="register-text-field">
@@ -85,8 +86,6 @@ const RegisterComponent = (props) => {
                         <p>Do you have an account?</p>
                         <Link to="/login">Login</Link>
                 </div>
-
-                
             </form>
         </div>
     </section>
