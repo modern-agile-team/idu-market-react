@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/Header/Header';
+import ArticlesComponent from '../components/HomePage/Section/ArticlesComponent';
 import FunctionComponent from '../components/HomePage/Section/FunctionComponent';
 import IntroduceComponent from '../components/HomePage/Section/IntroduceComponent';
 import MainBannerComponent from '../components/HomePage/Section/MainBannerComponent';
@@ -16,6 +17,7 @@ const HomePage = () => {
             <FunctionComponent></FunctionComponent>
             <IntroduceComponent></IntroduceComponent>
             <NoticeComponent slides={SliderData}></NoticeComponent>
+            <ArticlesComponent></ArticlesComponent>
         </>
     );
 };
