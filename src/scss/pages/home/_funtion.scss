@@ -1,6 +1,6 @@
 .home-function {
     width: 100%;
-    height: 40vh;
+    height: 320px;
     background-color: #e7dad0;
     
     .container {
@@ -60,7 +60,7 @@
 /* 0 ~ 960 : 테블릿1  */
 @media screen and (max-width: 960px) {
     #home-function { 
-        height: 35vh;
+        height: 300px;
 
         .container { width: 100%; }
     }
@@ -78,10 +78,12 @@
 /* 0 ~ 768px : 테블릿2 */
 @media screen and (max-width: 768px){
     #home-function { 
-        height: 500px;
+        height: 300px;
         background: #fdfdfd;
 
-        .container { padding: 20px 0; }
+        .container { 
+            padding: 20px 0; 
+        }
     }
     .function-items {
         width: 100%;
@@ -91,7 +93,6 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            justify-content: flex-start;
             opacity: 1;
             width: 100%;
 
@@ -114,7 +115,7 @@
 /* 0 ~ 670px : 테블릿3 */
 @media screen and (max-width: 670px) {
     #home-function { 
-        height: 350px;
+        height: 250px;
     }
 
     .function-items {
@@ -127,7 +128,7 @@
 /* 0 ~ 480px : 모바일1 */
 @media screen and (max-width: 480px) {
     #home-function { 
-        height: 300px;
+        height: 240px;
         background: #fdfdfd;
         
         .container {
