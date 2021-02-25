@@ -142,8 +142,16 @@
 @media screen and (max-width: 480px){
     #main-banner { height: 500px; }
     .banner-title {
-        h1 { font-size: 2rem; }
-        p { font-size: 0.7rem; }
+        h1 { font-size: 1.75rem; }
+        p { font-size: 0.6rem; }
+    }
+}
+
+/* 0 ~ 360px : 모바일1 */
+@media screen and (max-width: 360px){
+    .banner-title {
+        h1 { font-size: 1.5rem; }
+        p { font-size: 0.5rem; }
     }
 }
 
