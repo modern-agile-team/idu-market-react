@@ -46,6 +46,12 @@
 //반응형
 /* 0 ~ 1220 : 데스크탑2  */
 @media screen and (max-width: 1220px) {
+    #home-function { 
+        height: 300px; 
+        .container {
+            padding-bottom: 30px;
+        }
+    }
     .function-items {
         padding-bottom: 0;
 
@@ -60,9 +66,12 @@
 /* 0 ~ 960 : 테블릿1  */
 @media screen and (max-width: 960px) {
     #home-function { 
-        height: 300px;
+        height: 280px;
 
-        .container { width: 100%; }
+        .container { 
+            width: 100%; 
+            padding-bottom: 0;
+        }
     }
 
     .function-items {
@@ -114,9 +123,7 @@
 
 /* 0 ~ 670px : 테블릿3 */
 @media screen and (max-width: 670px) {
-    #home-function { 
-        height: 250px;
-    }
+    #home-function { height: 250px; }
 
     .function-items {
         .function-item {
