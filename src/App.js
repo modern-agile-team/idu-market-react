@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Header from './components/Header/Header';
 import BoardListPage from './pages/BoardListPage';
 import BoardPage from './pages/BoardPage';
 import HomePage from './pages/HomePage';

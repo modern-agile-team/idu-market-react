@@ -26,12 +26,11 @@
     color: #c9946c;
 }
 .article-item-box {
-    // position: relative;
     width: 300px;
     height: 400px;
     border-radius: 5px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     border: 1px solid #c29a7b;
