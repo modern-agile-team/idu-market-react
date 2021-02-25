@@ -1,7 +1,6 @@
 import React, {useState, useRef, useEffect } from 'react';
 
 const IntroduceComponent = () => {
-
     const [scrollActionYoutube, setScrollActionYoutube] = useState(false);
     const [scrollActionIntro, setScrollActionIntro] = useState(false);
 
@@ -25,7 +24,7 @@ const IntroduceComponent = () => {
     }, []);
 
     return (
-        <section id="home-introduce" className="home-introduce" >
+        <section id="home-introduce" className="home-introduce">
             <div className="container">
                 <div className={scrollActionIntro ? "intro-box show" : "intro-box"}>
                     <h1 className="intro-title">INTRO</h1>
@@ -35,8 +34,8 @@ const IntroduceComponent = () => {
                         className="intro-youtube"
                         title="iuam intro youtube"
                         src="https://www.youtube.com/embed/xvep-cJW7zk" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen="true" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+                        allowfullscreen 
                     />
                 </div>
                 <div className="intro-bottom-box"></div>

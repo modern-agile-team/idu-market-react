@@ -9,7 +9,7 @@ const FunctionComponent = () => {
     function functionHandleScroll() {
         let pageScrollY = window.scrollY;
 
-        if (pageScrollY > 350) setScrollActionFunction(true);
+        if (pageScrollY > 250) setScrollActionFunction(true);
         else setScrollActionFunction(false);
     }
     
