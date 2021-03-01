@@ -1,6 +1,7 @@
 .home-articles {
     width: 100%;
     background-color: #fdfdfd;
+    
     .container {
         width: 95%;
         margin: 0 auto;
@@ -59,12 +60,14 @@
             color: #8a614b;
         }
     }
+
     .article-item-title {
         font-family: 'Fredoka One', cursive;
         margin: 60px 0;
         font-size: 3rem;
         color: #c97f4e;
     }
+
     .article-btn {
         margin-top: 30px;
         font-size: 3rem;
@@ -74,14 +77,17 @@
             color: #c97f4e;
         }
     }
+
     &.box1 {
         position: relative;
         top: -30px;
     }
+
     &.box2 {
         position: relative;
         top: 60px;
     }
+
     &.box3 {
         position: relative;
         top: -30px; 
@@ -93,14 +99,17 @@
     .article-item-box {
         width: 230px;
         height: 330px;
+
         .article-item-icon {
             svg{
                 font-size: 3.5rem;
             }
         }
+
         .article-item-title {
             font-size: 2.5rem;
         }
+
         .article-btn {
             font-size: 2rem;
             margin-top: 10px;
@@ -115,10 +124,12 @@
             width: 100%;
         }
     }
+
     .article-box {
         flex-direction: column;
         padding: 20px;
     }
+
     .article-title {
         position: relative;
         width: 100%;
@@ -137,6 +148,10 @@
         flex-direction: row;
         margin: 30px;
         justify-content: space-between;
+
+        &:hover {
+            transform: translateY(0);
+        }
 
         .article-item-icon {
             padding: 0;
@@ -158,9 +173,11 @@
         &.box1{
             top: 0;
         }
+
         &.box2{
             top: 0;
         }
+
         &.box3{
             top: 0;
         }
@@ -177,9 +194,6 @@
         height: 180px;
         margin: 20px;
 
-        &:hover {
-            transform: translateY(-10px);
-        }
         .article-item-icon {
             width: 25%;
             svg {

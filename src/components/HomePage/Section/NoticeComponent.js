@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SliderData } from '../../../lib/NoticeSliderData';
+import { SliderData } from '../../../container/NoticeSliderData';
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 
 const NoticeComponent = ({ slides }) => {
