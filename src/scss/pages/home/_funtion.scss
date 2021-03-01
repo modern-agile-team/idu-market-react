@@ -23,7 +23,10 @@
         height: 200px;
         opacity: 0;
 
-        .function-img { width: 100%; }
+        .function-img { 
+            width: 100%; 
+        }
+
         .function-desc {
             font-family: 'Fredoka One', cursive;
             text-align: center;
@@ -36,9 +39,18 @@
 .function-items.show {
     .function-item { 
         opacity: 1; 
-        &.shopping { animation: slide 1s; }
-        &.communication { animation: slide 1.4s; }
-        &.information { animation: slide 1.8s; }
+
+        &.shopping { 
+            animation: slide 1s; 
+        }
+
+        &.communication { 
+            animation: slide 1.4s; 
+        }
+
+        &.information { 
+            animation: slide 1.8s; 
+        }
     }
 }
 
@@ -58,7 +70,9 @@
         .function-item {
             width: 180px;
 
-            .function-desc { font-size: 1.2rem; }
+            .function-desc { 
+                font-size: 1.2rem; 
+            }
         }
     }
 }
@@ -78,7 +92,9 @@
         .function-item {
             width: 150px;
 
-            .function-desc { font-size: 1rem; }
+            .function-desc { 
+                font-size: 1rem; 
+            }
         }
     }
 }
@@ -115,9 +131,17 @@
     }
 
     .function-items.show {
-        .function-item.shopping { animation: none; }
-        .function-item.communication { animation: none; }
-        .function-item.information { animation: none; }
+        .function-item.shopping { 
+            animation: none; 
+        }
+        
+        .function-item.communication {
+            animation: none; 
+        }
+
+        .function-item.information { 
+            animation: none; 
+        }
     }
 }
 

@@ -1,4 +1,4 @@
-#home-introduce {
+.home-introduce {
     width: 100%;
     height: 900px;
     background-color: #fdfdfd;
@@ -74,22 +74,33 @@
 
  /* 0 ~ 1550 : 데스크탑1  */
 @media screen and (max-width: 1550px) {
-    .intro-bottom-box { right: 10%; }
+    .intro-bottom-box { 
+        right: 10%; 
+    }
 
-    .youtube-box { width: 750px; height: 450px; }
+    .youtube-box { 
+        width: 750px; 
+        height: 450px; 
+    }
 }
 
  /* 0 ~ 1220 : 데스크탑2  */
 @media screen and (max-width: 1220px) { 
-    .intro-box { left: 5%;}
+    .intro-box { 
+        left: 5%;
+    }
 
-    .intro-bottom-box { right: 5%; }
+    .intro-bottom-box { 
+        right: 5%; 
+    }
 }
 
 /* 0 ~ 960 : 테블릿1  */
 @media screen and (max-width: 960px) {
-    #home-introduce {
-        .container { width: 100%; }
+    .home-introduce {
+        .container { 
+            width: 100%; 
+        }
     }
 
     .youtube-box { width: 700px; height: 450px; }
@@ -103,9 +114,12 @@
 
 /* 0 ~ 768px : 테블릿2 */
 @media screen and (max-width: 768px) {
-    #home-introduce {
+    .home-introduce {
         height: 800px;
-        .container { padding: 0 10px; }
+
+        .container { 
+            padding: 0 10px; 
+        }
     }
 
     .intro-box { 
@@ -123,6 +137,7 @@
         &.show { 
             animation: none;
         }
+
         .intro-title {
             font-size: 5rem;
             margin: 0 5px;
@@ -133,12 +148,15 @@
         width: 600px; 
         height: 400px;
         margin-top: 30px;
-        .intro-youtube { opacity: 1; }
+
+        .intro-youtube { 
+            opacity: 1; 
+        }
+
         &.show {
             .intro-youtube {
                 animation: none;
             }
-
         }
     }
 
@@ -155,7 +173,10 @@
 
 /* 0 ~ 670px : 테블릿3 */
 @media screen and (max-width: 670px){ 
-    #home-introduce { height: 700px; }
+    .home-introduce { 
+        height: 700px; 
+    }
+
     .youtube-box {
         width: 450px; 
         height: 350px;
@@ -173,11 +194,25 @@
 
 /* 0 ~ 480px : 모바일1 */
 @media screen and (max-width: 480px){ 
-    #home-introduce { height: 600px; }
-    .youtube-box { width: 400px; height: 250px; }
+    .home-introduce { 
+        height: 600px; 
+    }
+
+    .youtube-box { 
+        width: 330px; 
+        height: 220px; 
+    }
 
     .intro-box {
         .intro-title { font-size: 4rem;}
+    }
+}
+
+/* 0 ~ 360px : 모바일1 */
+@media screen and (max-width: 360px){
+    .youtube-box { 
+        width: 300px; 
+        height: 200px; 
     }
 }
 
@@ -187,6 +222,7 @@
         opacity: 0;
         width: 0;
     }
+
     to {
         opacity: 1;
         width: 100%;
@@ -194,6 +230,11 @@
 }
 
 @keyframes box {
-    from { height: 0; }
-    to { height: 550px; }
+    from { 
+        height: 0; 
+    }
+
+    to { 
+        height: 550px; 
+    }
 }
