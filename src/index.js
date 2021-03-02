@@ -9,27 +9,22 @@ import createSagaMiddleware from 'redux-saga';
 import rootSaga from './redux/sagas/index';
 import rootReducer from './redux/reducers/index';
 import { createBrowserHistory } from 'history';
-import { ConnectedRouter, routerMiddleware } from 'connected-react-router';
 
 export const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-  rootReducer(history),
-  composeWithDevTools(applyMiddleware(sagaMiddleware, routerMiddleware(history)))
+  rootReducer,
+  composeWithDevTools(applyMiddleware(sagaMiddleware))
   );
 
 sagaMiddleware.run(rootSaga);
 
-
-
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
       <React.StrictMode>
           <App />
       </React.StrictMode>
-    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );

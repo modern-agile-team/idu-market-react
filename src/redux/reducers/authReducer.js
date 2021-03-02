@@ -5,9 +5,6 @@ import {
     LOGOUT_REQUEST,
     LOGOUT_FAILURE,
     LOGOUT_SUCCESS,
-    LOADING_SUCCESS,
-    LOADING_FAILURE,
-    LOADING_REQUEST,
 } from '../types';
 
 const initialState = {
