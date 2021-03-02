@@ -5,7 +5,6 @@ import RegisterComponent from '../components/auth/RegisterComponent';
 const RegisterPage = () => {
     return (
         <>
-            <Header></Header>
             <RegisterComponent></RegisterComponent>
         </>
     );

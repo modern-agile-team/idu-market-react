@@ -4,24 +4,34 @@ import { HeaderMenuData } from '../../container/HeaderMenuData'
 import DropMenu from './DropMenu';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
+import {LOGOUT_REQUEST} from '../../redux/types';
 
 const Header = () => {
     const [sidebar, setSidebar] = useState(false);
     const [headerLogin, setHeaderLogin] = useState(false);
 
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        if (window.localStorage.getItem('jwt')) setHeaderLogin(true)
-        else setHeaderLogin(false)
-    }, [])
+
+        if (localStorage.getItem('jwt')) setHeaderLogin(true);
+        else setHeaderLogin(false);
+
+    }, [localStorage.getItem('jwt')]);
+
     
     const showSidebar = () => setSidebar(!sidebar);
 
     const onLogoutHandler = () => {
-        if (window.localStorage.getItem('jwt')) {
-            window.localStorage.removeItem('jwt');
-            setHeaderLogin(false)
-        }
-    }
+        localStorage.removeItem('jwt');
+        
+        setSidebar(!sidebar);
+
+        dispatch({
+            type: LOGOUT_REQUEST,
+        });
+    };
     
     return (
         <header id="header" className="header">
@@ -37,17 +47,36 @@ const Header = () => {
                     <ul className="header-list">
                         {HeaderMenuData.map((item, index) => {
                             return (
-                                <DropMenu item={item} key={index}></DropMenu>
+                                <DropMenu item={item} key={index} showSidebar={showSidebar}></DropMenu>
                             );
                         })}
                     </ul>
                     
                     {headerLogin ? 
-                        <Link to="/login" className="header-btn" onClick={onLogoutHandler}>Logout</Link>
+                        <Link 
+                            to="/login" 
+                            className="header-btn" 
+                            onClick={onLogoutHandler}
+                        >
+                            Logout
+                        </Link>
                         :
                         <>
-                            <Link to="/login" className="header-btn" onClick={() => setSidebar(!sidebar)}>Login</Link>
-                            <Link to="/register" className="header-btn" onClick={() => setSidebar(!sidebar)}>SignUp</Link>
+                            <Link 
+                                to="/login" 
+                                className="header-btn" 
+                                onClick={() => setSidebar(!sidebar)}
+                            >
+                                Login
+                            </Link>
+
+                            <Link 
+                                to="/register" 
+                                className="header-btn" 
+                                onClick={() => setSidebar(!sidebar)}
+                            >
+                                SignUp
+                            </Link>
                         </>
                     }
                 </nav>

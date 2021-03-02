@@ -2,6 +2,9 @@ import {
     LOGIN_FAILURE, 
     LOGIN_REQUEST, 
     LOGIN_SUCCESS, 
+    LOGOUT_REQUEST,
+    LOGOUT_FAILURE,
+    LOGOUT_SUCCESS,
 } from '../types';
 
 const initialState = {
@@ -14,6 +17,7 @@ const initialState = {
 
 const auth = (state = initialState, action) => {
     switch (action.type) {
+        case LOGOUT_REQUEST:
         case LOGIN_REQUEST:
             return {
                 ...state,
@@ -32,6 +36,7 @@ const auth = (state = initialState, action) => {
                 successMsg: action.payload.msg
             }
 
+        case LOGOUT_FAILURE:
         case LOGIN_FAILURE:
             localStorage.removeItem("jwt");
             return {
@@ -40,6 +45,18 @@ const auth = (state = initialState, action) => {
                 isAuthenticated: false,
                 isLoading: false,
                 errorMsg: action.payload.data.msg,
+            }
+
+        case LOGOUT_SUCCESS:
+            localStorage.removeItem("jwt");
+            return {
+                token: null,
+                user: null,
+                userId: null,
+                isAuthenticated: false,
+                isLoading: false,
+                userRole: null,
+                errorMsg: "",
             }
 
         default:

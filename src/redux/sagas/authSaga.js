@@ -4,6 +4,9 @@ import {
     LOGIN_FAILURE, 
     LOGIN_REQUEST, 
     LOGIN_SUCCESS, 
+    LOGOUT_REQUEST,
+    LOGOUT_FAILURE,
+    LOGOUT_SUCCESS,
 } from '../types';
 
 //  Login
@@ -41,9 +44,28 @@ function* watchLoginUser() {
     yield takeEvery(LOGIN_REQUEST, loginUser);
 };
 
+//  Logout
+function* logout(action) {
+    try {
+        yield put({
+            type: LOGOUT_SUCCESS,
+        }); //성공 액션 dispatch
+    } catch (e) {
+        yield put({
+            type: LOGOUT_FAILURE,
+        }); 
+    }
+}
+
+function* watchLogout() {
+    yield takeEvery(LOGOUT_REQUEST, logout);
+}
+
+
 //authSaga() 여러 Saga 통합
 export default function* authSaga() {
     yield all([
         fork(watchLoginUser),
+        fork(watchLogout),
     ]);
 };

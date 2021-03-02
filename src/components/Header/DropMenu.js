@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 
-const DropMenu = ({ item }) => {
+const DropMenu = ({ item, showSidebar }) => {
     const [dropMenu, setDropMenu] = useState(false);
     const refEl = useRef(null);
 
@@ -30,7 +30,7 @@ const DropMenu = ({ item }) => {
                 <ul className="header-menu-drop">
                     {dropMenu && item.subMenu.map((item, index) => {
                         return (
-                            <li key={index}><Link to={item.path}>{item.title}</Link></li>
+                            <li key={index}><Link to={item.path} onClick={showSidebar}>{item.title}</Link></li>
                         );
                     })}
                 </ul>

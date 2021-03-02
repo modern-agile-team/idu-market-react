@@ -11,7 +11,6 @@ import { SliderData } from '../container/NoticeSliderData';
 const HomePage = () => {
     return (
         <>
-            <Header></Header>
             <MainBannerComponent />
             <FunctionComponent />
             <IntroduceComponent />

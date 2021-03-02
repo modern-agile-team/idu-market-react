@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import WritePage from './pages/WritePage';
+import Auth from './hoc/auth';
 
 import './scss/main.scss';
 
@@ -13,10 +14,11 @@ function App() {
   return (
     <>
       <Router>
+        <Header></Header>
         <Switch>
-          <Route component={HomePage} path="/" exact />
-          <Route component={LoginPage} path="/login" />
-          <Route component={RegisterPage} path="/register" />
+          <Route component={Auth(HomePage, null)} path="/" exact />
+          <Route component={Auth(LoginPage, false)} path="/login" />
+          <Route component={Auth(RegisterPage, false)} path="/register" />
           <Route component={WritePage} path="/write" />
           <Route component={BoardListPage} path="/boardlist" />
           <Route component={BoardPage} path="/board" />

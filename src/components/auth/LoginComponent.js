@@ -11,12 +11,13 @@ const LoginComponent = (props) => {
         psword: "",
     })
 
-    const { errorMsg } = useSelector(state => state.auth);
+    const { errorMsg, isAuthenticated } = useSelector(state => state.auth);
 
     useEffect(() => {
         setErrMsg(errorMsg);
+        if(isAuthenticated) props.history.push('/');
 
-    }, [errorMsg]);
+    }, [errorMsg, isAuthenticated]);
 
     const dispatch = useDispatch();
 
