@@ -7,10 +7,23 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import WritePage from './pages/WritePage';
 import Auth from './hoc/auth';
+import {LOADING_REQUEST} from './redux/types';
+import { useDispatch } from 'react-redux';
 
 import './scss/main.scss';
 
+
 function App() {
+  const dispatch = useDispatch();
+
+  try{
+      dispatch({
+          type: LOADING_REQUEST,
+      })
+  } catch(e) {
+      console.log(e);
+  }
+
   return (
     <>
       <Router>

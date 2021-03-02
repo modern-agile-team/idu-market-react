@@ -5,6 +5,9 @@ import {
     LOGOUT_REQUEST,
     LOGOUT_FAILURE,
     LOGOUT_SUCCESS,
+    LOADING_SUCCESS,
+    LOADING_FAILURE,
+    LOADING_REQUEST,
 } from '../types';
 
 const initialState = {
@@ -50,15 +53,11 @@ const auth = (state = initialState, action) => {
         case LOGOUT_SUCCESS:
             localStorage.removeItem("jwt");
             return {
-                token: null,
-                user: null,
-                userId: null,
+                jwt: null,
                 isAuthenticated: false,
                 isLoading: false,
-                userRole: null,
                 errorMsg: "",
             }
-
         default:
             return state
     }

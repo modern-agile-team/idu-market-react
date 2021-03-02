@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import {LOGIN_REQUEST} from '../../redux/types'
+import {LOADING_REQUEST, LOADING_SUCCESS, LOGIN_REQUEST} from '../../redux/types'
 // import { loginUser } from '../../actions/user_action';
 
-const LoginComponent = (props) => {
+const LoginComponent = ({ history }) => {
     const [errMsg, setErrMsg] = useState('');
     const [formValues, setFormValues] = useState({
         id: "",
@@ -15,8 +15,7 @@ const LoginComponent = (props) => {
 
     useEffect(() => {
         setErrMsg(errorMsg);
-        if(isAuthenticated) props.history.push('/');
-
+        if(isAuthenticated) history.push('/');
     }, [errorMsg, isAuthenticated]);
 
     const dispatch = useDispatch();
@@ -36,9 +35,9 @@ const LoginComponent = (props) => {
 
         dispatch({
             type: LOGIN_REQUEST,
-            payload: body
-        });      
-
+            payload: body,
+        });
+        
         // dispatch(loginUser(body)) 
         //     .then(response => {
         //         if (response.payload.success) {

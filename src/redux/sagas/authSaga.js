@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { all, fork, put, takeEvery, call } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
 import { 
     LOGIN_FAILURE, 
     LOGIN_REQUEST, 
@@ -7,6 +8,9 @@ import {
     LOGOUT_REQUEST,
     LOGOUT_FAILURE,
     LOGOUT_SUCCESS,
+    LOADING_SUCCESS,
+    LOADING_FAILURE,
+    LOADING_REQUEST,
 } from '../types';
 
 //  Login
@@ -31,6 +35,11 @@ function* loginUser(action) {
             type: LOGIN_SUCCESS,
             payload: result.data,
         }); //성공 액션 dispatch
+        
+        yield put({
+            type: LOADING_SUCCESS,
+        });
+
     } catch (e) {
         yield put({
             type: LOGIN_FAILURE,
@@ -44,12 +53,16 @@ function* watchLoginUser() {
     yield takeEvery(LOGIN_REQUEST, loginUser);
 };
 
-//  Logout
+// Logout
 function* logout(action) {
     try {
         yield put({
             type: LOGOUT_SUCCESS,
         }); //성공 액션 dispatch
+        
+        yield put({
+            type: LOADING_FAILURE,
+        })
     } catch (e) {
         yield put({
             type: LOGOUT_FAILURE,
@@ -61,11 +74,28 @@ function* watchLogout() {
     yield takeEvery(LOGOUT_REQUEST, logout);
 }
 
+//loading
+function* loading(action) {
+    try {
+        yield put({
+            type: LOADING_SUCCESS,
+        })
+    } catch (e) {
+        yield put({
+            type: LOADING_FAILURE,
+        })
+    }
+}
+
+function* watchLoading() {
+    yield takeEvery(LOADING_REQUEST, loading);
+}
 
 //authSaga() 여러 Saga 통합
 export default function* authSaga() {
     yield all([
         fork(watchLoginUser),
         fork(watchLogout),
+        fork(watchLoading),
     ]);
 };

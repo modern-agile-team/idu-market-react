@@ -5,25 +5,31 @@ import reportWebVitals from './reportWebVitals';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
-import promiseMiddleware from 'redux-promise';
-import rootReducer from './redux/reducers/index';
 import createSagaMiddleware from 'redux-saga';
-import rootSaga from './redux/sagas';
+import rootSaga from './redux/sagas/index';
+import rootReducer from './redux/reducers/index';
+import { createBrowserHistory } from 'history';
+import { ConnectedRouter, routerMiddleware } from 'connected-react-router';
 
+export const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-  rootReducer, 
-  composeWithDevTools(applyMiddleware(sagaMiddleware, promiseMiddleware))
+  rootReducer(history),
+  composeWithDevTools(applyMiddleware(sagaMiddleware, routerMiddleware(history)))
   );
 
 sagaMiddleware.run(rootSaga);
 
+
+
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>
+    <ConnectedRouter history={history}>
+      <React.StrictMode>
+          <App />
+      </React.StrictMode>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );
