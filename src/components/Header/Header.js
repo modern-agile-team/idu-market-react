@@ -10,15 +10,16 @@ const Header = () => {
     const [headerLogin, setHeaderLogin] = useState(false);
 
     useEffect(() => {
-        if (window.localStorage.getItem('userID')) setHeaderLogin(true)
+        if (window.localStorage.getItem('jwt')) setHeaderLogin(true)
         else setHeaderLogin(false)
     }, [])
     
     const showSidebar = () => setSidebar(!sidebar);
 
     const onLogoutHandler = () => {
-        if (window.localStorage.getItem('userID')) {
-            window.localStorage.removeItem('userID');
+        if (window.localStorage.getItem('jwt')) {
+            window.localStorage.removeItem('jwt');
+            setHeaderLogin(false)
         }
     }
     
@@ -29,7 +30,7 @@ const Header = () => {
 
                 <div className="menuToggle">
                     {sidebar ? 
-                    <AiIcons.AiOutlineClose onClick={showSidebar} /> : <FaIcons.FaBars  onClick={showSidebar} />}
+                    <AiIcons.AiOutlineClose onClick={showSidebar} /> : <FaIcons.FaBars onClick={showSidebar} />}
                 </div>
 
                 <nav className={sidebar ? 'header-nav active' : 'header-nav'}>
@@ -45,8 +46,8 @@ const Header = () => {
                         <Link to="/login" className="header-btn" onClick={onLogoutHandler}>Logout</Link>
                         :
                         <>
-                            <Link to="/login" className="header-btn">Login</Link>
-                            <Link to="/register" className="header-btn">SignUp</Link>
+                            <Link to="/login" className="header-btn" onClick={() => setSidebar(!sidebar)}>Login</Link>
+                            <Link to="/register" className="header-btn" onClick={() => setSidebar(!sidebar)}>SignUp</Link>
                         </>
                     }
                 </nav>

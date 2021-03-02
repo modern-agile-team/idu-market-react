@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import { registerUser } from '../../actions/user_action';
+// import { registerUser } from '../../actions/user_action';
 
 const RegisterComponent = (props) => {
     const [errMsg, setErrMsg] = useState('');
@@ -27,18 +27,18 @@ const RegisterComponent = (props) => {
 
         e.preventDefault();
 
-        dispatch(registerUser(body))
-            .then(response => {
-                if (response.payload.success) {
-                    console.log(response.payload);
-                    props.history.push('/login');
-                } else console.error('Fail to sign up');
-            })
-            .catch(err => {
-                const response = err.response;
-                if (response.status === 409) setErrMsg(response.data.msg);
-                throw err;
-            });
+        // dispatch(registerUser(body))
+        //     .then(response => {
+        //         if (response.payload.success) {
+        //             console.log(response.payload);
+        //             props.history.push('/login');
+        //         } else console.error('Fail to sign up');
+        //     })
+        //     .catch(err => {
+        //         const response = err.response;
+        //         if (response.status === 409) setErrMsg(response.data.msg);
+        //         throw err;
+        //     });
     }
 
     return (

@@ -4,7 +4,6 @@ import Header from '../components/Header/Header';
 const BoardListPage = () => {
     return (
         <>
-            <Header></Header>
             게시판리스트
         </>
     );

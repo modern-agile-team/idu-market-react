@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import { loginUser } from '../../actions/user_action';
+import {LOGIN_REQUEST} from '../../redux/types'
+// import { loginUser } from '../../actions/user_action';
 
 const LoginComponent = (props) => {
     const [errMsg, setErrMsg] = useState('');
@@ -10,8 +11,14 @@ const LoginComponent = (props) => {
         psword: "",
     })
 
-    const dispatch = useDispatch();
+    const { errorMsg } = useSelector(state => state.auth);
 
+    useEffect(() => {
+        setErrMsg(errorMsg);
+
+    }, [errorMsg]);
+
+    const dispatch = useDispatch();
 
     const onChange = e => {
         setFormValues({
@@ -26,19 +33,24 @@ const LoginComponent = (props) => {
 
         e.preventDefault();
 
-        dispatch(loginUser(body)) 
-            .then(response => {
-                if (response.payload.success) {
-                    console.log(response.payload);
-                    window.localStorage.setItem('userID', body.id);
-                    props.history.push('/');
-                } else console.err('Fail to Login');
-            })
-            .catch(err => {
-                const response = err.response;
-                if (response.status === 400) setErrMsg(response.data.msg);
-                throw err;
-            })
+        dispatch({
+            type: LOGIN_REQUEST,
+            payload: body
+        });      
+
+        // dispatch(loginUser(body)) 
+        //     .then(response => {
+        //         if (response.payload.success) {
+        //             console.log(response.payload);
+        //             window.localStorage.setItem('userID', body.id);
+        //             props.history.push('/');
+        //         } else console.err('Fail to Login');
+        //     })
+        //     .catch(err => {
+        //         const response = err.response;
+        //         if (response.status === 400) setErrMsg(response.data.msg);
+        //         throw err;
+        //     })
     }
 
     return (
