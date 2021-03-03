@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HeaderMenuData } from '../../container/HeaderMenuData'
 import DropMenu from './DropMenu';
@@ -24,7 +24,8 @@ const Header = () => {
         dispatch({
             type: LOGOUT_REQUEST,
         });
-    };
+    }; 
+    
     
     return (
         <header id="header" className="header">

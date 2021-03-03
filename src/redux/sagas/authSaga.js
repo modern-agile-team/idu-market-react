@@ -1,4 +1,5 @@
 import axios from 'axios';
+// import { push } from 'connected-react-router';
 import { all, fork, put, takeEvery, call } from 'redux-saga/effects';
 import { 
     LOGIN_FAILURE, 
@@ -29,10 +30,13 @@ function* loginUser(action) {
             type: LOGIN_SUCCESS,
             payload: result.data,
         });
-        
+
         yield put({
             type: LOADING_SUCCESS,
         });
+
+        // yield put(push('/board'));
+
     } catch (e) {
         yield put({
             type: LOGIN_FAILURE,
@@ -56,6 +60,9 @@ function* registerUser(action) {
             type: REGISTER_SUCCESS,
             payload: result.data,
         }); 
+
+        // yield put(push('/login'));
+
     } catch (e) {
         yield put({
             type: REGISTER_FAILURE,
@@ -82,10 +89,11 @@ function* logout() {
 }
 
 //LOADING
-function* loading() {
+function* loading(action) {
     try {
         yield put({
             type: LOADING_SUCCESS,
+            payload: action.payload,
         })
     } catch (e) {
         yield put({

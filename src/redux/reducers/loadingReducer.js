@@ -9,7 +9,7 @@ const initialState = {
     isLoading: false,
 };
 
-const loading = (state = initialState, action) => {
+const logging = (state = initialState, action) => {
     switch (action.type) {
         case LOADING_REQUEST:
             return {
@@ -36,4 +36,4 @@ const loading = (state = initialState, action) => {
     }
 }
 
-export default loading;
+export default logging;
