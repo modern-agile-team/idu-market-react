@@ -5,24 +5,31 @@ import {
     LOGOUT_REQUEST,
     LOGOUT_FAILURE,
     LOGOUT_SUCCESS,
+    REGISTER_REQUEST,
+    REGISTER_SUCCESS,
+    REGISTER_FAILURE,
 } from '../types';
 
 const initialState = {
     jwt: "",
-    isAuthenticated: null,
     isLoading: false,
-    errorMsg: "",
+    checkLogin: false,
+    checkRegister: false,
     successMsg: "",
+    loginErrorMsg: "",
+    registerErrorMsg: "",
 };
 
 const auth = (state = initialState, action) => {
     switch (action.type) {
+        case REGISTER_REQUEST:
         case LOGOUT_REQUEST:
         case LOGIN_REQUEST:
             return {
                 ...state,
-                errorMsg: "",
                 isLoading: true,
+                loginErrorMsg: "",
+                registerErrorMsg: "",
             }
 
         case LOGIN_SUCCESS:
@@ -30,31 +37,61 @@ const auth = (state = initialState, action) => {
             return {
                 ...state,
                 jwt: action.payload.jwt,
-                isAuthenticated: true,
                 isLoading: false,
-                errorMsg: "",
-                successMsg: action.payload.msg
+                checkLogin: true,
+                successMsg: action.payload.msg,
+                loginErrorMsg: "",
             }
 
-        case LOGOUT_FAILURE:
         case LOGIN_FAILURE:
             localStorage.removeItem("jwt");
             return {
                 ...state,
                 jwt: null,
-                isAuthenticated: false,
                 isLoading: false,
-                errorMsg: action.payload.data.msg,
+                checkLogin: false,
+                successMsg: "",
+                loginErrorMsg: action.payload.data.msg,
             }
 
         case LOGOUT_SUCCESS:
             localStorage.removeItem("jwt");
             return {
+                ...state,
                 jwt: null,
-                isAuthenticated: false,
                 isLoading: false,
-                errorMsg: "",
+                checkLogin: false,
+                successMsg: "로그아웃에 성공하셨습니다.",
+                loginErrorMsg: "",
             }
+
+        case LOGOUT_FAILURE:
+            return {
+                ...state,
+                jwt: null,
+                isLoading: false,
+                checkLogin: false,
+                successMsg: "",
+            }
+
+        case REGISTER_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                checkRegister: true,
+                successMsg: action.payload.msg,
+                registerErrorMsg: "",
+            }
+
+        case REGISTER_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                checkRegister: false,
+                successMsg: "",
+                registerErrorMsg: action.payload.data.msg,
+            }
+
         default:
             return state
     }

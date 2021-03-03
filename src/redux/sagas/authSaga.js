@@ -10,54 +10,66 @@ import {
     LOADING_SUCCESS,
     LOADING_FAILURE,
     LOADING_REQUEST,
+    REGISTER_FAILURE,
+    REGISTER_SUCCESS,
+    REGISTER_REQUEST,
 } from '../types';
 
-//  Login
+
+// LOGIN
 function loginUserAPI(loginData) {
-    console.log(loginData, "loginData");
-    const config = {
-        headers: {
-            "Content-Type": "application/json",
-        },
-    };
-    return axios.post('/api/jwt', loginData, config);
+    return axios.post('/api/jwt', loginData);
 };
 
 function* loginUser(action) {
     try {
-        //action.payload: {email: ~, password: ~} 
         const result = yield call(loginUserAPI, action.payload);
-
-        console.log(result);
 
         yield put({
             type: LOGIN_SUCCESS,
             payload: result.data,
-        }); //성공 액션 dispatch
+        });
         
         yield put({
             type: LOADING_SUCCESS,
         });
-
     } catch (e) {
         yield put({
             type: LOGIN_FAILURE,
             payload: e.response,
-        }); //실패 액션 dispatch
+        });
     }
 };
 
-function* watchLoginUser() {
-    //LOGIN_REQUEST가 있으면 loginUser를 실행해라 라는 뜻
-    yield takeEvery(LOGIN_REQUEST, loginUser);
+// REGISTER
+function registerAPI(registerData) {
+    return axios.post('/api/user', registerData);
 };
 
-// Logout
-function* logout(action) {
+function* registerUser(action) {
+    try {
+        const result = yield call(registerAPI, action.payload);
+
+        console.log(result);
+
+        yield put({
+            type: REGISTER_SUCCESS,
+            payload: result.data,
+        }); 
+    } catch (e) {
+        yield put({
+            type: REGISTER_FAILURE,
+            payload: e.response,
+        }); 
+    }
+};
+
+// LOGOUT
+function* logout() {
     try {
         yield put({
             type: LOGOUT_SUCCESS,
-        }); //성공 액션 dispatch
+        });
         
         yield put({
             type: LOADING_FAILURE,
@@ -69,12 +81,8 @@ function* logout(action) {
     }
 }
 
-function* watchLogout() {
-    yield takeEvery(LOGOUT_REQUEST, logout);
-}
-
-//loading
-function* loading(action) {
+//LOADING
+function* loading() {
     try {
         yield put({
             type: LOADING_SUCCESS,
@@ -84,6 +92,19 @@ function* loading(action) {
             type: LOADING_FAILURE,
         })
     }
+}
+
+
+function* watchLoginUser() {
+    yield takeEvery(LOGIN_REQUEST, loginUser);
+};
+
+function* watchRegisterUser() {
+    yield takeEvery(REGISTER_REQUEST, registerUser);
+};
+
+function* watchLogout() {
+    yield takeEvery(LOGOUT_REQUEST, logout);
 }
 
 function* watchLoading() {
@@ -96,5 +117,6 @@ export default function* authSaga() {
         fork(watchLoginUser),
         fork(watchLogout),
         fork(watchLoading),
+        fork(watchRegisterUser),
     ]);
 };

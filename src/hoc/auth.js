@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 export default function Auth(SpecificComponent, option, adminRoute = null) {
@@ -19,7 +18,7 @@ export default function Auth(SpecificComponent, option, adminRoute = null) {
             //로그인한 상태
                 if (option === false) props.history.push('/');
             }
-        }, []);
+        }, [localStorage.getItem('jwt')]);
 
         return (
             <SpecificComponent></SpecificComponent>

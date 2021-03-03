@@ -2,12 +2,13 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import BoardListPage from './pages/BoardListPage';
 import BoardPage from './pages/BoardPage';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
+import HomePage from './pages/HomePage/HomePage';
+import LoginPage from './pages/authPages/LoginPage';
+import RegisterPage from './pages/authPages/RegisterPage';
 import WritePage from './pages/WritePage';
 import Auth from './hoc/auth';
-import {LOADING_REQUEST} from './redux/types';
+
+import { LOADING_REQUEST } from './redux/types';
 import { useDispatch } from 'react-redux';
 
 import './scss/main.scss';

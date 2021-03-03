@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-// import { registerUser } from '../../actions/user_action';
+import { REGISTER_REQUEST } from '../../redux/types';
 
 const RegisterComponent = (props) => {
-    const [errMsg, setErrMsg] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
     const [formValues, setFormValues] = useState({
         id: "",
         name: "",
@@ -13,13 +13,19 @@ const RegisterComponent = (props) => {
     })
 
     const dispatch = useDispatch();
+    const { registerErrorMsg, checkRegister } = useSelector(state => state.auth);
+
+    useEffect(() => {
+        setErrorMsg(registerErrorMsg);
+        if (checkRegister) props.history.push('/login');
+    }, [checkRegister, registerErrorMsg]);
 
     const onChange = e => {
         setFormValues({
             ...formValues,
             [e.target.name]: e.target.value,
         });
-    }
+    };
 
     const onSubmitHandler = e => {
         const {id, name, email, psword} = formValues;
@@ -27,19 +33,11 @@ const RegisterComponent = (props) => {
 
         e.preventDefault();
 
-        // dispatch(registerUser(body))
-        //     .then(response => {
-        //         if (response.payload.success) {
-        //             console.log(response.payload);
-        //             props.history.push('/login');
-        //         } else console.error('Fail to sign up');
-        //     })
-        //     .catch(err => {
-        //         const response = err.response;
-        //         if (response.status === 409) setErrMsg(response.data.msg);
-        //         throw err;
-        //     });
-    }
+        dispatch({
+            type: REGISTER_REQUEST,
+            payload: body,
+        });
+    };
 
     return (
         <section id="form-template" className="form-template">
@@ -71,9 +69,9 @@ const RegisterComponent = (props) => {
                         <label className={formValues.psword ? "input-label fix" : "input-label"}>Password</label>
                     </div>
 
-                    <p className="form-errmsg">{errMsg}</p>
+                    <p className="form-errmsg">{errorMsg}</p>
 
-                    <input type="submit" value="SignUp" onClick={onSubmitHandler} className="form-submit"/>
+                    <input type="submit" value="SignUp" onClick={onSubmitHandler} className="form-submit" />
 
                     <div className="form-question">
                         <p>Do you have an account?</p>

@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import {LOADING_REQUEST, LOADING_SUCCESS, LOGIN_REQUEST} from '../../redux/types'
-// import { loginUser } from '../../actions/user_action';
+import { LOGIN_REQUEST } from '../../redux/types'
 
-const LoginComponent = ({ history }) => {
-    const [errMsg, setErrMsg] = useState('');
+const LoginComponent = (props) => {
+    const [errorMsg, setErrorMsg] = useState('');
     const [formValues, setFormValues] = useState({
         id: "",
         psword: "",
     })
 
-    const { errorMsg, isAuthenticated } = useSelector(state => state.auth);
+    const { loginErrorMsg, checkLogin } = useSelector(state => state.auth);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        setErrMsg(errorMsg);
-        if(isAuthenticated) history.push('/');
-    }, [errorMsg, isAuthenticated]);
-
-    const dispatch = useDispatch();
+        setErrorMsg(loginErrorMsg);
+        if (checkLogin) props.history.push('/');
+    }, [loginErrorMsg, checkLogin]);
 
     const onChange = e => {
         setFormValues({
@@ -37,20 +35,6 @@ const LoginComponent = ({ history }) => {
             type: LOGIN_REQUEST,
             payload: body,
         });
-        
-        // dispatch(loginUser(body)) 
-        //     .then(response => {
-        //         if (response.payload.success) {
-        //             console.log(response.payload);
-        //             window.localStorage.setItem('userID', body.id);
-        //             props.history.push('/');
-        //         } else console.err('Fail to Login');
-        //     })
-        //     .catch(err => {
-        //         const response = err.response;
-        //         if (response.status === 400) setErrMsg(response.data.msg);
-        //         throw err;
-        //     })
     }
 
     return (
@@ -72,7 +56,7 @@ const LoginComponent = ({ history }) => {
 
                     </div>
 
-                    <p className="form-errmsg">{errMsg}</p>
+                    <p className="form-errmsg">{errorMsg}</p>
 
                     <div className="form-search">
                         <p>

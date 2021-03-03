@@ -1,27 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HeaderMenuData } from '../../container/HeaderMenuData'
 import DropMenu from './DropMenu';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
-import {LOGOUT_REQUEST, LOADING_FAILURE} from '../../redux/types';
+import { LOGOUT_REQUEST } from '../../redux/types';
 
 const Header = () => {
     const [sidebar, setSidebar] = useState(false);
-    const [headerLogin, setHeaderLogin] = useState(false);
+    // const [headerLogin, setHeaderLogin] = useState(false);
 
     const dispatch = useDispatch();
-    const auth = useSelector(state => state.loading);
-    // useEffect(() => {
-
-    //     // if (localStorage.getItem('jwt')) setHeaderLogin(true);
-    //     // else setHeaderLogin(false);
-
-    //     if (auth.jwt) setHeaderLogin(true);
-    //     else setHeaderLogin(false);
-    // }, []);
-
+    const loading = useSelector(state => state.loading);
     
     const showSidebar = () => setSidebar(!sidebar);
 
@@ -54,7 +45,7 @@ const Header = () => {
                         })}
                     </ul>
                     
-                    {auth.jwt ? 
+                    {loading.jwt ? 
                         <Link 
                             to="/login" 
                             className="header-btn" 

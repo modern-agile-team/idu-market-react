@@ -14,10 +14,10 @@ const FunctionComponent = () => {
     }
     
     useEffect(() => {
-        window.addEventListener('scroll', functionHandleScroll, true);
+        window.addEventListener('scroll', functionHandleScroll);
 
         return () => {
-            window.removeEventListener('scroll', functionHandleScroll, true);
+            window.removeEventListener('scroll', functionHandleScroll);
         }
     }, [])
 

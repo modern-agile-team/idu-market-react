@@ -8,24 +8,22 @@ import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './redux/sagas/index';
 import rootReducer from './redux/reducers/index';
-import { createBrowserHistory } from 'history';
 
-export const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(sagaMiddleware))
+  composeWithDevTools(applyMiddleware(sagaMiddleware)),
   );
 
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
-  <Provider store={store}>
-      <React.StrictMode>
-          <App />
-      </React.StrictMode>
-  </Provider>,
+    <Provider store={store}>
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+    </Provider>,
   document.getElementById('root')
 );
 
