@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { LOGIN_REQUEST } from '../../redux/types'
@@ -36,6 +36,7 @@ const LoginComponent = (props) => {
             payload: body,
         });
     }
+
 
     return (
         <section id="form-template" className="form-template">
