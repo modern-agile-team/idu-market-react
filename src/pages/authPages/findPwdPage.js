@@ -1,12 +1,12 @@
 import React from 'react';
 import FindPwdComponent from '../../components/auth/FindPwdComponent';
 
-const findPwdPage = () => {
+const FindPwdPage = () => {
     return (
-        <div>
+        <>
             <FindPwdComponent></FindPwdComponent>
-        </div>
+        </>
     );
 };
 
-export default findPwdPage;
+export default FindPwdPage;

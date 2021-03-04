@@ -45,13 +45,25 @@ const LoginComponent = (props) => {
                     <h1 className="form-title">LOGIN</h1>
 
                     <div className="text-field">
-                        <input type="text" name="id" onChange={onChange} className="input-text" />
+                        <input 
+                            type="text" 
+                            name="id" 
+                            onChange={onChange}
+                            className="input-text" 
+                            autocomplete="on"
+                        />
                         <span className={formValues.id ? "input-border fill" : "input-border"} />
                         <label className={formValues.id ? "input-label fix" : "input-label"}>ID</label>
                     </div>
 
                     <div className="text-field">
-                        <input type="password" name="psword" onChange={onChange} className="input-text" />
+                        <input 
+                            type="password" 
+                            name="psword" 
+                            onChange={onChange} 
+                            className="input-text" 
+                            autocomplete="on"
+                        />
                         <span className={formValues.psword ? "input-border fill" : "input-border"}/>
                         <label className={formValues.psword ? "input-label fix" : "input-label"}>Password</label>
 

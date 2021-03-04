@@ -1,12 +1,12 @@
 import React from 'react';
 import FindIdComponent from '../../components/auth/FindIdComponent';
 
-const findLoginPage = () => {
+const FindLoginPage = () => {
     return (
-        <div>
+        <>
             <FindIdComponent></FindIdComponent>
-        </div>
+        </>
     );
 };
 
-export default findLoginPage;
+export default FindLoginPage;

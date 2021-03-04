@@ -1,6 +1,6 @@
 .home-articles {
     width: 100%;
-    background-color: #fdfdfd;
+    background-color: $bg-color-1;
     
     .container {
         width: 95%;
@@ -25,8 +25,8 @@
     position: relative;
     margin-bottom: 40px;
     font-size: 7rem;
-    font-family: 'Thasadith', sans-serif;
-    color: #c9946c;
+    font-family: $Thasadith-font;
+    color: $main-color-7;
 }
 
 .article-item-box {
@@ -37,10 +37,10 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    border: 1px solid #c29a7b;
+    border: 1px solid $main-color-4;
     
     &:hover {
-        box-shadow: 0 0 30px #c29a7b;
+        box-shadow: 0 0 20px $main-color-4;
         transform: translateY(-20px);
     }
     
@@ -50,31 +50,31 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border-bottom: 1px solid #c97f4e;
+        border-bottom: 1px solid $main-color-9;
         background-color: rgba(195, 159, 127, 0.3);
 
         svg {
-            border: 2px solid #a56c4e;
+            border: 2px solid $main-color-9;
             border-radius: 50%;
             font-size: 4.5rem;
-            color: #8a614b;
+            color: $main-color-10;
         }
     }
 
     .article-item-title {
-        font-family: 'Fredoka One', cursive;
+        font-family: $Fredoka-font;
         margin: 60px 0;
         font-size: 3rem;
-        color: #c97f4e;
+        color: $main-color-9;
     }
 
     .article-btn {
         margin-top: 30px;
         font-size: 3rem;
-        color: #d1a889;
+        color: $main-color-4;
         cursor: pointer;
         &:hover {
-            color: #c97f4e;
+            color: $main-color-9;
         }
     }
 
@@ -135,7 +135,7 @@
         width: 100%;
         height: 120px;
         text-align: center;
-        background: #c4a48c;
+        background: $main-color-3;
         color: #fdfdfd;
         align-items: center;
         font-size: 4rem;
@@ -158,7 +158,7 @@
             width: 20%;
             height: 100%;
             border-bottom: none;
-            border-right: 1px solid #c97f4e;
+            border-right: 1px solid $main-color-9;
         }
 
         .article-item-title {

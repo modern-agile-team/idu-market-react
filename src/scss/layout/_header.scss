@@ -2,7 +2,7 @@
     position: fixed;
     width: 100%;
     height: 65px;
-    background: #fdfdfd;
+    background: $bg-color-1;
     z-index: 100;
 
     .container {
@@ -16,16 +16,18 @@
 
 .header-title {
     font-size: 2rem;
-    font-family: 'Fredoka One', cursive;
+    font-family: $Fredoka-font;
     font-weight: 700;
     letter-spacing: 3px;
     margin-left: 2rem;
 
-    &:hover{ color: #222; }
+    &:hover{ 
+        color: #222; 
+    }
 
     span {
-        font-family: 'Fredoka One', cursive;
-        color: #c79463;
+        font-family: $Fredoka-font;
+        color: $main-color-2;
     }
 }
 
@@ -49,7 +51,7 @@
         cursor: pointer;
 
         & > a {
-            font-family: 'Nunito', sans-serif;
+            font-family: $Nunito-font;
             padding: 20px 40px;
             &:hover {
                 border-bottom: 3px solid #333;
@@ -77,26 +79,32 @@
         align-items: center;
     }
 
-    .header-menu-drop li:last-child { border-bottom: none; }
+    .header-menu-drop li:last-child { 
+        border-bottom: none; 
+    }
 
     .header-menu-drop li a {
-        font-family: 'Nunito', sans-serif;
+        font-family: $Nunito-font;
         font-size: 1rem;
         padding: 10px 50px;
 
-        &:hover { color: #5c5c5c; }
+        &:hover { 
+            color: #5c5c5c; 
+        }
     }
 }
 
 .header-btn {
     color: #cfac8c;
-    font-family: 'Nunito', sans-serif;
+    font-family: $Nunito-font;
     margin: 0 20px;
     padding: 5px 15px;
     font-weight: 600;
     font-size: 1.2rem;
 
-    &:hover { color: #c79463; }
+    &:hover { 
+        color: $main-color-6; 
+    }
 }
 
 .menuToggle {
@@ -105,7 +113,9 @@
     cursor: pointer;
 
     .outline-close {
-        &:hover { transform: rotate(45deg); }
+        &:hover { 
+            transform: rotate(45deg); 
+        }
     }
 }
 
@@ -139,7 +149,10 @@
                  border-bottom: none;
                  padding: 5px 10px;
              }
-             & > a:hover { border-bottom: 3px solid #b8b6b6; }
+
+             & > a:hover { 
+                 border-bottom: 3px solid #b8b6b6; 
+            }
          }
 
          .header-menu-drop {
@@ -148,17 +161,19 @@
          }
      }
 
-     .header-nav.active .header-list { display: flex; }
+    .header-nav.active .header-list { 
+         display: flex; 
+    }
 
      .header-btn {
-         border: 2px solid #cfac8c;
+         border: 2px solid $main-color-2;
          text-align: center;
          width: 30%;
          margin: 10px 0;
          font-size: 1.2rem;
 
          &:hover {
-             background-color: #cfac8c;
+             background-color: $main-color-2;
              color: #fff;
          }
      }

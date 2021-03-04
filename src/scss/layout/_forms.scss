@@ -1,7 +1,7 @@
 .form-template {
     width: 100%;
     height: 935px;
-    background-color: #eee5de;
+    background-color: $bg-color-2;
 
     .container {
         width: 100%;
@@ -15,12 +15,12 @@
 
 .form-field {
     width: 400px;
-    background-color: #fdfdfd;
+    background-color: $bg-color-1;
     border-radius: 10px;
     padding: 0 40px;
 
     .form-title {
-        font-family: 'Fredoka One', cursive;
+        font-family: $Fredoka-font;
         text-align: center;
         padding: 40px 0 10px 0;
         font-size: 2rem;
@@ -44,7 +44,7 @@
 
         &:focus ~ .input-label {
             top: -5px;
-            color: #d3a887;
+            color: $main-color-2;
         }
 
         &:focus ~ .input-border::before {
@@ -60,7 +60,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: #cc8e5e;
+            background-color: $main-color-4;
             transition: 1s;
         }
         &.fill::before {
@@ -69,7 +69,7 @@
     }
     
     .input-label {
-        font-family: 'Montserrat', sans-serif;
+        font-family: $Montserrat-font;
         position: absolute;
         top: 50%;
         left: 5px;
@@ -80,10 +80,11 @@
         transition: .5s top;
         &.fix {
             top: -5px;
-            color: #d3a887;
+            color: $main-color-4;
         }
     }
 }
+
 
 .form-errmsg {
     color:red;
@@ -97,18 +98,18 @@
     a {
         margin: 0 2px;
         &:hover {
-            color: #d3a887;
+            color: $main-color-4;
             text-decoration: underline;
         }
     }
 }
 
 .form-submit {
-    font-family: 'Montserrat', sans-serif;
+    font-family: $Montserrat-font;
     width: 100%;
     height: 50px;
     border: 1px solid;
-    background: #d3a887;
+    background: $main-color-4;
     border-radius: 25px;
     font-size: 1.2rem;
     color : #fdfdfd;
@@ -118,24 +119,26 @@
     margin: 20px 0;
     
     &:hover {
-        background: rgb(204, 154, 115);
+        background: $main-color-5;
         transition: .5s;
     }
 }
 
 .form-signup-link {
-    font-family: 'Montserrat', sans-serif;
+    font-family: $Montserrat-font;
     margin: 10px 0 20px 0;
     text-align: center;
     font-size: 16px;
     color: #666666;
     
     a {
-        font-family: 'Montserrat', sans-serif;
-        color: #d3a887;
+        font-family: $Montserrat-font;
+        color: $main-color-4;
         text-decoration: none;
 
-        &:hover { text-decoration: underline; }
+        &:hover { 
+            text-decoration: underline; 
+        }
     }
 }
 
@@ -143,14 +146,17 @@
     margin: 10px 0 20px 0;
     text-align: center;
     p {
-        font-family: 'Montserrat', sans-serif;
+        font-family: $Montserrat-font;
         display: inline;
     }
     a { 
-        font-family: 'Montserrat', sans-serif;
+        font-family: $Montserrat-font;
         margin-left: 10px;
         color: #d3a887;
-        &:hover { text-decoration: underline; }
+
+        &:hover { 
+            text-decoration: underline; 
+        }
     }
 }
 

@@ -58,13 +58,25 @@ const FindIdComponent = (props) => {
                 <h1 className="form-title">Find ID</h1>
 
                 <div className="text-field">
-                        <input type="text" name="name" onChange={onChange} className="input-text" />
+                        <input 
+                            type="text" 
+                            name="name" 
+                            onChange={onChange} 
+                            className="input-text" 
+                            autocomplete="on"
+                        />
                         <span className={formValues.name ? "input-border fill" : "input-border"} />
                         <label className={formValues.name ? "input-label fix" : "input-label"}>Name</label>
                 </div>
 
                 <div className="text-field">
-                    <input type="text" name="email" onChange={onChange} className="input-text" />
+                    <input 
+                        type="text" 
+                        name="email" 
+                        onChange={onChange} 
+                        className="input-text" 
+                        autocomplete="on"
+                    />
                     <span className={formValues.email ? "input-border fill" : "input-border"} />
                     <label className={formValues.email ? "input-label fix" : "input-label"}>Email</label>
                 </div>

@@ -7,7 +7,7 @@
     align-items: center;
     flex-direction: column;
     padding: 0 50px;
-    background: #fdfdfd;
+    background: $bg-color-1;
 }
 
 .banner-img {
@@ -19,6 +19,7 @@
     overflow: hidden;
 
     a {
+        font-family: $Fredoka-font;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -28,11 +29,10 @@
         height: 100px;
         line-height: 100px;
         border-radius: 50%;
-        background: #d3a887;
+        background: $main-color-4;
         font-size: 1.3rem;
         transition: .5s transform;
         color: #fdfdfd;
-        font-family: 'Fredoka One', cursive;
 
         &:hover::after {
             content: "↓";
@@ -44,7 +44,7 @@
             line-height: 50px;
             transform: translate(-50%, -50%);
             font-size: 3.5rem;
-            color: #bb8053;
+            color: $main-color-8;
             font-weight: bold;
             border-radius: 50%;
             animation: arrow 1.2s infinite ease;
@@ -53,9 +53,13 @@
     
     &:hover a { 
         transform: translate(-50%, -50%) rotate(0); 
-        color: #fff;
+        color: #fdfdfd;
     }
-    &:hover img { opacity: 0.3; }
+
+    &:hover img { 
+        opacity: 0.3; 
+    }
+
     img {
         width: 100%;
         opacity: 0.8;
@@ -68,13 +72,21 @@
     margin-top: 150px;
     z-index: 99;
 
-    span, h1, p, em { font-family: 'Fredoka One', cursive; }
+    span, 
+    h1, 
+    p, 
+    em { 
+        font-family: $Fredoka-font; 
+    }
 
     h1 {
         position: relative;
         font-size: 4.8rem;
 
-        span, em { color: #cfac8c; }
+        span, 
+        em { 
+            color: $main-color-2; 
+        }
 
         em {
             position: absolute;
@@ -120,11 +132,14 @@
         height: 700px; 
     }
 
-    .banner-img {display: none;}
+    .banner-img {
+        display: none;
+    }
 
     .banner-title {
-        // margin-top: 100px;
-        h1 { font-size: 3rem; }
+        h1 { 
+            font-size: 3rem; 
+        }
     }
 }
 
@@ -157,15 +172,22 @@
             font-size: 1.65rem; 
         }
 
-        p { font-size: 0.6rem; }
+        p { 
+            font-size: 0.6rem; 
+        }
     }
 }
 
 /* 0 ~ 360px : 모바일1 */
 @media screen and (max-width: 360px){
     .banner-title {
-        h1 { font-size: 1.5rem; }
-        p { font-size: 0.5rem; }
+        h1 { 
+            font-size: 1.5rem; 
+        }
+        
+        p { 
+            font-size: 0.5rem; 
+        }
     }
 }
 
@@ -194,6 +216,10 @@
 }
 
 @keyframes arrow {
-    0% { opacity: 0.4; }
-    100% { opacity: 1; }
+    0% { 
+        opacity: 0.4; 
+    }
+    100% { 
+        opacity: 1; 
+    }
 }
