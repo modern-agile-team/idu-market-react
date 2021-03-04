@@ -15,13 +15,21 @@ const componentName = () => {
                 <Link to="/" className="footer-title"><span>I</span>UAM</Link>
                 <p className="copyright">Copyright &copy; <span className="footer-year">{thisYear()}</span> <span className="footer-wooahan">Wooahan Agile</span> All right reserved.</p>
                 <div className="footer-icons">
-                    <a href="https://www.notion.so/ko" target="_blank"className="footer-tooltip" data-tooltips="Wooahan Agile Notion">
+                    <button 
+                        onClick={() => window.open('https://www.notion.so/ko', '_blank')}
+                        className="footer-tooltip" 
+                        data-tooltips="Wooahan Agile Notion"
+                    >
                         <p className="ir_su">Notion icon</p>
                         <SiNotion className="footer-icon-notion"/>
-                    </a>
-                    <a href="https://www.induk.ac.kr/KR/intro.do" target="_blank" data-tooltips="Induk University" className="footer-tooltip">
+                    </button>
+                    <button
+                        onClick={() => window.open('https://www.induk.ac.kr/KR/index.do', '_blank')}
+                        data-tooltips="Induk University" 
+                        className="footer-tooltip"
+                    >
                         <div className="footer-icon-idu" />
-                    </a>
+                    </button>
                 </div>
                 
             </div>
