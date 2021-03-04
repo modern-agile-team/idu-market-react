@@ -1,6 +1,6 @@
 import React from 'react';
 
-const findPwdComponent = () => {
+const FindPwdComponent = () => {
     return (
         <div>
             hi
@@ -8,4 +8,4 @@ const findPwdComponent = () => {
     );
 };
 
-export default findPwdComponent;
+export default FindPwdComponent;

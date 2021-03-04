@@ -1,10 +1,10 @@
 import React from 'react';
-import findPwdComponent from '../../components/auth/FindPwdComponent';
+import FindPwdComponent from '../../components/auth/FindPwdComponent';
 
 const findPwdPage = () => {
     return (
         <div>
-            <findPwdComponent></findPwdComponent>
+            <FindPwdComponent></FindPwdComponent>
         </div>
     );
 };
