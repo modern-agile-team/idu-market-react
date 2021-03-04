@@ -1,11 +1,14 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HeaderMenuData } from '../../container/HeaderMenuData'
 import DropMenu from './DropMenu';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { LOGOUT_REQUEST } from '../../redux/types';
+
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+
 
 const Header = () => {
     const [sidebar, setSidebar] = useState(false);

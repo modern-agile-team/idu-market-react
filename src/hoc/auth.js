@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 export default function Auth(SpecificComponent, option, adminRoute = null) {
@@ -9,11 +10,12 @@ export default function Auth(SpecificComponent, option, adminRoute = null) {
     //adminRoute 파라미터는 admin만 출입가능하게하려면 true를 넣으면됨
 
     function AuthenticationCheck(props) {
-
+        const { jwt } = useSelector(state => state.loading);
+        console.log(jwt);
         useEffect(() => {
             //로그인하지 않은 상태
-            if (!localStorage.getItem('jwt')) {
-                if (option) props.history.push('/login');
+            if (!jwt) {
+                if (option === true) props.history.push('/login');
             } else {
             //로그인한 상태
                 if (option === false) props.history.push('/');

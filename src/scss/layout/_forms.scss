@@ -115,7 +115,7 @@
     font-weight: 700;
     cursor: pointer;
     outline: none;
-    margin: 20px 0 10px 0;
+    margin: 20px 0;
     
     &:hover {
         background: rgb(204, 154, 115);
@@ -125,7 +125,7 @@
 
 .form-signup-link {
     font-family: 'Montserrat', sans-serif;
-    margin: 20px 0;
+    margin: 10px 0 20px 0;
     text-align: center;
     font-size: 16px;
     color: #666666;
@@ -140,7 +140,7 @@
 }
 
 .form-question {
-    margin: 20px 0;
+    margin: 10px 0 20px 0;
     text-align: center;
     p {
         font-family: 'Montserrat', sans-serif;
@@ -153,3 +153,55 @@
         &:hover { text-decoration: underline; }
     }
 }
+
+.modal-wrapper {
+    width: 400px;
+    height: 100px;
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: #fdfdfd;
+    border: 2px solid #016401;
+    z-index: 1000;
+    border-radius: 12px;
+    padding: 10px;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    .modal-icon {
+        color: #00B300;
+        vertical-align: center;
+        margin-right: 8px;
+        font-size: 1.2rem;
+    }
+
+    .loading {
+        position: relative;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        border:dashed 3px rgb(0, 179, 0);
+        animation: spin 2s linear infinite;
+        margin-right: 15px;
+    }
+    
+    .modal-msg{
+        color: #000;
+        font-size: 1.1rem;
+    }
+}
+
+@keyframes spin {
+    from   {  
+        transform: rotate(0deg); 
+    }
+    to   {  
+        transform: rotate(360deg); 
+    }
+  }
