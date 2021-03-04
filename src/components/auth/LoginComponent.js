@@ -61,8 +61,8 @@ const LoginComponent = (props) => {
 
                     <div className="form-search">
                         <p>
-                            <Link to="/">아이디</Link><span> / </span>
-                            <Link to="/">비밀번호</Link>
+                            <Link to="/findId">아이디</Link><span> / </span>
+                            <Link to="/findPwd">비밀번호</Link>
                             <span>찾기</span>
                         </p>
                     </div>

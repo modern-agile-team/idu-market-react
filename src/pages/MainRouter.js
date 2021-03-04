@@ -7,6 +7,8 @@ import RegisterPage from './authPages/RegisterPage';
 import WritePage from './Boards/WritePage';
 import BoardListPage from './Boards/BoardListPage';
 import BoardPage from './Boards/BoardPage';
+import findIdPage from './authPages/findIdPage';
+import findPwdPage from './authPages/findPwdPage';
 
 import Auth from '../hoc/auth';
   
@@ -24,6 +26,7 @@ const MainRouter = () => {
         console.log(e);
     }
 
+    
     return (
         <>  
             <Router>
@@ -32,6 +35,8 @@ const MainRouter = () => {
                 <Route component={Auth(HomePage, null)} path="/" exact />
                 <Route component={Auth(LoginPage, false)} path="/login" exact/>
                 <Route component={Auth(RegisterPage, false)} path="/register" exact/>
+                <Route component={Auth(findIdPage, false)} path="/findId" exact/>
+                <Route component={Auth(findPwdPage, false)} path="/findPwd" exact/>
                 <Route component={WritePage} path="/write" exact/>
                 <Route component={BoardListPage} path="/boardlist" exact/>
                 <Route component={BoardPage} path="/board" exact/>
