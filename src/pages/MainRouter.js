@@ -1,15 +1,21 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+//Header
 import Header from '../components/Header/Header';
+
+//auth
 import HomePage from './HomePage/HomePage';
 import LoginPage from './authPages/LoginPage';
 import RegisterPage from './authPages/RegisterPage';
-import WritePage from './Boards/WritePage';
-import BoardListPage from './Boards/BoardListPage';
-import BoardPage from './Boards/BoardPage';
 import FindIdPage from './authPages/FindIdPage';
 import FindPasswordPage from './authPages/FindPasswordPage';
+
+//marketBoards
+import BookListPage from './Boards/Book/BookListPage';
+import WritePage from './Boards/WritePage';
+import BoardPage from './Boards/BoardPage';
+
 
 import Auth from '../hoc/auth';
   
@@ -38,8 +44,10 @@ const MainRouter = () => {
                 <Route component={Auth(RegisterPage, false)} path="/register" exact/>
                 <Route component={Auth(FindIdPage, false)} path="/findId" exact/>
                 <Route component={Auth(FindPasswordPage, false)} path="/findPwd" exact/>
+
+                {/* boards list */}
+                <Route component={Auth(BookListPage, null)} path="/boards/book" exact/>
                 <Route component={WritePage} path="/write" exact/>
-                <Route component={BoardListPage} path="/boardlist" exact/>
                 <Route component={BoardPage} path="/board" exact/>
               </Switch>
             </Router>
