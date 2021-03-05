@@ -40,7 +40,7 @@ const FindPasswordComponent = (props) => {
                     setModalMsg(response.data.mag);
                     setTimeout(() => {
                         props.history.push('/login');
-                    }, 1500)
+                    }, 2500)
                 }
             }).catch(err => {
                 const response = err.response;

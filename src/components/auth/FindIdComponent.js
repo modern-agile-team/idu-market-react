@@ -35,7 +35,7 @@ const FindIdComponent = (props) => {
                     setModalLoading(false);
                     setModal(true);
                     console.log(response.data);
-                    setModalMsg(response.data.mag);
+                    setModalMsg(response.data.msg);
                     setTimeout(() => {
                         props.history.push('/login');
                     }, 1500)
