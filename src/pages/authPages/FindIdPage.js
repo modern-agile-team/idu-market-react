@@ -6,7 +6,6 @@ const FindLoginPage = () => {
     return (
         <>
             <FindIdComponent></FindIdComponent>
-            <h1>hi</h1>
         </>
     );
 };

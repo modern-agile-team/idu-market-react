@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import { IoIosCheckmarkCircle } from "react-icons/io";
@@ -82,6 +82,13 @@ const FindIdComponent = (props) => {
                 </div>
 
                 <p className="form-errmsg">{errorMsg}</p>
+
+                <div className="form-search">
+                        <p>
+                            <Link to="/login">Login</Link><span> / </span>
+                            <Link to="/register">Sign Up</Link>
+                        </p>
+                </div>
 
                 <input type="submit" value="Find ID" onClick={onSubmitHandler} className="form-submit"/>
             </form>
