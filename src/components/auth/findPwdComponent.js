@@ -3,7 +3,7 @@ import React from 'react';
 const FindPwdComponent = () => {
     return (
         <div>
-            hihi
+            hihihihi
         </div>
     );
 };

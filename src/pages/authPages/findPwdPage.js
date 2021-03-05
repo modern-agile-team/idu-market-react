@@ -6,6 +6,7 @@ const FindPwdPage = () => {
     return (
         <>
             <FindPwdComponent></FindPwdComponent>
+            <h1>hi</h1>
         </>
     );
 };
