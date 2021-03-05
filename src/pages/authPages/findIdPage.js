@@ -1,4 +1,5 @@
 import React from 'react';
+
 import FindIdComponent from '../../components/auth/FindIdComponent';
 
 const FindLoginPage = () => {
