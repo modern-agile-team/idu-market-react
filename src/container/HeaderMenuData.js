@@ -1,10 +1,10 @@
 export const HeaderMenuData = [
     {
-        title: 'Menu2',
+        title: 'Markets',
         subMenu: [
             {
-                title: 'Board1',
-                path: '/board',
+                title: 'Book',
+                path: '/boards/book',
             },
             {
                 title: 'Board2',
