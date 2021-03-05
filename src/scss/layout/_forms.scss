@@ -161,14 +161,14 @@
 }
 
 .modal-wrapper {
-    width: 400px;
+    width: 550px;
     height: 100px;
     position: fixed;
     top: 15%;
     left: 50%;
     transform: translate(-50%);
     background-color: #fdfdfd;
-    border: 2px solid #016401;
+    border: 2.5px solid #014901;
     z-index: 1000;
     border-radius: 12px;
     padding: 10px;
@@ -199,7 +199,7 @@
     
     .modal-msg{
         color: #000;
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 }
 
