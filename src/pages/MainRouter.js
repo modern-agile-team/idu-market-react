@@ -9,7 +9,7 @@ import WritePage from './Boards/WritePage';
 import BoardListPage from './Boards/BoardListPage';
 import BoardPage from './Boards/BoardPage';
 import FindIdPage from './authPages/FindIdPage';
-import FindPwdPage from './authPages/FindPwdPage';
+import FindPasswordPage from './authPages/FindPasswordPage';
 
 import Auth from '../hoc/auth';
   
@@ -37,7 +37,7 @@ const MainRouter = () => {
                 <Route component={Auth(LoginPage, false)} path="/login" exact/>
                 <Route component={Auth(RegisterPage, false)} path="/register" exact/>
                 <Route component={Auth(FindIdPage, false)} path="/findId" exact/>
-                <Route component={Auth(FindPwdPage, false)} path="/findPwd" exact/>
+                <Route component={Auth(FindPasswordPage, false)} path="/findPwd" exact/>
                 <Route component={WritePage} path="/write" exact/>
                 <Route component={BoardListPage} path="/boardlist" exact/>
                 <Route component={BoardPage} path="/board" exact/>
