@@ -1,0 +1,360 @@
+.market {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    
+    .container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}
+
+.market-items {
+    position: relative;
+    width: 20%;
+    margin: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid $main-color-4;
+    border-radius: 5px;
+    transition: .3s transform;
+    padding: 5px;
+
+    &:nth-child(4n-3) {
+        margin-left: 4%;
+    }
+
+    &:hover {
+        transform: translateY(-8px);
+    }
+}
+
+.market-img-box-link {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $main-color-6;
+
+    .market-img-box {
+        display: flex;
+        justify-content: center;
+    }
+
+    img {
+        width: 80%
+    }
+}
+
+.market-item-title {
+    width: 200px;
+    font-family: $Jua-font;
+    font-size: 1.2rem;
+    margin: 15px 0 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+
+    &:hover {
+        color: $main-color-7
+    }
+}
+
+.market-item-price {
+    position: relative;
+    font-family: $Jua-font;
+    left: 33%;
+}
+
+.market-item-id {
+    position: relative;
+    left: 34.5%;
+    color: #999;
+    font-size: .8rem;
+}
+
+.market-item-date {
+    position: relative;
+    left: 25%;
+    color: #999;
+    font-size: .8rem;
+}
+
+.upload-btn {
+    position: absolute;
+    font-family: $Fredoka-font;
+    left: 65px;
+    top: -70px;
+    outline: none;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 50%;
+    border: 3px solid $main-color-3;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .upload-btn-icon {
+        font-size: 3rem;
+        color: $main-color-3;
+    }
+
+    &:hover {
+        border: 3px solid $main-color-5;
+    }
+
+    &:hover .upload-btn-icon{
+        color: $main-color-5;
+    }
+}
+
+.market-search {
+    position: absolute;
+    top: -50px;
+    right: 45px;
+
+    .market-search-input {
+        font-family: $Montserrat-font;
+        position: relative;
+        width: 300px;
+        border: none;
+        border-bottom: 2px solid #999;
+        outline: none;
+        font-size: 1.3rem;
+        height: 40px;
+        padding: 0 30px 0 5px;
+
+        &:focus ~ .input-label {
+            top: -5px;
+            color: $main-color-2;
+        }
+    
+        &:focus ~ .input-border::before {
+            width: 100%;
+        }
+    }
+
+    .markget-search-btn {
+        position: absolute;
+        font-size: 20px;
+        background-color: transparent;
+        right: 0;
+        outline: none;
+        cursor: pointer;
+        z-index: 999;
+    }
+}
+
+.input-border {
+    &::before {
+        content: '';
+        position: absolute;
+        top: 38px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $main-color-4;
+        transition: 1s;
+    }
+
+    &.fill::before {
+        width: 100%;
+    }
+}
+
+.input-label {
+    font-family: $Montserrat-font;
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s top;
+    
+    &.fix {
+        top: -5px;
+        color: $main-color-4;
+    }
+}
+
+.scroll-top-btn {
+    z-index: 999;
+    position: fixed;
+    right: 20px;
+    bottom: 120px;
+    background: transparent;
+    cursor: pointer;
+
+    svg {
+        font-size: 3.5rem;
+    }
+    &::before {
+        content: "Scroll-Top";
+        position: absolute;
+        bottom: -10px;
+        left: -10px;
+        width: 100px;
+    }
+    &:hover {
+        color: $main-color-4;
+        animation: arrow-top 1s ease-in-out infinite;
+    }
+}
+
+@media screen and (max-width: 1300px) { 
+    .market-items { 
+        width: 27%;
+
+        &:nth-child(4n-3) {
+            margin-left: 2%;
+        }
+        &:nth-child(3n-2) {
+            margin-left: 7%;
+        }
+    }
+
+    .market-item-title {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 970px) { 
+    .market-items { 
+        width: 35%;
+
+        &:nth-child(3n-2) {
+            margin-left: 2%;
+        }
+        &:nth-child(2n-1) {
+            margin-left: 12%;
+        }
+    }
+
+    .market-search {
+        right: 90px;
+        .market-search-input {
+            width: 200px;
+        }
+    }
+    .upload-btn {
+        width: 50px;
+        height: 50px;
+        top: -50px;
+        .upload-btn-icon {
+            font-size: 2rem;
+        }
+    }
+}
+
+@media screen and (max-width: 760px) { 
+    .market-items { 
+        width: 70%;
+
+        &:nth-child(2n-1) {
+            margin-left: 2%;
+        }
+
+        &:nth-child(n) {
+            margin-left: 15%;
+        }
+    }
+    .market-item-title {
+        width: 230px;
+    }
+    .market-item-price {
+        left: 36%;
+    }
+    
+    .market-item-id {
+        left: 37%;
+    }
+    
+    .market-item-date {
+        left: 30%;
+    }
+    .market-search {
+        right: 50px;
+        .market-search-input {
+            width: 200px;
+        }
+    }
+    .upload-btn {
+        width: 50px;
+        height: 50px;
+        .upload-btn-icon {
+            font-size: 2rem;
+        }
+    }
+    .scroll-top-btn { 
+        svg {
+            font-size: 2.5rem;
+        }
+        &::before {
+            font-size: 0.5rem;
+            left: -5px;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .market-items { 
+        width: 80%;
+        margin: 3%;
+        &:nth-child(n) {
+            margin-left: 10%;
+        }
+    }
+    .market-item-price {
+        left: 35%;
+    }
+    
+    .market-item-id {
+        left: 36%;
+    }
+    
+    .market-item-date {
+        left: 28%;
+    }
+
+    .market-search {
+        right: 30px;
+        .market-search-input {
+            width: 200px;
+        }
+    }
+    .upload-btn {
+        top: -60px;
+        left: 20px;
+    }
+    .scroll-top-btn { 
+        svg {
+            font-size: 2rem;
+        }
+        &::before {
+            font-size: 0.3rem;
+            left: -5px;
+        }
+    }
+} 
+
+@keyframes arrow-top {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-20px);
+    }
+}
