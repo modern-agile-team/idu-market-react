@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import FindPasswordComponent from '../../components/auth/FindPasswordComponent';
+import FindPasswordComponent from "../../components/auth/FindPasswordComponent";
 
 const FindPwdPage = () => {
-    return (
-        <>
-            <FindPasswordComponent></FindPasswordComponent>
-        </>
-    );
+  return (
+    <>
+      <FindPasswordComponent></FindPasswordComponent>
+    </>
+  );
 };
 
 export default FindPwdPage;

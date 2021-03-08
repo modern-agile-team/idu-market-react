@@ -1,93 +1,111 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
-import { LOGIN_REQUEST } from '../../redux/types'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, withRouter } from "react-router-dom";
+import { LOGIN_REQUEST } from "../../redux/types";
 
 const LoginComponent = (props) => {
-    const [errorMsg, setErrorMsg] = useState('');
-    const [formValues, setFormValues] = useState({
-        id: "",
-        psword: "",
-    })
+  const [errorMsg, setErrorMsg] = useState("");
+  const [formValues, setFormValues] = useState({
+    id: "",
+    psword: "",
+  });
 
-    const { loginErrorMsg, checkLogin } = useSelector(state => state.auth);
-    const dispatch = useDispatch();
+  const { loginErrorMsg, checkLogin } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        setErrorMsg(loginErrorMsg);
-        if (checkLogin) props.history.push('/');
-    }, [loginErrorMsg, checkLogin]);
+  useEffect(() => {
+    setErrorMsg(loginErrorMsg);
+    if (checkLogin) props.history.push("/");
+  }, [loginErrorMsg, checkLogin]);
 
-    const onChange = e => {
-        setFormValues({
-            ...formValues,
-            [e.target.name]: e.target.value,
-        });
-    }
-    
-    const onSubmitHandler = e => {
-        const {id, psword} = formValues;
-        const body = { id, psword };
+  const onChange = (e) => {
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-        e.preventDefault();
+  const onSubmitHandler = (e) => {
+    const { id, psword } = formValues;
+    const body = { id, psword };
 
-        dispatch({
-            type: LOGIN_REQUEST,
-            payload: body,
-        });
-    }
+    e.preventDefault();
 
+    dispatch({
+      type: LOGIN_REQUEST,
+      payload: body,
+    });
+  };
 
-    return (
-        <section id="form-template" className="form-template">
-            <div className="container">
-                <form className="form-field">
-                    <h1 className="form-title">LOGIN</h1>
+  return (
+    <section id="form-template" className="form-template">
+      <div className="container">
+        <form className="form-field">
+          <h1 className="form-title">LOGIN</h1>
 
-                    <div className="text-field">
-                        <input 
-                            type="text" 
-                            name="id" 
-                            onChange={onChange}
-                            className="input-text" 
-                            autocomplete="on"
-                        />
-                        <span className={formValues.id ? "input-border fill" : "input-border"} />
-                        <label className={formValues.id ? "input-label fix" : "input-label"}>ID</label>
-                    </div>
+          <div className="text-field">
+            <input
+              type="text"
+              name="id"
+              onChange={onChange}
+              className="input-text"
+              autocomplete="on"
+            />
+            <span
+              className={formValues.id ? "input-border fill" : "input-border"}
+            />
+            <label
+              className={formValues.id ? "input-label fix" : "input-label"}
+            >
+              ID
+            </label>
+          </div>
 
-                    <div className="text-field">
-                        <input 
-                            type="password" 
-                            name="psword" 
-                            onChange={onChange} 
-                            className="input-text" 
-                            autocomplete="on"
-                        />
-                        <span className={formValues.psword ? "input-border fill" : "input-border"}/>
-                        <label className={formValues.psword ? "input-label fix" : "input-label"}>Password</label>
+          <div className="text-field">
+            <input
+              type="password"
+              name="psword"
+              onChange={onChange}
+              className="input-text"
+              autocomplete="on"
+            />
+            <span
+              className={
+                formValues.psword ? "input-border fill" : "input-border"
+              }
+            />
+            <label
+              className={formValues.psword ? "input-label fix" : "input-label"}
+            >
+              Password
+            </label>
+          </div>
 
-                    </div>
+          <p className="form-errmsg">{errorMsg}</p>
 
-                    <p className="form-errmsg">{errorMsg}</p>
+          <div className="form-search">
+            <p>
+              <Link to="/findId">아이디</Link>
+              <span> / </span>
+              <Link to="/findPwd">비밀번호</Link>
+              <span>찾기</span>
+            </p>
+          </div>
 
-                    <div className="form-search">
-                        <p>
-                            <Link to="/findId">아이디</Link><span> / </span>
-                            <Link to="/findPwd">비밀번호</Link>
-                            <span>찾기</span>
-                        </p>
-                    </div>
+          <input
+            type="submit"
+            value="Login"
+            onClick={onSubmitHandler}
+            className="form-submit"
+          />
 
-                    <input type="submit" value="Login" onClick={onSubmitHandler} className="form-submit"/>
-
-                    <div className="form-signup-link">
-                        Not a Member? <Link to="/register">Sign Up</Link>
-                    </div>
-                </form>
-            </div>
-        </section>
-    );
+          <div className="form-signup-link">
+            Not a Member? <Link to="/register">Sign Up</Link>
+          </div>
+        </form>
+      </div>
+    </section>
+  );
 };
 
 export default withRouter(LoginComponent);
