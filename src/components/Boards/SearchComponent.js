@@ -3,7 +3,7 @@ import { BsSearch } from "react-icons/bs";
 import { BiEditAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
-const SearchComponent = () => {
+const SearchComponent = ({ codeName }) => {
   const [formValues, setFormValues] = useState({
     search: "",
   });
@@ -16,7 +16,7 @@ const SearchComponent = () => {
 
   return (
     <>
-      <Link to="/boards/book/write" className="upload-btn">
+      <Link to={`/boards/${codeName}/write`} className="upload-btn">
         <BiEditAlt className="upload-btn-icon" />
       </Link>
       <div className="market-search">

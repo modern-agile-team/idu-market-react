@@ -6,7 +6,7 @@ const DeviceListPage = () => {
   return (
     <>
       <BoardBanner title="Market" desc="Clothes" />
-      <DeviceListComponent></DeviceListComponent>
+      <DeviceListComponent codeName="device" />
     </>
   );
 };

@@ -6,7 +6,7 @@ const ClothesListPage = () => {
   return (
     <>
       <BoardBanner title="Market" desc="Clothes" />
-      <ClothesListComponent></ClothesListComponent>
+      <ClothesListComponent codeName="clothes" />
     </>
   );
 };
