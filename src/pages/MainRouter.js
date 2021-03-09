@@ -14,14 +14,16 @@ import FindPasswordPage from "./authPages/FindPasswordPage";
 
 //marketBoards
 import BookListPage from "./Boards/Market/BookListPage";
-import WritePage from "./Boards/WritePage";
+import DeviceListPage from "./Boards/Market/DeviceListPage";
+import PostWritePage from "./Boards/PostWritePage";
+
 import BoardPage from "./Boards/BoardPage";
 
 import Auth from "../hoc/auth";
 
 import { useDispatch } from "react-redux";
 import { LOADING_REQUEST } from "../redux/types";
-import DeviceListPage from "./Boards/Market/DeviceListPage";
+import ClothesListPage from "./Boards/Market/ClothesListPage";
 
 const MainRouter = () => {
   const dispatch = useDispatch();
@@ -60,11 +62,15 @@ const MainRouter = () => {
             exact
           />
           <Route
-            component={Auth(DeviceListPage, null)}
+            component={Auth(ClothesListPage, null)}
             path="/boards/clothes"
             exact
           />
-          <Route component={WritePage} path="/boards/book/write" exact />
+          <Route
+            component={PostWritePage}
+            path="/boards/:codeName/write"
+            exact
+          />
           <Route component={BoardPage} path="/board" exact />
         </Switch>
         <Footer></Footer>

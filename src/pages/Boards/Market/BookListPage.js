@@ -6,7 +6,7 @@ const BookListPage = () => {
   return (
     <>
       <BoardBanner title="Market" desc="Book" />
-      <BookListComponent />
+      <BookListComponent codeName="book" />
     </>
   );
 };

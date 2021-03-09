@@ -132,6 +132,7 @@
     ]
   },
   "proxy": "http://13.125.55.135:8080/",
+  
   "jest": {
     "roots": [
       "<rootDir>/src"

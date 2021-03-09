@@ -1,0 +1,158 @@
+.post-write {
+  width: 100%;
+  padding: 50px 0;
+
+  .container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
+
+.post-write-form {
+  position: relative;
+}
+
+.form-group {
+  width: 100%;
+  margin: 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.write-input {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: none;
+  font-size: 1.8rem;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.post-write-border {
+  height: 2px;
+  width: 100%;
+  background-color: #999;
+}
+
+.post-btn-box {
+  position: absolute;
+  right: 0;
+  bottom: -20px;
+
+  .post-write-btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-right: 30px;
+    background-color: $main-color-2;
+    color: #fdfdfd;
+    font-size: 19px;
+    &:hover {
+      background-color: $main-color-5;
+    }
+  }
+  .post-cancel-btn {
+    padding: 5px 10px;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border: 1px solid $main-color-2;
+  }
+}
+
+//CKEditor5 Setting
+.ck {
+  .ck-editor {
+      width: 900px;
+  }
+  .ck-toolbar {
+    width: 900px;
+  }
+}
+
+.ck-editor__editable {
+  max-height: 30rem;
+  min-height: 30rem;
+  width: 900px;
+}
+
+.ck-editor__editable_inline {
+  max-height: 30rem;
+  min-height: 30rem;
+  width: 900px;
+}
+
+@media screen and (max-width: 1024px) { 
+
+  //CKEditor5 Setting
+  .ck {
+    .ck-editor {
+        width: 700px;
+    }
+    .ck-toolbar {
+      width: 700px;
+    }
+  }
+
+  .ck-editor__editable {
+    width: 700px;
+  }
+
+  .ck-editor__editable_inline {
+    width: 700px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+    //CKEditor5 Setting
+    .ck {
+      .ck-editor {
+          width: 450px;
+      }
+      .ck-toolbar {
+        width: 450px;
+      }
+    }
+  
+    .ck-editor__editable {
+      max-height: 25rem;
+      min-height: 25rem;
+      width: 450px;
+    }
+  
+    .ck-editor__editable_inline {
+      max-height: 25rem;
+      min-height: 25rem;
+      width: 450px;
+    }
+ }
+
+ @media screen and (max-width: 480px) {
+    //CKEditor5 Setting
+    .ck {
+      .ck-editor {
+          width: 320px;
+      }
+      .ck-toolbar {
+        width: 320px;
+      }
+    }
+  
+    .ck-editor__editable {
+      max-height: 20rem;
+      min-height: 20rem;
+      width: 320px;
+    }
+  
+    .ck-editor__editable_inline {
+      max-height: 20rem;
+      min-height: 20rem;
+      width: 320px;
+    }
+ }
