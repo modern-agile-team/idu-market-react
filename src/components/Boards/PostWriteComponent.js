@@ -21,7 +21,7 @@ const PostWriteComponent = (props) => {
 
     if (data && data.match("<img src=")) {
       const whereImgStart = data.indexOf("<img src=");
-      const extName = ["jpeg", "png", "jpg", "gif"];
+      const extName = ["jpeg", "png", "jpg", "gif", "PNG", "JPEG", "JPG", "GIF"];
 
       let whereImgEnd = "";
       let extNameFind = "";
@@ -34,7 +34,7 @@ const PostWriteComponent = (props) => {
         }
       }
 
-      if (extNameFind === "jpeg") {
+      if (extNameFind === "jpeg" || extNameFind === 'JPEG') {
         resultImgUrl = data.substring(whereImgStart + 10, whereImgEnd + 4);
       } else {
         resultImgUrl = data.substring(whereImgStart + 10, whereImgEnd + 3);
