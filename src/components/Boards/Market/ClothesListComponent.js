@@ -4,7 +4,7 @@ import { BoardItemData } from "../../../container/BoardItemData";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import SearchComponent from "../SearchComponent";
 
-const BookListComponent = () => {
+const ClothesListComponent = () => {
   return (
     <section className="market" id="market">
       <a href="#board-banner" className="scroll-top-btn">
@@ -12,14 +12,14 @@ const BookListComponent = () => {
       </a>
       <SearchComponent />
       <div className="container">
-        {BoardItemData.map((board, index) => {
+        {BoardItemData.map((board) => {
           return (
-            <div className="market-items">
+            <div className="market-items" key={board.num}>
               <Link
                 to={`/boards/book/${board.num}`}
                 className="market-img-box-link"
               >
-                <div key={board.num} className="market-img-box">
+                <div className="market-img-box">
                   <img src={board.image} alt="test" />
                 </div>
               </Link>
@@ -37,4 +37,4 @@ const BookListComponent = () => {
   );
 };
 
-export default BookListComponent;
+export default ClothesListComponent;

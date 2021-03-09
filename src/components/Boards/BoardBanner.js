@@ -1,12 +1,12 @@
 import React from "react";
 
-const BoardBanner = () => {
+const BoardBanner = ({ title, desc }) => {
   return (
     <section className="board-banner" id="board-banner">
       <div className="container">
         <div className="board-banner-circle">
-          <h1 className="board-banner-title">Market</h1>
-          <p className="board-banner-desc">Book</p>
+          <h1 className="board-banner-title">{title}</h1>
+          <p className="board-banner-desc">{desc}</p>
         </div>
       </div>
     </section>
