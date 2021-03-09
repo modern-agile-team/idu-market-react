@@ -1,18 +1,18 @@
 export const HeaderMenuData = [
   {
-    title: "Markets",
+    title: "Market",
     subMenu: [
       {
         title: "Book",
         path: "/boards/book",
       },
       {
-        title: "Board2",
-        path: "/menu2/board2",
+        title: "Device",
+        path: "/boards/device",
       },
       {
-        title: "Board3",
-        path: "/menu2/board3",
+        title: "Clothes",
+        path: "/boards/clothes",
       },
     ],
   },
