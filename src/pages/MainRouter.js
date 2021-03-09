@@ -15,6 +15,8 @@ import FindPasswordPage from "./authPages/FindPasswordPage";
 //marketBoards
 import BookListPage from "./Boards/Market/BookListPage";
 import DeviceListPage from "./Boards/Market/DeviceListPage";
+import ClothesListPage from "./Boards/Market/ClothesListPage";
+
 import PostWritePage from "./Boards/PostWritePage";
 
 import BoardPage from "./Boards/BoardPage";
@@ -23,7 +25,7 @@ import Auth from "../hoc/auth";
 
 import { useDispatch } from "react-redux";
 import { LOADING_REQUEST } from "../redux/types";
-import ClothesListPage from "./Boards/Market/ClothesListPage";
+
 
 const MainRouter = () => {
   const dispatch = useDispatch();

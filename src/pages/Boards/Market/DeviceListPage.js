@@ -5,7 +5,7 @@ import DeviceListComponent from "../../../components/Boards/Market/DeviceListCom
 const DeviceListPage = () => {
   return (
     <>
-      <BoardBanner title="Market" desc="Clothes" />
+      <BoardBanner title="Market" desc="Device" />
       <DeviceListComponent codeName="device" />
     </>
   );
