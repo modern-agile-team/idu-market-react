@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import SearchComponent from "../SearchComponent";
+import { MARKET_GET_REQUEST } from "../../../redux/types";
 
 import { BoardItemData } from "../../../container/BoardItemData";
+import { useDispatch } from "react-redux";
 
-const BookListComponent = ({ codeName }) => {
+const BookListComponent = ({ categoryName }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({
+      type: MARKET_GET_REQUEST,
+      payload: categoryName,
+    });
+  }, [dispatch]);
+
   return (
     <section className="market" id="market">
       <a href="#board-banner" className="scroll-top-btn">
         <AiOutlineArrowUp />
       </a>
-      <SearchComponent codeName={codeName} />
+      <SearchComponent categoryName={categoryName} />
       <div className="container">
         {BoardItemData.map((board) => {
           return (

@@ -1,5 +1,6 @@
-import { all, fork } from 'redux-saga/effects';
-import authSaga from './authSaga';
+import { all, fork } from "redux-saga/effects";
+import authSaga from "./authSaga";
+import marketSaga from "./marketSaga";
 // import axios from 'axios';
 // import dotenv from 'dotenv';
 
@@ -8,7 +9,5 @@ import authSaga from './authSaga';
 
 //제너레이터
 export default function* rootSaga() {
-    yield all([
-        fork(authSaga),
-    ]);
+  yield all([fork(authSaga), fork(marketSaga)]);
 }
