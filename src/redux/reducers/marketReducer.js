@@ -1,7 +1,13 @@
 import {
-  MARKET_GET_REQUEST,
-  MARKET_GET_SUCCESS,
-  MARKET_GET_FAILURE,
+  BOOK_GET_REQUEST,
+  BOOK_GET_SUCCESS,
+  BOOK_GET_FAILURE,
+  DEVICE_GET_REQUEST,
+  DEVICE_GET_FAILURE,
+  DEVICE_GET_SUCCESS,
+  CLOTHES_GET_REQUEST,
+  CLOTHES_GET_SUCCESS,
+  CLOTHES_GET_FAILURE,
 } from "../types";
 
 const initialState = {
@@ -12,22 +18,28 @@ const initialState = {
 
 const market = (state = initialState, action) => {
   switch (action.type) {
-    case MARKET_GET_REQUEST:
+    case DEVICE_GET_REQUEST:
+    case CLOTHES_GET_REQUEST:
+    case BOOK_GET_REQUEST:
       return {
         ...state,
         loading: true,
         responseMsg: "",
       };
 
-    case MARKET_GET_SUCCESS:
+    case DEVICE_GET_SUCCESS:
+    case CLOTHES_GET_SUCCESS:
+    case BOOK_GET_SUCCESS:
       return {
         ...state,
-        data: [...state.data, ...action.payload.boards],
+        data: [...action.payload.boards],
         loading: false,
         responseMsg: action.payload.msg,
       };
 
-    case MARKET_GET_FAILURE:
+    case DEVICE_GET_FAILURE:
+    case CLOTHES_GET_FAILURE:
+    case BOOK_GET_FAILURE:
       return {
         ...state,
         loading: false,
