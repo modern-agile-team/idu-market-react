@@ -14,7 +14,6 @@ const Header = () => {
 
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.loading);
-  console.log(loading);
 
   const showSidebar = () => setSidebar(!sidebar);
 

@@ -4,13 +4,13 @@ import { BoardItemData } from "../../../container/BoardItemData";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import SearchComponent from "../SearchComponent";
 
-const ClothesListComponent = ({ codeName }) => {
+const ClothesListComponent = ({ categoryName }) => {
   return (
     <section className="market" id="market">
       <a href="#board-banner" className="scroll-top-btn">
         <AiOutlineArrowUp />
       </a>
-      <SearchComponent codeName={codeName} />
+      <SearchComponent categoryName={categoryName} />
       <div className="container">
         {BoardItemData.map((board) => {
           return (

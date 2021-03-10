@@ -26,7 +26,6 @@ import Auth from "../hoc/auth";
 import { useDispatch } from "react-redux";
 import { LOADING_REQUEST } from "../redux/types";
 
-
 const MainRouter = () => {
   const dispatch = useDispatch();
   try {
@@ -70,7 +69,7 @@ const MainRouter = () => {
           />
           <Route
             component={PostWritePage}
-            path="/boards/:codeName/write"
+            path="/boards/:categoryName/write"
             exact
           />
           <Route component={BoardPage} path="/board" exact />
