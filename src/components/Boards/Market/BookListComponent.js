@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BoardItemData } from "../../../container/BoardItemData";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import SearchComponent from "../SearchComponent";
+
+import { BoardItemData } from "../../../container/BoardItemData";
 
 const BookListComponent = ({ codeName }) => {
   return (

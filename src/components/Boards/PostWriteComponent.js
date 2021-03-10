@@ -21,7 +21,16 @@ const PostWriteComponent = (props) => {
 
     if (data && data.match("<img src=")) {
       const whereImgStart = data.indexOf("<img src=");
-      const extName = ["jpeg", "png", "jpg", "gif", "PNG", "JPEG", "JPG", "GIF"];
+      const extName = [
+        "jpeg",
+        "png",
+        "jpg",
+        "gif",
+        "PNG",
+        "JPEG",
+        "JPG",
+        "GIF",
+      ];
 
       let whereImgEnd = "";
       let extNameFind = "";
@@ -34,7 +43,7 @@ const PostWriteComponent = (props) => {
         }
       }
 
-      if (extNameFind === "jpeg" || extNameFind === 'JPEG') {
+      if (extNameFind === "jpeg" || extNameFind === "JPEG") {
         resultImgUrl = data.substring(whereImgStart + 10, whereImgEnd + 4);
       } else {
         resultImgUrl = data.substring(whereImgStart + 10, whereImgEnd + 3);
@@ -84,7 +93,7 @@ const PostWriteComponent = (props) => {
               editor={ClassicEditor}
               config={editorConfiguration}
               onReady={Myinit}
-              onBlur={getDataFromCKEditor}
+              onClick={getDataFromCKEditor}
             />
           </div>
 
