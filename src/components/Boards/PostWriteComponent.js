@@ -55,6 +55,8 @@ const PostWriteComponent = (props) => {
         fileUrl: resultImgUrl,
         contents: data,
       });
+
+      console.log(formValues);
     } else {
       setFormValues({
         ...formValues,
@@ -93,7 +95,7 @@ const PostWriteComponent = (props) => {
               editor={ClassicEditor}
               config={editorConfiguration}
               onReady={Myinit}
-              onClick={getDataFromCKEditor}
+              onBlur={getDataFromCKEditor}
             />
           </div>
 
