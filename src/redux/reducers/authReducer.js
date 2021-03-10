@@ -18,6 +18,7 @@ const initialState = {
   successMsg: "",
   loginErrorMsg: "",
   registerErrorMsg: "",
+  userId: "",
 };
 
 const auth = (state = initialState, action) => {
@@ -34,6 +35,7 @@ const auth = (state = initialState, action) => {
 
     case LOGIN_SUCCESS:
       localStorage.setItem("jwt", action.payload.jwt);
+      localStorage.setItem("userId", action.payload.user.id);
       return {
         ...state,
         jwt: action.payload.jwt,
@@ -41,10 +43,12 @@ const auth = (state = initialState, action) => {
         checkLogin: true,
         successMsg: action.payload.msg,
         loginErrorMsg: "",
+        userId: action.payload.user.id,
       };
 
     case LOGIN_FAILURE:
       localStorage.removeItem("jwt");
+      localStorage.removeItem("userId");
       return {
         ...state,
         jwt: null,
@@ -52,6 +56,7 @@ const auth = (state = initialState, action) => {
         checkLogin: false,
         successMsg: "",
         loginErrorMsg: action.payload.data.msg,
+        userId: "",
       };
 
     case LOGOUT_SUCCESS:

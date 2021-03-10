@@ -11,10 +11,10 @@ import * as AiIcons from "react-icons/ai";
 
 const Header = () => {
   const [sidebar, setSidebar] = useState(false);
-  // const [headerLogin, setHeaderLogin] = useState(false);
 
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.loading);
+  console.log(loading);
 
   const showSidebar = () => setSidebar(!sidebar);
 

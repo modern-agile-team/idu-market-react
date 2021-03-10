@@ -3,6 +3,7 @@ import { LOADING_FAILURE, LOADING_SUCCESS, LOADING_REQUEST } from "../types";
 const initialState = {
   jwt: "",
   isLoading: false,
+  userId: "",
 };
 
 const loading = (state = initialState, action) => {
@@ -18,6 +19,7 @@ const loading = (state = initialState, action) => {
         ...state,
         jwt: localStorage.getItem("jwt"),
         isLoading: false,
+        userId: localStorage.getItem("userId"),
       };
 
     case LOADING_FAILURE:
@@ -25,6 +27,7 @@ const loading = (state = initialState, action) => {
         ...state,
         jwt: null,
         isLoading: false,
+        userId: "",
       };
 
     default:
