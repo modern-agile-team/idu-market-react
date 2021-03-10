@@ -2,16 +2,18 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import SearchComponent from "../SearchComponent";
-import { MARKET_GET_REQUEST } from "../../../redux/types";
+import { BOOK_GET_REQUEST } from "../../../redux/types";
 
 import { BoardItemData } from "../../../container/BoardItemData";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const BookListComponent = ({ categoryName }) => {
   const dispatch = useDispatch();
+  const book = useSelector((state) => state.market.data);
+
   useEffect(() => {
     dispatch({
-      type: MARKET_GET_REQUEST,
+      type: BOOK_GET_REQUEST,
       payload: categoryName,
     });
   }, [dispatch]);
@@ -23,7 +25,7 @@ const BookListComponent = ({ categoryName }) => {
       </a>
       <SearchComponent categoryName={categoryName} />
       <div className="container">
-        {BoardItemData.map((board) => {
+        {book.map((board) => {
           return (
             <div className="market-items" key={board.num}>
               <Link
@@ -37,9 +39,9 @@ const BookListComponent = ({ categoryName }) => {
               <Link to={`/boards/book/${board.num}`}>
                 <h1 className="market-item-title">{board.title}</h1>
               </Link>
-              <p className="market-item-price">{board.price}</p>
-              <p className="market-item-id">{board.id}</p>
-              <p className="market-item-date">{board.date}</p>
+              {/* <p className="market-item-price">{board.price}</p> */}
+              <p className="market-item-id">{board.studentId}</p>
+              <p className="market-item-date">{board.inDate}</p>
             </div>
           );
         })}
