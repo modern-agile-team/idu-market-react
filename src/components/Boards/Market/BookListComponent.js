@@ -33,6 +33,8 @@ class BookListComponent extends Component {
       if (response.data.success) {
         const result = response.data.boards.slice(preItems, items);
 
+        console.log(response.data);
+
         this.setState({
           productList: [...productList, ...result],
           loading: true,
@@ -76,8 +78,8 @@ class BookListComponent extends Component {
             </div>
           </>
         ) : (
-          <div class="market-loading">
-            <div class="spin"></div>
+          <div className="market-loading">
+            <div className="spin"></div>
             <p className="market-loading-msg">Loading</p>
           </div>
         )

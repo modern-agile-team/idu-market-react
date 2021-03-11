@@ -39,7 +39,7 @@ function FreeBoardComponent({ categoryName }) {
             <Link to={`/boards/${categoryName}/${boardItem.num}`}>{boardItem.title}</Link>
           </td>
           <td>{boardItem.studentName}</td>
-          <td>{boardItem.inDate}</td>
+          <td>{boardItem.inDate.substring(0, 10)}</td>
           <td>{boardItem.hit}</td>
         </tr>
       );

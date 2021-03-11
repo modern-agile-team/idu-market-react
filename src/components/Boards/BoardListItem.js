@@ -22,7 +22,7 @@ const BoardListItem = ({ productList }) => {
               <h1 className="market-item-title">{board.title}</h1>
             </Link>
             <p className="market-item-price">{board.price}원</p>
-            <p className="market-item-id"><AiOutlineUser />ssi02014 &nbsp;<AiOutlineComment />10</p>
+            <p className="market-item-id"><AiOutlineUser />ssi02014 &nbsp;<AiOutlineComment />{board.commentCount}</p>
             <p className="market-item-date">{board.inDate.substring(0, 10)}</p>
           </div>
         );
