@@ -1,5 +1,5 @@
 import React from "react";
-import BoardBanner from "../../../components/Boards/BoardBanner";
+import BoardBanner from "../../../components/Boards/Layout/BoardBanner";
 import ClothesListComponent from "../../../components/Boards/Market/ClothesListComponent";
 
 const ClothesListPage = () => {

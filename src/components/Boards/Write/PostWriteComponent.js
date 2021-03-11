@@ -4,8 +4,8 @@ import { Link, withRouter } from "react-router-dom";
 //CKEditor
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
-import { editorConfiguration } from "../../components/Editor/EditorConfig";
-import Myinit from "../../components/Editor/UploadAdapter";
+import { editorConfiguration } from "../../Editor/EditorConfig";
+import Myinit from "../../Editor/UploadAdapter";
 
 const PostWriteComponent = (props) => {
   const codeName = props.match.params.codeName;
