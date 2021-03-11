@@ -1,0 +1,184 @@
+.boardlist-common {
+    position: relative;
+    width: 80%;
+    height: 700px;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    .container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;   
+    }
+}
+
+
+/* 테이블 */
+.boardlist-common-tables {
+    width: 90%;
+    font-family: $Jua-font;
+    border-spacing: 0;
+    margin-top: 30px;
+
+    .boardlist-common-title {
+        text-align: center;
+        width: 60%;
+        font-family: $Jua-font;
+    }
+
+    td {
+        text-align: center;
+        padding: 10px;
+        border-bottom: 1px solid #222222;
+        font-family: $Jua-font;
+    }
+
+    th {
+        padding: 10px;
+        border-top: 2px solid #cfac8c;
+        border-bottom: 2px solid #cfac8c;
+        font-family: $Jua-font;
+        font-size: 1.2rem;
+    }
+}
+
+.boardlist-common-tables a {
+    text-decoration: none;
+    color: #222222;
+    text-align: left;
+    font-size: 1rem; 
+    font-family: $Jua-font;
+
+    &:hover { 
+        color: #da9e76; 
+    }
+}
+
+
+// 글쓰기버튼
+.boardlist-common-write {
+    width: 60%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 0.6rem;
+    font-family: $Jua-font;
+    height: 30px;
+    border-radius: 3px;
+}
+
+.boardlist-common-write_btn {
+    background: #fff;
+    outline: 0;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:active {
+        outline: 0;
+    }
+}
+
+
+/* 페이지버튼 */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-weight: 500;
+    font-size: 1.3rem;
+    outline: none;
+
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #222222;
+        height: 40px;
+        width: 40px;
+        text-decoration: none;
+        font-family: $Jua-font;
+        outline: none;
+    }
+
+    a.active {
+        background-color: #c97f4e;
+        color: #fff;
+        border-radius: 20px;
+        
+    }
+
+    a.disabled {
+        opacity: 0.2;
+    }
+    
+}
+
+
+/* 0 ~ 1550 : 데스크탑1  */
+@media screen and (max-width: 1550px) {}
+
+/* 0 ~ 1220 : 데스크탑2  */
+@media screen and (max-width: 1220px) {
+    .boardlist-common-tables th {
+        font-size: 0.8rem;
+    }
+}
+
+/* 0 ~ 1024 : 데스크탑3  */
+@media screen and (max-width: 1024px) {
+    .boardlist-common-tables {
+        width: 80%;
+    }
+    .boardlist-common-tables .boardlist-common-title {
+        width: 50%;
+    }
+    .boardlist-common-search {
+        width: 80%;
+    }
+    .boardlist-common-write {
+        width: 80%;
+    }
+    .boardlist-common-tables th {
+        font-size: 0.7rem;
+    }
+    .boardlist-common-tables tr {
+        font-size: 0.8rem;
+    }
+}
+
+/* 0 ~ 960 : 테블릿1  */
+@media screen and (max-width: 960px) {
+
+}
+
+/* 0 ~ 768px : 테블릿2 */
+@media screen and (max-width: 768px) {
+
+}
+@media screen and (max-width: 670px) {
+    .boardlist-common-tables {
+        width: 95%;
+     }
+    .boardlist-common-tables .boardlist-common-title {
+        width: 50%;
+    }
+    .boardlist-common-search {
+        width: 95%;
+    }
+    .boardlist-common-write {
+        width: 95%;
+    }
+}
+/* 모바일 */
+@media screen and (max-width: 480px) {
+
+    .boardlist-common-tables .boardlist-common-title {
+        width: 40%;
+   }
+ 
+}

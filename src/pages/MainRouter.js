@@ -17,12 +17,11 @@ import BookListPage from "./Boards/Market/BookListPage";
 import DeviceListPage from "./Boards/Market/DeviceListPage";
 import ClothesListPage from "./Boards/Market/ClothesListPage";
 
-//WritePage
 import PostWritePage from "./Boards/Write/PostWritePage";
+import NoticeBoardPage from "./Boards/NoticeBoardPage";
+import FreeBoardPage from "./Boards/FreeBoardPage";
 
-import BoardPage from "./Boards/BoardPage";
 
-//hoc
 import Auth from "../hoc/auth";
 
 import { useDispatch } from "react-redux";
@@ -74,7 +73,9 @@ const MainRouter = () => {
             path="/boards/:categoryName/write"
             exact
           />
-          <Route component={BoardPage} path="/board" exact />
+          <Route component={FreeBoardPage} path="/boards/free" exact />
+          <Route component={NoticeBoardPage} path="/boards/notice" exact />
+          
         </Switch>
         <Footer></Footer>
       </Router>
