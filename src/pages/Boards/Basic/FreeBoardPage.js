@@ -1,7 +1,7 @@
 
 import React from 'react';
-import BoardBanner from "../../components/Boards/Layout/BoardBanner";
-import FreeBoardComponent from '../../components/Boards/FreeBoardComponent';
+import BoardBanner from "../../../components/Boards/Layout/BoardBanner";
+import FreeBoardComponent from '../../../components/Boards/Basic/FreeBoardComponent';
 
 const BoardPage = () => {
     

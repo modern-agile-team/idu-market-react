@@ -40,8 +40,9 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     border-bottom: 1px solid $main-color-6;
+
 
     .market-img-box {
         display: flex;
@@ -49,7 +50,8 @@
     }
 
     img {
-        width: 80%
+        border-radius: 5px;
+        width: 100%
     }
 }
 
@@ -69,23 +71,21 @@
 }
 
 .market-item-price {
-    position: relative;
     font-family: $Jua-font;
-    left: 33%;
+    left: 32%;
+    color: $main-color-9;
 }
 
 .market-item-id {
-    position: relative;
-    left: 34.5%;
     color: #999;
-    font-size: .8rem;
+    font-size: 1rem;
+    margin: 10px;
 }
 
 .market-item-date {
-    position: relative;
-    left: 25%;
     color: #999;
     font-size: .8rem;
+    float: right;
 }
 
 .upload-btn {
@@ -134,6 +134,7 @@
         font-size: 1.3rem;
         height: 40px;
         padding: 0 30px 0 5px;
+        background-color: transparent;
 
         &:focus ~ .input-label {
             top: -5px;
@@ -193,7 +194,7 @@
 .scroll-top-btn {
     z-index: 999;
     position: fixed;
-    right: 20px;
+    right: 80px;
     bottom: 120px;
     background: transparent;
     cursor: pointer;
@@ -214,6 +215,35 @@
     }
 }
 
+.market-loading{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border:0;
+    width: 80px;
+    padding:0px;
+    margin-top: -70px;
+    margin-left: calc(50% - 40px);
+    margin-left: -webkit-calc(50% - 40px);
+    margin-left: -moz-calc(50% - 40px);
+
+    .spin {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        border:dashed 5px $main-color-9;
+        animation: spin 3s infinite linear;
+        margin-bottom: 15px;
+    }
+    .market-loading-msg {
+        font-family: $Montserrat-font;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+}
+  
+
 @media screen and (max-width: 1300px) { 
     .market-items { 
         width: 27%;
@@ -228,6 +258,10 @@
 
     .market-item-title {
         width: 200px;
+    }
+
+    .scroll-top-btn { 
+        right: 50px;
     }
 }
 
@@ -275,7 +309,7 @@
         width: 230px;
     }
     .market-item-price {
-        left: 36%;
+        left: 32%;
     }
     
     .market-item-id {
@@ -283,22 +317,27 @@
     }
     
     .market-item-date {
-        left: 30%;
+        left: 32%;
     }
+
     .market-search {
         right: 50px;
         .market-search-input {
             width: 200px;
         }
     }
+    
     .upload-btn {
+        right: 40px;
         width: 50px;
         height: 50px;
         .upload-btn-icon {
             font-size: 2rem;
         }
     }
+
     .scroll-top-btn { 
+        right: 30px;
         svg {
             font-size: 2.5rem;
         }
@@ -318,7 +357,7 @@
         }
     }
     .market-item-price {
-        left: 35%;
+        left: 38%;
     }
     
     .market-item-id {
@@ -326,13 +365,13 @@
     }
     
     .market-item-date {
-        left: 28%;
+        left: 37%;
     }
 
     .market-search {
-        right: 30px;
+        right: 10px;
         .market-search-input {
-            width: 200px;
+            width: 180px;
         }
     }
     .upload-btn {
@@ -340,6 +379,7 @@
         left: 20px;
     }
     .scroll-top-btn { 
+        right: 15px;
         svg {
             font-size: 2rem;
         }
@@ -349,6 +389,12 @@
         }
     }
 } 
+
+@media screen and (max-width: 360px) {
+    .market-item-title {
+        width: 200px;
+    }
+}
 
 @keyframes arrow-top {
     0% {

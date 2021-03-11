@@ -1,6 +1,6 @@
 import React from 'react';
-import BoardBanner from "../../components/Boards/Layout/BoardBanner";
-import NoticeBoardComponent from '../../components/Boards/NoticeBoardComponent';
+import BoardBanner from "../../../components/Boards/Layout/BoardBanner";
+import NoticeBoardComponent from '../../../components/Boards/Basic/NoticeBoardComponent';
 
 const BoardPage = () => {
     

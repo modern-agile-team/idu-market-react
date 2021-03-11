@@ -4,7 +4,6 @@
     height: 700px;
     margin: 0 auto;
     margin-top: 100px;
-    margin-bottom: 30px;
     .container {
         width: 100%;
         display: flex;
@@ -18,7 +17,6 @@
 /* 테이블 */
 .boardlist-common-tables {
     width: 90%;
-    font-family: $Jua-font;
     border-spacing: 0;
     margin-top: 30px;
 
@@ -56,7 +54,6 @@
     }
 }
 
-
 // 글쓰기버튼
 .boardlist-common-write {
     width: 60%;
@@ -85,11 +82,12 @@
 
 /* 페이지버튼 */
 .pagination-container {
+    position: absolute;
+    bottom: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    font-weight: 500;
     font-size: 1.3rem;
     outline: none;
 
@@ -103,13 +101,13 @@
         text-decoration: none;
         font-family: $Jua-font;
         outline: none;
+        cursor: pointer;
     }
 
     a.active {
         background-color: #c97f4e;
         color: #fff;
         border-radius: 20px;
-        
     }
 
     a.disabled {

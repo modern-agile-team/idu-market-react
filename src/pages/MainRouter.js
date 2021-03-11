@@ -12,14 +12,17 @@ import RegisterPage from "./authPages/RegisterPage";
 import FindIdPage from "./authPages/FindIdPage";
 import FindPasswordPage from "./authPages/FindPasswordPage";
 
-//marketBoards
+//market Boards
 import BookListPage from "./Boards/Market/BookListPage";
 import DeviceListPage from "./Boards/Market/DeviceListPage";
 import ClothesListPage from "./Boards/Market/ClothesListPage";
 
+//Basic Boards
+import NoticeBoardPage from "./Boards/Basic/NoticeBoardPage";
+import FreeBoardPage from "./Boards/Basic/FreeBoardPage";
+
 import PostWritePage from "./Boards/Write/PostWritePage";
-import NoticeBoardPage from "./Boards/NoticeBoardPage";
-import FreeBoardPage from "./Boards/FreeBoardPage";
+
 
 
 import Auth from "../hoc/auth";
@@ -46,36 +49,17 @@ const MainRouter = () => {
           <Route component={Auth(LoginPage, false)} path="/login" exact />
           <Route component={Auth(RegisterPage, false)} path="/register" exact />
           <Route component={Auth(FindIdPage, false)} path="/findId" exact />
-          <Route
-            component={Auth(FindPasswordPage, false)}
-            path="/findPwd"
-            exact
-          />
+          <Route component={Auth(FindPasswordPage, false)} path="/findPwd" exact />
 
           {/* boards list */}
-          <Route
-            component={Auth(BookListPage, null)}
-            path="/boards/book"
-            exact
-          />
-          <Route
-            component={Auth(DeviceListPage, null)}
-            path="/boards/device"
-            exact
-          />
-          <Route
-            component={Auth(ClothesListPage, null)}
-            path="/boards/clothes"
-            exact
-          />
-          <Route
-            component={PostWritePage}
-            path="/boards/:categoryName/write"
-            exact
-          />
-          <Route component={FreeBoardPage} path="/boards/free" exact />
-          <Route component={NoticeBoardPage} path="/boards/notice" exact />
-          
+          <Route component={Auth(BookListPage, null)} path="/boards/book" exact />
+          <Route component={Auth(DeviceListPage, null)} path="/boards/device" exact />
+          <Route component={Auth(ClothesListPage, null)} path="/boards/clothes" exact />
+          <Route component={Auth(FreeBoardPage, null)} path="/boards/free" exact />
+          <Route component={Auth(NoticeBoardPage, null)} path="/boards/notice" exact />
+
+          <Route component={PostWritePage} path="/boards/:categoryName/write" exact />
+
         </Switch>
         <Footer></Footer>
       </Router>

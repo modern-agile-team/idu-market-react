@@ -1,7 +1,7 @@
 .form-template {
     width: 100%;
-    height: 935px;
-    background-color: $bg-color-2;
+    height: 835px;
+    padding-top: 63px;
 
     .container {
         width: 100%;
@@ -15,9 +15,9 @@
 
 .form-field {
     width: 400px;
-    background-color: $bg-color-1;
     border-radius: 10px;
     padding: 0 40px;
+    border: 3px solid $main-color-3;
 
     .form-title {
         font-family: $Fredoka-font;
@@ -40,7 +40,7 @@
         height: 40px;
         outline: none;
         border: none;
-        font-size: 16px;
+        font-size: 1rem;
 
         &:focus ~ .input-label {
             top: -5px;
@@ -200,6 +200,53 @@
     .modal-msg{
         color: #000;
         font-size: 1rem;
+    }
+}
+
+/* 0 ~ 670 : 테블릿  */
+@media screen and (max-width: 670px){ 
+    .form-template {
+        width: 100%;
+        height: 655px;
+        padding-top: 120px;
+    }
+    .form-field {
+    width: 350px;
+    padding: 0 30px;
+
+        .form-title {
+            padding: 30px 0 10px 0;
+            font-size: 1.7rem;
+        }
+    }
+    .text-field {
+        margin: 32px 0;
+
+        .input-label {
+            font-size: 0.9rem;
+        }
+    }
+}
+
+/* 0 ~ 670 : 테블릿  */
+@media screen and (max-width: 360px){ 
+    .form-template {
+        height: 625px;
+    }
+    .form-field {
+    width: 300px;
+    padding: 0 22px;
+
+        .form-title {
+            font-size: 1.5rem;
+        }
+    }
+    .text-field {
+        margin: 25px 0;
+
+        .input-label {
+            font-size: 0.8rem;
+        }
     }
 }
 

@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-import SearchComponent from "./Layout/SearchComponent";
+import SearchComponent from "../Layout/SearchComponent";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
-import { FREEBOARD_GET_REQUEST } from "../../redux/types";
+import { FREEBOARD_GET_REQUEST } from "../../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
 
 function FreeBoardComponent({ categoryName }) {
-  const dispatch = useDispatch();
-  const freeboard = useSelector((state) => state.market.data);
   const [pageNumber, setPageNumber] = useState(0);
 
-  const pageNumbers = [];
+  const dispatch = useDispatch();
+  const freeBoardList = useSelector((state) => state.market.data);
 
-  const usersPerPage = 10;
-  const pageVisited = pageNumber * usersPerPage;
-  const pageCount = Math.ceil(freeboard.length / usersPerPage);
+  const perPage = 10;
+  const pageVisited = pageNumber * perPage;
+  const pageCount = Math.ceil(freeBoardList.length / perPage);
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
@@ -29,20 +28,19 @@ function FreeBoardComponent({ categoryName }) {
     });
   }, [dispatch]);
 
-  console.log(pageNumbers);
 
-  const displayUsers = freeboard
-    .slice(pageVisited, pageVisited + usersPerPage)
-    .map((user) => {
+  const displayBoardList = freeBoardList
+    .slice(pageVisited, pageVisited + perPage)
+    .map((boardItem) => {
       return (
-        <tr key={user.num}>
-          <td>{user.num}</td>
+        <tr key={boardItem.num}>
+          <td>{boardItem.num}</td>
           <td className="boardlist-common-title">
-            <Link to={`/boards/${categoryName}/${user.num}`}>{user.title}</Link>
+            <Link to={`/boards/${categoryName}/${boardItem.num}`}>{boardItem.title}</Link>
           </td>
-          <td>{user.studentName}</td>
-          <td>{user.inDate}</td>
-          <td>{user.hit}</td>
+          <td>{boardItem.studentName}</td>
+          <td>{boardItem.inDate}</td>
+          <td>{boardItem.hit}</td>
         </tr>
       );
     });
@@ -62,7 +60,7 @@ function FreeBoardComponent({ categoryName }) {
               <th>조회수</th>
             </tr>
           </thead>
-          <tbody id="boardlist-common-body">{displayUsers}</tbody>
+          <tbody id="boardlist-common-body">{displayBoardList}</tbody>
         </table>
         <div className="boardlist-common-write"></div>
 

@@ -12,6 +12,7 @@ class DeviceListComponent extends Component {
       productList: [],
       items: 8,
       preItems: 0,
+      loading: false,
     };
   }
 
@@ -32,52 +33,57 @@ class DeviceListComponent extends Component {
       if (response.data.success) {
         const result = response.data.boards.slice(preItems, items);
 
-        console.log(response.data);
-
         this.setState({
           productList: [...productList, ...result],
+          loading: true,
         });
       }
     });
   };
 
   infiniteScroll = () => {
-    const { documentElement, body } = document;
+    const { documentElement } = document;
     const { items } = this.state;
 
-    const scrollHeight = Math.max(
-      documentElement.scrollHeight,
-      body.scrollHeight
-    );
-
+    const scrollHeight = documentElement.scrollHeight;
     const scrollTop = documentElement.scrollTop;
     const clientHeight = documentElement.clientHeight;
 
-    console.log(scrollTop + clientHeight);
-    console.log(scrollHeight);
-
-    if (scrollTop + clientHeight + 0.65 >= scrollHeight) {
+    if (scrollTop + clientHeight >= scrollHeight) {
       this.setState({
         preItems: items,
         items: items + 8,
       });
+
       this.getData();
     }
   };
 
   render() {
     const { categoryName } = this.props;
-    const { productList } = this.state;
+    const { productList, loading } = this.state;
 
     return (
       <section className="market" id="market">
-        <a href="#board-banner" className="scroll-top-btn">
-          <AiOutlineArrowUp />
-        </a>
-        <SearchComponent categoryName={categoryName} />
-        <div className="container">
-          <BoardListItem productList={productList}></BoardListItem>
-        </div>
+        {loading ? (
+          <>
+            <a href="#board-banner" className="scroll-top-btn">
+              <AiOutlineArrowUp />
+            </a>
+            <SearchComponent categoryName={categoryName} />
+            <div className="container">
+              <BoardListItem productList={productList}></BoardListItem>
+            </div>
+          </>
+        ) : (
+          <>
+          <div class="market-loading">
+            <div class="spin"></div>
+            <p className="market-loading-msg">Loading</p>
+          </div>
+          </>
+        )
+      }
       </section>
     );
   }

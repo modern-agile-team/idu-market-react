@@ -1,23 +1,21 @@
 import React, { useState, useEffect } from "react";
-// import { FaSearch } from "react-icons/fa";
-// import { tableData } from "./MOCK_DATA"
 import { Link } from 'react-router-dom';
 import ReactPaginate  from "react-paginate";
-import SearchComponent from "./Layout/SearchComponent";
+import SearchComponent from "../Layout/SearchComponent";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
-import { NOTICEBOARD_GET_REQUEST } from "../../redux/types";
+import { NOTICEBOARD_GET_REQUEST } from "../../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
 
 function NoticeBoardComponent({ categoryName }) {
-    const dispatch = useDispatch();
-    const freeboard = useSelector((state) => state.market.data);
-
     const [pageNumber, setPageNumber] = useState(0);
+
+    const dispatch = useDispatch();
+    const noticeBoardList = useSelector((state) => state.market.data);
 
     const usersPerPage = 10;
     const pageVisited = pageNumber * usersPerPage
-    const pageCount = Math.ceil(freeboard.length / usersPerPage);
+    const pageCount = Math.ceil(noticeBoardList.length / usersPerPage);
 
     const changePage = ({selected}) => {
             setPageNumber(selected);
@@ -30,27 +28,26 @@ function NoticeBoardComponent({ categoryName }) {
         });
     }, [dispatch]);
 
-    const displayUsers = freeboard
+    const displayBoardList = noticeBoardList
     .slice(pageVisited, pageVisited + usersPerPage)
-    .map(user => {
+    .map(boardItem => {
         return (
-        <tr key={user.num}>
-            <td>{user.num}</td>
-            <td className="boardlist-common-title"><Link to={`/boards/${categoryName}${user.num}`}>{user.title}</Link></td>
-            <td>{user.studentName}</td>
-            <td>{user.inDate}</td>
-            <td>{user.hit}</td>
+        <tr key={boardItem.num}>
+            <td>{boardItem.num}</td>
+            <td className="boardlist-common-title">
+                <Link to={`/boards/${categoryName}/${boardItem.num}`}>{boardItem.title}</Link>
+            </td>
+            <td>{boardItem.studentName}</td>
+            <td>{boardItem.inDate}</td>
+            <td>{boardItem.hit}</td>
         </tr>
         );
     });
 
     return (
         <section id="boardlist-common" className="boardlist-common">
-            <div className="freeboard-container">
-                <div className="boardlist-common-search">
-                    <SearchComponent categoryName={categoryName} />
-                </div>
-                
+            <div className="container">
+                <SearchComponent categoryName={categoryName} />
                 <table className="boardlist-common-tables"> 
                     <thead>
                         <tr>
@@ -62,7 +59,7 @@ function NoticeBoardComponent({ categoryName }) {
                         </tr>
                     </thead>
                     <tbody id="boardlist-common-body">
-                        {displayUsers}
+                        {displayBoardList}
                     </tbody>
                 </table>
                 <div className= "boardlist-common-write" >
