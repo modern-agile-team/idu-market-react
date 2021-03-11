@@ -88,6 +88,7 @@
     "react-dev-utils": "^11.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
+    "react-paginate": "^7.1.0",
     "react-redux": "^7.2.2",
     "react-refresh": "^0.8.3",
     "react-router-dom": "^5.2.0",
@@ -132,7 +133,6 @@
     ]
   },
   "proxy": "http://13.125.55.135:8080",
-  
   "jest": {
     "roots": [
       "<rootDir>/src"
