@@ -17,19 +17,15 @@ export const HeaderMenuData = [
     ],
   },
   {
-    title: "Menu3",
+    title: "Board",
     subMenu: [
       {
-        title: "Board1",
-        path: "/menu3/board1",
+        title: "NoticeBoard",
+        path: "/boards/notice",
       },
       {
-        title: "Board2",
-        path: "/menu3/board2",
-      },
-      {
-        title: "Board3",
-        path: "/menu3/board3",
+        title: "FreeBoard",
+        path: "/boards/free",
       },
     ],
   },

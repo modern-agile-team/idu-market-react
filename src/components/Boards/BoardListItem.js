@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { BoardItemData } from "../../container/BoardItemData";
 
 const BoardListItem = ({ productList }) => {
-  // console.log(productList);
   return (
     <>
       {productList.map((board, index) => {

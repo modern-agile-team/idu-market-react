@@ -1,35 +1,86 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { BoardItemData } from "../../../container/BoardItemData";
+import React, { Component } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import SearchComponent from "../Layout/SearchComponent";
 import BoardListItem from "../BoardListItem";
+import axios from "axios";
 
-import { useDispatch, useSelector } from "react-redux";
-import { CLOTHES_GET_REQUEST } from "../../../redux/types";
+class ClothesListComponent extends Component {
+  constructor() {
+    super();
 
-const ClothesListComponent = ({ categoryName }) => {
-  const dispatch = useDispatch();
-  const category = useSelector((state) => state.market.data);
+    this.state = {
+      productList: [],
+      items: 8,
+      preItems: 0,
+    };
+  }
 
-  useEffect(() => {
-    dispatch({
-      type: CLOTHES_GET_REQUEST,
-      payload: categoryName,
+  componentDidMount() {
+    this.getData();
+    window.addEventListener("scroll", this.infiniteScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.infiniteScroll);
+  }
+
+  getData = () => {
+    const { preItems, items, productList } = this.state;
+    const { categoryName } = this.props;
+
+    axios.get(`/api/boards/${categoryName}`).then((response) => {
+      if (response.data.success) {
+        const result = response.data.boards.slice(preItems, items);
+
+        console.log(response.data);
+
+        this.setState({
+          productList: [...productList, ...result],
+        });
+      }
     });
-  }, [dispatch]);
+  };
 
-  return (
-    <section className="market" id="market">
-      <a href="#board-banner" className="scroll-top-btn">
-        <AiOutlineArrowUp />
-      </a>
-      <SearchComponent categoryName={categoryName} />
-      <div className="container">
-        <BoardListItem category={category}></BoardListItem>
-      </div>
-    </section>
-  );
-};
+  infiniteScroll = () => {
+    const { documentElement, body } = document;
+    const { items } = this.state;
+
+    const scrollHeight = Math.max(
+      documentElement.scrollHeight,
+      body.scrollHeight
+    );
+
+    const scrollTop = documentElement.scrollTop;
+    const clientHeight = documentElement.clientHeight;
+
+    console.log(scrollTop + clientHeight);
+    console.log(scrollHeight);
+
+    if (scrollTop + clientHeight + 0.65 >= scrollHeight) {
+      this.setState({
+        preItems: items,
+        items: items + 8,
+      });
+      this.getData();
+    }
+  };
+
+  render() {
+    const { categoryName } = this.props;
+    const { productList } = this.state;
+
+    return (
+      <section className="market" id="market">
+        <a href="#board-banner" className="scroll-top-btn">
+          <AiOutlineArrowUp />
+        </a>
+        <SearchComponent categoryName={categoryName} />
+        <div className="container">
+          <BoardListItem productList={productList}></BoardListItem>
+        </div>
+      </section>
+    );
+  }
+}
 
 export default ClothesListComponent;
