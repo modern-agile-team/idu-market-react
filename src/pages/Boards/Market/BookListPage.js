@@ -1,6 +1,6 @@
 import React from "react";
 import BookListComponent from "../../../components/Boards/Market/BookListComponent";
-import BoardBanner from "../../../components/Boards/BoardBanner";
+import BoardBanner from "../../../components/Boards/Layout/BoardBanner";
 
 const BookListPage = () => {
   return (

@@ -17,10 +17,12 @@ import BookListPage from "./Boards/Market/BookListPage";
 import DeviceListPage from "./Boards/Market/DeviceListPage";
 import ClothesListPage from "./Boards/Market/ClothesListPage";
 
-import PostWritePage from "./Boards/PostWritePage";
+//WritePage
+import PostWritePage from "./Boards/Write/PostWritePage";
 
 import BoardPage from "./Boards/BoardPage";
 
+//hoc
 import Auth from "../hoc/auth";
 
 import { useDispatch } from "react-redux";
