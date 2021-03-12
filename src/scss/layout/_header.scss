@@ -125,26 +125,32 @@
 
  /* 0 ~ 1220 : 데스크탑2  */
  @media screen and (max-width: 1220px) {
-     .header-nav{ display: none; }
+     .header-nav{ 
+         display: none; 
+         .header-menu-drop li {
+            height: 40px;
+         }
+        }
      .menuToggle {
          display: flex;
          font-size: 1.5rem;
      }
      .header-nav.active {
-         width: 100%;
-         height: 60vh;
+         width: 40%;
+         height: 90vh;
          position: fixed;
          top: 70px;
          right: 0;
          display: flex;
+         justify-content: center;
          flex-direction: column;
          background: rgba(241, 241, 241, 0.97);
 
          .header-menu {
-             width: 100%;
-             margin: 50px 0;
+             width: 80%;
+             margin: 10px 0;
              padding: 10px;
-             height: 220px;
+             height: 150px;
              & > a {
                  border-bottom: none;
                  padding: 5px 10px;
@@ -157,19 +163,20 @@
 
          .header-menu-drop {
              position: static;
-             margin: 10px auto;
+             margin: 15px auto;
          }
      }
 
     .header-nav.active .header-list { 
          display: flex; 
+         flex-direction: column;
     }
 
      .header-btn {
          border: 2px solid $main-color-2;
          text-align: center;
-         width: 30%;
-         margin: 10px 0;
+         width: 50%;
+         margin: 15px 0;
          font-size: 1.2rem;
 
          &:hover {
@@ -192,12 +199,14 @@
  /* 0 ~ 670px : 테블릿3 */
  @media screen and (max-width: 670px){
     .header-nav.active {
+        width: 50%;
         .header-menu {
-            & > a { padding: 10px 20px; }
+            & > a { padding: 5px 20px; }
         }
 
         .header-menu-drop{
-            li a { padding: 10px 30px; }
+            margin: 10px auto;
+            li a { padding: 5px 30px; }
         } 
     }
  }
@@ -205,15 +214,18 @@
  /* 0 ~ 480px : 모바일1 */
  @media screen and (max-width: 480px){
     .header-nav.active {
+        width: 100%;
         .header-menu {
-            height: 180px;
-            margin: 50px 0 100px 0;
+            height: 120px;
         }
     }
 
     .header-nav .header-menu-drop li {
-        height: 45px;
-        a { font-size: 0.8rem; }
+        height: 30px;
+
+        a { 
+            font-size: 0.8rem; 
+        }
     }
 
     .header-btn {

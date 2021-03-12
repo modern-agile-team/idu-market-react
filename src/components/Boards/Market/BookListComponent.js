@@ -51,9 +51,7 @@ class BookListComponent extends Component {
     const scrollTop = documentElement.scrollTop;
     const clientHeight = documentElement.clientHeight;
 
-    console.log(scrollTop);
-
-    if (scrollTop + clientHeight >= scrollHeight) {
+    if (Math.ceil(scrollTop) + clientHeight >= scrollHeight) {
       this.setState({
         preItems: items,
         items: items + 8,
