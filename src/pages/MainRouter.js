@@ -87,7 +87,7 @@ const MainRouter = () => {
 
           <Route
             component={PostWritePage}
-            path="/boards/:categoryName/write"
+            path="/boards/:categoryName/new"
             exact
           />
 

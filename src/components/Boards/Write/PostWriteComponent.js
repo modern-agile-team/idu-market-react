@@ -1,19 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { BOARD_NEW_REQUEST, BOARD_NEW_INIT } from "../../../redux/types";
 
 //CKEditor
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
 import { editorConfiguration } from "../../Editor/EditorConfig";
 import Myinit from "../../Editor/UploadAdapter";
+import { useDispatch, useSelector } from "react-redux";
 
 const PostWriteComponent = (props) => {
-  const codeName = props.match.params.codeName;
+  const dispatch = useDispatch();
+  const categoryName = props.match.params.categoryName;
+  let { num } = useSelector((state) => state.boardNew);
+
+  const [write, setWrite] = useState(false);
+
   const [formValues, setFormValues] = useState({
+    studentId: localStorage.getItem("userId"),
     title: "",
-    contents: "",
-    fileUrl: "",
+    content: "",
+    thumbnail: "",
+    price: "",
+    categoryName,
   });
+
+  useEffect(() => {
+    if (num) {
+      props.history.push(`/boards/${categoryName}/${num}`);
+
+      dispatch({
+        type: BOARD_NEW_INIT,
+      });
+    }
+  }, [num]);
+
+  console.log(write);
 
   const getDataFromCKEditor = (event, editor) => {
     const data = editor.getData();
@@ -48,20 +70,20 @@ const PostWriteComponent = (props) => {
       } else {
         resultImgUrl = data.substring(whereImgStart + 10, whereImgEnd + 3);
       }
-      console.log(resultImgUrl);
 
       setFormValues({
         ...formValues,
-        fileUrl: resultImgUrl,
-        contents: data,
+        thumbnail: resultImgUrl,
+        content: data,
       });
 
       console.log(formValues);
     } else {
       setFormValues({
         ...formValues,
-        fileUrl: "",
-        contents: data,
+        thumbnail:
+          "https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/default-thumbnail/communication-2.png",
+        content: data,
       });
     }
     console.log(formValues);
@@ -74,6 +96,37 @@ const PostWriteComponent = (props) => {
     });
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const {
+      studentId,
+      title,
+      content,
+      thumbnail,
+      price,
+      categoryName,
+    } = formValues;
+
+    const body = {
+      studentId,
+      title,
+      content,
+      thumbnail,
+      price,
+      categoryName,
+    };
+
+    if (title === "") alert("타이틀을 적어주세요.");
+    else if (content === "") alert("빈 본문입니다.");
+    else {
+      dispatch({
+        type: BOARD_NEW_REQUEST,
+        payload: body,
+      });
+    }
+  };
+
   return (
     <section id="post-write" className="post-write">
       <div className="container">
@@ -83,11 +136,24 @@ const PostWriteComponent = (props) => {
               type="text"
               name="title"
               id="title"
-              className="write-input"
+              className="write-title"
               onChange={onChange}
               placeholder="Title"
             />
             <span className="post-write-border"></span>
+          </div>
+
+          <div className="form-group price">
+            <input
+              type="text"
+              name="price"
+              id="price"
+              className="write-price"
+              onChange={onChange}
+              placeholder="Price"
+            />
+            <span className="post-write-border"></span>
+            <span className="price-won">원 (숫자만 입력 ex. 1000)</span>
           </div>
 
           <div className="form-group">
@@ -100,10 +166,10 @@ const PostWriteComponent = (props) => {
           </div>
 
           <div className="post-btn-box">
-            <button to={`/boards/${codeName}`} className="post-write-btn">
+            <button className="post-write-btn" onClick={onSubmit}>
               Upload
             </button>
-            <Link to={`/boards/${codeName}`} className="post-cancel-btn">
+            <Link to={`/boards/${categoryName}`} className="post-cancel-btn">
               Cancel
             </Link>
           </div>
