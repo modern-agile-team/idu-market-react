@@ -58,7 +58,7 @@ const RegisterComponent = (props) => {
               name="id"
               onChange={onChange}
               className="input-text"
-              autocomplete="off"
+              autoComplete="off"
             />
             <span
               className={formValues.id ? "input-border fill" : "input-border"}
@@ -76,7 +76,7 @@ const RegisterComponent = (props) => {
               name="name"
               onChange={onChange}
               className="input-text"
-              autocomplete="off"
+              autoComplete="off"
             />
             <span
               className={formValues.name ? "input-border fill" : "input-border"}
@@ -94,7 +94,7 @@ const RegisterComponent = (props) => {
               name="email"
               onChange={onChange}
               className="input-text"
-              autocomplete="off"
+              autoComplete="off"
             />
             <span
               className={
@@ -114,7 +114,7 @@ const RegisterComponent = (props) => {
               name="psword"
               onChange={onChange}
               className="input-text"
-              autocomplete="off"
+              autoComplete="off"
             />
             <span
               className={
