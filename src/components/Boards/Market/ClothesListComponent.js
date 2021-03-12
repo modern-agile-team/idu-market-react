@@ -4,19 +4,21 @@ import SearchComponent from "../Layout/SearchComponent";
 import BoardListItem from "../BoardListItem";
 import axios from "axios";
 
-const ClothesListComponent = ({categoryName}) => {
-  const [dataItem, setDataItem] = useState([]);
+const ClothesComponent = ({categoryName}) => {
+  const [productList, setProductList] = useState([]);
+  const [loading, setLoading] = useState(false);
   let [preItems, items] = [0, 8];
 
   const getMoreData = async () => {
     axios.get(`/api/boards/${categoryName}`).then((response) => {
       if (response.data.success) {
         const result = response.data.boards.slice(preItems, items);
-        const mergedData = dataItem.concat(result);
+        const mergedData = productList.concat(result);
 
         console.log(response.data);
 
-        setDataItem(prev => prev.concat(mergedData));
+        setLoading(true);
+        setProductList(prev => prev.concat(mergedData));
       }
     });
   };
@@ -37,7 +39,6 @@ const ClothesListComponent = ({categoryName}) => {
 
   useEffect(() => {
     getMoreData();
-
     window.addEventListener("scroll", handleScroll);
     
     return () => {
@@ -48,15 +49,26 @@ const ClothesListComponent = ({categoryName}) => {
   
   return (
     <section className="market" id="market">
-        <a href="#board-banner" className="scroll-top-btn">
-          <AiOutlineArrowUp />
-        </a>
-        <SearchComponent categoryName={categoryName} />
-        <div className="container">
-          <BoardListItem productList={dataItem}></BoardListItem>
-        </div>
+        {loading ? (
+          <>
+            <a href="#board-banner" className="scroll-top-btn">
+              <AiOutlineArrowUp />
+            </a>
+            <SearchComponent categoryName={categoryName} />
+            <div className="container">
+              <BoardListItem productList={productList}></BoardListItem>
+            </div>
+          </>
+        ) : (
+          <>
+            <div class="market-loading">
+              <div class="spin"></div>
+              <p className="market-loading-msg">Loading</p>
+            </div>
+          </>
+        )}
       </section>
   );
 };
 
-export default ClothesListComponent;
+export default ClothesComponent;

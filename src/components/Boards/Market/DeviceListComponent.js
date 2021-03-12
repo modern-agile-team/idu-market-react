@@ -1,70 +1,54 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import SearchComponent from "../Layout/SearchComponent";
 import BoardListItem from "../BoardListItem";
 import axios from "axios";
 
-class DeviceListComponent extends Component {
-  constructor() {
-    super();
+const DeviceListComponent = ({categoryName}) => {
+  const [productList, setProductList] = useState([]);
+  const [loading, setLoading] = useState(false);
+  let [preItems, items] = [0, 8];
 
-    this.state = {
-      productList: [],
-      items: 8,
-      preItems: 0,
-      loading: false,
-    };
-  }
-
-  componentDidMount() {
-    this.getData();
-    window.addEventListener("scroll", this.infiniteScroll);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.infiniteScroll);
-  }
-
-  getData = () => {
-    const { preItems, items, productList } = this.state;
-    const { categoryName } = this.props;
-
+  const getMoreData = async () => {
     axios.get(`/api/boards/${categoryName}`).then((response) => {
       if (response.data.success) {
         const result = response.data.boards.slice(preItems, items);
+        const mergedData = productList.concat(result);
 
-        this.setState({
-          productList: [...productList, ...result],
-          loading: true,
-        });
+        console.log(response.data);
+
+        setLoading(true);
+        setProductList(prev => prev.concat(mergedData));
       }
     });
   };
 
-  infiniteScroll = () => {
+  const handleScroll = () => {
     const { documentElement } = document;
-    const { items } = this.state;
-
     const scrollHeight = documentElement.scrollHeight;
     const scrollTop = documentElement.scrollTop;
     const clientHeight = documentElement.clientHeight;
 
-    if (scrollTop + clientHeight + 0.81 >= scrollHeight) {
-      this.setState({
-        preItems: items,
-        items: items + 8,
-      });
+    if (scrollTop + clientHeight >= scrollHeight) {
+      preItems = items;
+      items += 8;
 
-      this.getData();
+      getMoreData();
     }
   };
 
-  render() {
-    const { categoryName } = this.props;
-    const { productList, loading } = this.state;
+  useEffect(() => {
+    getMoreData();
+    window.addEventListener("scroll", handleScroll);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
 
-    return (
-      <section className="market" id="market">
+  
+  return (
+    <section className="market" id="market">
         {loading ? (
           <>
             <a href="#board-banner" className="scroll-top-btn">
@@ -84,8 +68,7 @@ class DeviceListComponent extends Component {
           </>
         )}
       </section>
-    );
-  }
-}
+  );
+};
 
 export default DeviceListComponent;
