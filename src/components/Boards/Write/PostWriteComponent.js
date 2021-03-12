@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
-import dotenv from "dotenv";
+import { BOARD_NEW_REQUEST, BOARD_NEW_INIT } from "../../../redux/types";
 
 //CKEditor
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
 import { editorConfiguration } from "../../Editor/EditorConfig";
 import Myinit from "../../Editor/UploadAdapter";
-
-dotenv.config();
+import { useDispatch, useSelector } from "react-redux";
 
 const PostWriteComponent = (props) => {
+  const dispatch = useDispatch();
   const categoryName = props.match.params.categoryName;
+  let { num } = useSelector((state) => state.boardNew);
+
+  const [write, setWrite] = useState(false);
 
   const [formValues, setFormValues] = useState({
     studentId: localStorage.getItem("userId"),
@@ -21,6 +24,18 @@ const PostWriteComponent = (props) => {
     price: "",
     categoryName,
   });
+
+  useEffect(() => {
+    if (num) {
+      props.history.push(`/boards/${categoryName}/${num}`);
+
+      dispatch({
+        type: BOARD_NEW_INIT,
+      });
+    }
+  }, [num]);
+
+  console.log(write);
 
   const getDataFromCKEditor = (event, editor) => {
     const data = editor.getData();
@@ -84,7 +99,32 @@ const PostWriteComponent = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    console.log(formValues);
+    const {
+      studentId,
+      title,
+      content,
+      thumbnail,
+      price,
+      categoryName,
+    } = formValues;
+
+    const body = {
+      studentId,
+      title,
+      content,
+      thumbnail,
+      price,
+      categoryName,
+    };
+
+    if (title === "") alert("타이틀을 적어주세요.");
+    else if (content === "") alert("빈 본문입니다.");
+    else {
+      dispatch({
+        type: BOARD_NEW_REQUEST,
+        payload: body,
+      });
+    }
   };
 
   return (
