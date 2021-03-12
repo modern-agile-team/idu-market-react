@@ -51,7 +51,10 @@ class BookListComponent extends Component {
     const scrollTop = documentElement.scrollTop;
     const clientHeight = documentElement.clientHeight;
 
-    if (scrollTop + clientHeight + 0.65 >= scrollHeight) {
+    console.log(scrollTop + clientHeight + 0.8);
+    console.log(scrollHeight);
+
+    if (scrollTop + clientHeight + 0.81 >= scrollHeight) {
       this.setState({
         preItems: items,
         items: items + 8,
@@ -82,8 +85,7 @@ class BookListComponent extends Component {
             <div className="spin"></div>
             <p className="market-loading-msg">Loading</p>
           </div>
-        )
-      }
+        )}
       </section>
     );
   }

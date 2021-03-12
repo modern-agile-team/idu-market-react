@@ -21,11 +21,14 @@ import ClothesListPage from "./Boards/Market/ClothesListPage";
 import NoticeBoardPage from "./Boards/Basic/NoticeBoardPage";
 import FreeBoardPage from "./Boards/Basic/FreeBoardPage";
 
+//PostWrite
 import PostWritePage from "./Boards/Write/PostWritePage";
 
-
-
+//hoc
 import Auth from "../hoc/auth";
+
+//Profile
+import ProfilePage from "./Profile/ProfilePage";
 
 import { useDispatch } from "react-redux";
 import { LOADING_REQUEST } from "../redux/types";
@@ -49,17 +52,47 @@ const MainRouter = () => {
           <Route component={Auth(LoginPage, false)} path="/login" exact />
           <Route component={Auth(RegisterPage, false)} path="/register" exact />
           <Route component={Auth(FindIdPage, false)} path="/findId" exact />
-          <Route component={Auth(FindPasswordPage, false)} path="/findPwd" exact />
+          <Route
+            component={Auth(FindPasswordPage, false)}
+            path="/findPwd"
+            exact
+          />
 
           {/* boards list */}
-          <Route component={Auth(BookListPage, null)} path="/boards/book" exact />
-          <Route component={Auth(DeviceListPage, null)} path="/boards/device" exact />
-          <Route component={Auth(ClothesListPage, null)} path="/boards/clothes" exact />
-          <Route component={Auth(FreeBoardPage, null)} path="/boards/free" exact />
-          <Route component={Auth(NoticeBoardPage, null)} path="/boards/notice" exact />
+          <Route
+            component={Auth(BookListPage, null)}
+            path="/boards/book"
+            exact
+          />
+          <Route
+            component={Auth(DeviceListPage, null)}
+            path="/boards/device"
+            exact
+          />
+          <Route
+            component={Auth(ClothesListPage, null)}
+            path="/boards/clothes"
+            exact
+          />
+          <Route
+            component={Auth(FreeBoardPage, null)}
+            path="/boards/free"
+            exact
+          />
+          <Route
+            component={Auth(NoticeBoardPage, null)}
+            path="/boards/notice"
+            exact
+          />
 
-          <Route component={PostWritePage} path="/boards/:categoryName/write" exact />
+          <Route
+            component={PostWritePage}
+            path="/boards/:categoryName/write"
+            exact
+          />
 
+          {/* Profile */}
+          <Route component={ProfilePage} path="/students" exact />
         </Switch>
         <Footer></Footer>
       </Router>

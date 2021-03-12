@@ -49,7 +49,7 @@ class ClothesListComponent extends Component {
     const scrollTop = documentElement.scrollTop;
     const clientHeight = documentElement.clientHeight;
 
-    if (scrollTop + clientHeight + 0.65 >= scrollHeight) {
+    if (scrollTop + clientHeight + 0.81 >= scrollHeight) {
       this.setState({
         preItems: items,
         items: items + 8,
@@ -80,8 +80,7 @@ class ClothesListComponent extends Component {
             <div class="spin"></div>
             <p className="market-loading-msg">Loading</p>
           </div>
-        )
-      }
+        )}
       </section>
     );
   }

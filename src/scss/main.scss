@@ -13,9 +13,6 @@
 //Login, Register form
 @import './layout/forms';
 
-
-
-
 //HomePage
 @import './layout/home/funtion';
 @import './layout/home/introduce';
@@ -27,6 +24,9 @@
 @import './layout/boards/boardBanner';
 @import './layout/boards/market';
 @import './layout/boards/basic';
+
+//Profile
+@import './layout/profile/profile';
 
 //PostWrite
 @import './layout/boards/postWrite';
