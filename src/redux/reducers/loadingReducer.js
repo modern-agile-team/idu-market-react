@@ -25,7 +25,7 @@ const loading = (state = initialState, action) => {
     case LOADING_FAILURE:
       return {
         ...state,
-        jwt: null,
+        jwt: "",
         isLoading: false,
         userId: "",
       };

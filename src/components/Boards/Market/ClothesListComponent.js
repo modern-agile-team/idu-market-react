@@ -49,6 +49,9 @@ class ClothesListComponent extends Component {
     const scrollTop = documentElement.scrollTop;
     const clientHeight = documentElement.clientHeight;
 
+    console.log(scrollTop);
+    console.log(scrollHeight);
+
     if (scrollTop + clientHeight + 0.81 >= scrollHeight) {
       this.setState({
         preItems: items,

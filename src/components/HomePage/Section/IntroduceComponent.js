@@ -36,7 +36,7 @@ const IntroduceComponent = () => {
             title="iuam intro youtube"
             src="https://www.youtube.com/embed/xvep-cJW7zk"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-            allowfullscreen
+            allowFullScreen
           />
         </div>
         <div className="intro-bottom-box"></div>

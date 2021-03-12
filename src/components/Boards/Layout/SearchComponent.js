@@ -16,7 +16,7 @@ const SearchComponent = ({ categoryName }) => {
 
   return (
     <>
-      <Link to={`/boards/${categoryName}/write`} className="upload-btn">
+      <Link to={`/boards/${categoryName}/new`} className="upload-btn">
         <BiEditAlt className="upload-btn-icon" />
       </Link>
       <div className="market-search">
