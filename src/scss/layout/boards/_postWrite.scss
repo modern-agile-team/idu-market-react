@@ -76,7 +76,9 @@
     margin-right: 30px;
     background-color: $main-color-2;
     color: #fdfdfd;
-    font-size: 19px;
+    font-size: 1.2rem;
+    outline: none;
+
     &:hover {
       background-color: $main-color-5;
     }
@@ -157,27 +159,51 @@
       width: 450px;
     }
  }
-
+ @media screen and (max-width: 767px) { 
+  .price-won {
+    font-size: 1.2rem;
+    top: 5px;
+    right: -210px;
+  }
+ }
  @media screen and (max-width: 480px) {
-    //CKEditor5 Setting
-    .ck {
-      .ck-editor {
-          width: 320px;
-      }
-      .ck-toolbar {
+  .form-group {
+    &.price {
+      width: 150px;
+    }
+  }
+  
+  .price-won {
+    font-size: 1rem;
+    top: 10px;
+    right: -175px;
+  }
+  .write-title {
+    font-size: 1.3rem;
+  }
+  .write-price {
+    font-size: 1.3rem;
+  }
+  
+  //CKEditor5 Setting
+  .ck {
+    .ck-editor {
         width: 320px;
-      }
     }
-  
-    .ck-editor__editable {
-      max-height: 20rem;
-      min-height: 20rem;
+    .ck-toolbar {
       width: 320px;
     }
-  
-    .ck-editor__editable_inline {
-      max-height: 20rem;
-      min-height: 20rem;
-      width: 320px;
-    }
+  }
+
+  .ck-editor__editable {
+    max-height: 20rem;
+    min-height: 20rem;
+    width: 320px;
+  }
+
+  .ck-editor__editable_inline {
+    max-height: 20rem;
+    min-height: 20rem;
+    width: 320px;
+  }
  }

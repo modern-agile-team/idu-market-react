@@ -61,8 +61,8 @@ const BookListComponent = ({categoryName}) => {
           </>
         ) : (
           <>
-            <div class="market-loading">
-              <div class="spin"></div>
+            <div className="market-loading">
+              <div className="spin"></div>
               <p className="market-loading-msg">Loading</p>
             </div>
           </>
