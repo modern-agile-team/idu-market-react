@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
+import dotenv from "dotenv";
 
 //CKEditor
 import { CKEditor } from "@ckeditor/ckeditor5-react";
@@ -7,12 +8,18 @@ import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor"
 import { editorConfiguration } from "../../Editor/EditorConfig";
 import Myinit from "../../Editor/UploadAdapter";
 
+dotenv.config();
+
 const PostWriteComponent = (props) => {
-  const codeName = props.match.params.codeName;
+  const categoryName = props.match.params.categoryName;
+
   const [formValues, setFormValues] = useState({
+    studentId: localStorage.getItem("userId"),
     title: "",
-    contents: "",
-    fileUrl: "",
+    content: "",
+    thumbnail: "",
+    price: "",
+    categoryName,
   });
 
   const getDataFromCKEditor = (event, editor) => {
@@ -48,20 +55,20 @@ const PostWriteComponent = (props) => {
       } else {
         resultImgUrl = data.substring(whereImgStart + 10, whereImgEnd + 3);
       }
-      console.log(resultImgUrl);
 
       setFormValues({
         ...formValues,
-        fileUrl: resultImgUrl,
-        contents: data,
+        thumbnail: resultImgUrl,
+        content: data,
       });
 
       console.log(formValues);
     } else {
       setFormValues({
         ...formValues,
-        fileUrl: "",
-        contents: data,
+        thumbnail:
+          "https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/default-thumbnail/communication-2.png",
+        content: data,
       });
     }
     console.log(formValues);
@@ -74,6 +81,12 @@ const PostWriteComponent = (props) => {
     });
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(formValues);
+  };
+
   return (
     <section id="post-write" className="post-write">
       <div className="container">
@@ -83,11 +96,24 @@ const PostWriteComponent = (props) => {
               type="text"
               name="title"
               id="title"
-              className="write-input"
+              className="write-title"
               onChange={onChange}
               placeholder="Title"
             />
             <span className="post-write-border"></span>
+          </div>
+
+          <div className="form-group price">
+            <input
+              type="text"
+              name="price"
+              id="price"
+              className="write-price"
+              onChange={onChange}
+              placeholder="Price"
+            />
+            <span className="post-write-border"></span>
+            <span className="price-won">원 (숫자만 입력 ex. 1000)</span>
           </div>
 
           <div className="form-group">
@@ -100,10 +126,10 @@ const PostWriteComponent = (props) => {
           </div>
 
           <div className="post-btn-box">
-            <button to={`/boards/${codeName}`} className="post-write-btn">
+            <button className="post-write-btn" onClick={onSubmit}>
               Upload
             </button>
-            <Link to={`/boards/${codeName}`} className="post-cancel-btn">
+            <Link to={`/boards/${categoryName}`} className="post-cancel-btn">
               Cancel
             </Link>
           </div>

@@ -120,12 +120,11 @@ function* noticeboardGet(action) {
   try {
     const result = yield call(noticeboardGetAPI, action.payload);
     console.log(result);
-    
+
     yield put({
       type: NOTICEBOARD_GET_SUCCESS,
       payload: result.data,
     });
-
   } catch (e) {
     yield put({
       type: NOTICEBOARD_GET_FAILURE,
@@ -133,7 +132,6 @@ function* noticeboardGet(action) {
     });
   }
 }
-
 
 function* watchBookGet() {
   yield takeEvery(BOOK_GET_REQUEST, bookGet);
@@ -157,9 +155,10 @@ function* watchNoticeboardGet() {
 
 //authSaga() 여러 Saga 통합
 export default function* marketSaga() {
-  yield all([fork(watchBookGet),
-    fork(watchDeviceGet), 
-    fork(watchClothesGet), 
+  yield all([
+    fork(watchBookGet),
+    fork(watchDeviceGet),
+    fork(watchClothesGet),
     fork(watchFreeboardGet),
     fork(watchNoticeboardGet),
   ]);
