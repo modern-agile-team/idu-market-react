@@ -160,6 +160,7 @@
     }
 }
 
+//modal
 .modal-wrapper {
     width: 550px;
     height: 100px;
@@ -174,6 +175,7 @@
     padding: 10px;
 
     .container {
+        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -182,6 +184,13 @@
 
     .modal-icon {
         color: #00B300;
+        vertical-align: center;
+        margin-right: 8px;
+        font-size: 1.2rem;
+    }
+
+    .modal-icon-error {
+        color:red;
         vertical-align: center;
         margin-right: 8px;
         font-size: 1.2rem;
@@ -199,6 +208,10 @@
     
     .modal-msg{
         color: #000;
+        font-size: 1rem;
+    }
+    .modal-msg-error{
+        color: red;
         font-size: 1rem;
     }
 }

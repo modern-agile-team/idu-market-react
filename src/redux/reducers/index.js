@@ -4,7 +4,6 @@ import { connectRouter } from "connected-react-router";
 import auth from "./authReducer";
 import loading from "./loadingReducer";
 import market from "./marketReducer";
-import boardNew from "./boardNewReducer";
 
 const createRootReducer = (history) =>
   combineReducers({
@@ -12,7 +11,6 @@ const createRootReducer = (history) =>
     auth,
     loading,
     market,
-    boardNew,
   });
 
 export default createRootReducer;
