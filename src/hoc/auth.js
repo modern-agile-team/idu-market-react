@@ -15,7 +15,11 @@ export default function Auth(SpecificComponent, option, adminRoute = null) {
         useEffect(() => {
             //로그인하지 않은 상태
             if (!jwt) {
-                if (option === true) props.history.push('/login');
+                if (option === true) {
+                    setTimeout(() => {
+                        props.history.push('/login');
+                    }, 100)
+                } 
             } else {
             //로그인한 상태
                 if (option === false) props.history.push('/');
