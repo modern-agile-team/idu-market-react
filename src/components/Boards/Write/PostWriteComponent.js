@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
-import axios from 'axios';
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { FcCancel } from "react-icons/fc";
 
@@ -9,16 +8,18 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
 import { editorConfiguration } from "../../Editor/EditorConfig";
 import Myinit from "../../Editor/UploadAdapter";
+import { useDispatch, useSelector } from "react-redux";
+import { BOARD_NEW_REQUEST } from "../../../redux/types";
 
 const PostWriteComponent = (props) => {
   const categoryName = props.match.params.categoryName;
+  const dispatch = useDispatch();
+  const { successMsg } = useSelector(state => state.boardNew);
 
   const [modal, setModal] = useState(false);
-  const [modalLoading, setModalLoading] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
   const [modalErrorMsg, setModalErrorMsg] = useState("");
   const [modalError, setModalError] = useState(false);
-
   const [formValues, setFormValues] = useState({
     studentId: localStorage.getItem("userId"),
     title: "",
@@ -28,7 +29,10 @@ const PostWriteComponent = (props) => {
     categoryName,
   });
 
-
+  useEffect(() => {
+    setModalMsg(successMsg);
+  }, [successMsg]);
+  
   const getDataFromCKEditor = (event, editor) => {
     const data = editor.getData();
 
@@ -136,26 +140,12 @@ const PostWriteComponent = (props) => {
       }, 1500);
     }
     else {
-      axios
-      .post(`/api/boards/${categoryName}`, body)
-      .then((response) => {
-        if (response.data.success) {
-          setModal(true);
-          setModalError(false);
-          setModalLoading(false);
-          setModalMsg(response.data.msg);
-
-          setTimeout(() => {
-            props.history.push(`/boards/${categoryName}/${response.data.num}`);
-          }, 1500);
-        }
-      })
-      .catch((err) => {
-        const response = err.response;
-        if (response.status === 400) {
-          setModalLoading(false);
-        }
+      dispatch({
+        type: BOARD_NEW_REQUEST,
+        payload: body,
       });
+      setModal(true);
+      setModalError(false);
     }
   };
 
@@ -226,17 +216,6 @@ const PostWriteComponent = (props) => {
         ) : (
           ""
         )}
-        {modalLoading ? (
-          <div className="modal-wrapper">
-            <div className="container">
-              <div className="loading" />
-              <h2 className="modal-msg">Loading</h2>
-            </div>
-          </div>
-        ) : (
-          ""
-        )}
-
       </div>
     </section>
   );

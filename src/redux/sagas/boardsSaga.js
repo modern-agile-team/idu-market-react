@@ -154,7 +154,7 @@ function* watchNoticeboardGet() {
 }
 
 //authSaga() 여러 Saga 통합
-export default function* marketSaga() {
+export default function* boardsSaga() {
   yield all([
     fork(watchBookGet),
     fork(watchDeviceGet),

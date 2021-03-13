@@ -10,13 +10,12 @@ const LoginComponent = (props) => {
     psword: "",
   });
 
-  const { loginErrorMsg, checkLogin } = useSelector((state) => state.auth);
+  const { loginErrorMsg } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
     setErrorMsg(loginErrorMsg);
-    if (checkLogin) props.history.push("/");
-  }, [loginErrorMsg, checkLogin]);
+  }, [loginErrorMsg]);
 
   const onChange = (e) => {
     setFormValues({

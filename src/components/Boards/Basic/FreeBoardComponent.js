@@ -11,7 +11,7 @@ function FreeBoardComponent({ categoryName }) {
   const [pageNumber, setPageNumber] = useState(0);
 
   const dispatch = useDispatch();
-  const freeBoardList = useSelector((state) => state.market.data);
+  const freeBoardList = useSelector((state) => state.boards.data);
 
   const perPage = 10;
   const pageVisited = pageNumber * perPage;

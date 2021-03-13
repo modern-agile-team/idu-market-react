@@ -5,7 +5,6 @@ import { REGISTER_REQUEST } from "../../redux/types";
 
 const RegisterComponent = (props) => {
   const [errorMsg, setErrorMsg] = useState("");
-  const [actionSubmit, setActionSubmit] = useState(false);
   const [formValues, setFormValues] = useState({
     id: "",
     name: "",
@@ -14,17 +13,13 @@ const RegisterComponent = (props) => {
   });
 
   const dispatch = useDispatch();
-  const { registerErrorMsg, checkRegister } = useSelector(
+  const { registerErrorMsg } = useSelector(
     (state) => state.auth
   );
 
   useEffect(() => {
     setErrorMsg(registerErrorMsg);
-
-    if (actionSubmit) {
-      if (checkRegister) props.history.push("/login");
-    }
-  }, [checkRegister, registerErrorMsg, actionSubmit]);
+  }, [registerErrorMsg]);
 
   const onChange = (e) => {
     setFormValues({
@@ -38,7 +33,6 @@ const RegisterComponent = (props) => {
     const body = { id, name, email, psword };
 
     e.preventDefault();
-    setActionSubmit(true);
 
     dispatch({
       type: REGISTER_REQUEST,

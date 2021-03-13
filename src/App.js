@@ -10,13 +10,11 @@ import './scss/main.scss';
 function App() {
 
   return (
-    <>
       <Provider store={store}>
         <ConnectedRouter history={history}>
             <MainRouter />
-          </ConnectedRouter>
+        </ConnectedRouter>
       </Provider>
-    </>
   );
 }
 

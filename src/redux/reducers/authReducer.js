@@ -13,11 +13,10 @@ import {
 const initialState = {
   jwt: "",
   isLoading: false,
-  checkLogin: false,
-  checkRegister: false,
   successMsg: "",
   loginErrorMsg: "",
   registerErrorMsg: "",
+  checkRegister: false,
   userId: "",
 };
 
@@ -40,7 +39,6 @@ const auth = (state = initialState, action) => {
         ...state,
         jwt: action.payload.jwt,
         isLoading: false,
-        checkLogin: true,
         successMsg: action.payload.msg,
         loginErrorMsg: "",
         userId: action.payload.user.id,
@@ -53,7 +51,6 @@ const auth = (state = initialState, action) => {
         ...state,
         jwt: null,
         isLoading: false,
-        checkLogin: false,
         successMsg: "",
         loginErrorMsg: action.payload.data.msg,
         userId: "",
@@ -65,7 +62,6 @@ const auth = (state = initialState, action) => {
         ...state,
         jwt: null,
         isLoading: false,
-        checkLogin: false,
         successMsg: "로그아웃에 성공하셨습니다.",
         loginErrorMsg: "",
       };
@@ -75,7 +71,6 @@ const auth = (state = initialState, action) => {
         ...state,
         jwt: null,
         isLoading: false,
-        checkLogin: false,
         successMsg: "",
       };
 
