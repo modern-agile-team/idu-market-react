@@ -1,20 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { BOARD_NEW_REQUEST, BOARD_NEW_INIT } from "../../../redux/types";
+import axios from 'axios';
+import { IoIosCheckmarkCircle } from "react-icons/io";
+import { FcCancel } from "react-icons/fc";
 
 //CKEditor
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
 import { editorConfiguration } from "../../Editor/EditorConfig";
 import Myinit from "../../Editor/UploadAdapter";
-import { useDispatch, useSelector } from "react-redux";
 
 const PostWriteComponent = (props) => {
-  const dispatch = useDispatch();
   const categoryName = props.match.params.categoryName;
-  let { num } = useSelector((state) => state.boardNew);
 
-  const [write, setWrite] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [modalLoading, setModalLoading] = useState(false);
+  const [modalMsg, setModalMsg] = useState("");
+  const [modalErrorMsg, setModalErrorMsg] = useState("");
+  const [modalError, setModalError] = useState(false);
 
   const [formValues, setFormValues] = useState({
     studentId: localStorage.getItem("userId"),
@@ -25,22 +28,11 @@ const PostWriteComponent = (props) => {
     categoryName,
   });
 
-  useEffect(() => {
-    if (num) {
-      props.history.push(`/boards/${categoryName}/${num}`);
-
-      dispatch({
-        type: BOARD_NEW_INIT,
-      });
-    }
-  }, [num]);
-
-  console.log(write);
 
   const getDataFromCKEditor = (event, editor) => {
     const data = editor.getData();
-    console.log(data);
 
+    //ThumbNail Image 추출
     if (data && data.match("<img src=")) {
       const whereImgStart = data.indexOf("<img src=");
       const extName = [
@@ -76,17 +68,14 @@ const PostWriteComponent = (props) => {
         thumbnail: resultImgUrl,
         content: data,
       });
-
-      console.log(formValues);
     } else {
+      //이미지 등록을 하지 않을 경우
       setFormValues({
         ...formValues,
-        thumbnail:
-          "https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/default-thumbnail/communication-2.png",
+        thumbnail: "https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/default-thumbnail/communication-2.png",
         content: data,
       });
     }
-    console.log(formValues);
   };
 
   const onChange = (e) => {
@@ -117,12 +106,55 @@ const PostWriteComponent = (props) => {
       categoryName,
     };
 
-    if (title === "") alert("타이틀을 적어주세요.");
-    else if (content === "") alert("빈 본문입니다.");
+    //유효성 검사
+    if (title === "") {
+      setModal(true);
+      setModalError(true);
+      setModalErrorMsg("타이틀을 적어주세요.");
+
+      setTimeout(() => {
+        setModal(false);
+      }, 1500);
+    }
+    /// ^[0-9]+$/: 비어있지 않은 연속된 숫자 문자열
+    else if (price.length > 0 && price.match(/^[0-9]+$/) === null) {
+      setModal(true);
+      setModalError(true);
+      setModalErrorMsg("가격을 숫자만 입력해주세요.");
+
+      setTimeout(() => {
+        setModal(false);
+      }, 1500);
+    }
+    else if (content === "") {
+      setModal(true);
+      setModalError(true);
+      setModalErrorMsg("빈 본문입니다.");
+
+      setTimeout(() => {
+        setModal(false);
+      }, 1500);
+    }
     else {
-      dispatch({
-        type: BOARD_NEW_REQUEST,
-        payload: body,
+      axios
+      .post(`/api/boards/${categoryName}`, body)
+      .then((response) => {
+        if (response.data.success) {
+          setModal(true);
+          setModalError(false);
+          setModalLoading(false);
+          setModalMsg(response.data.msg);
+
+          setTimeout(() => {
+            props.history.push(`/boards/${categoryName}/${response.data.num}`);
+          }, 1500);
+        }
+      })
+      .catch((err) => {
+        const response = err.response;
+        if (response.status === 400) {
+          setModalLoading(false);
+        }
       });
     }
   };
@@ -174,6 +206,37 @@ const PostWriteComponent = (props) => {
             </Link>
           </div>
         </form>
+        
+        {modal ? (
+          <div className="modal-wrapper">
+            <div className="container">
+              {modalError ? (
+                <>
+                  <FcCancel className="modal-icon-error" />
+                  <h2 className="modal-msg-error">{modalErrorMsg}</h2>
+                </>
+              ):(
+                <>
+                  <IoIosCheckmarkCircle className="modal-icon" />
+                  <h2 className="modal-msg">{modalMsg}</h2>
+                </>
+              )}
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+        {modalLoading ? (
+          <div className="modal-wrapper">
+            <div className="container">
+              <div className="loading" />
+              <h2 className="modal-msg">Loading</h2>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+
       </div>
     </section>
   );

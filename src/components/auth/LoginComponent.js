@@ -49,7 +49,7 @@ const LoginComponent = (props) => {
               name="id"
               onChange={onChange}
               className="input-text"
-              autocomplete="on"
+              autoComplete="on"
             />
             <span
               className={formValues.id ? "input-border fill" : "input-border"}
@@ -67,7 +67,7 @@ const LoginComponent = (props) => {
               name="psword"
               onChange={onChange}
               className="input-text"
-              autocomplete="on"
+              autoComplete="on"
             />
             <span
               className={

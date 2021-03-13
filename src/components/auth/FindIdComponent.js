@@ -5,7 +5,6 @@ import axios from "axios";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 
 const FindIdComponent = (props) => {
-  const [errorMsg, setErrorMsg] = useState("");
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
@@ -13,6 +12,7 @@ const FindIdComponent = (props) => {
   const [modal, setModal] = useState(false);
   const [modalLoading, setModalLoading] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const onChange = (e) => {
     setFormValues({
