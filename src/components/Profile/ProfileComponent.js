@@ -1,24 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import testImg from '../../img/신발.jpg';
-import { FaCartArrowDown, FaHeart, FaRegClipboard, FaEnvelope, FaUserAlt } from "react-icons/fa"
+import { FaCartArrowDown, FaHeart, FaRegClipboard} from "react-icons/fa"
 import { BsFillChatDotsFill } from "react-icons/bs"
 
-import { PROFILE_GET_REQUEST } from "../../redux/types";
-import { useDispatch, useSelector } from "react-redux";
 
 const ProfileComponent = (students) => {
 
-  // const dispatch = useDispatch();
-  // const profilelist = useSelector((state) => state.profile);
-
-  // useEffect(() => {
-  //   dispatch({
-  //     type: PROFILE_GET_REQUEST,
-  //     payload: students,
-  //   });
-  // }, [dispatch]);
-  
   return (
     <>
        <section className="profile" id="profile">
@@ -32,18 +20,14 @@ const ProfileComponent = (students) => {
               
 
             <div calssName="profile-information">
-              {/* {profilelist.map((el) => {
-                return ( */}
-                  <div className="profile-information-box">
-                    <label>Name</label>
-                    <p className="profile-information-name">el.name</p>
-                    <label>ID</label>
-                    <p className="profile-information-name">el.id</p>
-                    <label>Email</label>
-                    <p className="profile-information-name">el.email</p>
-                  </div>
-                {/* )
-              })}; */}
+              <div className="profile-information-box">
+                <label>Name</label>
+                <p className="profile-information-name">el.name</p>
+                <label>ID</label>
+                <p className="profile-information-name">el.id</p>
+                <label>Email</label>
+                <p className="profile-information-name">el.email</p>
+              </div>
             </div>
 
             <div className="profile-btnbox">
