@@ -22,7 +22,7 @@ const initialState = {
   responseMsg: "",
 };
 
-const market = (state = initialState, action) => {
+const boards = (state = initialState, action) => {
   switch (action.type) {
     case DEVICE_GET_REQUEST:
     case CLOTHES_GET_REQUEST:
@@ -63,4 +63,4 @@ const market = (state = initialState, action) => {
   }
 };
 
-export default market;
+export default boards;

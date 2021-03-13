@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 //Header, Footer
 import Header from "../components/Header/Header";
@@ -30,22 +30,10 @@ import Auth from "../hoc/auth";
 //Profile
 import ProfilePage from "./Profile/ProfilePage";
 
-import { useDispatch } from "react-redux";
-import { LOADING_REQUEST } from "../redux/types";
 
 const MainRouter = () => {
-  const dispatch = useDispatch();
-  try {
-    dispatch({
-      type: LOADING_REQUEST,
-    });
-  } catch (e) {
-    console.log(e);
-  }
-
   return (
     <>
-      <Router>
         <Header></Header>
         <Switch>
           <Route component={Auth(HomePage, null)} path="/" exact />
@@ -86,7 +74,7 @@ const MainRouter = () => {
           />
 
           <Route
-            component={PostWritePage}
+            component={Auth(PostWritePage, true)}
             path="/boards/:categoryName/new"
             exact
           />
@@ -95,7 +83,6 @@ const MainRouter = () => {
           <Route component={ProfilePage} path="/students" exact />
         </Switch>
         <Footer></Footer>
-      </Router>
     </>
   );
 };

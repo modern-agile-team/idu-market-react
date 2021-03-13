@@ -11,7 +11,7 @@ function NoticeBoardComponent({ categoryName }) {
     const [pageNumber, setPageNumber] = useState(0);
 
     const dispatch = useDispatch();
-    const noticeBoardList = useSelector((state) => state.market.data);
+    const noticeBoardList = useSelector((state) => state.boards.data);
 
     const usersPerPage = 10;
     const pageVisited = pageNumber * usersPerPage
