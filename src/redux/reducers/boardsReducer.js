@@ -88,7 +88,7 @@ const boards = (state = initialState, action) => {
         ...state,
         isLoading: false,
         successMsg: action.payload.msg,
-        newNum: action.payload.num,
+        num: action.payload.num,
       };
 
     case BOARD_NEW_FAILURE:

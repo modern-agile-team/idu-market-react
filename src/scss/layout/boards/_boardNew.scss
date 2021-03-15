@@ -104,14 +104,12 @@
 }
 
 .ck-editor__editable {
-  max-height: 30rem;
-  min-height: 30rem;
+  min-height: 35rem;
   width: 900px;
 }
 
 .ck-editor__editable_inline {
-  max-height: 30rem;
-  min-height: 30rem;
+  min-height: 35rem;
   width: 900px;
 }
 
@@ -148,13 +146,11 @@
     }
   
     .ck-editor__editable {
-      max-height: 25rem;
       min-height: 25rem;
       width: 450px;
     }
   
     .ck-editor__editable_inline {
-      max-height: 25rem;
       min-height: 25rem;
       width: 450px;
     }
@@ -196,13 +192,11 @@
   }
 
   .ck-editor__editable {
-    max-height: 20rem;
     min-height: 20rem;
     width: 320px;
   }
 
   .ck-editor__editable_inline {
-    max-height: 20rem;
     min-height: 20rem;
     width: 320px;
   }

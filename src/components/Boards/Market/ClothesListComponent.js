@@ -19,7 +19,7 @@ const ClothesComponent = ({categoryName}) => {
       if (response.data.success) {
         const result = response.data.boards;
 
-        if (result.length === 0) {
+        if (result.length > 10) {
           window.removeEventListener("scroll", handleScroll);
         } else {
           lastNum = result[LAST_COUNT].num;

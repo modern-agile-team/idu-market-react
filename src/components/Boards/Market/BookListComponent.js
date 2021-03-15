@@ -4,9 +4,10 @@ import SearchComponent from "../Layout/SearchComponent";
 import BoardListItem from "../BoardListItem";
 import axios from "axios";
 
-const BookListComponent = ({categoryName}) => {
+const BookListComponent = ({ categoryName }) => {
   const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const LAST_COUNT = 9;
 
   let isLoading = false;
@@ -19,16 +20,19 @@ const BookListComponent = ({categoryName}) => {
       if (response.data.success) {
         const result = response.data.boards;
 
-        if (result.length === 0) {
+        console.log(result);
+        console.log(lastNum);
+
+        if (result.length < 10) {
           window.removeEventListener("scroll", handleScroll);
         } else {
           lastNum = result[LAST_COUNT].num;
         }
         setLoading(true);
         setProductList(prev => [...prev, ...result]);
-        isLoading = false;
       }
     });
+    isLoading = false;
   }, []);
 
 
@@ -38,7 +42,6 @@ const BookListComponent = ({categoryName}) => {
     const scrollTop = documentElement.scrollTop;
     const clientHeight = documentElement.clientHeight;
 
-    console.log(isLoading);
     if (scrollTop + clientHeight + 100 >= scrollHeight && isLoading === false) {
        getMoreData();
     }

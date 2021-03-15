@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
+import { IoMdArrowDropdown } from "react-icons/io";
+import { AiOutlineUser } from "react-icons/ai";
+import { BsCalendar } from "react-icons/bs";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import BalloonEditor from "@ckeditor/ckeditor5-editor-balloon/src/ballooneditor";
@@ -43,19 +46,20 @@ const BoardDetailComponent = (props) => {
             <h1 className="detail-title"></h1>
           )}
 
-          <p className="detail-price">15000원</p>
+          <p className="detail-price">{boardDetail.price}원</p>
           <div className="detail-btn-box">
             <button className="detail-btn-edit">수정</button>
             <button className="detail-btn-delete">삭제</button>
-            <button className="detail-btn-list">목록</button>
+            <Link to={`/boards/${categoryName}`} className="detail-btn-list">목록</Link>
           </div>
-          <div className="detail-date">
-            <p>작성일: 2020-03-15</p>
+          <div className="detail-date-student">
+            <p><AiOutlineUser />&nbsp;{boardDetail.studentName}</p>
+            <p><BsCalendar />&nbsp;{boardDetail.inDate}</p>
           </div>
           <div className="detail-trade-status-box">
             <ul>
               <li className="detail-trade-status">
-                {tradeStatus}
+                {tradeStatus} <IoMdArrowDropdown />
                 <ul className="detail-trade-status-drop">
                   <li value="판매중" onClick={onTradeStatusClick}>
                     판매중
