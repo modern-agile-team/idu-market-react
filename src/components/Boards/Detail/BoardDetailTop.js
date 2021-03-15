@@ -20,7 +20,11 @@ const BoardDetailTop = ({ boardDetail, categoryName }) => {
             <h1 className="detail-title"></h1>
           )}
 
-          <p className="detail-price">{boardDetail.price}원</p>
+          {categoryName === 'free' || categoryName === 'notice' ? (
+              ""
+          ): (
+            <p className="detail-price">{boardDetail.price}원</p>
+          )}
 
           <div className="detail-btn-box">
             <button className="detail-btn-edit">수정</button>
@@ -32,7 +36,7 @@ const BoardDetailTop = ({ boardDetail, categoryName }) => {
             <p><AiOutlineUser />&nbsp;{boardDetail.studentName}</p>
             <p><BsCalendar />&nbsp;{boardDetail.inDate}</p>
           </div>
-          
+
           <div className="detail-trade-status-box">
             <ul>
               <li className="detail-trade-status">

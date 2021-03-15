@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-import SearchComponent from "../Layout/SearchComponent";
+import SearchComponent from "./SearchComponent";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 import { FREEBOARD_GET_REQUEST } from "../../../redux/types";

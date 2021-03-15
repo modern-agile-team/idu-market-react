@@ -16,7 +16,7 @@ const ArticlesComponent = () => {
               <BsBookHalf />
             </p>
             <h2 className="article-item-title">Book</h2>
-            <Link to="/">
+            <Link to="/boards/book">
               <FaArrowCircleRight className="article-btn" />
             </Link>
           </div>
@@ -25,7 +25,7 @@ const ArticlesComponent = () => {
               <GiClothes />
             </p>
             <h2 className="article-item-title">Clothes</h2>
-            <Link to="/">
+            <Link to="/boards/clothes">
               <FaArrowCircleRight className="article-btn" />
             </Link>
           </div>
@@ -34,7 +34,7 @@ const ArticlesComponent = () => {
               <BsLaptop />
             </p>
             <h2 className="article-item-title">Device</h2>
-            <Link to="/">
+            <Link to="/boards/device">
               <FaArrowCircleRight className="article-btn" />
             </Link>
           </div>

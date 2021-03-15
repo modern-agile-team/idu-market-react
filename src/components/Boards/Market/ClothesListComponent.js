@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
-import SearchComponent from "../Layout/SearchComponent";
+import SearchComponent from "../Basic/SearchComponent";
 import BoardListItem from "../BoardListItem";
 import axios from "axios";
 
@@ -26,9 +26,10 @@ const ClothesComponent = ({categoryName}) => {
         }
         setLoading(true);
         setProductList(prev => [...prev, ...result]);
-        isLoading = false;
       }
     });
+
+    isLoading = false;
   }, []);
 
 
@@ -38,7 +39,6 @@ const ClothesComponent = ({categoryName}) => {
     const scrollTop = documentElement.scrollTop;
     const clientHeight = documentElement.clientHeight;
 
-    console.log(isLoading);
     if (scrollTop + clientHeight + 100 >= scrollHeight && isLoading === false) {
        getMoreData();
     }

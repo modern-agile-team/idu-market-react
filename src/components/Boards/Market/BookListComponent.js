@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
-import SearchComponent from "../Layout/SearchComponent";
+import SearchComponent from "../Basic/SearchComponent";
 import BoardListItem from "../BoardListItem";
 import axios from "axios";
 
@@ -20,9 +20,6 @@ const BookListComponent = ({ categoryName }) => {
       if (response.data.success) {
         const result = response.data.boards;
 
-        console.log(result);
-        console.log(lastNum);
-
         if (result.length < 10) {
           window.removeEventListener("scroll", handleScroll);
         } else {
@@ -32,6 +29,7 @@ const BookListComponent = ({ categoryName }) => {
         setProductList(prev => [...prev, ...result]);
       }
     });
+    
     isLoading = false;
   }, []);
 

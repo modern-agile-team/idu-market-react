@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
-import SearchComponent from "../Layout/SearchComponent";
+import SearchComponent from "../Basic/SearchComponent";
 import BoardListItem from "../BoardListItem";
 import axios from "axios";
 
@@ -29,6 +29,8 @@ const DeviceListComponent = ({categoryName}) => {
         isLoading = false;
       }
     });
+    
+    isLoading = false;
   }, []);
 
 
@@ -38,7 +40,6 @@ const DeviceListComponent = ({categoryName}) => {
     const scrollTop = documentElement.scrollTop;
     const clientHeight = documentElement.clientHeight;
 
-    console.log(isLoading);
     if (scrollTop + clientHeight + 100 >= scrollHeight && isLoading === false) {
        getMoreData();
     }
