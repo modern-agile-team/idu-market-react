@@ -5,6 +5,7 @@ import auth from "./authReducer";
 import loading from "./loadingReducer";
 import boards from "./BoardsReducer";
 import boardNew from "./boardNewReducer";
+import profile from "./profileReducer";
 
 const createRootReducer = (history) =>
   combineReducers({
@@ -13,6 +14,7 @@ const createRootReducer = (history) =>
     loading,
     boards,
     boardNew,
+    profile,
   });
 
 export default createRootReducer;
