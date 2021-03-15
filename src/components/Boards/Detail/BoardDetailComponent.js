@@ -11,6 +11,8 @@ const BoardDetailComponent = (props) => {
   const [tradeStatus, setTradeStatue] = useState("판매중");
   const categoryName = props.match.params.categoryName;
   const num = props.match.params.num;
+
+  console.log(num);
   const boardDetail = useSelector((state) => state.boards);
 
   const dispatch = useDispatch();

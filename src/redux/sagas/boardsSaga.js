@@ -143,14 +143,14 @@ function* noticeboardGet(action) {
 //BoardNew
 function boardNewAPI(action) {
   const categoryName = action.categoryName;
-  console.log(categoryName);
   return axios.post(`/api/boards/${categoryName}`, action);
 }
 
 function* boardNew(action) {
   try {
     const result = yield call(boardNewAPI, action.payload);
-
+    console.log(result);
+    
     yield put({
       type: BOARD_NEW_SUCCESS,
       payload: result.data,
