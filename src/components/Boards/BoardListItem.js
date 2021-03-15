@@ -8,16 +8,16 @@ const BoardListItem = ({ productList }) => {
     <>
       {productList.map((board) => {
         return (
-          <div className="market-items" key={board.num}>
+          <div className="market-items" key={board.newNum}>
             <Link
-              to={`/boards/book/${board.num}`}
+              to={`/boards/book/${board.newNum}`}
               className="market-img-box-link"
             >
               <div className="market-img-box">
-                <img src={testImage} alt="test" />
+                <img src={board.thumbnail} alt="test" />
               </div>
             </Link>
-            <Link to={`/boards/book/${board.num}`}>
+            <Link to={`/boards/book/${board.newNum}`}>
               <h1 className="market-item-title">{board.title}</h1>
             </Link>
             <p className="market-item-price">{board.price}원</p>

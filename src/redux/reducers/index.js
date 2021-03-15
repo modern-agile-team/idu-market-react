@@ -3,8 +3,7 @@ import { connectRouter } from "connected-react-router";
 
 import auth from "./authReducer";
 import loading from "./loadingReducer";
-import boards from "./BoardsReducer";
-import boardNew from "./boardNewReducer";
+import boards from "./boardsReducer";
 
 const createRootReducer = (history) =>
   combineReducers({
@@ -12,7 +11,6 @@ const createRootReducer = (history) =>
     auth,
     loading,
     boards,
-    boardNew,
   });
 
 export default createRootReducer;

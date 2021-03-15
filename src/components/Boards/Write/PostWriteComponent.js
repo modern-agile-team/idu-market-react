@@ -14,7 +14,7 @@ import { BOARD_NEW_REQUEST } from "../../../redux/types";
 const PostWriteComponent = (props) => {
   const categoryName = props.match.params.categoryName;
   const dispatch = useDispatch();
-  const { successMsg } = useSelector(state => state.boardNew);
+  const { successMsg } = useSelector((state) => state.boards);
 
   const [modal, setModal] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
@@ -32,10 +32,11 @@ const PostWriteComponent = (props) => {
   useEffect(() => {
     setModalMsg(successMsg);
   }, [successMsg]);
-  
+
   const getDataFromCKEditor = (event, editor) => {
     const data = editor.getData();
 
+    console.log(data);
     //ThumbNail Image 추출
     if (data && data.match("<img src=")) {
       const whereImgStart = data.indexOf("<img src=");
@@ -76,7 +77,8 @@ const PostWriteComponent = (props) => {
       //이미지 등록을 하지 않을 경우
       setFormValues({
         ...formValues,
-        thumbnail: "https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/default-thumbnail/communication-2.png",
+        thumbnail:
+          "https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/default-thumbnail/communication-2.png",
         content: data,
       });
     }
@@ -129,8 +131,7 @@ const PostWriteComponent = (props) => {
       setTimeout(() => {
         setModal(false);
       }, 1500);
-    }
-    else if (content === "") {
+    } else if (content === "") {
       setModal(true);
       setModalError(true);
       setModalErrorMsg("빈 본문입니다.");
@@ -138,8 +139,7 @@ const PostWriteComponent = (props) => {
       setTimeout(() => {
         setModal(false);
       }, 1500);
-    }
-    else {
+    } else {
       dispatch({
         type: BOARD_NEW_REQUEST,
         payload: body,
@@ -196,7 +196,7 @@ const PostWriteComponent = (props) => {
             </Link>
           </div>
         </form>
-        
+
         {modal ? (
           <div className="modal-wrapper">
             <div className="container">
@@ -205,7 +205,7 @@ const PostWriteComponent = (props) => {
                   <FcCancel className="modal-icon-error" />
                   <h2 className="modal-msg-error">{modalErrorMsg}</h2>
                 </>
-              ):(
+              ) : (
                 <>
                   <IoIosCheckmarkCircle className="modal-icon" />
                   <h2 className="modal-msg">{modalMsg}</h2>
