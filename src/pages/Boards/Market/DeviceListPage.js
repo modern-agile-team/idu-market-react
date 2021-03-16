@@ -1,12 +1,12 @@
 import React from "react";
 import BoardBanner from "../../../components/Boards/Layout/BoardBanner";
-import DeviceListComponent from "../../../components/Boards/Market/DeviceListComponent";
+import MarketListComponent from "../../../components/Boards/Market/MarketListComponent";
 
 const DeviceListPage = () => {
   return (
     <>
       <BoardBanner title="Market" desc="Device" />
-      <DeviceListComponent categoryName="device" />
+      <MarketListComponent categoryName="device" />
     </>
   );
 };

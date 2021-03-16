@@ -1,12 +1,12 @@
 import React from "react";
-import BookListComponent from "../../../components/Boards/Market/BookListComponent";
+import MarketListComponent from "../../../components/Boards/Market/MarketListComponent";
 import BoardBanner from "../../../components/Boards/Layout/BoardBanner";
 
 const BookListPage = () => {
   return (
     <>
       <BoardBanner title="Market" desc="Book" />
-      <BookListComponent categoryName="book" />
+      <MarketListComponent categoryName="book" />
     </>
   );
 };

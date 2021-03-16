@@ -4,7 +4,7 @@ import SearchComponent from "../Basic/SearchComponent";
 import BoardListItem from "../BoardListItem";
 import axios from "axios";
 
-const BookListComponent = ({ categoryName }) => {
+const MarketListComponent = ({ categoryName }) => {
   const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(false);
   // const [isLoading, setIsLoading] = useState(false);
@@ -64,7 +64,7 @@ const BookListComponent = ({ categoryName }) => {
             </a>
             <SearchComponent categoryName={categoryName} />
             <div className="container">
-              <BoardListItem productList={productList}></BoardListItem>
+              <BoardListItem productList={productList} categoryName={categoryName}></BoardListItem>
             </div>
           </>
         ) : (
@@ -79,4 +79,4 @@ const BookListComponent = ({ categoryName }) => {
   );
 };
 
-export default BookListComponent;
+export default MarketListComponent;
