@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-const CommentComponent = () => {
+const CommentComponent = ({ categoryName, num }) => {
     const [formValue, setFormValue] = useState({
         contents: "",
       });

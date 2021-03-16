@@ -44,7 +44,7 @@ const BoardDetailComponent = (props) => {
             disabled="true"
           />
         </div>
-        <CommentComponent />
+        <CommentComponent categoryName={categoryName} num={num}/>
       </div>
     </section>
   );
