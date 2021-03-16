@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import SearchComponent from "../Basic/SearchComponent";
 import BoardListItem from "../BoardListItem";
@@ -12,7 +12,7 @@ const ClothesComponent = ({categoryName}) => {
   let isLoading = false;
   let lastNum = 0
 
-  const getMoreData = useCallback(async () => {
+  const getMoreData = async () => {
     isLoading = true;
 
     await axios.get(`/api/boards/${categoryName}?lastNum=${lastNum}`).then((response) => {
@@ -30,10 +30,10 @@ const ClothesComponent = ({categoryName}) => {
     });
 
     isLoading = false;
-  }, []);
+  };
 
 
-  const handleScroll = useCallback(() => {
+  const handleScroll = () => {
     const { documentElement } = document;
     const scrollHeight = documentElement.scrollHeight;
     const scrollTop = documentElement.scrollTop;
@@ -42,7 +42,7 @@ const ClothesComponent = ({categoryName}) => {
     if (scrollTop + clientHeight + 100 >= scrollHeight && isLoading === false) {
        getMoreData();
     }
-  }, []);
+  };
 
   useEffect(() => {
     getMoreData();
