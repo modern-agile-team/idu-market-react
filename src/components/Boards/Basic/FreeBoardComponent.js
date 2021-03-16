@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 function FreeBoardComponent({ categoryName }) {
   const [pageNumber, setPageNumber] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
   const freeBoardList = useSelector((state) => state.boards.data);
@@ -22,10 +23,15 @@ function FreeBoardComponent({ categoryName }) {
   };
 
   useEffect(() => {
-    dispatch({
-      type: FREEBOARD_GET_REQUEST,
-      payload: categoryName,
-    });
+    if(!loading) {
+      setLoading(true)
+      dispatch({
+        type: FREEBOARD_GET_REQUEST,
+        payload: categoryName,
+      });
+    } else {
+      setLoading(false)
+    }
   }, [dispatch]);
 
 
@@ -48,10 +54,13 @@ function FreeBoardComponent({ categoryName }) {
 
   return (
     <section id="boardlist-common" className="boardlist-common">
+     
       <SearchComponent categoryName={categoryName} />
-
+      {loading ? ( 
       <div className="container">
+      
         <table className="boardlist-common-tables">
+        
           <thead>
             <tr>
               <th>No</th>
@@ -61,10 +70,16 @@ function FreeBoardComponent({ categoryName }) {
               <th>조회수</th>
             </tr>
           </thead>
-          <tbody id="boardlist-common-body">{displayBoardList}</tbody>
+          
+          <tbody id="boardlist-common-body">
+          {displayBoardList}
+         
+          </tbody>
+           
         </table>
+        
         <div className="boardlist-common-write"></div>
-
+       
         <div className="pagination-container">
           <ReactPaginate
             previousLabel={<FaAngleLeft />}
@@ -79,6 +94,14 @@ function FreeBoardComponent({ categoryName }) {
           />
         </div>
       </div>
+      ) : (
+        <>
+          <div className="market-loading">
+            <div className="spin"></div>
+            <p className="market-loading-msg">Loading</p>
+          </div>
+        </>
+      )}
     </section>
   );
 }

@@ -32,6 +32,7 @@ import Auth from "../hoc/auth";
 
 //Profile
 import ProfilePage from "./Profile/ProfilePage";
+import WatchlistPage from "./WatchlistPage/WatchlistPage";
 
 const MainRouter = () => {
   return (
@@ -86,6 +87,9 @@ const MainRouter = () => {
 
         {/* Profile */}
         <Route component={ProfilePage} path="/students" exact />
+
+        {/* watchlist */}
+        <Route component={WatchlistPage} path="/watchlist" exact />
       </Switch>
       <Footer></Footer>
     </>
