@@ -10,7 +10,7 @@ import {
 //profile
 function profileGetAPI(action) {
     const students = action;
-    return axios.get(`/api/${students}`, action);
+    return axios.get(`/api/students`, action);
   }
   
   function* profileGet(action) {
