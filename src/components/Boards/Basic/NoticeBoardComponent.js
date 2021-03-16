@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 function NoticeBoardComponent({ categoryName }) {
     const [pageNumber, setPageNumber] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     const dispatch = useDispatch();
     const noticeBoardList = useSelector((state) => state.boards.data);
@@ -22,11 +23,16 @@ function NoticeBoardComponent({ categoryName }) {
     }
 
     useEffect(() => {
-        dispatch({
-        type: NOTICEBOARD_GET_REQUEST,
-        payload: categoryName,
-        });
-    }, [dispatch]);
+        if(!loading) {
+          setLoading(true)
+          dispatch({
+            type: NOTICEBOARD_GET_REQUEST,
+            payload: categoryName,
+          });
+        } else {
+          setLoading(false)
+        }
+      }, [dispatch]);
 
     const displayBoardList = noticeBoardList
     .slice(pageVisited, pageVisited + usersPerPage)
@@ -46,8 +52,11 @@ function NoticeBoardComponent({ categoryName }) {
 
     return (
         <section id="boardlist-common" className="boardlist-common">
-            <div className="container">
+            
                 <SearchComponent categoryName={categoryName} />
+                {loading ? ( 
+                <div className="container">
+                
                 <table className="boardlist-common-tables"> 
                     <thead>
                         <tr>
@@ -79,6 +88,14 @@ function NoticeBoardComponent({ categoryName }) {
                 />
                 </div>
             </div>
+            ) : (
+                <>
+                  <div className="market-loading">
+                    <div className="spin"></div>
+                    <p className="market-loading-msg">Loading</p>
+                  </div>
+                </>
+            )}
         </section>
     )
 }
