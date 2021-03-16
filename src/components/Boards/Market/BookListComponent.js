@@ -1,41 +1,49 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
-import SearchComponent from "../Layout/SearchComponent";
+import SearchComponent from "../Basic/SearchComponent";
 import BoardListItem from "../BoardListItem";
 import axios from "axios";
 
-const BookListComponent = ({categoryName}) => {
+const BookListComponent = ({ categoryName }) => {
   const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(false);
-  let [preItems, items] = [0, 8];
+  // const [isLoading, setIsLoading] = useState(false);
+  const LAST_COUNT = 9;
 
-  const getMoreData = async () => {
-    axios.get(`/api/boards/${categoryName}`).then((response) => {
+  let isLoading = false;
+  let lastNum = 0
+
+  const getMoreData = useCallback(async () => {
+    isLoading = true;
+
+    await axios.get(`/api/boards/${categoryName}?lastNum=${lastNum}`).then((response) => {
       if (response.data.success) {
-        const result = response.data.boards.slice(preItems, items);
-        const mergedData = productList.concat(result);
+        const result = response.data.boards;
 
-        console.log(response.data);
-
+        if (result.length < 10) {
+          window.removeEventListener("scroll", handleScroll);
+        } else {
+          lastNum = result[LAST_COUNT].num;
+        }
         setLoading(true);
-        setProductList(prev => prev.concat(mergedData));
+        setProductList(prev => [...prev, ...result]);
       }
     });
-  };
+    
+    isLoading = false;
+  }, []);
 
-  const handleScroll = () => {
+
+  const handleScroll = useCallback(() => {
     const { documentElement } = document;
     const scrollHeight = documentElement.scrollHeight;
     const scrollTop = documentElement.scrollTop;
     const clientHeight = documentElement.clientHeight;
 
-    if (scrollTop + clientHeight >= scrollHeight) {
-      preItems = items;
-      items += 8;
-
-      getMoreData();
+    if (scrollTop + clientHeight + 100 >= scrollHeight && isLoading === false) {
+       getMoreData();
     }
-  };
+  }, []);
 
   useEffect(() => {
     getMoreData();

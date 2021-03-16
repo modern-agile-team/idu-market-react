@@ -4,6 +4,7 @@ import { AiOutlineUser, AiOutlineComment } from "react-icons/ai";
 import testImage from "../../img/신발.jpg";
 
 const BoardListItem = ({ productList }) => {
+  console.log(productList);
   return (
     <>
       {productList.map((board) => {
@@ -14,7 +15,7 @@ const BoardListItem = ({ productList }) => {
               className="market-img-box-link"
             >
               <div className="market-img-box">
-                <img src={testImage} alt="test" />
+                <img src={board.thumbnail} alt="test" />
               </div>
             </Link>
             <Link to={`/boards/book/${board.num}`}>

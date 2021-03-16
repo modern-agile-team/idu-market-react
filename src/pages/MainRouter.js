@@ -21,6 +21,9 @@ import ClothesListPage from "./Boards/Market/ClothesListPage";
 import NoticeBoardPage from "./Boards/Basic/NoticeBoardPage";
 import FreeBoardPage from "./Boards/Basic/FreeBoardPage";
 
+//Board Detail
+import BoardDetailPage from "./Boards/Detail/BoardDetailPage";
+
 //PostWrite
 import PostWritePage from "./Boards/Write/PostWritePage";
 
@@ -71,6 +74,13 @@ const MainRouter = () => {
         <Route
           component={Auth(PostWritePage, null)}
           path="/boards/:categoryName/new"
+          exact
+        />
+
+        {/* boards Detail */}
+        <Route
+          component={Auth(BoardDetailPage, null)}
+          path="/boards/:categoryName/:num"
           exact
         />
 
