@@ -7,6 +7,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import BalloonEditor from "@ckeditor/ckeditor5-editor-balloon/src/ballooneditor";
 import { editorConfiguration } from "../../Editor/EditorConfig";
 import { BOARD_DETAIL_REQUEST } from "../../../redux/types";
+import CommentComponent from "./CommentComponent";
 
 const BoardDetailComponent = (props) => {
   const categoryName = props.match.params.categoryName;
@@ -43,6 +44,7 @@ const BoardDetailComponent = (props) => {
             disabled="true"
           />
         </div>
+        <CommentComponent />
       </div>
     </section>
   );
