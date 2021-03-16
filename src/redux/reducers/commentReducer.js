@@ -14,6 +14,7 @@ import {
       errorMsg: "",
       studentId: "",
       content: "",
+      comments: [],
   };
   
   const comment = (state = initialState, action) => {
@@ -22,24 +23,24 @@ import {
         return {
           ...state,
           isLoading: true,
-          studentId: "",
-          content: "",
+          comments: [],
+          errorMsg: "",
+          successMsg: "",
         };
   
       case COMMENT_GET_SUCCESS:
         return {
           ...state,
           isLoading: false,
-          studentId: action.payload.studentId,
-          content: action.payload.content,
+          comments: [action.payload.comments],
         };
   
       case COMMENT_GET_FAILURE:
         return {
           ...state,
           isLoading: false,
-          studentId: "",
-          content: "",
+          errorMsg: action.payload.msg,
+          comments: [],
         };
   
       default:

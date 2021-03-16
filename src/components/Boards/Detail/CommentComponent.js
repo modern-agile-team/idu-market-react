@@ -1,20 +1,34 @@
 import React, { useState, useRef } from 'react';
+import { useSelector } from 'react-redux';
 
-const CommentComponent = ({ categoryName, num }) => {
+import SingleComment from './SingleComment'
+
+const CommentComponent = ({}) => {
+    const commentList = useSelector(state => state.comment.comments[0])
     const [formValue, setFormValue] = useState({
         contents: "",
-      });
+    });
+    
     const resetValue = useRef(null);
 
-      
     const onChange = e => {
         setFormValue({
             ...formValue,
             [e.target.name] : e.target.value,
         })
-      }
+    }
 
     return (
+        <>
+            {commentList ? commentList.map((comment) => {
+                return (
+                    <SingleComment comment={comment} key={comment.commentNum} /> 
+                )
+            }) : (
+                <></>
+            )}
+        
+
         <form className="detail-comment">
             <h1 className="comment-title">
                 Write comments
@@ -33,7 +47,8 @@ const CommentComponent = ({ categoryName, num }) => {
                     Submit
                 </button>
             </div>
-      </form>
+        </form>
+      </>
     );
 };
 

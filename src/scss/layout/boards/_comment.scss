@@ -15,6 +15,7 @@
 
 .comment-submit-box {
     display: flex;
+    margin-top: 10px;
     
     .comment-contents {
         font-family: $Jua-font;
@@ -39,4 +40,59 @@
         border-radius: 5px;
         font-size: 1rem;
     }
+}
+
+.comment-box {
+    width: 100%;
+    border-bottom: 2px solid #999;
+    padding: 10px;
+}
+
+.reply-box {
+    position: relative;
+    width: 100%;
+    margin: 10px 0;
+    background-color: rgb(241, 241, 241);
+    padding: 10px 50px;
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 17px;
+        height: 17px;
+        border-bottom: 2px solid #999;
+        border-left: 2px solid #999;
+        top: 43%;
+        left: 15px;
+        transform: translateY(-50%);
+    }
+}
+
+.comment-student-id{
+    color: #999;
+    span { 
+        font-family: $Jua-font;
+    }
+}
+.comment-content {
+    font-size: 1.2rem;
+    margin: 8px 0;
+    span { 
+        font-family: $Jua-font;
+    }
+}
+.comment-comment-date {
+    color: #999;
+    font-size: 0.9rem;
+    span { 
+        font-family: $Jua-font;
+    }
+}
+.reply-open-btn {
+    margin-top: 7px;
+    padding: 5px 15px;
+    background: $main-color-1;
+    border: 1px solid $main-color-2;
+    border-radius: 5px;
+    font-family: $Montserrat-font;
 }

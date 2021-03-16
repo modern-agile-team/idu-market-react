@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import BoardDetailTop from './BoardDetailTop';
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import BalloonEditor from "@ckeditor/ckeditor5-editor-balloon/src/ballooneditor";
 import { editorConfiguration } from "../../Editor/EditorConfig";
-import { BOARD_DETAIL_REQUEST } from "../../../redux/types";
+import { BOARD_DETAIL_REQUEST, COMMENT_GET_REQUEST } from "../../../redux/types";
 import CommentComponent from "./CommentComponent";
 
 const BoardDetailComponent = (props) => {
@@ -15,7 +15,7 @@ const BoardDetailComponent = (props) => {
 
   const boardDetail = useSelector((state) => state.boards);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch({
       type: BOARD_DETAIL_REQUEST,
@@ -24,9 +24,15 @@ const BoardDetailComponent = (props) => {
         num,
       },
     });
-  }, [dispatch]);
 
-  console.log(boardDetail);
+    dispatch({
+      type: COMMENT_GET_REQUEST,
+      payload: {
+        categoryName,
+        num,
+      },
+    });
+  }, [dispatch]);
 
   return (
     <section id="board-Detail" className="board-Detail">

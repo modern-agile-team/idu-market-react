@@ -104,11 +104,14 @@ function* boardDetail(action) {
   try {
     const result = yield call(boardDetailAPI, action.payload);
     console.log(result);
+
     yield put({
       type: BOARD_DETAIL_SUCCESS,
       payload: result.data,
     });
+    
   } catch (e) {
+
     yield put({
       type: BOARD_DETAIL_FAILURE,
       payload: e.response,
