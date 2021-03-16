@@ -52,50 +52,48 @@ function NoticeBoardComponent({ categoryName }) {
 
     return (
         <section id="boardlist-common" className="boardlist-common">
-            
-                <SearchComponent categoryName={categoryName} />
-                {loading ? ( 
+            <SearchComponent categoryName={categoryName} />
+            {loading ? ( 
                 <div className="container">
-                
-                <table className="boardlist-common-tables"> 
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>제목</th>
-                            <th>작성자</th>
-                            <th>등록일</th>
-                            <th>조회수</th>
-                        </tr>
-                    </thead>
-                    <tbody id="boardlist-common-body">
-                        {displayBoardList}
-                    </tbody>
-                </table>
-                <div className= "boardlist-common-write" >
+                    <table className="boardlist-common-tables"> 
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>제목</th>
+                                <th>작성자</th>
+                                <th>등록일</th>
+                                <th>조회수</th>
+                            </tr>
+                        </thead>
+                        <tbody id="boardlist-common-body">
+                            {displayBoardList}
+                        </tbody>
+                    </table>
+                    <div className= "boardlist-common-write" >
+                    </div>
+                    
+                    <div className="pagination-container">
+                    <ReactPaginate
+                        previousLabel={<FaAngleLeft/>}
+                        nextLabel={<FaAngleRight/>}
+                        pageCount={pageCount}
+                        onPageChange={changePage}
+                        containerClassName={"pagination-container"}
+                        previousLinkClassName={"previousBtn"}
+                        nextLinkClassName={"nextBtn"}
+                        disabledClassName={"disabled"}
+                        activeLinkClassName={"active"}
+                    />
+                    </div>
                 </div>
-               
-                <div className="pagination-container">
-                <ReactPaginate
-                    previousLabel={<FaAngleLeft/>}
-                    nextLabel={<FaAngleRight/>}
-                    pageCount={pageCount}
-                    onPageChange={changePage}
-                    containerClassName={"pagination-container"}
-                    previousLinkClassName={"previousBtn"}
-                    nextLinkClassName={"nextBtn"}
-                    disabledClassName={"disabled"}
-                    activeLinkClassName={"active"}
-                />
-                </div>
-            </div>
-            ) : (
-                <>
-                  <div className="market-loading">
+        ) : (
+            <>
+                <div className="market-loading">
                     <div className="spin"></div>
                     <p className="market-loading-msg">Loading</p>
-                  </div>
-                </>
-            )}
+                </div>
+            </>
+        )}
         </section>
     )
 }
