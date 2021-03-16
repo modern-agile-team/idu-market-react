@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineUser, AiOutlineComment } from "react-icons/ai";
-import testImage from "../../img/신발.jpg";
 
 const BoardListItem = ({ productList }) => {
   console.log(productList);
