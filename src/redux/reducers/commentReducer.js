@@ -5,16 +5,17 @@ import {
     COMMENT_UPLOAD_FAILURE,
     COMMENT_UPLOAD_SUCCESS,
     COMMENT_UPLOAD_REQUEST,
+    REPLY_UPLOAD_REQUEST,
+    REPLY_UPLOAD_SUCCESS,
+    REPLY_UPLOAD_FAILURE,
 } 
   from "../types";
   
   const initialState = {
       isLoading: false,
-      successMsg: "",
-      errorMsg: "",
-      studentId: "",
-      content: "",
+      msg: "",
       comments: [],
+      replyFlag: {},
   };
   
   const comment = (state = initialState, action) => {
@@ -23,9 +24,8 @@ import {
         return {
           ...state,
           isLoading: true,
+          msg: "",
           comments: [],
-          errorMsg: "",
-          successMsg: "",
         };
   
       case COMMENT_GET_SUCCESS:
@@ -33,16 +33,60 @@ import {
           ...state,
           isLoading: false,
           comments: [action.payload.comments],
+          msg: action.payload.msg,
         };
   
       case COMMENT_GET_FAILURE:
         return {
           ...state,
           isLoading: false,
-          errorMsg: action.payload.msg,
+          msg: action.payload.msg,
           comments: [],
         };
-  
+      case COMMENT_UPLOAD_REQUEST:
+        return {
+          ...state,
+          isLoading: true,
+          studentId: "",
+          content: "",
+          msg: "",
+        };
+      case COMMENT_UPLOAD_SUCCESS:
+        return {
+          ...state,
+          isLoading: false,
+          msg: action.payload.msg,
+        };
+      case COMMENT_UPLOAD_FAILURE:
+        return {
+          ...state,
+          isLoading: false,
+          msg: action.payload.msg,
+        }
+      case REPLY_UPLOAD_REQUEST:
+        return {
+          ...state,
+          isLoading: true,
+          successMsg: "",
+          errorMsg: "",
+          replyFlag: {},
+        };
+      case REPLY_UPLOAD_SUCCESS:
+        return {
+          ...state,
+          isLoading: false,
+          studentId: action.payload.studentId,
+          content: action.payload.content,
+          replyFlag: action.payload.replyFlag,
+          msg: action.payload.msg,
+        };
+      case REPLY_UPLOAD_FAILURE:
+        return {
+          ...state,
+          isLoading: false,
+          replyFlag: {},
+          msg: action.payload.msg,
+        }
       default:
         return state;
     }

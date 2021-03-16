@@ -1,11 +1,18 @@
-import React, {useState} from 'react';
-import { useSelector } from 'react-redux';
-import ReplyComment from './ReplyComment';
+import React, {useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { REPLY_UPLOAD_REQUEST } from '../../../redux/types';
 
-const SingleComment = ({ comment }) => {
+const SingleComment = ({ comment, categoryName, num }) => {
+    const dispatch = useDispatch();
+    const userId = useSelector(state => state.loading.userId);
     const [formValue, setFormValue] = useState({
-        contents: "",
+        content: "",
+        studentId: userId,
+        categoryName,
+        num,
+        groupNum: comment.commentGroupNum,
     });
+    const resetValue = useRef(null);
     const [openReply, setOpenReply] = useState(false);
 
     const onChange = e => {
@@ -15,8 +22,40 @@ const SingleComment = ({ comment }) => {
         })
     }
 
-    const onOpenReply = e => {
+    const onOpenReply = () => {
         setOpenReply(!openReply);
+    }
+
+    const onSubmit = e => {
+        e.preventDefault();
+
+        const {content, studentId, categoryName, num, groupNum} = formValue;
+        const body =  {
+            content,
+            studentId,
+            categoryName,
+            num,
+            groupNum,
+        }
+
+        if (body.content.length === 0) {
+            alert("댓글이 비었습니다.");
+        } else {
+            dispatch({
+                type: REPLY_UPLOAD_REQUEST,
+                payload: body,
+            });
+
+            resetValue.current.value = '';
+
+            setFormValue({
+                content: "",
+                studentId: userId,
+                categoryName,
+                num,
+                groupNum: comment.commentGroupNum,
+            });
+        }
     }
 
     return (
@@ -38,16 +77,16 @@ const SingleComment = ({ comment }) => {
                         {openReply ? (
                             <div className="comment-submit-box">
                                 <textarea 
-                                    // innerRef={resetValue}
+                                    ref={resetValue}
                                     type="textarea"
-                                    name="contents"
+                                    name="content"
                                     id="comment-contents"
                                     className="comment-contents"
                                     onChange={onChange}
                                     placeholder="Comment"
                                 />
 
-                                <button className="comment-submit-btn">
+                                <button className="comment-submit-btn" onClick={onSubmit}>
                                     Submit
                                 </button>
                             </div>
@@ -58,7 +97,17 @@ const SingleComment = ({ comment }) => {
                 </>          
                 ) : (
                     <>
-                        <ReplyComment comment={comment} openReply={openReply} />
+                        <div className="reply-box">
+                            <div className="comment-student-id">
+                                <span>{comment.studentId}</span>
+                            </div> 
+                            <div className="comment-content">
+                                <span>{comment.commentContent}</span>
+                            </div> 
+                            <div className="comment-comment-date">
+                                <span>{comment.commentInDate}</span>
+                            </div> 
+                        </div>
                     </>
                 )
             }
