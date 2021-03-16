@@ -165,18 +165,23 @@ const PostWriteComponent = (props) => {
             <span className="post-write-border"></span>
           </div>
 
-          <div className="form-group price">
-            <input
-              type="text"
-              name="price"
-              id="price"
-              className="write-price"
-              onChange={onChange}
-              placeholder="Price"
-            />
-            <span className="post-write-border"></span>
-            <span className="price-won">원 (숫자만 입력 ex. 1000)</span>
-          </div>
+          {categoryName === 'free' || categoryName === 'notice' ? (
+            ""
+          ): (
+            <div className="form-group price">
+              <input
+                type="text"
+                name="price"
+                id="price"
+                className="write-price"
+                onChange={onChange}
+                placeholder="Price"
+              />
+              <span className="post-write-border"></span>
+              <span className="price-won">원 (숫자만 입력 ex. 1000)</span>
+            </div>
+          )}
+          
 
           <div className="form-group">
             <CKEditor

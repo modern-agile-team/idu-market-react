@@ -32,13 +32,14 @@ function FreeBoardComponent({ categoryName }) {
   const displayBoardList = freeBoardList
     .slice(pageVisited, pageVisited + perPage)
     .map((boardItem) => {
+      console.log(boardItem);
       return (
         <tr key={boardItem.num}>
           <td>{boardItem.num}</td>
           <td className="boardlist-common-title">
             <Link to={`/boards/${categoryName}/${boardItem.num}`}>{boardItem.title}</Link>
           </td>
-          <td>{boardItem.studentName}</td>
+          <td>{boardItem.studentId}</td>
           <td>{boardItem.inDate.substring(0, 10)}</td>
           <td>{boardItem.hit}</td>
         </tr>
