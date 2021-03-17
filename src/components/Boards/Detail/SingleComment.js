@@ -1,6 +1,6 @@
 import React, {useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { REPLY_UPLOAD_REQUEST } from '../../../redux/types';
+import { REPLY_UPLOAD_REQUEST, COMMENT_GET_REQUEST } from '../../../redux/types';
 
 const SingleComment = ({ comment, categoryName, num }) => {
     const dispatch = useDispatch();
@@ -10,8 +10,9 @@ const SingleComment = ({ comment, categoryName, num }) => {
         studentId: userId,
         categoryName,
         num,
-        groupNum: comment.commentGroupNum,
+        groupNum: comment.groupNum,
     });
+
     const resetValue = useRef(null);
     const [openReply, setOpenReply] = useState(false);
 
@@ -41,10 +42,19 @@ const SingleComment = ({ comment, categoryName, num }) => {
         if (body.content.length === 0) {
             alert("댓글이 비었습니다.");
         } else {
+
             dispatch({
                 type: REPLY_UPLOAD_REQUEST,
                 payload: body,
             });
+
+            setTimeout(() => {
+                dispatch({
+                    type: COMMENT_GET_REQUEST,
+                    payload: body,
+                });
+            }, 200)
+            
 
             resetValue.current.value = '';
 
@@ -53,24 +63,24 @@ const SingleComment = ({ comment, categoryName, num }) => {
                 studentId: userId,
                 categoryName,
                 num,
-                groupNum: comment.commentGroupNum,
+                groupNum: "",
             });
         }
     }
 
     return (
         <>
-            {comment && comment.commentDepth === 0 ? (                
+            {comment && comment.depth === 0 ? (                
                 <>
                     <div className="comment-box">
                         <div className="comment-student-id">
                             <span>{comment.studentId}</span>
                         </div> 
                         <div className="comment-content">
-                            <span>{comment.commentContent}</span>
+                            <span>{comment.content}</span>
                         </div> 
                         <div className="comment-comment-date">
-                            <span>{comment.commentInDate}</span>
+                            <span>{comment.inDate}</span>
                         </div> 
                         <button onClick={onOpenReply} className="reply-open-btn">reply</button>
 
@@ -102,10 +112,10 @@ const SingleComment = ({ comment, categoryName, num }) => {
                                 <span>{comment.studentId}</span>
                             </div> 
                             <div className="comment-content">
-                                <span>{comment.commentContent}</span>
+                                <span>{comment.content}</span>
                             </div> 
                             <div className="comment-comment-date">
-                                <span>{comment.commentInDate}</span>
+                                <span>{comment.inDate}</span>
                             </div> 
                         </div>
                     </>

@@ -6,7 +6,7 @@ import SingleComment from './SingleComment'
 
 const CommentComponent = ({ categoryName, num }) => {
     const dispatch = useDispatch();
-    const commentList = useSelector(state => state.comment.comments[0])
+    const commentList = useSelector(state => state.comment.comments)
     const userId = useSelector(state => state.loading.userId);
 
     const [formValue, setFormValue] = useState({
@@ -34,20 +34,19 @@ const CommentComponent = ({ categoryName, num }) => {
             num,
         }
 
-        console.log(body);
-
         if (body.content.length === 0) {
             alert("댓글이 비었습니다.");
         } else {
             dispatch({
                 type: COMMENT_UPLOAD_REQUEST,
-                payload: body,
+                payload: {
+                    categoryName,
+                    num,
+                    studentId,
+                    content,
+                },
             });
 
-            dispatch({
-                type: COMMENT_GET_REQUEST,
-                payload: body,
-            })
             resetValue.current.value = '';
 
             setFormValue({
@@ -56,13 +55,15 @@ const CommentComponent = ({ categoryName, num }) => {
             });
         }
     }
+    
     return (
+        
         <>
-            {commentList ? commentList.map((comment) => {
+            {commentList ? commentList.map((comment, index) => {
                 return (
                     <SingleComment 
                         comment={comment} 
-                        key={comment.commentNum} 
+                        key={index} 
                         categoryName={categoryName}
                         num={num}
                     /> 

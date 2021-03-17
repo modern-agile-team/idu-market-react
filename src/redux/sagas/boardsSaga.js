@@ -54,6 +54,7 @@ function* noticeboardGet(action) {
       type: NOTICEBOARD_GET_SUCCESS,
       payload: result.data,
     });
+
   } catch (e) {
     yield put({
       type: NOTICEBOARD_GET_FAILURE,
