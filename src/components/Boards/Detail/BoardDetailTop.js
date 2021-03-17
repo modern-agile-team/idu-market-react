@@ -10,40 +10,6 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
   const dispatch = useDispatch();
   const [tradeStatus, setTradeStatue] = useState("판매중");
 
-  // const extractImage = () => {
-  //   let whereImgStart = boardDetail.content.indexOf("<img src=");
-  //   const extName = [
-  //     "jpeg",
-  //     "png",
-  //     "jpg",
-  //     "gif",
-  //     "PNG",
-  //     "JPEG",
-  //     "JPG",
-  //     "GIF",
-  //   ];
-
-  //   let whereImgEnd = "";
-  //   let extNameFind = "";
-  //   let resultImgUrl = "";
-
-  //   for (let i = 0; i < extName.length; i++) {
-  //     if (boardDetail.content.includes(extName[i])) {
-  //       extNameFind = extName[i];
-  //       whereImgEnd = boardDetail.content.indexOf(`${extName[i]}`);
-  //     }
-  //   }
-
-  //   if (extNameFind === "jpeg" || extNameFind === "JPEG") {
-  //     resultImgUrl = boardDetail.content.slice(whereImgStart + 10, whereImgEnd + 4);
-  //   } else {
-  //     resultImgUrl = boardDetail.content.slice(whereImgStart + 10, whereImgEnd + 3);
-  //   }
-
-  //   boardDetail.content.replace(resultImgUrl, "234");
-  //   console.log(resultImgUrl);
-  //   console.log(boardDetail.content);
-  // }
 
   const onTradeStatusClick = (e) => {
       e.preventDefault();

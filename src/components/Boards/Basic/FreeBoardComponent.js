@@ -38,7 +38,6 @@ function FreeBoardComponent({ categoryName }) {
   const displayBoardList = freeBoardList
     .slice(pageVisited, pageVisited + perPage)
     .map((boardItem) => {
-      console.log(boardItem);
       return (
         <tr key={boardItem.num}>
           <td>{boardItem.num}</td>

@@ -138,30 +138,29 @@
     //CKEditor5 Setting
     .ck {
       .ck-editor {
-          width: 450px;
+          width: 460px;
       }
       .ck-toolbar {
-        width: 450px;
+        width: 480px;
       }
     }
   
     .ck-editor__editable {
       min-height: 25rem;
-      width: 450px;
+      width: 460px;
     }
   
     .ck-editor__editable_inline {
       min-height: 25rem;
-      width: 450px;
+      width: 460px;
+    }
+    .price-won {
+      font-size: 1.2rem;
+      top: 5px;
+      right: -210px;
     }
  }
- @media screen and (max-width: 767px) { 
-  .price-won {
-    font-size: 1.2rem;
-    top: 5px;
-    right: -210px;
-  }
- }
+ 
  @media screen and (max-width: 480px) {
   .form-group {
     &.price {
@@ -184,20 +183,41 @@
   //CKEditor5 Setting
   .ck {
     .ck-editor {
-        width: 320px;
+        width: 300px;
     }
     .ck-toolbar {
-      width: 320px;
+      width: 300px;
     }
   }
 
   .ck-editor__editable {
     min-height: 20rem;
-    width: 320px;
+    width: 300px;
   }
 
   .ck-editor__editable_inline {
     min-height: 20rem;
-    width: 320px;
+    width: 300px;
+  }
+ }
+
+ @media screen and (max-width: 360px) { 
+  .ck {
+    .ck-editor {
+        width: 250px;
+    }
+    .ck-toolbar {
+      width: 250px;
+    }
+  }
+
+  .ck-editor__editable {
+    min-height: 20rem;
+    width: 250px;
+  }
+
+  .ck-editor__editable_inline {
+    min-height: 20rem;
+    width: 250px;
   }
  }
