@@ -97,9 +97,13 @@
 .ck {
   .ck-editor {
       width: 900px;
+      padding: 10px;
   }
   .ck-toolbar {
     width: 900px;
+  }
+  &.ck-editor__editable_inline {
+    padding: 10px 20px;
   }
 }
 
@@ -146,14 +150,13 @@
     }
   
     .ck-editor__editable {
-      min-height: 25rem;
       width: 460px;
     }
   
     .ck-editor__editable_inline {
-      min-height: 25rem;
       width: 460px;
     }
+    
     .price-won {
       font-size: 1.2rem;
       top: 5px;
@@ -191,12 +194,12 @@
   }
 
   .ck-editor__editable {
-    min-height: 20rem;
+    min-height: 30rem;
     width: 300px;
   }
 
   .ck-editor__editable_inline {
-    min-height: 20rem;
+    min-height: 30rem;
     width: 300px;
   }
  }
@@ -212,12 +215,12 @@
   }
 
   .ck-editor__editable {
-    min-height: 20rem;
+    min-height: 25rem;
     width: 250px;
   }
 
   .ck-editor__editable_inline {
-    min-height: 20rem;
+    min-height: 25rem;
     width: 250px;
   }
  }

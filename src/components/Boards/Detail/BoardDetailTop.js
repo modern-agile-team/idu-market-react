@@ -31,10 +31,12 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
 
     body.url = [...imgList];
 
-    dispatch({
-      type: IMAGE_DELETE_REQUEST,
-      payload: body
-    })
+    if(body.url.length > 0) {
+      dispatch({
+        type: IMAGE_DELETE_REQUEST,
+        payload: body
+      })
+    }
   }
 
   const onTradeStatusClick = (e) => {

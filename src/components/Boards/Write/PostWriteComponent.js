@@ -8,13 +8,12 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
 import { editorConfiguration } from "../../Editor/EditorConfig";
 import Myinit from "../../Editor/UploadAdapter";
-import { useDispatch, useSelector } from "react-redux";
-import { BOARD_NEW_REQUEST } from "../../../redux/types";
+import { useDispatch } from "react-redux";
+import { BOARD_WRITE_REQUEST } from "../../../redux/types";
 
 const PostWriteComponent = (props) => {
   const categoryName = props.match.params.categoryName;
   const dispatch = useDispatch();
-  const { successMsg } = useSelector((state) => state.boards);
 
   const [modal, setModal] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
@@ -137,7 +136,7 @@ const PostWriteComponent = (props) => {
       }, 1500);
     } else {
       dispatch({
-        type: BOARD_NEW_REQUEST,
+        type: BOARD_WRITE_REQUEST,
         payload: body,
       });
       setModal(true);
