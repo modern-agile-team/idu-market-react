@@ -29,10 +29,6 @@ const PostWriteComponent = (props) => {
     categoryName,
   });
 
-  useEffect(() => {
-    setModalMsg(successMsg);
-  }, [successMsg]);
-
   const getDataFromCKEditor = (event, editor) => {
     const data = editor.getData();
 
@@ -145,6 +141,7 @@ const PostWriteComponent = (props) => {
         payload: body,
       });
       setModal(true);
+      setModalMsg("게시글 업로드에 성공하셨습니다.");
       setModalError(false);
     }
   };
