@@ -5,9 +5,9 @@ import {
   NOTICEBOARD_GET_REQUEST,
   NOTICEBOARD_GET_SUCCESS,
   NOTICEBOARD_GET_FAILURE,
-  BOARD_NEW_REQUEST,
-  BOARD_NEW_SUCCESS,
-  BOARD_NEW_FAILURE,
+  BOARD_WRITE_REQUEST,
+  BOARD_WRITE_SUCCESS,
+  BOARD_WRITE_FAILURE,
   BOARD_DELETE_REQUEST,
   BOARD_DELETE_SUCCESS,
   BOARD_DELETE_FAILURE,
@@ -63,7 +63,7 @@ const boards = (state = initialState, action) => {
         msg: "",
       };
 
-    case BOARD_NEW_REQUEST:
+    case BOARD_WRITE_REQUEST:
       return {
         ...state,
         isLoading: true,
@@ -72,7 +72,7 @@ const boards = (state = initialState, action) => {
         num: "",
       };
 
-    case BOARD_NEW_SUCCESS:
+    case BOARD_WRITE_SUCCESS:
       return {
         ...state,
         isLoading: false,
@@ -80,7 +80,7 @@ const boards = (state = initialState, action) => {
         num: action.payload.num,
       };
 
-    case BOARD_NEW_FAILURE:
+    case BOARD_WRITE_FAILURE:
       return {
         ...state,
         data: [],

@@ -8,9 +8,9 @@ import {
   NOTICEBOARD_GET_REQUEST,
   NOTICEBOARD_GET_SUCCESS,
   NOTICEBOARD_GET_FAILURE,
-  BOARD_NEW_REQUEST,
-  BOARD_NEW_SUCCESS,
-  BOARD_NEW_FAILURE,
+  BOARD_WRITE_REQUEST,
+  BOARD_WRITE_SUCCESS,
+  BOARD_WRITE_FAILURE,
   BOARD_DELETE_SUCCESS,
   BOARD_DELETE_REQUEST,
   BOARD_DELETE_FAILURE,
@@ -70,18 +70,18 @@ function* noticeboardGet(action) {
 }
 
 //BoardNew
-function boardNewAPI(action) {
+function boardWriteAPI(action) {
   const categoryName = action.categoryName;
   return axios.post(`/api/boards/${categoryName}`, action);
 }
 
-function* boardNew(action) {
+function* boardWrite(action) {
   try {
-    const result = yield call(boardNewAPI, action.payload);
+    const result = yield call(boardWriteAPI, action.payload);
     console.log(result);
     
     yield put({
-      type: BOARD_NEW_SUCCESS,
+      type: BOARD_WRITE_SUCCESS,
       payload: result.data,
     });
 
@@ -93,7 +93,7 @@ function* boardNew(action) {
     
   } catch (e) {
     yield put({
-      type: BOARD_NEW_FAILURE,
+      type: BOARD_WRITE_FAILURE,
       payload: e.response,
     });
   }
@@ -188,8 +188,8 @@ function* watchNoticeboardGet() {
   yield takeEvery(NOTICEBOARD_GET_REQUEST, noticeboardGet);
 }
 
-function* watchBoardNew() {
-  yield takeEvery(BOARD_NEW_REQUEST, boardNew);
+function* watchBoardWrite() {
+  yield takeEvery(BOARD_WRITE_REQUEST, boardWrite);
 }
 
 function* watchBoardDelete() {
@@ -210,7 +210,7 @@ export default function* boardsSaga() {
   yield all([
     fork(watchFreeboardGet),
     fork(watchNoticeboardGet),
-    fork(watchBoardNew),
+    fork(watchBoardWrite),
     fork(watchBoardDetailGet),
     fork(watchBoardDelete),
     fork(watchImageDelete),

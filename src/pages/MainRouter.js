@@ -73,7 +73,7 @@ const MainRouter = () => {
         />
 
         <Route
-          component={Auth(PostWritePage, null)}
+          component={Auth(PostWritePage, true)}
           path="/boards/:categoryName/new"
           exact
         />
