@@ -32,7 +32,7 @@ const BoardDetailComponent = (props) => {
         num,
       },
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <section id="board-Detail" className="board-Detail">

@@ -32,7 +32,7 @@ import {
         return {
           ...state,
           isLoading: false,
-          comments: [action.payload.comments],
+          comments: action.payload.comments,
           msg: action.payload.msg,
         };
   
@@ -43,6 +43,7 @@ import {
           msg: action.payload.msg,
           comments: [],
         };
+
       case COMMENT_UPLOAD_REQUEST:
         return {
           ...state,
@@ -51,12 +52,15 @@ import {
           content: "",
           msg: "",
         };
+
       case COMMENT_UPLOAD_SUCCESS:
         return {
           ...state,
           isLoading: false,
           msg: action.payload.msg,
+          comments:[...state.comments, action.payload.comment]
         };
+
       case COMMENT_UPLOAD_FAILURE:
         return {
           ...state,
@@ -79,6 +83,7 @@ import {
           content: action.payload.content,
           replyFlag: action.payload.replyFlag,
           msg: action.payload.msg,
+          comments:[...state.comments, action.payload.reply]
         };
       case REPLY_UPLOAD_FAILURE:
         return {
