@@ -4,14 +4,13 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsCalendar } from "react-icons/bs";
 import { useDispatch } from 'react-redux';
-import { BOARD_DELETE_REQUEST } from '../../../redux/types';
-import axios from 'axios';
+import { BOARD_DELETE_REQUEST, IMAGE_DELETE_REQUEST } from '../../../redux/types';
 
 const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
   const dispatch = useDispatch();
   const [tradeStatus, setTradeStatue] = useState("판매중");
 
-  const deleteImage = async () => {
+  const deleteImage = () => {
     const imgList = [];
     const body = {
       url: [],
@@ -32,14 +31,9 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
 
     body.url = [...imgList];
 
-    await axios.post('/api/image/delete', body)
-    .then(response => {
-      if(response.data.success) {
-        console.log(response.data);
-      }
-    })
-    .catch(e => {
-      console.log(e);
+    dispatch({
+      type: IMAGE_DELETE_REQUEST,
+      payload: body
     })
   }
 
@@ -50,16 +44,20 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
 
   const onDelete = e => {
     e.preventDefault();
-    
-    deleteImage();
 
-    dispatch({
-      type: BOARD_DELETE_REQUEST,
-      payload: {
-        categoryName,
-        num,
-      }
-    })
+    const confirm = window.confirm('정말 게시물을 삭제하시겠습니까?'); 
+
+    if (confirm) {
+      deleteImage();
+
+      dispatch({
+        type: BOARD_DELETE_REQUEST,
+        payload: {
+          categoryName,
+          num,
+        }
+      })
+    }
   }
 
   return (

@@ -17,6 +17,9 @@ import {
   BOARD_DETAIL_REQUEST,
   BOARD_DETAIL_SUCCESS,
   BOARD_DETAIL_FAILURE,
+  IMAGE_DELETE_REQUEST,
+  IMAGE_DELETE_SUCCESS,
+  IMAGE_DELETE_FAILURE,
 } from "../types";
 
 //Freeboard GET
@@ -152,6 +155,30 @@ function* boardDetail(action) {
   }
 }
 
+//Image Delete
+function imageDeleteAPI(action) {
+  return axios.post(`/api/image/delete`, action);
+}
+
+function* imageDelete(action) {
+  try {
+    const result = yield call(imageDeleteAPI, action.payload);
+    console.log(result);
+
+    yield put({
+      type: IMAGE_DELETE_SUCCESS,
+      payload: result.data,
+    });
+    
+  } catch (e) {
+
+    yield put({
+      type: IMAGE_DELETE_FAILURE,
+      payload: e.response,
+    });
+  }
+}
+
 //watch
 function* watchFreeboardGet() {
   yield takeEvery(FREEBOARD_GET_REQUEST, freeboardGet);
@@ -173,6 +200,10 @@ function* watchBoardDetailGet() {
   yield takeEvery(BOARD_DETAIL_REQUEST, boardDetail);
 }
 
+function* watchImageDelete() {
+  yield takeEvery(IMAGE_DELETE_REQUEST, imageDelete);
+}
+
 
 //authSaga() 여러 Saga 통합
 export default function* boardsSaga() {
@@ -182,5 +213,6 @@ export default function* boardsSaga() {
     fork(watchBoardNew),
     fork(watchBoardDetailGet),
     fork(watchBoardDelete),
+    fork(watchImageDelete),
   ]);
 }
