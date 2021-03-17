@@ -1,13 +1,4 @@
 import {
-  BOOK_GET_REQUEST,
-  BOOK_GET_SUCCESS,
-  BOOK_GET_FAILURE,
-  DEVICE_GET_REQUEST,
-  DEVICE_GET_FAILURE,
-  DEVICE_GET_SUCCESS,
-  CLOTHES_GET_REQUEST,
-  CLOTHES_GET_SUCCESS,
-  CLOTHES_GET_FAILURE,
   FREEBOARD_GET_REQUEST,
   FREEBOARD_GET_SUCCESS,
   FREEBOARD_GET_FAILURE,
@@ -17,6 +8,9 @@ import {
   BOARD_NEW_REQUEST,
   BOARD_NEW_SUCCESS,
   BOARD_NEW_FAILURE,
+  BOARD_DELETE_REQUEST,
+  BOARD_DELETE_SUCCESS,
+  BOARD_DELETE_FAILURE,
   BOARD_DETAIL_REQUEST,
   BOARD_DETAIL_SUCCESS,
   BOARD_DETAIL_FAILURE,
@@ -34,44 +28,35 @@ const initialState = {
   inDate: "",
   updateDate: "",
   isLoading: false,
-  errorMsg: "",
-  successMsg: "",
+  msg: "",
 };
 
 const boards = (state = initialState, action) => {
   switch (action.type) {
-    case DEVICE_GET_REQUEST:
-    case CLOTHES_GET_REQUEST:
-    case BOOK_GET_REQUEST:
+    case BOARD_DELETE_REQUEST:
     case FREEBOARD_GET_REQUEST:
     case NOTICEBOARD_GET_REQUEST:
       return {
         ...state,
         loading: true,
-        responseMsg: "",
+        msg: "",
       };
 
-    case DEVICE_GET_SUCCESS:
-    case CLOTHES_GET_SUCCESS:
-    case BOOK_GET_SUCCESS:
     case FREEBOARD_GET_SUCCESS:
     case NOTICEBOARD_GET_SUCCESS:
       return {
         ...state,
         data: [...action.payload.boards],
         loading: false,
-        responseMsg: action.payload.msg,
+        msg: action.payload.msg,
       };
 
-    case DEVICE_GET_FAILURE:
-    case CLOTHES_GET_FAILURE:
-    case BOOK_GET_FAILURE:
     case FREEBOARD_GET_FAILURE:
     case NOTICEBOARD_GET_FAILURE:
       return {
         ...state,
         loading: false,
-        responseMsg: "",
+        msg: "",
       };
 
     case BOARD_NEW_REQUEST:
@@ -135,6 +120,20 @@ const boards = (state = initialState, action) => {
         isLoading: false,
         errorMsg: action.payload.msg,
       };
+
+    case BOARD_DELETE_SUCCESS: 
+      return {
+        ...state,
+        loading: false,
+        msg: action.payload.msg
+      }
+
+    case BOARD_DELETE_FAILURE: 
+      return {
+        ...state,
+        loading: false,
+        msg: action.payload.msg
+      }
 
     default:
       return state;

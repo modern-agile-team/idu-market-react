@@ -1,4 +1,8 @@
-import { LOADING_FAILURE, LOADING_SUCCESS, LOADING_REQUEST } from "../types";
+import { 
+  LOADING_FAILURE, 
+  LOADING_SUCCESS, 
+  LOADING_REQUEST } 
+from "../types";
 
 const initialState = {
   jwt: "",
