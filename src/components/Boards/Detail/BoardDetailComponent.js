@@ -40,6 +40,7 @@ const BoardDetailComponent = (props) => {
         <BoardDetailTop 
           boardDetail={boardDetail} 
           categoryName={categoryName}
+          num={num}
         />
 
         <div className="detail-edtior">

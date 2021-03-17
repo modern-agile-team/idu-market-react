@@ -8,6 +8,9 @@ import {
   BOARD_NEW_REQUEST,
   BOARD_NEW_SUCCESS,
   BOARD_NEW_FAILURE,
+  BOARD_DELETE_REQUEST,
+  BOARD_DELETE_SUCCESS,
+  BOARD_DELETE_FAILURE,
   BOARD_DETAIL_REQUEST,
   BOARD_DETAIL_SUCCESS,
   BOARD_DETAIL_FAILURE,
@@ -25,18 +28,18 @@ const initialState = {
   inDate: "",
   updateDate: "",
   isLoading: false,
-  errorMsg: "",
-  successMsg: "",
+  msg: "",
 };
 
 const boards = (state = initialState, action) => {
   switch (action.type) {
+    case BOARD_DELETE_REQUEST:
     case FREEBOARD_GET_REQUEST:
     case NOTICEBOARD_GET_REQUEST:
       return {
         ...state,
         loading: true,
-        responseMsg: "",
+        msg: "",
       };
 
     case FREEBOARD_GET_SUCCESS:
@@ -45,7 +48,7 @@ const boards = (state = initialState, action) => {
         ...state,
         data: [...action.payload.boards],
         loading: false,
-        responseMsg: action.payload.msg,
+        msg: action.payload.msg,
       };
 
     case FREEBOARD_GET_FAILURE:
@@ -53,7 +56,7 @@ const boards = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        responseMsg: "",
+        msg: "",
       };
 
     case BOARD_NEW_REQUEST:
@@ -117,6 +120,20 @@ const boards = (state = initialState, action) => {
         isLoading: false,
         errorMsg: action.payload.msg,
       };
+
+    case BOARD_DELETE_SUCCESS: 
+      return {
+        ...state,
+        loading: false,
+        msg: action.payload.msg
+      }
+
+    case BOARD_DELETE_FAILURE: 
+      return {
+        ...state,
+        loading: false,
+        msg: action.payload.msg
+      }
 
     default:
       return state;
