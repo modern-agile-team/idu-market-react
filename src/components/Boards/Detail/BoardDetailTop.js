@@ -5,11 +5,43 @@ import { AiOutlineUser } from "react-icons/ai";
 import { BsCalendar } from "react-icons/bs";
 import { useDispatch } from 'react-redux';
 import { BOARD_DELETE_REQUEST } from '../../../redux/types';
+import axios from 'axios';
 
 const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
   const dispatch = useDispatch();
   const [tradeStatus, setTradeStatue] = useState("판매중");
 
+  const deleteImage = async () => {
+    const imgList = [];
+    const body = {
+      url: [],
+    };
+    
+    let data = boardDetail.content;
+
+    while(true) {
+      const matcher = data.match("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
+
+      if (matcher) {
+        data = data.replace(matcher[0], "");
+      }
+      else break;
+      
+      imgList.push(matcher[1]);
+    }
+
+    body.url = [...imgList];
+
+    await axios.post('/api/image/delete', body)
+    .then(response => {
+      if(response.data.success) {
+        console.log(response.data);
+      }
+    })
+    .catch(e => {
+      console.log(e);
+    })
+  }
 
   const onTradeStatusClick = (e) => {
       e.preventDefault();
@@ -18,6 +50,8 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
 
   const onDelete = e => {
     e.preventDefault();
+    
+    deleteImage();
 
     dispatch({
       type: BOARD_DELETE_REQUEST,
@@ -26,8 +60,6 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
         num,
       }
     })
-    
-
   }
 
   return (
