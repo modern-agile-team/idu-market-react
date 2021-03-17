@@ -67,6 +67,7 @@ import {
           isLoading: false,
           msg: action.payload.msg,
         }
+
       case REPLY_UPLOAD_REQUEST:
         return {
           ...state,
@@ -75,6 +76,7 @@ import {
           errorMsg: "",
           replyFlag: {},
         };
+
       case REPLY_UPLOAD_SUCCESS:
         return {
           ...state,
@@ -85,6 +87,7 @@ import {
           msg: action.payload.msg,
           comments:[...state.comments, action.payload.reply]
         };
+
       case REPLY_UPLOAD_FAILURE:
         return {
           ...state,
@@ -92,6 +95,7 @@ import {
           replyFlag: {},
           msg: action.payload.msg,
         }
+        
       default:
         return state;
     }

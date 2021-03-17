@@ -11,6 +11,9 @@ import {
   BOARD_NEW_REQUEST,
   BOARD_NEW_SUCCESS,
   BOARD_NEW_FAILURE,
+  BOARD_DELETE_SUCCESS,
+  BOARD_DELETE_REQUEST,
+  BOARD_DELETE_FAILURE,
   BOARD_DETAIL_REQUEST,
   BOARD_DETAIL_SUCCESS,
   BOARD_DETAIL_FAILURE,
@@ -84,9 +87,38 @@ function* boardNew(action) {
     yield put(
       push(`/boards/${action.payload.categoryName}/${result.data.num}`)
     );
+    
   } catch (e) {
     yield put({
       type: BOARD_NEW_FAILURE,
+      payload: e.response,
+    });
+  }
+}
+
+//Board Delete
+function boardDeleteAPI(action) {
+  const categoryName = action.categoryName;
+  const num = action.num;
+
+  return axios.delete(`/api/boards/${categoryName}/${num}`, action);
+}
+
+function* boardDelete(action) {
+  try {
+    const result = yield call(boardDeleteAPI, action.payload);
+    console.log(result);
+    
+    yield put({
+      type: BOARD_DELETE_SUCCESS,
+      payload: result.data,
+    });
+
+    yield put(push(`/boards/${action.payload.categoryName}`));
+
+  } catch (e) {
+    yield put({
+      type: BOARD_DELETE_FAILURE,
       payload: e.response,
     });
   }
@@ -120,6 +152,7 @@ function* boardDetail(action) {
   }
 }
 
+//watch
 function* watchFreeboardGet() {
   yield takeEvery(FREEBOARD_GET_REQUEST, freeboardGet);
 }
@@ -132,9 +165,15 @@ function* watchBoardNew() {
   yield takeEvery(BOARD_NEW_REQUEST, boardNew);
 }
 
+function* watchBoardDelete() {
+  yield takeEvery(BOARD_DELETE_REQUEST, boardDelete);
+}
+
 function* watchBoardDetailGet() {
   yield takeEvery(BOARD_DETAIL_REQUEST, boardDetail);
 }
+
+
 //authSaga() 여러 Saga 통합
 export default function* boardsSaga() {
   yield all([
@@ -142,5 +181,6 @@ export default function* boardsSaga() {
     fork(watchNoticeboardGet),
     fork(watchBoardNew),
     fork(watchBoardDetailGet),
+    fork(watchBoardDelete),
   ]);
 }
