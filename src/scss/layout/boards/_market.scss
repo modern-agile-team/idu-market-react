@@ -59,7 +59,7 @@
     width: 200px;
     font-family: $Jua-font;
     font-size: 1.2rem;
-    margin: 15px 0 10px 0;
+    margin: 15px 0 5px 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -74,6 +74,7 @@
     font-family: $Jua-font;
     left: 32%;
     color: $main-color-9;
+    margin-top: 10px;
 }
 
 .market-item-id {

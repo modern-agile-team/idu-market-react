@@ -3,6 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsCalendar } from "react-icons/bs";
+import WatchlistBtnComponent from "../../Watchlist/WatchlistBtnComponent"
 
 const BoardDetailTop = ({ boardDetail, categoryName }) => {
     const [tradeStatus, setTradeStatue] = useState("판매중");
@@ -27,17 +28,20 @@ const BoardDetailTop = ({ boardDetail, categoryName }) => {
           )}
 
           <div className="detail-btn-box">
+            <WatchlistBtnComponent />
             <button className="detail-btn-edit">수정</button>
             <button className="detail-btn-delete">삭제</button>
             <Link to={`/boards/${categoryName}`} className="detail-btn-list">목록</Link>
           </div>
-
+          
           <div className="detail-date-student">
+            
             <p><AiOutlineUser />&nbsp;{boardDetail.studentName}</p>
             <p><BsCalendar />&nbsp;{boardDetail.inDate}</p>
           </div>
-
+          
           <div className="detail-trade-status-box">
+          
             <ul>
               <li className="detail-trade-status">
                 {tradeStatus} <IoMdArrowDropdown />

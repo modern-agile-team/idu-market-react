@@ -10,6 +10,10 @@ import {
     comments: [],
     loading: false,
     responseMsg: "",
+    id: "",
+    name: "",
+    email: "",
+    path: "",
   };
 
   const profile = (state = initialState, action) => {

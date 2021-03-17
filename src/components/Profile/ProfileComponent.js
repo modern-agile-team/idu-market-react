@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import testImg from '../../img/신발.jpg';
+import axios from "axios";
 import { FaCartArrowDown, FaHeart, FaRegClipboard, FaEnvelope, FaUserAlt } from "react-icons/fa"
 import { BsFillChatDotsFill } from "react-icons/bs"
 
 import { PROFILE_GET_REQUEST } from "../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
 
-const ProfileComponent = (students) => {
+const ProfileComponent = (studentId, boardDetail) => {
 
   const dispatch = useDispatch();
   const profilelist = useSelector((state) => state.profile.profile);
@@ -15,7 +16,7 @@ const ProfileComponent = (students) => {
   useEffect(() => {
     dispatch({
       type: PROFILE_GET_REQUEST,
-      payload: students,
+      payload: studentId.payload,
     });
   }, [dispatch]);
 
@@ -23,7 +24,7 @@ const ProfileComponent = (students) => {
     return (
       <div className="profile-information-box">
         <label>Name</label>
-        <p className="profile-information-name">{el.name}</p>
+        <p className="profile-information-name">{boardDetail.studentName}</p>
         <label>ID</label>
         <p className="profile-information-name">{el.id}</p>
         <label>Email</label>
@@ -78,4 +79,4 @@ const ProfileComponent = (students) => {
   );
 };
 
-export default ProfileComponent;
+export default withRouter(ProfileComponent);
