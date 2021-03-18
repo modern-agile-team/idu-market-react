@@ -1,6 +1,6 @@
 import axios from "axios";
 import { all, fork, put, takeEvery, call } from "redux-saga/effects";
-import { push } from 'connected-react-router';
+import { push } from "connected-react-router";
 import {
   LOGIN_FAILURE,
   LOGIN_REQUEST,
@@ -32,11 +32,10 @@ function* loginUser(action) {
 
     yield put({
       type: LOADING_REQUEST,
-      payload: localStorage.getItem('jwt'),
+      payload: localStorage.getItem("jwt"),
     });
 
     yield put(push(`/`));
-
   } catch (e) {
     yield put({
       type: LOGIN_FAILURE,
@@ -61,7 +60,7 @@ function* registerUser(action) {
       payload: result.data,
     });
 
-    yield put(push('/login'));
+    yield put(push("/login"));
   } catch (e) {
     yield put({
       type: REGISTER_FAILURE,
@@ -76,7 +75,6 @@ function* logout() {
     yield put({
       type: LOGOUT_SUCCESS,
     });
-
   } catch (e) {
     yield put({
       type: LOGOUT_FAILURE,
@@ -88,19 +86,16 @@ function* logout() {
 function loadingAPI(token) {
   const config = {
     headers: {
-      "Content-Type": "application/json"
-    }
-  }
+      "Content-Type": "application/json",
+    },
+  };
 
   if (token) {
     config.headers["x-auth-token"] = token;
     return axios.get("/api/auth", config);
-  } 
-
-  else {
+  } else {
     return axios.get("/api/un-auth", config);
   }
-  
 }
 
 //LOADING

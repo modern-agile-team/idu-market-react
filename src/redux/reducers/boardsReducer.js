@@ -133,20 +133,20 @@ const boards = (state = initialState, action) => {
       };
 
     case IMAGE_DELETE_SUCCESS:
-    case BOARD_DELETE_SUCCESS: 
+    case BOARD_DELETE_SUCCESS:
       return {
         ...state,
         loading: false,
-        msg: action.payload.msg
-      }
+        msg: action.payload.msg,
+      };
 
     case IMAGE_DELETE_FAILURE:
-    case BOARD_DELETE_FAILURE: 
+    case BOARD_DELETE_FAILURE:
       return {
         ...state,
         loading: false,
-        msg: action.payload.data.msg
-      }
+        msg: action.payload.data.msg,
+      };
 
     default:
       return state;
