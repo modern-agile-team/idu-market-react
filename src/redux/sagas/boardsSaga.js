@@ -11,6 +11,9 @@ import {
   BOARD_WRITE_REQUEST,
   BOARD_WRITE_SUCCESS,
   BOARD_WRITE_FAILURE,
+  BOARD_UPDATE_REQUEST,
+  BOARD_UPDATE_SUCCESS,
+  BOARD_UPDATE_FAILURE,
   BOARD_DELETE_SUCCESS,
   BOARD_DELETE_REQUEST,
   BOARD_DELETE_FAILURE,
@@ -96,6 +99,34 @@ function* boardWrite(action) {
   } catch (e) {
     yield put({
       type: BOARD_WRITE_FAILURE,
+      payload: e.response,
+    });
+  }
+}
+
+//Board Update
+function boardUpdateAPI(action) {
+  const categoryName = action.categoryName;
+  const num = action.num;
+
+  return axios.put(`/api/boards/${categoryName}/${num}`, action);
+}
+
+function* boardUpdate(action) {
+  try {
+    const result = yield call(boardUpdateAPI, action.payload);
+    console.log(result);
+    
+    yield put({
+      type: BOARD_UPDATE_SUCCESS,
+      payload: result.data,
+    });
+
+    yield put(push(`/boards/${action.payload.categoryName}/${action.payload.num}`));
+
+  } catch (e) {
+    yield put({
+      type: BOARD_UPDATE_FAILURE,
       payload: e.response,
     });
   }
@@ -194,6 +225,10 @@ function* watchBoardWrite() {
   yield takeEvery(BOARD_WRITE_REQUEST, boardWrite);
 }
 
+function* watchBoardUpdate() {
+  yield takeEvery(BOARD_UPDATE_REQUEST, boardUpdate);
+}
+
 function* watchBoardDelete() {
   yield takeEvery(BOARD_DELETE_REQUEST, boardDelete);
 }
@@ -213,8 +248,9 @@ export default function* boardsSaga() {
     fork(watchFreeboardGet),
     fork(watchNoticeboardGet),
     fork(watchBoardWrite),
-    fork(watchBoardDetailGet),
+    fork(watchBoardUpdate),
     fork(watchBoardDelete),
     fork(watchImageDelete),
+    fork(watchBoardDetailGet),
   ]);
 }
