@@ -65,7 +65,7 @@ const FindPasswordComponent = (props) => {
               name="id"
               onChange={onChange}
               className="input-text"
-              autocomplete="on"
+              autoComplete="on"
             />
             <span
               className={formValues.id ? "input-border fill" : "input-border"}
@@ -83,7 +83,7 @@ const FindPasswordComponent = (props) => {
               name="email"
               onChange={onChange}
               className="input-text"
-              autocomplete="on"
+              autoComplete="on"
             />
             <span
               className={
