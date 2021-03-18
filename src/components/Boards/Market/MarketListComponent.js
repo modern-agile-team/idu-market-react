@@ -51,6 +51,7 @@ const MarketListComponent = ({ categoryName }) => {
     
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      setLoading(false);
     }
   }, []);
 
