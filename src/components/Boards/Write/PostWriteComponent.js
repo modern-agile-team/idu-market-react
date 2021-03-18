@@ -14,7 +14,6 @@ import { BOARD_WRITE_REQUEST } from "../../../redux/types";
 const PostWriteComponent = (props) => {
   const categoryName = props.match.params.categoryName;
   const dispatch = useDispatch();
-
   const [modal, setModal] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
   const [modalErrorMsg, setModalErrorMsg] = useState("");
@@ -89,59 +88,107 @@ const PostWriteComponent = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    const {
-      studentId,
-      title,
-      content,
-      thumbnail,
-      price,
-      categoryName,
-    } = formValues;
+    if(categoryName === 'free' || categoryName === 'notice') {
+      const {
+        studentId,
+        title,
+        content,
+        categoryName,
+      } = formValues;
+  
+      const body = {
+        studentId,
+        title,
+        content,
+        categoryName,
+      };
 
-    const body = {
-      studentId,
-      title,
-      content,
-      thumbnail,
-      price,
-      categoryName,
-    };
-
-    //유효성 검사
-    if (title === "") {
-      setModal(true);
-      setModalError(true);
-      setModalErrorMsg("타이틀을 적어주세요.");
-
-      setTimeout(() => {
-        setModal(false);
-      }, 1500);
-    }
-    /// ^[0-9]+$/: 비어있지 않은 연속된 숫자 문자열
-    else if (price.length > 0 && price.match(/^[0-9]+$/) === null) {
-      setModal(true);
-      setModalError(true);
-      setModalErrorMsg("가격을 숫자만 입력해주세요.");
-
-      setTimeout(() => {
-        setModal(false);
-      }, 1500);
-    } else if (content === "") {
-      setModal(true);
-      setModalError(true);
-      setModalErrorMsg("빈 본문입니다.");
-
-      setTimeout(() => {
-        setModal(false);
-      }, 1500);
+      console.log(body);
+      
+      //유효성 검사
+      if (title === "") {
+        setModal(true);
+        setModalError(true);
+        setModalErrorMsg("타이틀을 적어주세요.");
+  
+        setTimeout(() => {
+          setModal(false);
+        }, 1500);
+      }
+      /// ^[0-9]+$/: 비어있지 않은 연속된 숫자 문자열
+      else if (content === "") {
+        setModal(true);
+        setModalError(true);
+        setModalErrorMsg("빈 본문입니다.");
+  
+        setTimeout(() => {
+          setModal(false);
+        }, 1500);
+      } else {
+        dispatch({
+          type: BOARD_WRITE_REQUEST,
+          payload: body,
+        });
+        setModal(true);
+        setModalMsg("게시글 업로드에 성공하셨습니다.");
+        setModalError(false);
+      }
+      
     } else {
-      dispatch({
-        type: BOARD_WRITE_REQUEST,
-        payload: body,
-      });
-      setModal(true);
-      setModalMsg("게시글 업로드에 성공하셨습니다.");
-      setModalError(false);
+      const {
+        studentId,
+        title,
+        content,
+        thumbnail,
+        price,
+        categoryName,
+      } = formValues;
+  
+      const body = {
+        studentId,
+        title,
+        content,
+        thumbnail,
+        price,
+        categoryName,
+      };
+  
+      //유효성 검사
+      if (title === "") {
+        setModal(true);
+        setModalError(true);
+        setModalErrorMsg("타이틀을 적어주세요.");
+  
+        setTimeout(() => {
+          setModal(false);
+        }, 1500);
+      }
+      /// ^[0-9]+$/: 비어있지 않은 연속된 숫자 문자열
+      else if (price.length > 0 && price.match(/^[0-9]+$/) === null) {
+        setModal(true);
+        setModalError(true);
+        setModalErrorMsg("가격을 숫자만 입력해주세요.");
+  
+        setTimeout(() => {
+          setModal(false);
+        }, 1500);
+      } else if (content === "") {
+        setModal(true);
+        setModalError(true);
+        setModalErrorMsg("빈 본문입니다.");
+  
+        setTimeout(() => {
+          setModal(false);
+        }, 1500);
+      } else {
+        dispatch({
+          type: BOARD_WRITE_REQUEST,
+          payload: body,
+        });
+        setModal(true);
+        setModalMsg("게시글 업로드에 성공하셨습니다.");
+        setModalError(false);
+      }
     }
   };
 

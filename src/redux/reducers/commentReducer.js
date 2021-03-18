@@ -40,7 +40,7 @@ import {
         return {
           ...state,
           isLoading: false,
-          msg: action.payload.msg,
+          msg: action.payload.data.msg,
           comments: [],
         };
 
@@ -65,7 +65,7 @@ import {
         return {
           ...state,
           isLoading: false,
-          msg: action.payload.msg,
+          msg: action.payload.data.msg,
         }
 
       case REPLY_UPLOAD_REQUEST:
@@ -93,7 +93,7 @@ import {
           ...state,
           isLoading: false,
           replyFlag: {},
-          msg: action.payload.msg,
+          msg: action.payload.data.msg,
         }
         
       default:

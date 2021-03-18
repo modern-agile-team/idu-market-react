@@ -72,6 +72,8 @@ function* noticeboardGet(action) {
 //BoardNew
 function boardWriteAPI(action) {
   const categoryName = action.categoryName;
+
+  console.log(action);
   return axios.post(`/api/boards/${categoryName}`, action);
 }
 
