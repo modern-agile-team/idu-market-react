@@ -8,8 +8,8 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
-  LOADING_FAILURE, 
-  LOADING_SUCCESS, 
+  LOADING_FAILURE,
+  LOADING_SUCCESS,
   LOADING_REQUEST,
 } from "../types";
 
@@ -102,7 +102,7 @@ const auth = (state = initialState, action) => {
         registerErrorMsg: action.payload.data.msg,
       };
 
-    case LOADING_SUCCESS: 
+    case LOADING_SUCCESS:
       return {
         ...state,
         jwt: localStorage.getItem("jwt"),
@@ -112,9 +112,9 @@ const auth = (state = initialState, action) => {
         name: action.payload.user.name,
         exp: action.payload.user.exp,
         iss: action.payload.user.iss,
-      }
-    
-    case LOADING_FAILURE: 
+      };
+
+    case LOADING_FAILURE:
       localStorage.removeItem("jwt");
       return {
         ...state,
@@ -125,8 +125,7 @@ const auth = (state = initialState, action) => {
         name: "",
         exp: "",
         iss: "",
-      }
-  
+      };
 
     default:
       return state;

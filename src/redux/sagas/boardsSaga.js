@@ -63,7 +63,6 @@ function* noticeboardGet(action) {
       type: NOTICEBOARD_GET_SUCCESS,
       payload: result.data,
     });
-
   } catch (e) {
     yield put({
       type: NOTICEBOARD_GET_FAILURE,
@@ -84,7 +83,7 @@ function* boardWrite(action) {
   try {
     const result = yield call(boardWriteAPI, action.payload);
     console.log(result);
-    
+
     yield put({
       type: BOARD_WRITE_SUCCESS,
       payload: result.data,
@@ -95,7 +94,6 @@ function* boardWrite(action) {
     yield put(
       push(`/boards/${action.payload.categoryName}/${result.data.num}`)
     );
-    
   } catch (e) {
     yield put({
       type: BOARD_WRITE_FAILURE,
@@ -116,14 +114,15 @@ function* boardUpdate(action) {
   try {
     const result = yield call(boardUpdateAPI, action.payload);
     console.log(result);
-    
+
     yield put({
       type: BOARD_UPDATE_SUCCESS,
       payload: result.data,
     });
 
-    yield put(push(`/boards/${action.payload.categoryName}/${action.payload.num}`));
-
+    yield put(
+      push(`/boards/${action.payload.categoryName}/${action.payload.num}`)
+    );
   } catch (e) {
     yield put({
       type: BOARD_UPDATE_FAILURE,
@@ -144,14 +143,13 @@ function* boardDelete(action) {
   try {
     const result = yield call(boardDeleteAPI, action.payload);
     console.log(result);
-    
+
     yield put({
       type: BOARD_DELETE_SUCCESS,
       payload: result.data,
     });
 
     yield put(push(`/boards/${action.payload.categoryName}`));
-
   } catch (e) {
     yield put({
       type: BOARD_DELETE_FAILURE,
@@ -178,9 +176,7 @@ function* boardDetail(action) {
       type: BOARD_DETAIL_SUCCESS,
       payload: result.data,
     });
-    
   } catch (e) {
-
     yield put({
       type: BOARD_DETAIL_FAILURE,
       payload: e.response,
@@ -202,9 +198,7 @@ function* imageDelete(action) {
       type: IMAGE_DELETE_SUCCESS,
       payload: result.data,
     });
-    
   } catch (e) {
-
     yield put({
       type: IMAGE_DELETE_FAILURE,
       payload: e.response,
@@ -240,7 +234,6 @@ function* watchBoardDetailGet() {
 function* watchImageDelete() {
   yield takeEvery(IMAGE_DELETE_REQUEST, imageDelete);
 }
-
 
 //authSaga() 여러 Saga 통합
 export default function* boardsSaga() {

@@ -1,15 +1,15 @@
 import axios from "axios";
 import { all, fork, put, takeEvery, call, delay } from "redux-saga/effects";
 import {
-    COMMENT_GET_REQUEST,
-    COMMENT_GET_SUCCESS,
-    COMMENT_GET_FAILURE,
-    COMMENT_UPLOAD_REQUEST,
-    COMMENT_UPLOAD_SUCCESS,
-    COMMENT_UPLOAD_FAILURE,
-    REPLY_UPLOAD_REQUEST,
-    REPLY_UPLOAD_SUCCESS,
-    REPLY_UPLOAD_FAILURE
+  COMMENT_GET_REQUEST,
+  COMMENT_GET_SUCCESS,
+  COMMENT_GET_FAILURE,
+  COMMENT_UPLOAD_REQUEST,
+  COMMENT_UPLOAD_SUCCESS,
+  COMMENT_UPLOAD_FAILURE,
+  REPLY_UPLOAD_REQUEST,
+  REPLY_UPLOAD_SUCCESS,
+  REPLY_UPLOAD_FAILURE,
 } from "../types";
 
 //Comment GET
@@ -19,7 +19,7 @@ function CommentGetAPI(action) {
 
   return axios.get(`/api/boards/${categoryName}/${num}`);
 }
-  
+
 function* commentGet(action) {
   try {
     const result = yield call(CommentGetAPI, action.payload);
@@ -44,26 +44,24 @@ function commentUploadAPI(action) {
   const body = {
     studentId: action.studentId,
     content: action.content,
-  }
+  };
   console.log(action);
   console.log(body);
 
   return axios.post(`/api/boards/${categoryName}/${num}`, body);
 }
-  
+
 function* commentUpload(action) {
   try {
     const result = yield call(commentUploadAPI, action.payload);
-    
+
     console.log(result);
 
     yield put({
       type: COMMENT_UPLOAD_SUCCESS,
       payload: result.data,
     });
-
   } catch (e) {
-
     yield put({
       type: COMMENT_UPLOAD_FAILURE,
       payload: e.response,
@@ -79,11 +77,11 @@ function replyUploadAPI(action) {
   const body = {
     studentId: action.studentId,
     content: action.content,
-  }
+  };
 
   return axios.post(`/api/boards/${categoryName}/${num}/${groupNum}`, body);
 }
-  
+
 function* replyUpload(action) {
   try {
     const result = yield call(replyUploadAPI, action.payload);
@@ -93,9 +91,7 @@ function* replyUpload(action) {
       type: REPLY_UPLOAD_SUCCESS,
       payload: result.data,
     });
-
   } catch (e) {
-
     yield put({
       type: REPLY_UPLOAD_FAILURE,
       payload: e.response,
@@ -114,7 +110,7 @@ function* watchCommentUpload() {
 function* watchReplyUpload() {
   yield takeEvery(REPLY_UPLOAD_REQUEST, replyUpload);
 }
-  
+
 //authSaga() 여러 Saga 통합
 export default function* commentSaga() {
   yield all([
