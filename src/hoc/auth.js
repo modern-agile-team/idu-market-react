@@ -10,21 +10,30 @@ export default function Auth(SpecificComponent, option, adminRoute = null) {
         //adminRoute 파라미터는 admin만 출입가능하게하려면 true를 넣으면됨
 
     function AuthenticationCheck(props) {
-        const { jwt } = useSelector(state => state.loading);
+        const auth = useSelector(state => state.auth);
+        const creatorId = useSelector(state => state.boards.studentId);
 
         useEffect(() => {
             //로그인하지 않은 상태
-            if (!jwt) {
+            if (!auth.jwt) {
                 if (option === true) {
                     setTimeout(() => {
                         props.history.push('/login');
-                    }, 100)
+                    }, 300)
                 } 
             } else {
             //로그인한 상태
                 if (option === false) props.history.push('/');
             }
-        }, [jwt]);
+        }, [auth.jwt]);
+
+        if(option === 'update') {
+            if(creatorId !== auth.id) {
+                setTimeout(() => {
+                    props.history.push('/');
+                }, 300)
+            }
+        }
 
         return (
             <SpecificComponent></SpecificComponent>

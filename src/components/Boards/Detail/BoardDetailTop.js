@@ -4,6 +4,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsCalendar } from "react-icons/bs";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import WatchlistBtnComponent from "../../Watchlist/WatchlistBtnComponent"
 
 const BoardDetailTop = ({ boardDetail, categoryName }) => {
@@ -63,45 +64,46 @@ const BoardDetailTop = ({ boardDetail, categoryName }) => {
 =======
 import { useDispatch } from 'react-redux';
 import { BOARD_DELETE_REQUEST } from '../../../redux/types';
+=======
+import { useDispatch, useSelector } from 'react-redux';
+import { BOARD_DELETE_REQUEST, IMAGE_DELETE_REQUEST } from '../../../redux/types';
+>>>>>>> develop
 
 const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
   const dispatch = useDispatch();
+  const creatorId = useSelector(state => state.boards.studentId);
+  const userId = useSelector(state => state.auth.id);
+
   const [tradeStatus, setTradeStatue] = useState("판매중");
 
-  // const extractImage = () => {
-  //   let whereImgStart = boardDetail.content.indexOf("<img src=");
-  //   const extName = [
-  //     "jpeg",
-  //     "png",
-  //     "jpg",
-  //     "gif",
-  //     "PNG",
-  //     "JPEG",
-  //     "JPG",
-  //     "GIF",
-  //   ];
+  const deleteImage = () => {
+    const imgList = [];
+    const body = {
+      url: [],
+    };
+    
+    let data = boardDetail.content;
 
-  //   let whereImgEnd = "";
-  //   let extNameFind = "";
-  //   let resultImgUrl = "";
+    while(true) {
+      const matcher = data.match("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
 
-  //   for (let i = 0; i < extName.length; i++) {
-  //     if (boardDetail.content.includes(extName[i])) {
-  //       extNameFind = extName[i];
-  //       whereImgEnd = boardDetail.content.indexOf(`${extName[i]}`);
-  //     }
-  //   }
+      if (matcher) {
+        data = data.replace(matcher[0], "");
+      }
+      else break;
+      
+      imgList.push(matcher[1]);
+    }
 
-  //   if (extNameFind === "jpeg" || extNameFind === "JPEG") {
-  //     resultImgUrl = boardDetail.content.slice(whereImgStart + 10, whereImgEnd + 4);
-  //   } else {
-  //     resultImgUrl = boardDetail.content.slice(whereImgStart + 10, whereImgEnd + 3);
-  //   }
+    body.url = [...imgList];
 
-  //   boardDetail.content.replace(resultImgUrl, "234");
-  //   console.log(resultImgUrl);
-  //   console.log(boardDetail.content);
-  // }
+    if (body.url.length > 0) {
+      dispatch({
+        type: IMAGE_DELETE_REQUEST,
+        payload: body
+      })
+    }
+  }
 
   const onTradeStatusClick = (e) => {
       e.preventDefault();
@@ -111,15 +113,19 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
   const onDelete = e => {
     e.preventDefault();
 
-    dispatch({
-      type: BOARD_DELETE_REQUEST,
-      payload: {
-        categoryName,
-        num,
-      }
-    })
-    
+    const confirm = window.confirm('정말 게시물을 삭제하시겠습니까?'); 
 
+    if (confirm) {
+      deleteImage();
+
+      dispatch({
+        type: BOARD_DELETE_REQUEST,
+        payload: {
+          categoryName,
+          num,
+        }
+      })
+    }
   }
 
   return (
@@ -137,9 +143,17 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
         )}
 
         <div className="detail-btn-box">
-          <button className="detail-btn-edit">수정</button>
-          <button className="detail-btn-delete" onClick={onDelete}>삭제</button>
-          <Link to={`/boards/${categoryName}`} className="detail-btn-list">목록</Link>
+          {creatorId === userId ? (
+            <>
+              <Link to={`/boards/${categoryName}/${num}/update`}className="detail-btn-edit">수정</Link>
+              <button className="detail-btn-delete" onClick={onDelete}>삭제</button>
+              <Link to={`/boards/${categoryName}`} className="detail-btn-list">목록</Link>
+            </>
+          ): (
+            <>
+              <Link to={`/boards/${categoryName}`} className="detail-btn-list">목록</Link>
+            </>
+          )}
         </div>
 
         <div className="detail-date-student">

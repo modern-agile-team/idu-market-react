@@ -40,7 +40,7 @@ const MarketListComponent = ({ categoryName }) => {
     const scrollTop = documentElement.scrollTop;
     const clientHeight = documentElement.clientHeight;
 
-    if (scrollTop + clientHeight + 100 >= scrollHeight && isLoading === false) {
+    if (scrollTop + clientHeight + 200 >= scrollHeight && isLoading === false) {
        getMoreData();
     }
   };
@@ -51,6 +51,7 @@ const MarketListComponent = ({ categoryName }) => {
     
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      setLoading(false);
     }
   }, []);
 

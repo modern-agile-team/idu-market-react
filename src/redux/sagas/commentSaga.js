@@ -1,6 +1,5 @@
 import axios from "axios";
 import { all, fork, put, takeEvery, call, delay } from "redux-saga/effects";
-import { push } from "connected-react-router";
 import {
     COMMENT_GET_REQUEST,
     COMMENT_GET_SUCCESS,

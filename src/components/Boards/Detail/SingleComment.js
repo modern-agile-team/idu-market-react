@@ -4,10 +4,10 @@ import { REPLY_UPLOAD_REQUEST, COMMENT_GET_REQUEST } from '../../../redux/types'
 
 const SingleComment = ({ comment, categoryName, num }) => {
     const dispatch = useDispatch();
-    const userId = useSelector(state => state.loading.userId);
+    const userId = useSelector(state => state.auth.id);
     const [formValue, setFormValue] = useState({
         content: "",
-        studentId: userId,
+        studentId: "",
         categoryName,
         num,
         groupNum: comment.groupNum,
@@ -27,13 +27,13 @@ const SingleComment = ({ comment, categoryName, num }) => {
         setOpenReply(!openReply);
     }
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault();
 
-        const {content, studentId, categoryName, num, groupNum} = formValue;
+        const {content, categoryName, num, groupNum} = formValue;
         const body =  {
             content,
-            studentId,
+            studentId: userId,
             categoryName,
             num,
             groupNum,
@@ -53,7 +53,7 @@ const SingleComment = ({ comment, categoryName, num }) => {
                     type: COMMENT_GET_REQUEST,
                     payload: body,
                 });
-            }, 200)
+            }, 100)
             
 
             resetValue.current.value = '';

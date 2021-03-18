@@ -31,8 +31,12 @@ function* loginUser(action) {
     });
 
     yield put({
-      type: LOADING_SUCCESS,
+      type: LOADING_REQUEST,
+      payload: localStorage.getItem('jwt'),
     });
+
+    yield put(push(`/`));
+
   } catch (e) {
     yield put({
       type: LOGIN_FAILURE,
@@ -73,9 +77,6 @@ function* logout() {
       type: LOGOUT_SUCCESS,
     });
 
-    yield put({
-      type: LOADING_FAILURE,
-    });
   } catch (e) {
     yield put({
       type: LOGOUT_FAILURE,
@@ -83,16 +84,37 @@ function* logout() {
   }
 }
 
+// Loading
+function loadingAPI(token) {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }
+
+  if (token) {
+    config.headers["x-auth-token"] = token;
+    return axios.get("/api/auth", config);
+  } 
+
+  else {
+    return axios.get("/api/un-auth", config);
+  }
+  
+}
+
 //LOADING
 function* loading(action) {
+  const result = yield call(loadingAPI, action.payload);
   try {
     yield put({
       type: LOADING_SUCCESS,
-      payload: action.payload,
+      payload: result.data,
     });
   } catch (e) {
     yield put({
       type: LOADING_FAILURE,
+      payload: e.response,
     });
   }
 }

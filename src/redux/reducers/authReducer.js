@@ -8,6 +8,9 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
+  LOADING_FAILURE, 
+  LOADING_SUCCESS, 
+  LOADING_REQUEST,
 } from "../types";
 
 const initialState = {
@@ -17,11 +20,16 @@ const initialState = {
   loginErrorMsg: "",
   registerErrorMsg: "",
   checkRegister: false,
-  userId: "",
+  id: "",
+  email: "",
+  name: "",
+  exp: "",
+  iss: "",
 };
 
 const auth = (state = initialState, action) => {
   switch (action.type) {
+    case LOADING_REQUEST:
     case REGISTER_REQUEST:
     case LOGOUT_REQUEST:
     case LOGIN_REQUEST:
@@ -30,30 +38,32 @@ const auth = (state = initialState, action) => {
         isLoading: true,
         loginErrorMsg: "",
         registerErrorMsg: "",
+        successMsg: "",
+        id: "",
+        email: "",
+        name: "",
+        exp: "",
+        iss: "",
       };
 
     case LOGIN_SUCCESS:
       localStorage.setItem("jwt", action.payload.jwt);
-      localStorage.setItem("userId", action.payload.user.id);
       return {
         ...state,
         jwt: action.payload.jwt,
         isLoading: false,
         successMsg: action.payload.msg,
         loginErrorMsg: "",
-        userId: action.payload.user.id,
       };
 
     case LOGIN_FAILURE:
       localStorage.removeItem("jwt");
-      localStorage.removeItem("userId");
       return {
         ...state,
         jwt: null,
         isLoading: false,
         successMsg: "",
         loginErrorMsg: action.payload.data.msg,
-        userId: "",
       };
 
     case LOGOUT_SUCCESS:
@@ -91,6 +101,32 @@ const auth = (state = initialState, action) => {
         successMsg: "",
         registerErrorMsg: action.payload.data.msg,
       };
+
+    case LOADING_SUCCESS: 
+      return {
+        ...state,
+        jwt: localStorage.getItem("jwt"),
+        isLoading: false,
+        id: action.payload.id,
+        email: action.payload.user.email,
+        name: action.payload.user.name,
+        exp: action.payload.user.exp,
+        iss: action.payload.user.iss,
+      }
+    
+    case LOADING_FAILURE: 
+      localStorage.removeItem("jwt");
+      return {
+        ...state,
+        jwt: "",
+        isLoading: false,
+        id: "",
+        email: "",
+        name: "",
+        exp: "",
+        iss: "",
+      }
+  
 
     default:
       return state;

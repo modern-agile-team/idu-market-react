@@ -8,15 +8,21 @@ import {
   NOTICEBOARD_GET_REQUEST,
   NOTICEBOARD_GET_SUCCESS,
   NOTICEBOARD_GET_FAILURE,
-  BOARD_NEW_REQUEST,
-  BOARD_NEW_SUCCESS,
-  BOARD_NEW_FAILURE,
+  BOARD_WRITE_REQUEST,
+  BOARD_WRITE_SUCCESS,
+  BOARD_WRITE_FAILURE,
+  BOARD_UPDATE_REQUEST,
+  BOARD_UPDATE_SUCCESS,
+  BOARD_UPDATE_FAILURE,
   BOARD_DELETE_SUCCESS,
   BOARD_DELETE_REQUEST,
   BOARD_DELETE_FAILURE,
   BOARD_DETAIL_REQUEST,
   BOARD_DETAIL_SUCCESS,
   BOARD_DETAIL_FAILURE,
+  IMAGE_DELETE_REQUEST,
+  IMAGE_DELETE_SUCCESS,
+  IMAGE_DELETE_FAILURE,
 } from "../types";
 
 //Freeboard GET
@@ -67,18 +73,20 @@ function* noticeboardGet(action) {
 }
 
 //BoardNew
-function boardNewAPI(action) {
+function boardWriteAPI(action) {
   const categoryName = action.categoryName;
+
+  console.log(action);
   return axios.post(`/api/boards/${categoryName}`, action);
 }
 
-function* boardNew(action) {
+function* boardWrite(action) {
   try {
-    const result = yield call(boardNewAPI, action.payload);
+    const result = yield call(boardWriteAPI, action.payload);
     console.log(result);
     
     yield put({
-      type: BOARD_NEW_SUCCESS,
+      type: BOARD_WRITE_SUCCESS,
       payload: result.data,
     });
 
@@ -90,7 +98,35 @@ function* boardNew(action) {
     
   } catch (e) {
     yield put({
-      type: BOARD_NEW_FAILURE,
+      type: BOARD_WRITE_FAILURE,
+      payload: e.response,
+    });
+  }
+}
+
+//Board Update
+function boardUpdateAPI(action) {
+  const categoryName = action.categoryName;
+  const num = action.num;
+
+  return axios.put(`/api/boards/${categoryName}/${num}`, action);
+}
+
+function* boardUpdate(action) {
+  try {
+    const result = yield call(boardUpdateAPI, action.payload);
+    console.log(result);
+    
+    yield put({
+      type: BOARD_UPDATE_SUCCESS,
+      payload: result.data,
+    });
+
+    yield put(push(`/boards/${action.payload.categoryName}/${action.payload.num}`));
+
+  } catch (e) {
+    yield put({
+      type: BOARD_UPDATE_FAILURE,
       payload: e.response,
     });
   }
@@ -152,6 +188,30 @@ function* boardDetail(action) {
   }
 }
 
+//Image Delete
+function imageDeleteAPI(action) {
+  return axios.post(`/api/image/delete`, action);
+}
+
+function* imageDelete(action) {
+  try {
+    const result = yield call(imageDeleteAPI, action.payload);
+    console.log(result);
+
+    yield put({
+      type: IMAGE_DELETE_SUCCESS,
+      payload: result.data,
+    });
+    
+  } catch (e) {
+
+    yield put({
+      type: IMAGE_DELETE_FAILURE,
+      payload: e.response,
+    });
+  }
+}
+
 //watch
 function* watchFreeboardGet() {
   yield takeEvery(FREEBOARD_GET_REQUEST, freeboardGet);
@@ -161,8 +221,12 @@ function* watchNoticeboardGet() {
   yield takeEvery(NOTICEBOARD_GET_REQUEST, noticeboardGet);
 }
 
-function* watchBoardNew() {
-  yield takeEvery(BOARD_NEW_REQUEST, boardNew);
+function* watchBoardWrite() {
+  yield takeEvery(BOARD_WRITE_REQUEST, boardWrite);
+}
+
+function* watchBoardUpdate() {
+  yield takeEvery(BOARD_UPDATE_REQUEST, boardUpdate);
 }
 
 function* watchBoardDelete() {
@@ -173,14 +237,20 @@ function* watchBoardDetailGet() {
   yield takeEvery(BOARD_DETAIL_REQUEST, boardDetail);
 }
 
+function* watchImageDelete() {
+  yield takeEvery(IMAGE_DELETE_REQUEST, imageDelete);
+}
+
 
 //authSaga() 여러 Saga 통합
 export default function* boardsSaga() {
   yield all([
     fork(watchFreeboardGet),
     fork(watchNoticeboardGet),
-    fork(watchBoardNew),
-    fork(watchBoardDetailGet),
+    fork(watchBoardWrite),
+    fork(watchBoardUpdate),
     fork(watchBoardDelete),
+    fork(watchImageDelete),
+    fork(watchBoardDetailGet),
   ]);
 }

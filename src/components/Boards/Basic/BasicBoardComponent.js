@@ -7,7 +7,7 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { FREEBOARD_GET_REQUEST } from "../../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
 
-function FreeBoardComponent({ categoryName }) {
+function BasicBoardComponent({ categoryName }) {
   const [pageNumber, setPageNumber] = useState(0);
   const [loading, setLoading] = useState(false);
 
@@ -38,7 +38,6 @@ function FreeBoardComponent({ categoryName }) {
   const displayBoardList = freeBoardList
     .slice(pageVisited, pageVisited + perPage)
     .map((boardItem) => {
-      console.log(boardItem);
       return (
         <tr key={boardItem.num}>
           <td>{boardItem.num}</td>
@@ -103,4 +102,4 @@ function FreeBoardComponent({ categoryName }) {
   );
 }
 
-export default FreeBoardComponent;
+export default BasicBoardComponent;

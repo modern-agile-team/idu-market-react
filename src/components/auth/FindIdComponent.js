@@ -65,7 +65,7 @@ const FindIdComponent = (props) => {
               name="name"
               onChange={onChange}
               className="input-text"
-              autocomplete="on"
+              autoComplete="on"
             />
             <span
               className={formValues.name ? "input-border fill" : "input-border"}
@@ -83,7 +83,7 @@ const FindIdComponent = (props) => {
               name="email"
               onChange={onChange}
               className="input-text"
-              autocomplete="on"
+              autoComplete="on"
             />
             <span
               className={

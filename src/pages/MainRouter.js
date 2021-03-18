@@ -27,6 +27,9 @@ import BoardDetailPage from "./Boards/Detail/BoardDetailPage";
 //PostWrite
 import PostWritePage from "./Boards/Write/PostWritePage";
 
+//Post Update
+import PostUpdatePage from "./Boards/Update/PostUpdatePage";
+
 //hoc
 import Auth from "../hoc/auth";
 
@@ -35,6 +38,7 @@ import ProfilePage from "./Profile/ProfilePage";
 import WatchlistPage from "./WatchlistPage/WatchlistPage";
 
 const MainRouter = () => {
+
   return (
     <>
       <Header></Header>
@@ -71,10 +75,15 @@ const MainRouter = () => {
           path="/boards/notice"
           exact
         />
+        <Route
+          component={Auth(PostWritePage, true)}
+          path="/boards/:categoryName/new"
+          exact
+        />
 
         <Route
-          component={Auth(PostWritePage, null)}
-          path="/boards/:categoryName/new"
+          component={Auth(PostUpdatePage, 'update')}
+          path="/boards/:categoryName/:num/update"
           exact
         />
 
@@ -90,6 +99,7 @@ const MainRouter = () => {
 
         {/* watchlist */}
         <Route component={WatchlistPage} path="/watchlist" exact />
+        
       </Switch>
       <Footer></Footer>
     </>

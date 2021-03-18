@@ -232,6 +232,7 @@
             font-size: 1.7rem;
         }
     }
+
     .text-field {
         margin: 32px 0;
 
@@ -239,27 +240,73 @@
             font-size: 0.9rem;
         }
     }
+    
+    .modal-wrapper {
+        width: 350px;
+
+        .modal-icon {
+            font-size: 1rem;
+        }
+    
+        .modal-icon-error {
+            font-size: 1rem;
+        }
+
+        .modal-msg{
+            font-size: 0.8rem;
+        }
+        .modal-msg-error{
+            font-size: 0.8rem;
+        }
+    }
 }
 
-/* 0 ~ 670 : 테블릿  */
+@media screen and (max-width: 480px){
+    .modal-wrapper {
+        width: 300px;
+
+        .modal-icon {
+            font-size: 0.8rem;
+        }
+    
+        .modal-icon-error {
+            font-size: 0.8rem;
+        }
+
+        .modal-msg{
+            font-size: 0.6rem;
+        }
+        .modal-msg-error{
+            font-size: 0.6rem;
+        }
+    }
+}
+
+/* 0 ~ 360 : 모바일  */
 @media screen and (max-width: 360px){ 
     .form-template {
         height: 625px;
     }
+
     .form-field {
-    width: 300px;
-    padding: 0 22px;
+        width: 300px;
+        padding: 0 22px;
 
         .form-title {
             font-size: 1.5rem;
         }
     }
+
     .text-field {
         margin: 25px 0;
 
         .input-label {
             font-size: 0.8rem;
         }
+    }
+
+    .modal-wrapper {
+        width: 250px;
     }
 }
 

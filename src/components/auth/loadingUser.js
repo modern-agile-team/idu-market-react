@@ -5,6 +5,7 @@ const loadingUser = () => {
     try {
         store.dispatch({
             type: LOADING_REQUEST,
+            payload: localStorage.getItem('jwt'),
         })
     } catch (e) {
         console.log(e);
