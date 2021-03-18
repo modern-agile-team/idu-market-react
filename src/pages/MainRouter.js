@@ -27,6 +27,9 @@ import BoardDetailPage from "./Boards/Detail/BoardDetailPage";
 //PostWrite
 import PostWritePage from "./Boards/Write/PostWritePage";
 
+//Post Update
+import PostUpdatePage from "./Boards/Update/PostUpdatePage";
+
 //hoc
 import Auth from "../hoc/auth";
 
@@ -71,10 +74,15 @@ const MainRouter = () => {
           path="/boards/notice"
           exact
         />
-
         <Route
           component={Auth(PostWritePage, true)}
           path="/boards/:categoryName/new"
+          exact
+        />
+
+        <Route
+          component={Auth(PostUpdatePage, true)}
+          path="/boards/:categoryName/:num/update"
           exact
         />
 

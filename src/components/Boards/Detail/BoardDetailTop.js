@@ -77,7 +77,7 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
         )}
 
         <div className="detail-btn-box">
-          <button className="detail-btn-edit">수정</button>
+          <Link to={`/boards/${categoryName}/${num}/update`}className="detail-btn-edit">수정</Link>
           <button className="detail-btn-delete" onClick={onDelete}>삭제</button>
           <Link to={`/boards/${categoryName}`} className="detail-btn-list">목록</Link>
         </div>

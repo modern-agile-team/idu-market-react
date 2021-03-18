@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { FcCancel } from "react-icons/fc";
-import { useDispatch } from "react-redux";
-import { BOARD_WRITE_REQUEST } from "../../../redux/types";
+import { useDispatch, useSelector } from "react-redux";
+import { BOARD_DETAIL_REQUEST, BOARD_WRITE_REQUEST } from "../../../redux/types";
 
 //CKEditor
 import { CKEditor } from "@ckeditor/ckeditor5-react";
@@ -11,10 +11,10 @@ import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor"
 import { editorConfiguration } from "../../Editor/EditorConfig";
 import Myinit from "../../Editor/UploadAdapter";
 
-
-const PostWriteComponent = (props) => {
+const PostUpdateComponent = (props) => {
   const categoryName = props.match.params.categoryName;
-  const dispatch = useDispatch();
+  const num = props.match.params.num;
+
   const [modal, setModal] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
   const [modalErrorMsg, setModalErrorMsg] = useState("");
@@ -27,6 +27,20 @@ const PostWriteComponent = (props) => {
     price: "",
     categoryName,
   });
+
+  const dispatch = useDispatch();
+  const boardDetail = useSelector((state) => state.boards);
+
+  console.log(boardDetail);
+  useEffect(() => {
+      dispatch({
+          type: BOARD_DETAIL_REQUEST,
+          payload: {
+            categoryName,
+            num,
+          },
+      })
+  }, [dispatch]);
 
   const getDataFromCKEditor = (event, editor) => {
     const data = editor.getData();
@@ -105,7 +119,7 @@ const PostWriteComponent = (props) => {
       };
 
       console.log(body);
-
+      
       //유효성 검사
       if (title === "") {
         setModal(true);
@@ -205,6 +219,7 @@ const PostWriteComponent = (props) => {
               className="write-title"
               onChange={onChange}
               placeholder="Title"
+              value={boardDetail.title}
             />
             <span className="post-write-border"></span>
           </div>
@@ -220,6 +235,7 @@ const PostWriteComponent = (props) => {
                 className="write-price"
                 onChange={onChange}
                 placeholder="Price"
+                value={boardDetail.price}
               />
               <span className="post-write-border"></span>
               <span className="price-won">원 (숫자만 입력 ex. 1000)</span>
@@ -233,6 +249,7 @@ const PostWriteComponent = (props) => {
               config={editorConfiguration}
               onReady={Myinit}
               onBlur={getDataFromCKEditor}
+              data={boardDetail.content}
             />
           </div>
 
@@ -270,4 +287,4 @@ const PostWriteComponent = (props) => {
   );
 };
 
-export default withRouter(PostWriteComponent);
+export default withRouter(PostUpdateComponent);
