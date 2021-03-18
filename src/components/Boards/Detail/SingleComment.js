@@ -4,7 +4,7 @@ import { REPLY_UPLOAD_REQUEST, COMMENT_GET_REQUEST } from '../../../redux/types'
 
 const SingleComment = ({ comment, categoryName, num }) => {
     const dispatch = useDispatch();
-    const userId = useSelector(state => state.auth.user.id);
+    const userId = useSelector(state => state.auth.id);
     const [formValue, setFormValue] = useState({
         content: "",
         studentId: "",

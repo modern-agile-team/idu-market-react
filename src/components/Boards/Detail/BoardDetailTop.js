@@ -9,7 +9,7 @@ import { BOARD_DELETE_REQUEST, IMAGE_DELETE_REQUEST } from '../../../redux/types
 const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
   const dispatch = useDispatch();
   const creatorId = useSelector(state => state.boards.studentId);
-  const userId = useSelector(state => state.auth.user.id);
+  const userId = useSelector(state => state.auth.id);
 
   const [tradeStatus, setTradeStatue] = useState("판매중");
 

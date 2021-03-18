@@ -7,7 +7,7 @@ import SingleComment from './SingleComment'
 const CommentComponent = ({ categoryName, num }) => {
     const dispatch = useDispatch();
     const commentList = useSelector(state => state.comment.comments)
-    const userId = useSelector(state => state.auth.user.id);
+    const userId = useSelector(state => state.auth.id);
 
     const [formValue, setFormValue] = useState({
         content: "",

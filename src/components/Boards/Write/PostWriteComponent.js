@@ -15,7 +15,7 @@ import Myinit from "../../Editor/UploadAdapter";
 const PostWriteComponent = (props) => {
   const categoryName = props.match.params.categoryName;
   const dispatch = useDispatch();
-  const userId = useSelector(state => state.auth.user.id);
+  const userId = useSelector(state => state.auth.id);
 
   const [modal, setModal] = useState(false);
   const [modalMsg, setModalMsg] = useState("");

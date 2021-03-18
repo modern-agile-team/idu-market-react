@@ -20,7 +20,11 @@ const initialState = {
   loginErrorMsg: "",
   registerErrorMsg: "",
   checkRegister: false,
-  user: [],
+  id: "",
+  email: "",
+  name: "",
+  exp: "",
+  iss: "",
 };
 
 const auth = (state = initialState, action) => {
@@ -34,6 +38,12 @@ const auth = (state = initialState, action) => {
         isLoading: true,
         loginErrorMsg: "",
         registerErrorMsg: "",
+        successMsg: "",
+        id: "",
+        email: "",
+        name: "",
+        exp: "",
+        iss: "",
       };
 
     case LOGIN_SUCCESS:
@@ -61,11 +71,9 @@ const auth = (state = initialState, action) => {
       return {
         ...state,
         jwt: null,
-        userId: "",
         isLoading: false,
         successMsg: "로그아웃에 성공하셨습니다.",
         loginErrorMsg: "",
-        user: [],
       };
 
     case LOGOUT_FAILURE:
@@ -74,7 +82,6 @@ const auth = (state = initialState, action) => {
         jwt: null,
         isLoading: false,
         successMsg: "",
-        user: [],
       };
 
     case REGISTER_SUCCESS:
@@ -99,8 +106,12 @@ const auth = (state = initialState, action) => {
       return {
         ...state,
         jwt: localStorage.getItem("jwt"),
-        user: action.payload.user,
         isLoading: false,
+        id: action.payload.id,
+        email: action.payload.user.email,
+        name: action.payload.user.name,
+        exp: action.payload.user.exp,
+        iss: action.payload.user.iss,
       }
     
     case LOADING_FAILURE: 
@@ -108,8 +119,12 @@ const auth = (state = initialState, action) => {
       return {
         ...state,
         jwt: "",
-        user: [],
         isLoading: false,
+        id: "",
+        email: "",
+        name: "",
+        exp: "",
+        iss: "",
       }
   
 
