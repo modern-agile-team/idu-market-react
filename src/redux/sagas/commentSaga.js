@@ -10,6 +10,9 @@ import {
   REPLY_UPLOAD_REQUEST,
   REPLY_UPLOAD_SUCCESS,
   REPLY_UPLOAD_FAILURE,
+  COMMENT_UPDATE_REQUEST,
+  COMMENT_UPDATE_SUCCESS,
+  COMMENT_UPDATE_FAILURE,
 } from "../types";
 
 //Comment GET
@@ -69,6 +72,36 @@ function* commentUpload(action) {
   }
 }
 
+//Comment UPDATE
+function commentUpdateAPI(action) {
+  const categoryName = action.categoryName;
+  const num = action.num;
+  const commentNum = action.commentNum;
+
+  const body = {
+    studentId: action.studentId,
+    content: action.content,
+  };
+
+  return axios.patch(`/api/boards/${categoryName}/${num}/${commentNum}`, body);
+}
+
+function* commentUpdate(action) {
+  try {
+    const result = yield call(commentUpdateAPI, action.payload);
+
+    yield put({
+      type: COMMENT_UPDATE_SUCCESS,
+      payload: result.data,
+    });
+  } catch (e) {
+    yield put({
+      type: COMMENT_UPDATE_FAILURE,
+      payload: e.response,
+    });
+  }
+}
+
 //Reply Upload
 function replyUploadAPI(action) {
   const categoryName = action.categoryName;
@@ -107,6 +140,10 @@ function* watchCommentUpload() {
   yield takeEvery(COMMENT_UPLOAD_REQUEST, commentUpload);
 }
 
+function* watchCommentUpdate() {
+  yield takeEvery(COMMENT_UPDATE_REQUEST, commentUpdate);
+}
+
 function* watchReplyUpload() {
   yield takeEvery(REPLY_UPLOAD_REQUEST, replyUpload);
 }
@@ -117,5 +154,6 @@ export default function* commentSaga() {
     fork(watchCommentGet),
     fork(watchCommentUpload),
     fork(watchReplyUpload),
+    fork(watchCommentUpdate),
   ]);
 }

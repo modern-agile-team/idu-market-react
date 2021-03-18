@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   REPLY_UPLOAD_REQUEST,
   COMMENT_GET_REQUEST,
+  COMMENT_UPDATE_REQUEST,
 } from "../../../redux/types";
 import { RiDeleteBin6Line, RiPencilLine } from "react-icons/ri";
 
@@ -21,6 +22,7 @@ const SingleComment = ({ comment, categoryName, num }) => {
   const [updateFormValue, setUpdateFormValue] = useState({
     content: comment.content,
     studentId: userId,
+    commentNum: comment.num,
     categoryName,
     num,
     groupNum: comment.groupNum,
@@ -93,17 +95,48 @@ const SingleComment = ({ comment, categoryName, num }) => {
   const onUpdate = (e) => {
     e.preventDefault();
 
-    const { content, categoryName, num, groupNum } = updateFormValue;
+    console.log(comment);
+    const {
+      content,
+      categoryName,
+      num,
+      groupNum,
+      commentNum,
+    } = updateFormValue;
 
     const body = {
       content,
       studentId: userId,
       categoryName,
+      commentNum,
       num,
       groupNum,
     };
 
     console.log(body);
+
+    if (body.content.length === 0) {
+      alert("댓글이 비었습니다.");
+    } else {
+      dispatch({
+        type: COMMENT_UPDATE_REQUEST,
+        payload: body,
+      });
+
+      setTimeout(() => {
+        dispatch({
+          type: COMMENT_GET_REQUEST,
+          payload: body,
+        });
+      }, 100);
+
+      setFormValue({
+        content: "",
+        studentId: userId,
+        categoryName,
+        num,
+      });
+    }
 
     setOpenUpdate(!openUpdate);
   };
