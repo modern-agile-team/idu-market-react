@@ -5,6 +5,9 @@ import {
   COMMENT_UPLOAD_FAILURE,
   COMMENT_UPLOAD_SUCCESS,
   COMMENT_UPLOAD_REQUEST,
+  COMMENT_UPDATE_REQUEST,
+  COMMENT_UPDATE_SUCCESS,
+  COMMENT_UPDATE_FAILURE,
   REPLY_UPLOAD_REQUEST,
   REPLY_UPLOAD_SUCCESS,
   REPLY_UPLOAD_FAILURE,
@@ -14,7 +17,6 @@ const initialState = {
   isLoading: false,
   msg: "",
   comments: [],
-  replyFlag: {},
 };
 
 const comment = (state = initialState, action) => {
@@ -71,27 +73,41 @@ const comment = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        successMsg: "",
-        errorMsg: "",
-        replyFlag: {},
+        msg: "",
       };
 
     case REPLY_UPLOAD_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        studentId: action.payload.studentId,
-        content: action.payload.content,
-        replyFlag: action.payload.replyFlag,
         msg: action.payload.msg,
-        comments: [...state.comments, action.payload.reply],
       };
 
     case REPLY_UPLOAD_FAILURE:
       return {
         ...state,
         isLoading: false,
-        replyFlag: {},
+        msg: action.payload.data.msg,
+      };
+
+    case COMMENT_UPDATE_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        msg: "",
+      };
+
+    case COMMENT_UPDATE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        msg: action.payload.msg,
+      };
+
+    case COMMENT_UPDATE_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
         msg: action.payload.data.msg,
       };
 
