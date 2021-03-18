@@ -82,7 +82,7 @@ const MainRouter = () => {
         />
 
         <Route
-          component={Auth(PostUpdatePage, true)}
+          component={Auth(PostUpdatePage, 'update')}
           path="/boards/:categoryName/:num/update"
           exact
         />
@@ -99,6 +99,7 @@ const MainRouter = () => {
 
         {/* watchlist */}
         <Route component={WatchlistPage} path="/watchlist" exact />
+        
       </Switch>
       <Footer></Footer>
     </>
