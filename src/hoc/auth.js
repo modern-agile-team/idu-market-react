@@ -11,6 +11,8 @@ export default function Auth(SpecificComponent, option, adminRoute = null) {
 
     function AuthenticationCheck(props) {
         const { jwt } = useSelector(state => state.auth);
+        const creatorId = useSelector(state => state.boards.studentId);
+        const userId = useSelector(state => state.auth.user.id);
 
         useEffect(() => {
             //로그인하지 않은 상태
@@ -23,6 +25,14 @@ export default function Auth(SpecificComponent, option, adminRoute = null) {
             } else {
             //로그인한 상태
                 if (option === false) props.history.push('/');
+            }
+
+            if(option === 'update') {
+                if(creatorId !== userId) {
+                    setTimeout(() => {
+                        props.history.push('/');
+                    }, 100)
+                }
             }
         }, [jwt]);
 

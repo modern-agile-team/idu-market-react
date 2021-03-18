@@ -3,11 +3,14 @@ import { Link, withRouter } from "react-router-dom";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsCalendar } from "react-icons/bs";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BOARD_DELETE_REQUEST, IMAGE_DELETE_REQUEST } from '../../../redux/types';
 
 const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
   const dispatch = useDispatch();
+  const creatorId = useSelector(state => state.boards.studentId);
+  const userId = useSelector(state => state.auth.user.id);
+
   const [tradeStatus, setTradeStatue] = useState("판매중");
 
   const deleteImage = () => {
@@ -31,7 +34,7 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
 
     body.url = [...imgList];
 
-    if(body.url.length > 0) {
+    if (body.url.length > 0) {
       dispatch({
         type: IMAGE_DELETE_REQUEST,
         payload: body
@@ -77,9 +80,17 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
         )}
 
         <div className="detail-btn-box">
-          <Link to={`/boards/${categoryName}/${num}/update`}className="detail-btn-edit">수정</Link>
-          <button className="detail-btn-delete" onClick={onDelete}>삭제</button>
-          <Link to={`/boards/${categoryName}`} className="detail-btn-list">목록</Link>
+          {creatorId === userId ? (
+            <>
+              <Link to={`/boards/${categoryName}/${num}/update`}className="detail-btn-edit">수정</Link>
+              <button className="detail-btn-delete" onClick={onDelete}>삭제</button>
+              <Link to={`/boards/${categoryName}`} className="detail-btn-list">목록</Link>
+            </>
+          ): (
+            <>
+              <Link to={`/boards/${categoryName}`} className="detail-btn-list">목록</Link>
+            </>
+          )}
         </div>
 
         <div className="detail-date-student">
