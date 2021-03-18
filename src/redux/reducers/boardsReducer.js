@@ -11,6 +11,9 @@ import {
   BOARD_DELETE_REQUEST,
   BOARD_DELETE_SUCCESS,
   BOARD_DELETE_FAILURE,
+  BOARD_UPDATE_REQUEST,
+  BOARD_UPDATE_SUCCESS,
+  BOARD_UPDATE_FAILURE,
   BOARD_DETAIL_REQUEST,
   BOARD_DETAIL_SUCCESS,
   BOARD_DETAIL_FAILURE,
@@ -63,6 +66,7 @@ const boards = (state = initialState, action) => {
         msg: "",
       };
 
+    case BOARD_UPDATE_REQUEST:
     case BOARD_WRITE_REQUEST:
       return {
         ...state,
@@ -71,6 +75,7 @@ const boards = (state = initialState, action) => {
         num: "",
       };
 
+    case BOARD_UPDATE_SUCCESS:
     case BOARD_WRITE_SUCCESS:
       return {
         ...state,
@@ -79,6 +84,7 @@ const boards = (state = initialState, action) => {
         num: action.payload.num,
       };
 
+    case BOARD_UPDATE_FAILURE:
     case BOARD_WRITE_FAILURE:
       return {
         ...state,
@@ -129,7 +135,7 @@ const boards = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        msg: action.payload.data.msg
+        msg: action.payload.msg
       }
 
     case IMAGE_DELETE_FAILURE:

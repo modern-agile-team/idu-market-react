@@ -116,7 +116,6 @@ const PostWriteComponent = (props) => {
           setModal(false);
         }, 1500);
       }
-      /// ^[0-9]+$/: 비어있지 않은 연속된 숫자 문자열
       else if (content === "") {
         setModal(true);
         setModalError(true);
@@ -125,7 +124,8 @@ const PostWriteComponent = (props) => {
         setTimeout(() => {
           setModal(false);
         }, 1500);
-      } else {
+      } 
+      else {
         dispatch({
           type: BOARD_WRITE_REQUEST,
           payload: body,
@@ -173,7 +173,17 @@ const PostWriteComponent = (props) => {
         setTimeout(() => {
           setModal(false);
         }, 1500);
-      } else if (content === "") {
+      }
+      else if (price.length >= 8) {
+        setModal(true);
+        setModalError(true);
+        setModalErrorMsg("가격은 9,999,999원 이하로 입력해주세요.");
+  
+        setTimeout(() => {
+          setModal(false);
+        }, 1500);
+      }
+      else if (content === "") {
         setModal(true);
         setModalError(true);
         setModalErrorMsg("빈 본문입니다.");
@@ -181,11 +191,13 @@ const PostWriteComponent = (props) => {
         setTimeout(() => {
           setModal(false);
         }, 1500);
-      } else {
+      } 
+      else {
         dispatch({
           type: BOARD_WRITE_REQUEST,
           payload: body,
         });
+
         setModal(true);
         setModalMsg("게시글 업로드에 성공하셨습니다.");
         setModalError(false);
