@@ -10,7 +10,7 @@ export default function Auth(SpecificComponent, option, adminRoute = null) {
         //adminRoute 파라미터는 admin만 출입가능하게하려면 true를 넣으면됨
 
     function AuthenticationCheck(props) {
-        const { jwt } = useSelector(state => state.loading);
+        const { jwt } = useSelector(state => state.auth);
 
         useEffect(() => {
             //로그인하지 않은 상태

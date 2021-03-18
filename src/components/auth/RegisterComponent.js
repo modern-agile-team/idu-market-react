@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import { REGISTER_REQUEST } from "../../redux/types";
 
-const RegisterComponent = (props) => {
+const RegisterComponent = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [formValues, setFormValues] = useState({
     id: "",

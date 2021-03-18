@@ -13,7 +13,7 @@ const Header = () => {
   const [sidebar, setSidebar] = useState(false);
 
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.loading);
+  const auth = useSelector((state) => state.auth);
 
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -55,7 +55,7 @@ const Header = () => {
             })}
           </ul>
 
-          {loading.jwt ? (
+          {auth.jwt ? (
             <Link to="/login" className="header-btn" onClick={onLogoutHandler}>
               Logout
             </Link>

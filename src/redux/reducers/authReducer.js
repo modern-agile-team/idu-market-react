@@ -8,6 +8,9 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
+  LOADING_FAILURE, 
+  LOADING_SUCCESS, 
+  LOADING_REQUEST,
 } from "../types";
 
 const initialState = {
@@ -17,11 +20,12 @@ const initialState = {
   loginErrorMsg: "",
   registerErrorMsg: "",
   checkRegister: false,
-  userId: "",
+  user: [],
 };
 
 const auth = (state = initialState, action) => {
   switch (action.type) {
+    case LOADING_REQUEST:
     case REGISTER_REQUEST:
     case LOGOUT_REQUEST:
     case LOGIN_REQUEST:
@@ -34,26 +38,22 @@ const auth = (state = initialState, action) => {
 
     case LOGIN_SUCCESS:
       localStorage.setItem("jwt", action.payload.jwt);
-      localStorage.setItem("userId", action.payload.user.id);
       return {
         ...state,
         jwt: action.payload.jwt,
         isLoading: false,
         successMsg: action.payload.msg,
         loginErrorMsg: "",
-        userId: action.payload.user.id,
       };
 
     case LOGIN_FAILURE:
       localStorage.removeItem("jwt");
-      localStorage.removeItem("userId");
       return {
         ...state,
         jwt: null,
         isLoading: false,
         successMsg: "",
         loginErrorMsg: action.payload.data.msg,
-        userId: "",
       };
 
     case LOGOUT_SUCCESS:
@@ -61,9 +61,11 @@ const auth = (state = initialState, action) => {
       return {
         ...state,
         jwt: null,
+        userId: "",
         isLoading: false,
         successMsg: "로그아웃에 성공하셨습니다.",
         loginErrorMsg: "",
+        user: [],
       };
 
     case LOGOUT_FAILURE:
@@ -72,6 +74,7 @@ const auth = (state = initialState, action) => {
         jwt: null,
         isLoading: false,
         successMsg: "",
+        user: [],
       };
 
     case REGISTER_SUCCESS:
@@ -91,6 +94,23 @@ const auth = (state = initialState, action) => {
         successMsg: "",
         registerErrorMsg: action.payload.data.msg,
       };
+
+    case LOADING_SUCCESS: 
+      return {
+        ...state,
+        jwt: localStorage.getItem("jwt"),
+        user: action.payload.user,
+        isLoading: false,
+      }
+    
+    case LOADING_FAILURE: 
+      return {
+        ...state,
+        jwt: "",
+        user: [],
+        isLoading: false,
+      }
+  
 
     default:
       return state;
