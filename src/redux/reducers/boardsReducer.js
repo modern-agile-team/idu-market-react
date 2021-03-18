@@ -67,8 +67,7 @@ const boards = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        errorMsg: "",
-        successMsg: "",
+        msg: "",
         num: "",
       };
 
@@ -76,7 +75,7 @@ const boards = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        successMsg: action.payload.msg,
+        msg: action.payload.msg,
         num: action.payload.num,
       };
 
@@ -84,14 +83,14 @@ const boards = (state = initialState, action) => {
       return {
         ...state,
         data: [],
+        msg: action.payload.data.msg,
       };
 
     case BOARD_DETAIL_REQUEST:
       return {
         ...state,
         isLoading: true,
-        errorMsg: "",
-        successMsg: "",
+        msg: "",
         num: "",
       };
 
@@ -107,7 +106,7 @@ const boards = (state = initialState, action) => {
         price: action.payload.board.price,
         inDate: action.payload.board.inDate,
         updateDate: action.payload.board.updateDate,
-        successMsg: action.payload.msg,
+        msg: action.payload.msg,
       };
 
     case BOARD_DETAIL_FAILURE:
@@ -122,7 +121,7 @@ const boards = (state = initialState, action) => {
         inDate: "",
         updateDate: "",
         isLoading: false,
-        errorMsg: action.payload.msg,
+        msg: action.payload.data.msg,
       };
 
     case IMAGE_DELETE_SUCCESS:
@@ -130,7 +129,7 @@ const boards = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        msg: action.payload.msg
+        msg: action.payload.data.msg
       }
 
     case IMAGE_DELETE_FAILURE:
@@ -138,7 +137,7 @@ const boards = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        msg: action.payload.msg
+        msg: action.payload.data.msg
       }
 
     default:

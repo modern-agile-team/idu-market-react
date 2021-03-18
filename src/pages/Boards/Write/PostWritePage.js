@@ -5,7 +5,7 @@ import BoardBanner from "../../../components/Boards/Layout/BoardBanner";
 const PostWritePage = () => {
   return (
     <>
-      <BoardBanner title="Market" desc="Write" />
+      <BoardBanner title="IUAM" desc="Write" />
       <PostWriteComponent />
     </>
   );
