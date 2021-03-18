@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { FcCancel } from "react-icons/fc";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BOARD_WRITE_REQUEST } from "../../../redux/types";
 
 //CKEditor
@@ -15,12 +15,14 @@ import Myinit from "../../Editor/UploadAdapter";
 const PostWriteComponent = (props) => {
   const categoryName = props.match.params.categoryName;
   const dispatch = useDispatch();
+  const userId = useSelector(state => state.auth.user.id);
+
   const [modal, setModal] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
   const [modalErrorMsg, setModalErrorMsg] = useState("");
   const [modalError, setModalError] = useState(false);
   const [formValues, setFormValues] = useState({
-    studentId: localStorage.getItem("userId"),
+    studentId: userId,
     title: "",
     content: "",
     thumbnail: "",

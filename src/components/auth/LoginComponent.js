@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import { LOGIN_REQUEST } from "../../redux/types";
 
-const LoginComponent = (props) => {
+const LoginComponent = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [formValues, setFormValues] = useState({
     id: "",

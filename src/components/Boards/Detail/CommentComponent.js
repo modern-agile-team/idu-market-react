@@ -7,11 +7,11 @@ import SingleComment from './SingleComment'
 const CommentComponent = ({ categoryName, num }) => {
     const dispatch = useDispatch();
     const commentList = useSelector(state => state.comment.comments)
-    const userId = useSelector(state => state.loading.userId);
+    const userId = useSelector(state => state.auth.user.id);
 
     const [formValue, setFormValue] = useState({
         content: "",
-        studentId: userId,
+        studentId: "",
     });
     
     const resetValue = useRef(null);
@@ -26,10 +26,10 @@ const CommentComponent = ({ categoryName, num }) => {
     const onSubmit = e => {
         e.preventDefault();
 
-        const {content, studentId} = formValue;
+        const {content} = formValue;
         const body =  {
             content,
-            studentId,
+            studentId: userId,
             categoryName,
             num,
         }
@@ -39,12 +39,7 @@ const CommentComponent = ({ categoryName, num }) => {
         } else {
             dispatch({
                 type: COMMENT_UPLOAD_REQUEST,
-                payload: {
-                    categoryName,
-                    num,
-                    studentId,
-                    content,
-                },
+                payload: body,
             });
 
             resetValue.current.value = '';

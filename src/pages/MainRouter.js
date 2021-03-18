@@ -38,6 +38,7 @@ import ProfilePage from "./Profile/ProfilePage";
 import WatchlistPage from "./WatchlistPage/WatchlistPage";
 
 const MainRouter = () => {
+
   return (
     <>
       <Header></Header>
