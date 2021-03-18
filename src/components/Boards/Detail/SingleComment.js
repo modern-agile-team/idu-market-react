@@ -177,13 +177,16 @@ const SingleComment = ({ comment, categoryName, num }) => {
                   type="textarea"
                   name="content"
                   id="comment-contents"
-                  className="comment-contents"
+                  className="comment-contents update"
                   onChange={onUpdateChange}
                   placeholder="Comment"
                   defaultValue={comment.content}
                 />
 
-                <button className="comment-submit-btn" onClick={onUpdate}>
+                <button
+                  className="comment-submit-btn update"
+                  onClick={onUpdate}
+                >
                   Update
                 </button>
               </div>

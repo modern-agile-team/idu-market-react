@@ -27,7 +27,12 @@
         border: 1px solid $main-color-2;
         padding: 10px;
         font-size: 1rem;
+
+        &.update {
+            border: 2px solid #999;
+        }
     }
+
     .comment-submit-btn {
         cursor: pointer;
         font-family: $Jua-font;
@@ -39,6 +44,10 @@
         border: 1px solid $main-color-5;
         border-radius: 5px;
         font-size: 1rem;
+        &.update {
+            border: 2px solid #999;
+            background-color: rgb(241, 241, 241);
+        }
     }
 }
 
@@ -105,16 +114,19 @@
     position: absolute;
     right: 0;
     top: 20px;
+
     .comment-delete-icon {
         font-size: 1.5rem;
         background-color: transparent;
         cursor: pointer;
         margin-right: 10px;
+        outline: none;
     }
     .comment-update-icon {
         font-size: 1.5rem;
         background-color: transparent;
         cursor: pointer;
         margin-right: 10px;
+        outline: none;
     }
 }
