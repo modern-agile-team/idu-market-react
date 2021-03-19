@@ -107,7 +107,7 @@ const auth = (state = initialState, action) => {
         ...state,
         jwt: localStorage.getItem("jwt"),
         isLoading: false,
-        id: action.payload.id,
+        id: action.payload.user.id,
         email: action.payload.user.email,
         name: action.payload.user.name,
         exp: action.payload.user.exp,
