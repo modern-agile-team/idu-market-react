@@ -63,7 +63,7 @@ const SearchListComponent = (props) => {
             <SearchComponent categoryName={categoryName} />
 
             {categoryName === 'free' || categoryName === 'notice' ? (
-              <section id="boardlist-common" className="boardlist-common">
+              <section id="boardlist-common"  className="boardlist-common">
                 <div className="container">
                   <table className="boardlist-common-tables">
                     <thead>
@@ -76,7 +76,7 @@ const SearchListComponent = (props) => {
                       </tr>
                     </thead>
         
-                    <tbody id="boardlist-common-body">{displayBoardList}</tbody>
+                    <tbody class="boardlist-common-body">{displayBoardList}</tbody>
                   </table>
       
                   <div className="pagination-container">

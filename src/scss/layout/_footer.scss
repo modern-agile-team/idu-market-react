@@ -179,6 +179,40 @@
 /* 0 ~ 480 : 모바일1  */
 @media screen and (max-width: 480px){ 
     .footer {
-        height: 260px;
+        height: 180px;
+    }
+
+    .footer-title {
+        margin-left: 0;
+        margin: 20px 0 10px 0;
+        font-size: 1.5rem;
+    }
+
+    .copyright {
+        font-size: 0.8rem;
+    }
+
+    .footer-icons {
+        margin-top: 15px;
+
+        .footer-tooltip {
+            &::before,
+            &::after {
+                height: 10px;
+                width: 120px;
+            }
+    
+            &::before {
+                font-size: 10px;
+                line-height: 10px;
+            }
+    
+            &::after{
+                height: 10px;
+                width: 10px;
+                transform: translate(-50%, -150%) rotate(45deg) scale(0);
+                transform-origin: top;
+            }
+        }
     }
 }
