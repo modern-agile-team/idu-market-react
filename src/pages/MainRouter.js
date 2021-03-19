@@ -24,6 +24,9 @@ import FreeBoardPage from "./Boards/Basic/FreeBoardPage";
 //Board Detail
 import BoardDetailPage from "./Boards/Detail/BoardDetailPage";
 
+//Board Search
+import MarketSearchPage from "./Boards/Search/MarketSearchPage";
+
 //PostWrite
 import PostWritePage from "./Boards/Write/PostWritePage";
 
@@ -38,7 +41,6 @@ import ProfilePage from "./Profile/ProfilePage";
 import WatchlistPage from "./WatchlistPage/WatchlistPage";
 
 const MainRouter = () => {
-
   return (
     <>
       <Header></Header>
@@ -52,7 +54,6 @@ const MainRouter = () => {
           path="/findPwd"
           exact
         />
-
         {/* boards list */}
         <Route component={Auth(BookListPage, null)} path="/boards/book" exact />
         <Route
@@ -80,26 +81,27 @@ const MainRouter = () => {
           path="/boards/:categoryName/new"
           exact
         />
-
         <Route
-          component={Auth(PostUpdatePage, 'update')}
+          component={Auth(PostUpdatePage, "update")}
           path="/boards/:categoryName/:num/update"
           exact
         />
-
+        {/* Market Search */}
+        <Route
+          component={Auth(MarketSearchPage, null)}
+          path="/boards/:categoryName/search/:content"
+          exact
+        />
         {/* boards Detail */}
         <Route
           component={Auth(BoardDetailPage, null)}
           path="/boards/:categoryName/:num"
           exact
         />
-
         {/* Profile */}
         <Route component={ProfilePage} path="/students" exact />
-
         {/* watchlist */}
         <Route component={WatchlistPage} path="/watchlist" exact />
-        
       </Switch>
       <Footer></Footer>
     </>

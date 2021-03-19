@@ -20,6 +20,9 @@ import {
   BOARD_DETAIL_REQUEST,
   BOARD_DETAIL_SUCCESS,
   BOARD_DETAIL_FAILURE,
+  BOARD_SEARCH_REQUEST,
+  BOARD_SEARCH_SUCCESS,
+  BOARD_SEARCH_FAILURE,
   IMAGE_DELETE_REQUEST,
   IMAGE_DELETE_SUCCESS,
   IMAGE_DELETE_FAILURE,
@@ -184,6 +187,33 @@ function* boardDetail(action) {
   }
 }
 
+//Board Search
+function boardSearchAPI(action) {
+  const categoryName = action.categoryName;
+  const content = action.content;
+
+  return axios.get(
+    `/api/search?categoryName=${categoryName}&content=${content}`
+  );
+}
+
+function* boardSearch(action) {
+  try {
+    const result = yield call(boardSearchAPI, action.payload);
+    console.log(result);
+
+    yield put({
+      type: BOARD_SEARCH_SUCCESS,
+      payload: result.data,
+    });
+  } catch (e) {
+    yield put({
+      type: BOARD_SEARCH_FAILURE,
+      payload: e.response,
+    });
+  }
+}
+
 //Image Delete
 function imageDeleteAPI(action) {
   return axios.post(`/api/image/delete`, action);
@@ -215,6 +245,10 @@ function* watchNoticeboardGet() {
   yield takeEvery(NOTICEBOARD_GET_REQUEST, noticeboardGet);
 }
 
+// function* watchMarketGet() {
+//   yield takeEvery(MARKET_GET_REQUEST, marketGet);
+// }
+
 function* watchBoardWrite() {
   yield takeEvery(BOARD_WRITE_REQUEST, boardWrite);
 }
@@ -231,6 +265,10 @@ function* watchBoardDetailGet() {
   yield takeEvery(BOARD_DETAIL_REQUEST, boardDetail);
 }
 
+function* watchBoardSearchGet() {
+  yield takeEvery(BOARD_SEARCH_REQUEST, boardSearch);
+}
+
 function* watchImageDelete() {
   yield takeEvery(IMAGE_DELETE_REQUEST, imageDelete);
 }
@@ -240,10 +278,12 @@ export default function* boardsSaga() {
   yield all([
     fork(watchFreeboardGet),
     fork(watchNoticeboardGet),
+    // fork(watchMarketGet),
     fork(watchBoardWrite),
     fork(watchBoardUpdate),
     fork(watchBoardDelete),
     fork(watchImageDelete),
     fork(watchBoardDetailGet),
+    fork(watchBoardSearchGet),
   ]);
 }
