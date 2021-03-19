@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import testImg from '../../img/신발.jpg';
 import axios from "axios";
 import { FaCartArrowDown, FaHeart, FaRegClipboard, FaEnvelope, FaUserAlt } from "react-icons/fa"
@@ -8,30 +8,49 @@ import { BsFillChatDotsFill } from "react-icons/bs"
 import { PROFILE_GET_REQUEST } from "../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
 
-const ProfileComponent = (studentId, boardDetail) => {
+const ProfileComponent = () => {
+  const [formValues, setFormValues] = useState({
+    name: "",
+    email: "",
+    id: "",
+  });
 
   const dispatch = useDispatch();
-  const profilelist = useSelector((state) => state.profile.profile);
+
+  const userId = useSelector(state => state.auth.id);
+  const profilelist = useSelector(state => state.profile.profile);
+  
+  const { name, email, id } = formValues;
+  const body =  {
+    studentId: userId,
+    id,
+    name,
+    email,
+  }
 
   useEffect(() => {
     dispatch({
       type: PROFILE_GET_REQUEST,
-      payload: studentId.payload,
+      payload: body,
+    });
+
+    setFormValues({    
+      studentId: userId,
     });
   }, [dispatch]);
 
-  const profileInfo = profilelist.map((el) => {
-    return (
-      <div className="profile-information-box">
-        <label>Name</label>
-        <p className="profile-information-name">{boardDetail.studentName}</p>
-        <label>ID</label>
-        <p className="profile-information-name">{el.id}</p>
-        <label>Email</label>
-        <p className="profile-information-name">{el.email}</p>
-      </div>
-     )
-  });
+  // const profileInfo = profilelist.map((el) => {
+  //   return (
+  //     <div className="profile-information-box">
+  //       <label>Name</label>
+  //       <p className="profile-information-name">{el.name}</p>
+  //       <label>ID</label>
+  //       <p className="profile-information-name">{el.id}</p>
+  //       <label>Email</label>
+  //       <p className="profile-information-name">{el.email}</p>
+  //     </div>
+  //    )
+  // });
   
   return (
     <>
@@ -46,7 +65,18 @@ const ProfileComponent = (studentId, boardDetail) => {
               
 
             <div calssName="profile-information">
-              {profileInfo}
+              {profilelist.map((el) => {
+                return (
+                  <div className="profile-information-box">
+                    <label>Name</label>
+                    <p className="profile-information-name">{el.name}</p>
+                    <label>ID</label>
+                    <p className="profile-information-name">{el.id}</p>
+                    <label>Email</label>
+                    <p className="profile-information-name">{el.email}</p>
+                  </div>
+                  )
+              })}
             </div>
 
             <div className="profile-btnbox">
@@ -79,4 +109,4 @@ const ProfileComponent = (studentId, boardDetail) => {
   );
 };
 
-export default withRouter(ProfileComponent);
+export default ProfileComponent;

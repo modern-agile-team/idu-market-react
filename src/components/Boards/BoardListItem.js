@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineUser, AiOutlineComment } from "react-icons/ai";
-import WatchlistBtnComponent from "../Watchlist/WatchlistBtnComponent"
 
 const BoardListItem = ({ productList, categoryName }) => {
   console.log(productList);
@@ -21,7 +20,7 @@ const BoardListItem = ({ productList, categoryName }) => {
             <Link to={`/boards/${categoryName}/${board.num}`}>
               <h1 className="market-item-title">{board.title}</h1>
             </Link>
-            <WatchlistBtnComponent />
+           
             <p className="market-item-price">{board.price}원</p>
             <p className="market-item-id">
               <AiOutlineUser />

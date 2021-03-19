@@ -9,7 +9,7 @@ import {
 
 //profile
 function profileGetAPI(action) {
-    const studentId = action;
+    const studentId = action.studentId;
     return axios.get(`/api/students/${studentId}`, action);
   }
   
@@ -20,7 +20,7 @@ function profileGetAPI(action) {
       
       yield put({
         type: PROFILE_GET_SUCCESS,
-        payload: result.profile.studentId,
+        payload: result.data,
       });
   
     } catch (e) {

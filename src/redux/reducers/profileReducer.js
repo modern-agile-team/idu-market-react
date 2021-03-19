@@ -8,8 +8,8 @@ import {
     profile: [],
     title: [],
     comments: [],
-    loading: false,
-    responseMsg: "",
+    isLoading: false,
+    msg: "",
     id: "",
     name: "",
     email: "",
@@ -23,22 +23,29 @@ import {
         return {
           ...state,
           loading: true,
-          responseMsg: "",
+          msg: "",
+          profile:[],
         };
   
       case PROFILE_GET_SUCCESS:
         return {
           ...state,
-          profile: [...action.payload.profile],
+          id: action.payload.id,
+          name: action.payload.name,
+          email: action.payload.email,
           loading: false,
-          responseMsg: action.payload.msg,
+          msg: action.payload.msg,
         };
   
       case PROFILE_GET_FAILURE:
         return {
           ...state,
           loading: false,
-          responseMsg: "",
+          msg: "",
+          id: "",
+          name: "",
+          email: "",
+          profile:[],
         };
   
       default:

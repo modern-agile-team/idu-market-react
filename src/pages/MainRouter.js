@@ -95,7 +95,7 @@ const MainRouter = () => {
         />
 
         {/* Profile */}
-        <Route component={ProfilePage} path="/students" exact />
+        <Route component={ProfilePage} path="/students/:studentId" exact />
 
         {/* watchlist */}
         <Route component={WatchlistPage} path="/watchlist" exact />
