@@ -115,7 +115,6 @@ const auth = (state = initialState, action) => {
       };
 
     case LOADING_FAILURE:
-      localStorage.removeItem("jwt");
       return {
         ...state,
         jwt: "",

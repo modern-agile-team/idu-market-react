@@ -92,7 +92,9 @@ function loadingAPI(token) {
 
   if (token) {
     config.headers["x-auth-token"] = token;
-    return axios.get("/api/auth", config);
+    return axios.get("/api/auth", config).catch((e) => {
+      localStorage.removeItem("jwt");
+    });
   } else {
     return axios.get("/api/un-auth", config);
   }
