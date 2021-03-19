@@ -97,8 +97,11 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
           <p><AiOutlineUser />&nbsp;{boardDetail.studentName}</p>
           <p><BsCalendar />&nbsp;{boardDetail.inDate}</p>
         </div>
-
-        <div className="detail-trade-status-box">
+        
+        {categoryName === 'free' || categoryName === 'notice' ? (
+            ""
+        ): (
+          <div className="detail-trade-status-box">
           <ul>
             <li className="detail-trade-status">
               {tradeStatus} <IoMdArrowDropdown />
@@ -116,6 +119,7 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
             </li>
           </ul>
         </div>
+        )}
       </div>
   );
 };
