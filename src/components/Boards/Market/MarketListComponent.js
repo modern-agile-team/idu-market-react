@@ -1,8 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
-import { BsSearch } from "react-icons/bs";
-import { BiEditAlt } from "react-icons/bi";
-import { Link } from "react-router-dom";
 import BoardListItem from "../BoardListItem";
 import axios from "axios";
 import SearchComponent from "../Search/SearchComponent";
@@ -27,24 +24,6 @@ const MarketListComponent = ({ categoryName }) => {
       [e.target.name]: e.target.value,
     });
   };
-
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
-  //   onSearch = true;
-  //   console.log(onSearch);
-
-  //   const { content, categoryName } = formValues;
-
-  //   await axios
-  //     .get(`/api/search?categoryName=${categoryName}&content=${content}`)
-  //     .then((response) => {
-  //       if (response.data.success) {
-  //         const result = response.data.boards;
-  //         setLoading(true);
-  //         setProductList(result);
-  //       }
-  //     });
-  // };
 
   const getMoreData = useCallback(async () => {
     isLoading = true;

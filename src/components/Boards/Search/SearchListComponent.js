@@ -4,7 +4,6 @@ import SearchComponent from "./SearchComponent";
 import ReactPaginate from "react-paginate";
 import axios from "axios";
 import { withRouter, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const SearchListComponent = (props) => {

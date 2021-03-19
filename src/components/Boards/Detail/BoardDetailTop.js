@@ -70,7 +70,7 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
         {boardDetail ? (
           <h1 className="detail-title">{boardDetail.title}</h1>
         ) : (
-          <h1 className="detail-title"></h1>
+          <></>
         )}
 
         {categoryName === 'free' || categoryName === 'notice' ? (

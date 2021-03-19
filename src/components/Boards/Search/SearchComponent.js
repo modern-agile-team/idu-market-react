@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { BiEditAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import BoardListItem from "../BoardListItem";
-import axios from "axios";
-
 const SearchComponent = ({ categoryName }) => {
   const [formValues, setFormValues] = useState({
     content: "",
