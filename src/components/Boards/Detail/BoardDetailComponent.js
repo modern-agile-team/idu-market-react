@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
-import BoardDetailTop from './BoardDetailTop';
+import BoardDetailTop from "./BoardDetailTop";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import BalloonEditor from "@ckeditor/ckeditor5-editor-balloon/src/ballooneditor";
 import { editorConfiguration } from "../../Editor/EditorConfig";
-import { BOARD_DETAIL_REQUEST, COMMENT_GET_REQUEST } from "../../../redux/types";
-import CommentComponent from "./CommentComponent";
+import {
+  BOARD_DETAIL_REQUEST,
+  COMMENT_GET_REQUEST,
+} from "../../../redux/types";
+import CommentComponent from "../Comment/CommentComponent";
 
 const BoardDetailComponent = (props) => {
   const categoryName = props.match.params.categoryName;
@@ -37,8 +40,8 @@ const BoardDetailComponent = (props) => {
   return (
     <section id="board-Detail" className="board-Detail">
       <div className="container">
-        <BoardDetailTop 
-          boardDetail={boardDetail} 
+        <BoardDetailTop
+          boardDetail={boardDetail}
           categoryName={categoryName}
           num={num}
         />
@@ -51,7 +54,7 @@ const BoardDetailComponent = (props) => {
             disabled="true"
           />
         </div>
-        <CommentComponent categoryName={categoryName} num={num}/>
+        <CommentComponent categoryName={categoryName} num={num} />
       </div>
     </section>
   );
