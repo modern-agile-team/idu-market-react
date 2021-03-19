@@ -71,8 +71,6 @@ function BasicBoardComponent({ categoryName }) {
             <tbody id="boardlist-common-body">{displayBoardList}</tbody>
           </table>
 
-          <div className="boardlist-common-write"></div>
-
           <div className="pagination-container">
             <ReactPaginate
               previousLabel={<FaAngleLeft />}
