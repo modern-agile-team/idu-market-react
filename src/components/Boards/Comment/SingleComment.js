@@ -50,10 +50,16 @@ const SingleComment = ({ comment, categoryName, num }) => {
 
   const onOpenReply = () => {
     setOpenReply(!openReply);
+    if (openUpdate) {
+      setOpenUpdate(false);
+    }
   };
 
   const onOpenUpdate = () => {
     setOpenUpdate(!openUpdate);
+    if (openReply) {
+      setOpenReply(false);
+    }
   };
 
   const onSubmit = (e) => {
@@ -144,6 +150,13 @@ const SingleComment = ({ comment, categoryName, num }) => {
       type: COMMENT_DELETE_REQUEST,
       payload: body,
     });
+
+    setTimeout(() => {
+      dispatch({
+        type: COMMENT_GET_REQUEST,
+        payload: body,
+      });
+    }, 100);
   };
 
   return (

@@ -53,8 +53,6 @@ const ReplyComment = ({ comment, num, categoryName }) => {
       groupNum,
     };
 
-    console.log(body);
-
     if (body.content.length === 0) {
       alert("댓글이 비었습니다.");
     } else {
@@ -89,6 +87,13 @@ const ReplyComment = ({ comment, num, categoryName }) => {
       type: COMMENT_DELETE_REQUEST,
       payload: body,
     });
+
+    setTimeout(() => {
+      dispatch({
+        type: COMMENT_GET_REQUEST,
+        payload: body,
+      });
+    }, 100);
   };
 
   return (

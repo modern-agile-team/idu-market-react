@@ -20,8 +20,6 @@ const initialState = {
   isLoading: false,
   msg: "",
   comments: [],
-  deletedCommentNum: null,
-  deletedReplyNum: null,
 };
 
 const comment = (state = initialState, action) => {
@@ -125,8 +123,6 @@ const comment = (state = initialState, action) => {
         ...state,
         isLoading: false,
         msg: action.payload.msg,
-        deletedCommentNum: action.payload.deletedCommentNum,
-        deletedReplyNum: action.payload.deletedReplyNum,
       };
     case COMMENT_DELETE_FAILURE:
       return {

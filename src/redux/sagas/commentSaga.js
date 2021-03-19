@@ -1,5 +1,5 @@
 import axios from "axios";
-import { all, fork, put, takeEvery, call, delay } from "redux-saga/effects";
+import { all, fork, put, takeEvery, call } from "redux-saga/effects";
 import {
   COMMENT_GET_REQUEST,
   COMMENT_GET_SUCCESS,
@@ -111,14 +111,12 @@ function commentDeleteAPI(action) {
   const num = action.num;
   const commentNum = action.commentNum;
 
-  const body = {
-    studentId: action.studentId,
-    depth: action.depth,
-  };
-
-  console.log(body);
-
-  return axios.delete(`/api/boards/${categoryName}/${num}/${commentNum}`, body);
+  return axios.delete(`/api/boards/${categoryName}/${num}/${commentNum}`, {
+    data: {
+      studentId: action.studentId,
+      depth: action.depth,
+    },
+  });
 }
 
 function* commentDelete(action) {

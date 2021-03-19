@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-import SearchComponent from "./SearchComponent";
+import SearchComponent from "../Search/SearchComponent";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 import { FREEBOARD_GET_REQUEST } from "../../../redux/types";
@@ -23,17 +23,16 @@ function BasicBoardComponent({ categoryName }) {
   };
 
   useEffect(() => {
-    if(!loading) {
-      setLoading(true)
+    if (!loading) {
+      setLoading(true);
       dispatch({
         type: FREEBOARD_GET_REQUEST,
         payload: categoryName,
       });
     } else {
-      setLoading(false)
+      setLoading(false);
     }
   }, [dispatch]);
-
 
   const displayBoardList = freeBoardList
     .slice(pageVisited, pageVisited + perPage)
@@ -42,7 +41,9 @@ function BasicBoardComponent({ categoryName }) {
         <tr key={boardItem.num}>
           <td>{boardItem.num}</td>
           <td className="boardlist-common-title">
-            <Link to={`/boards/${categoryName}/${boardItem.num}`}>{boardItem.title}</Link>
+            <Link to={`/boards/${categoryName}/${boardItem.num}`}>
+              {boardItem.title}
+            </Link>
           </td>
           <td>{boardItem.studentId}</td>
           <td>{boardItem.inDate.substring(0, 10)}</td>
@@ -54,7 +55,7 @@ function BasicBoardComponent({ categoryName }) {
   return (
     <section id="boardlist-common" className="boardlist-common">
       <SearchComponent categoryName={categoryName} />
-      {loading ? ( 
+      {loading ? (
         <div className="container">
           <table className="boardlist-common-tables">
             <thead>
@@ -66,16 +67,12 @@ function BasicBoardComponent({ categoryName }) {
                 <th>조회수</th>
               </tr>
             </thead>
-            
-            <tbody id="boardlist-common-body">
-            {displayBoardList}
-          
-            </tbody>
-            
+
+            <tbody id="boardlist-common-body">{displayBoardList}</tbody>
           </table>
-          
+
           <div className="boardlist-common-write"></div>
-        
+
           <div className="pagination-container">
             <ReactPaginate
               previousLabel={<FaAngleLeft />}
