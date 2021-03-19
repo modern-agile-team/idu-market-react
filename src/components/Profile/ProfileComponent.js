@@ -39,19 +39,6 @@ const ProfileComponent = () => {
     });
   }, [dispatch]);
 
-  // const profileInfo = profilelist.map((el) => {
-  //   return (
-  //     <div className="profile-information-box">
-  //       <label>Name</label>
-  //       <p className="profile-information-name">{el.name}</p>
-  //       <label>ID</label>
-  //       <p className="profile-information-name">{el.id}</p>
-  //       <label>Email</label>
-  //       <p className="profile-information-name">{el.email}</p>
-  //     </div>
-  //    )
-  // });
-  
   return (
     <>
        <section className="profile" id="profile">
@@ -65,7 +52,7 @@ const ProfileComponent = () => {
               
 
             <div calssName="profile-information">
-              {profilelist.map((el) => {
+              {profilelist ? profilelist.map((el) => {
                 return (
                   <div className="profile-information-box">
                     <label>Name</label>
@@ -75,10 +62,19 @@ const ProfileComponent = () => {
                     <label>Email</label>
                     <p className="profile-information-name">{el.email}</p>
                   </div>
-                  )
-              })}
+                )
+              }) : (
+                      <div className="profile-information-box">
+                            <label>Name</label>
+                            <p className="profile-information-name">name</p>
+                            <label>ID</label>
+                            <p className="profile-information-name">id</p>
+                            <label>Email</label>
+                            <p className="profile-information-name">email</p>
+                          </div>
+                          
+              )}
             </div>
-
             <div className="profile-btnbox">
                 <Link to="/" className="profile-btnbox-btn">
                   <p>관심목록</p>

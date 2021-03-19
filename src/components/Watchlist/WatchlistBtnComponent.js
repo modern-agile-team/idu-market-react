@@ -28,12 +28,12 @@ function WatchlistBtnComponent(props) {
                             color: `${watchlisted ? '#fff' : '#222'}`,
                             border: 'none',
                             outline: 'none',
-                            fontSize: "1.1rem",
+                            fontSize: "1.2rem",
                             
                         }}
                         onClick={onSubscribe}
                     >
-                        {watchlisted ? [<AiFillHeart size="16" />] : [<AiOutlineHeart size="16"/>]} {WatchlistNumber} 
+                        {watchlisted ? [<AiFillHeart size="22" />] : [<AiOutlineHeart size="22"/>]}
                     </button>
                 </div>
             </section>

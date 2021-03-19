@@ -81,7 +81,6 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
         )}
 
         <div className="detail-btn-box">
-          <WatchlistBtnComponent />
           {creatorId === userId ? (
             <>
               <Link to={`/boards/${categoryName}/${num}/update`}className="detail-btn-edit">수정</Link>
@@ -100,6 +99,8 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
           <p><BsCalendar />&nbsp;{boardDetail.inDate}</p>
         </div>
 
+        <WatchlistBtnComponent />
+        
         <div className="detail-trade-status-box">
           <ul>
             <li className="detail-trade-status">
