@@ -89,7 +89,7 @@ const MainRouter = () => {
         {/* Market Search */}
         <Route
           component={Auth(MarketSearchPage, null)}
-          path="/boards/:categoryName/search/:content"
+          path="/boards/:categoryName/search/"
           exact
         />
         {/* boards Detail */}

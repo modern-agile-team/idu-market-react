@@ -6,8 +6,6 @@ import BoardListItem from "../BoardListItem";
 import axios from "axios";
 
 const SearchComponent = ({ categoryName }) => {
-  const [productList, setProductList] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [formValues, setFormValues] = useState({
     content: "",
     categoryName,
@@ -19,24 +17,6 @@ const SearchComponent = ({ categoryName }) => {
       [e.target.name]: e.target.value,
     });
   };
-
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   const { content, categoryName } = formValues;
-
-  //   await axios
-  //     .get(`/api/search?categoryName=${categoryName}&content=${content}`)
-  //     .then((response) => {
-  //       if (response.data.success) {
-  //         const result = response.data.boards;
-  //         console.log(result);
-
-  //         setLoading(true);
-  //         setProductList(result);
-  //       }
-  //     });
-  // };
 
   return (
     <>
@@ -59,7 +39,7 @@ const SearchComponent = ({ categoryName }) => {
           Search
         </label>
         <Link
-          to={`/boards/${categoryName}/search/${formValues.content}`}
+          to={`/boards/${categoryName}/search?content=${formValues.content}`}
           className="markget-search-btn"
         >
           <BsSearch className="market-search-icon" />

@@ -55,32 +55,6 @@
     }
 }
 
-// 글쓰기버튼
-.boardlist-common-write {
-    width: 60%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 0.6rem;
-    font-family: $Jua-font;
-    height: 30px;
-    border-radius: 3px;
-}
-
-.boardlist-common-write_btn {
-    background: #fff;
-    outline: 0;
-
-    &:hover {
-        cursor: pointer;
-    }
-
-    &:active {
-        outline: 0;
-    }
-}
-
-
 /* 페이지버튼 */
 .pagination-container {
     position: absolute;
