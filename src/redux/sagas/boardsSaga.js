@@ -2,12 +2,9 @@ import axios from "axios";
 import { all, fork, put, takeEvery, call, delay } from "redux-saga/effects";
 import { push } from "connected-react-router";
 import {
-  FREEBOARD_GET_REQUEST,
-  FREEBOARD_GET_SUCCESS,
-  FREEBOARD_GET_FAILURE,
-  NOTICEBOARD_GET_REQUEST,
-  NOTICEBOARD_GET_SUCCESS,
-  NOTICEBOARD_GET_FAILURE,
+  BASIC_BOARD_GET_REQUEST,
+  BASIC_BOARD_GET_SUCCESS,
+  BASIC_BOARD_GET_FAILURE,
   BOARD_WRITE_REQUEST,
   BOARD_WRITE_SUCCESS,
   BOARD_WRITE_FAILURE,
@@ -29,46 +26,23 @@ import {
 } from "../types";
 
 //Freeboard GET
-function freeboardGetAPI(action) {
+function basicBoardGetAPI(action) {
   const categoryName = action;
   return axios.get(`/api/boards/${categoryName}`);
 }
 
-function* freeboardGet(action) {
+function* basicBoardGet(action) {
   try {
-    const result = yield call(freeboardGetAPI, action.payload);
+    const result = yield call(basicBoardGetAPI, action.payload);
     console.log(result);
 
     yield put({
-      type: FREEBOARD_GET_SUCCESS,
+      type: BASIC_BOARD_GET_SUCCESS,
       payload: result.data,
     });
   } catch (e) {
     yield put({
-      type: FREEBOARD_GET_FAILURE,
-      payload: e.response,
-    });
-  }
-}
-
-//Notcieboard GET
-function noticeboardGetAPI(action) {
-  const categoryName = action;
-  return axios.get(`/api/boards/${categoryName}`);
-}
-
-function* noticeboardGet(action) {
-  try {
-    const result = yield call(noticeboardGetAPI, action.payload);
-    console.log(result);
-
-    yield put({
-      type: NOTICEBOARD_GET_SUCCESS,
-      payload: result.data,
-    });
-  } catch (e) {
-    yield put({
-      type: NOTICEBOARD_GET_FAILURE,
+      type: BASIC_BOARD_GET_FAILURE,
       payload: e.response,
     });
   }
@@ -237,17 +211,9 @@ function* imageDelete(action) {
 }
 
 //watch
-function* watchFreeboardGet() {
-  yield takeEvery(FREEBOARD_GET_REQUEST, freeboardGet);
+function* watchBasicBoardGet() {
+  yield takeEvery(BASIC_BOARD_GET_REQUEST, basicBoardGet);
 }
-
-function* watchNoticeboardGet() {
-  yield takeEvery(NOTICEBOARD_GET_REQUEST, noticeboardGet);
-}
-
-// function* watchMarketGet() {
-//   yield takeEvery(MARKET_GET_REQUEST, marketGet);
-// }
 
 function* watchBoardWrite() {
   yield takeEvery(BOARD_WRITE_REQUEST, boardWrite);
@@ -276,9 +242,7 @@ function* watchImageDelete() {
 //authSaga() 여러 Saga 통합
 export default function* boardsSaga() {
   yield all([
-    fork(watchFreeboardGet),
-    fork(watchNoticeboardGet),
-    // fork(watchMarketGet),
+    fork(watchBasicBoardGet),
     fork(watchBoardWrite),
     fork(watchBoardUpdate),
     fork(watchBoardDelete),

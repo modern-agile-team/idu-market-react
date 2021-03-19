@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate";
 import SearchComponent from "../Search/SearchComponent";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
-import { FREEBOARD_GET_REQUEST } from "../../../redux/types";
+import { BASIC_BOARD_GET_REQUEST } from "../../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
 
 function BasicBoardComponent({ categoryName }) {
@@ -26,7 +26,7 @@ function BasicBoardComponent({ categoryName }) {
     if (!loading) {
       setLoading(true);
       dispatch({
-        type: FREEBOARD_GET_REQUEST,
+        type: BASIC_BOARD_GET_REQUEST,
         payload: categoryName,
       });
     } else {

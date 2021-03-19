@@ -1,10 +1,7 @@
 import {
-  FREEBOARD_GET_REQUEST,
-  FREEBOARD_GET_SUCCESS,
-  FREEBOARD_GET_FAILURE,
-  NOTICEBOARD_GET_REQUEST,
-  NOTICEBOARD_GET_SUCCESS,
-  NOTICEBOARD_GET_FAILURE,
+  BASIC_BOARD_GET_REQUEST,
+  BASIC_BOARD_GET_SUCCESS,
+  BASIC_BOARD_GET_FAILURE,
   BOARD_WRITE_REQUEST,
   BOARD_WRITE_SUCCESS,
   BOARD_WRITE_FAILURE,
@@ -45,16 +42,14 @@ const boards = (state = initialState, action) => {
   switch (action.type) {
     case IMAGE_DELETE_REQUEST:
     case BOARD_DELETE_REQUEST:
-    case FREEBOARD_GET_REQUEST:
-    case NOTICEBOARD_GET_REQUEST:
+    case BASIC_BOARD_GET_REQUEST:
       return {
         ...state,
         loading: true,
         msg: "",
       };
 
-    case FREEBOARD_GET_SUCCESS:
-    case NOTICEBOARD_GET_SUCCESS:
+    case BASIC_BOARD_GET_SUCCESS:
       return {
         ...state,
         data: [...action.payload.boards],
@@ -62,8 +57,7 @@ const boards = (state = initialState, action) => {
         msg: action.payload.msg,
       };
 
-    case FREEBOARD_GET_FAILURE:
-    case NOTICEBOARD_GET_FAILURE:
+    case BASIC_BOARD_GET_FAILURE:
       return {
         ...state,
         loading: false,

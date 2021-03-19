@@ -27,6 +27,7 @@ export default function Auth(SpecificComponent, option, adminRoute = null) {
       }
     }, [auth.jwt]);
 
+    //update page 올바르지 못한 접근 방지
     if (option === "update") {
       if (creatorId !== auth.id) {
         setTimeout(() => {

@@ -16,7 +16,6 @@ const MarketListComponent = ({ categoryName }) => {
 
   let isLoading = false;
   let lastNum = 0;
-  let onSearch = false;
 
   const onChange = (e) => {
     setFormValues({
@@ -27,7 +26,6 @@ const MarketListComponent = ({ categoryName }) => {
 
   const getMoreData = useCallback(async () => {
     isLoading = true;
-    console.log(onSearch);
 
     await axios
       .get(`/api/boards/${categoryName}?lastNum=${lastNum}`)
