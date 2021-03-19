@@ -4,8 +4,10 @@ import {
   REPLY_UPLOAD_REQUEST,
   COMMENT_GET_REQUEST,
   COMMENT_UPDATE_REQUEST,
+  COMMENT_DELETE_REQUEST,
 } from "../../../redux/types";
 import { RiDeleteBin6Line, RiPencilLine } from "react-icons/ri";
+import ReplyComment from "./ReplyComment";
 
 const SingleComment = ({ comment, categoryName, num }) => {
   const dispatch = useDispatch();
@@ -82,13 +84,6 @@ const SingleComment = ({ comment, categoryName, num }) => {
       }, 100);
 
       resetValue.current.value = "";
-
-      setFormValue({
-        content: "",
-        studentId: userId,
-        categoryName,
-        num,
-      });
     }
   };
 
@@ -129,16 +124,26 @@ const SingleComment = ({ comment, categoryName, num }) => {
           payload: body,
         });
       }, 100);
-
-      setFormValue({
-        content: "",
-        studentId: userId,
-        categoryName,
-        num,
-      });
     }
 
     setOpenUpdate(!openUpdate);
+  };
+
+  const onDelete = (e) => {
+    e.preventDefault();
+
+    const body = {
+      commentNum: comment.num,
+      categoryName,
+      num,
+      studentId: userId,
+      depth: comment.depth,
+    };
+
+    dispatch({
+      type: COMMENT_DELETE_REQUEST,
+      payload: body,
+    });
   };
 
   return (
@@ -146,24 +151,32 @@ const SingleComment = ({ comment, categoryName, num }) => {
       {comment && comment.depth === 0 ? (
         <>
           <div className="comment-box">
-            <div className="comment-student-id">
-              <span>{comment.studentId}</span>
-            </div>
-            <div className="comment-content">
-              <span>{comment.content}</span>
-            </div>
-            <div className="comment-comment-date">
-              <span>{comment.inDate}</span>
-            </div>
-            <button onClick={onOpenReply} className="reply-open-btn">
-              reply
-            </button>
-            {userId === comment.studentId ? (
+            {comment.hiddenFlag === 1 ? (
+              <div className="comment-content">
+                <span>숨김 처리 된 댓글입니다.</span>
+              </div>
+            ) : (
+              <>
+                <div className="comment-student-id">
+                  <span>{comment.studentId}</span>
+                </div>
+                <div className="comment-content">
+                  <span>{comment.content}</span>
+                </div>
+                <div className="comment-comment-date">
+                  <span>{comment.inDate}</span>
+                </div>
+                <button onClick={onOpenReply} className="reply-open-btn">
+                  reply
+                </button>
+              </>
+            )}
+            {userId === comment.studentId && comment.hiddenFlag === 0 ? (
               <div className="comment-update-box">
                 <button className="comment-update-icon" onClick={onOpenUpdate}>
                   <RiPencilLine />
                 </button>
-                <button className="comment-delete-icon">
+                <button className="comment-delete-icon" onClick={onDelete}>
                   <RiDeleteBin6Line />
                 </button>
               </div>
@@ -216,19 +229,7 @@ const SingleComment = ({ comment, categoryName, num }) => {
           </div>
         </>
       ) : (
-        <>
-          <div className="reply-box">
-            <div className="comment-student-id">
-              <span>{comment.studentId}</span>
-            </div>
-            <div className="comment-content">
-              <span>{comment.content}</span>
-            </div>
-            <div className="comment-comment-date">
-              <span>{comment.inDate}</span>
-            </div>
-          </div>
-        </>
+        <ReplyComment comment={comment} categoryName={categoryName} num={num} />
       )}
     </>
   );

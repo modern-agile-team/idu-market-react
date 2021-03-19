@@ -8,6 +8,9 @@ import {
   COMMENT_UPDATE_REQUEST,
   COMMENT_UPDATE_SUCCESS,
   COMMENT_UPDATE_FAILURE,
+  COMMENT_DELETE_REQUEST,
+  COMMENT_DELETE_SUCCESS,
+  COMMENT_DELETE_FAILURE,
   REPLY_UPLOAD_REQUEST,
   REPLY_UPLOAD_SUCCESS,
   REPLY_UPLOAD_FAILURE,
@@ -17,6 +20,8 @@ const initialState = {
   isLoading: false,
   msg: "",
   comments: [],
+  deletedCommentNum: null,
+  deletedReplyNum: null,
 };
 
 const comment = (state = initialState, action) => {
@@ -26,7 +31,6 @@ const comment = (state = initialState, action) => {
         ...state,
         isLoading: true,
         msg: "",
-        comments: [],
       };
 
     case COMMENT_GET_SUCCESS:
@@ -110,7 +114,26 @@ const comment = (state = initialState, action) => {
         isLoading: false,
         msg: action.payload.data.msg,
       };
-
+    case COMMENT_DELETE_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        msg: "",
+      };
+    case COMMENT_DELETE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        msg: action.payload.msg,
+        deletedCommentNum: action.payload.deletedCommentNum,
+        deletedReplyNum: action.payload.deletedReplyNum,
+      };
+    case COMMENT_DELETE_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        msg: action.payload.data.msg,
+      };
     default:
       return state;
   }

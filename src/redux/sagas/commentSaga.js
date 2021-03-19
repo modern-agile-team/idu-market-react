@@ -13,6 +13,9 @@ import {
   COMMENT_UPDATE_REQUEST,
   COMMENT_UPDATE_SUCCESS,
   COMMENT_UPDATE_FAILURE,
+  COMMENT_DELETE_REQUEST,
+  COMMENT_DELETE_SUCCESS,
+  COMMENT_DELETE_FAILURE,
 } from "../types";
 
 //Comment GET
@@ -102,6 +105,39 @@ function* commentUpdate(action) {
   }
 }
 
+//Comment Delete
+function commentDeleteAPI(action) {
+  const categoryName = action.categoryName;
+  const num = action.num;
+  const commentNum = action.commentNum;
+
+  const body = {
+    studentId: action.studentId,
+    depth: action.depth,
+  };
+
+  console.log(body);
+
+  return axios.delete(`/api/boards/${categoryName}/${num}/${commentNum}`, body);
+}
+
+function* commentDelete(action) {
+  try {
+    const result = yield call(commentDeleteAPI, action.payload);
+
+    console.log(result);
+    yield put({
+      type: COMMENT_DELETE_SUCCESS,
+      payload: result.data,
+    });
+  } catch (e) {
+    yield put({
+      type: COMMENT_DELETE_FAILURE,
+      payload: e.response,
+    });
+  }
+}
+
 //Reply Upload
 function replyUploadAPI(action) {
   const categoryName = action.categoryName;
@@ -144,6 +180,10 @@ function* watchCommentUpdate() {
   yield takeEvery(COMMENT_UPDATE_REQUEST, commentUpdate);
 }
 
+function* watchCommentDelete() {
+  yield takeEvery(COMMENT_DELETE_REQUEST, commentDelete);
+}
+
 function* watchReplyUpload() {
   yield takeEvery(REPLY_UPLOAD_REQUEST, replyUpload);
 }
@@ -155,5 +195,6 @@ export default function* commentSaga() {
     fork(watchCommentUpload),
     fork(watchReplyUpload),
     fork(watchCommentUpdate),
+    fork(watchCommentDelete),
   ]);
 }
