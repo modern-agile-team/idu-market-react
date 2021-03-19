@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { COMMENT_UPLOAD_REQUEST } from "../../../redux/types";
-import { RiDeleteBin6Line, RiPencilLine } from "react-icons/ri";
 
 import SingleComment from "./SingleComment";
 
