@@ -158,14 +158,14 @@ const SingleComment = ({ comment, categoryName, num }) => {
       payload: body,
     });
 
+    alert("댓글이 삭제되었습니다.");
+
     setTimeout(() => {
       dispatch({
         type: COMMENT_GET_REQUEST,
         payload: body,
       });
     }, 100);
-
-    alert("댓글이 삭제되었습니다.");
 
     setOpenReply(false);
     setOpenUpdate(false);
