@@ -186,7 +186,7 @@ const SingleComment = ({ comment, categoryName, num }) => {
                   <span>{comment.studentId}</span>
                 </div>
                 <div className="comment-content">
-                  <span>{comment.content}</span>
+                  <span dangerouslySetInnerHTML={ {__html: comment.content} }></span>
                 </div>
                 <div className="comment-comment-date">
                   <span>{comment.inDate}</span>
