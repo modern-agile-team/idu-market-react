@@ -56,62 +56,71 @@ const SearchListComponent = (props) => {
 
   return (
     <>
-      <section className="market" id="market">
-        {loading ? (
-          <>
-            <SearchComponent categoryName={categoryName} />
+      {categoryName === 'free' || categoryName === 'notice' ? (
+        <section id="boardlist-common" className="boardlist-common">
+          <SearchComponent categoryName={categoryName} />
+          {loading ? (
+            <div className="container">
+              <table className="boardlist-common-tables">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>등록일</th>
+                    <th>조회수</th>
+                  </tr>
+                </thead>
 
-            {categoryName === 'free' || categoryName === 'notice' ? (
-              <section id="boardlist-common"  className="boardlist-common">
-                <div className="container">
-                  <table className="boardlist-common-tables">
-                    <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>등록일</th>
-                        <th>조회수</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="boardlist-common-body">{displayBoardList}</tbody>
-                  </table>
-      
-                  <div className="pagination-container">
-                    <ReactPaginate
-                      previousLabel={<FaAngleLeft />}
-                      nextLabel={<FaAngleRight />}
-                      pageCount={pageCount}
-                      onPageChange={changePage}
-                      containerClassName={"pagination-container"}
-                      previousLinkClassName={"previousBtn"}
-                      nextLinkClassName={"nextBtn"}
-                      disabledClassName={"disabled"}
-                      activeLinkClassName={"active"}
-                    />
-                  </div>
-                </div>
-              </section>
-            ) : (
-              <div className="container">
-                <BoardListItem
-                  productList={productList}
-                  categoryName={categoryName}
-                ></BoardListItem>
+                <tbody id="boardlist-common-body">{displayBoardList}</tbody>
+              </table>
+
+              <div className="pagination-container">
+                <ReactPaginate
+                  previousLabel={<FaAngleLeft />}
+                  nextLabel={<FaAngleRight />}
+                  pageCount={pageCount}
+                  onPageChange={changePage}
+                  containerClassName={"pagination-container"}
+                  previousLinkClassName={"previousBtn"}
+                  nextLinkClassName={"nextBtn"}
+                  disabledClassName={"disabled"}
+                  activeLinkClassName={"active"}
+                />
               </div>
-            )}
-          
-          </>
-        ) : (
-          <>
-            <div className="market-loading">
-              <div className="spin"></div>
-              <p className="market-loading-msg">Loading</p>
             </div>
-          </>
-        )}
-      </section>
+          ) : (
+            <>
+              <div className="market-loading">
+                <div className="spin"></div>
+                <p className="market-loading-msg">Loading</p>
+              </div>
+            </>
+          )}
+        </section>
+      ) : (
+        <section className="market" id="market">
+          {loading ? (
+            <>
+              <SearchComponent categoryName={categoryName} />
+
+            <div className="container"> 
+              <BoardListItem
+                productList={productList}
+                categoryName={categoryName}
+              />
+            </div>
+            </>
+          ) : (
+            <>
+              <div className="market-loading">
+                <div className="spin"></div>
+                <p className="market-loading-msg">Loading</p>
+              </div>
+            </>
+          )}
+        </section>
+      )}
     </>
   );
 };
