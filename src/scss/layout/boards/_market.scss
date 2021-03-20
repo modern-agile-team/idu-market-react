@@ -148,7 +148,7 @@
 
     .markget-search-btn {
         position: absolute;
-        font-size: 20px;
+        font-size: 1.5rem;
         background-color: transparent;
         right: 0;
         outline: none;
@@ -202,6 +202,7 @@
     svg {
         font-size: 3.5rem;
     }
+    
     &::before {
         content: "Scroll-Top";
         position: absolute;
@@ -209,6 +210,7 @@
         left: -10px;
         width: 100px;
     }
+
     &:hover {
         color: $main-color-4;
         animation: arrow-top 1s ease-in-out infinite;
@@ -236,6 +238,7 @@
         animation: spin 3s infinite linear;
         margin-bottom: 15px;
     }
+
     .market-loading-msg {
         font-family: $Montserrat-font;
         font-size: 1.2rem;
@@ -251,6 +254,7 @@
         &:nth-child(4n-3) {
             margin-left: 2%;
         }
+
         &:nth-child(3n-2) {
             margin-left: 7%;
         }
@@ -272,6 +276,7 @@
         &:nth-child(3n-2) {
             margin-left: 2%;
         }
+
         &:nth-child(2n-1) {
             margin-left: 12%;
         }
@@ -279,6 +284,7 @@
 
     .market-search {
         right: 90px;
+
         .market-search-input {
             width: 200px;
         }
@@ -287,6 +293,7 @@
         width: 50px;
         height: 50px;
         top: -50px;
+
         .upload-btn-icon {
             font-size: 2rem;
         }
@@ -305,9 +312,11 @@
             margin-left: 15%;
         }
     }
+
     .market-item-title {
         width: 230px;
     }
+
     .market-item-price {
         left: 32%;
     }
@@ -322,6 +331,7 @@
 
     .market-search {
         right: 50px;
+
         .market-search-input {
             width: 200px;
         }
@@ -331,6 +341,7 @@
         right: 40px;
         width: 50px;
         height: 50px;
+
         .upload-btn-icon {
             font-size: 2rem;
         }
@@ -338,9 +349,11 @@
 
     .scroll-top-btn { 
         right: 30px;
+
         svg {
             font-size: 2.5rem;
         }
+
         &::before {
             font-size: 0.5rem;
             left: -5px;
@@ -352,6 +365,7 @@
     .market-items { 
         width: 80%;
         margin: 3%;
+
         &:nth-child(n) {
             margin-left: 10%;
         }
@@ -370,19 +384,35 @@
 
     .market-search {
         right: 10px;
+
         .market-search-input {
             width: 180px;
         }
+
+        .markget-search-btn { 
+            font-size: 1.2rem;
+            top: 10px;
+        }
     }
+
     .upload-btn {
-        top: -60px;
+        top: -50px;
         left: 20px;
+        width: 40px;
+        height: 40px;
+
+        .upload-btn-icon {
+            font-size: 1.5rem;
+        }
     }
+
     .scroll-top-btn { 
         right: 15px;
+
         svg {
             font-size: 2rem;
         }
+
         &::before {
             font-size: 0.3rem;
             left: -5px;
@@ -391,9 +421,52 @@
 } 
 
 @media screen and (max-width: 360px) {
+    .market {
+        width: 95%;
+    }
+
     .market-item-title {
         width: 200px;
+        font-size: 1rem;
+        margin: 10px 0 5px 0;
     }
+
+    .market-item-price {
+        font-size: 0.8rem;
+    }
+
+    .market-item-id {
+        margin: 5px;
+        font-size: 0.8rem;
+    }
+
+    .market-item-date {
+        font-size: 0.7rem;
+    }
+    
+    .upload-btn {
+        top: -45px;
+        left: 10px;
+        width: 35px;
+        height: 35px;
+
+        .upload-btn-icon {
+            font-size: 1.2rem;
+        }
+    }
+
+    .market-search {
+        .market-search-input {
+            width: 150px;
+            font-size: 0.9rem;
+        }
+        .markget-search-btn { 
+            font-size: 1rem;
+            top: 10px;
+        }
+    }
+
+
 }
 
 @keyframes arrow-top {

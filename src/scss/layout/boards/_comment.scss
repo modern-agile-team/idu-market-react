@@ -29,7 +29,7 @@
         font-size: 1rem;
 
         &.update {
-            border: 2px solid #999;
+            border: 1px solid #999;
         }
     }
 
@@ -44,8 +44,9 @@
         border: 1px solid $main-color-5;
         border-radius: 5px;
         font-size: 1rem;
+
         &.update {
-            border: 2px solid #999;
+            border: 1px solid #999;
             background-color: rgb(241, 241, 241);
         }
     }
@@ -85,6 +86,7 @@
 
 .comment-student-id{
     color: #999;
+
     span { 
         font-family: $Jua-font;
     }
@@ -93,6 +95,7 @@
 .comment-content {
     font-size: 1.2rem;
     margin: 8px 0;
+
     span { 
         font-family: $Jua-font;
     }
@@ -101,6 +104,7 @@
 .comment-comment-date {
     color: #999;
     font-size: 0.9rem;
+
     span { 
         font-family: $Jua-font;
     }
@@ -113,6 +117,11 @@
     border: 1px solid $main-color-2;
     border-radius: 5px;
     font-family: $Montserrat-font;
+    outline: none;
+    cursor: pointer;
+    &:hover {
+        background: $main-color-2;
+    }
 }
 
 .comment-update-box {
@@ -126,6 +135,10 @@
         cursor: pointer;
         margin-right: 10px;
         outline: none;
+
+        &:hover {
+            color: $main-color-2;
+        }
     }
     .comment-update-icon {
         font-size: 1.5rem;
@@ -133,5 +146,144 @@
         cursor: pointer;
         margin-right: 10px;
         outline: none;
+
+        &:hover {
+            color: $main-color-2;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) { 
+    .detail-comment {
+        margin: 50px 0 30px 0;
+    }
+}
+
+@media screen and (max-width: 480px) { 
+    .detail-comment {
+        margin: 30px 0 30px 0;
+        height: 130px;
+        padding: 20px 10px 20px 10px;
+
+        .comment-title {
+            font-size: 1rem;
+        }
+    }
+    .comment-submit-box {
+        .comment-contents {
+            font-size: 0.8rem;
+            height: 50px;
+            padding: 8px 5px 8px 5px;
+        }
+
+        .comment-submit-btn {
+            font-size: 0.8rem;
+            height: 50px;
+        }
+    }
+
+    .comment-student-id{
+        font-size: 0.9rem;
+
+        span { 
+            font-family: $Jua-font;
+        }
+    }
+
+    .comment-content {
+        font-size: 1.1rem;
+
+        span { 
+            font-family: $Jua-font;
+        }
+    }
+
+    .comment-comment-date {
+        font-size: 0.8rem;
+
+        span { 
+            font-family: $Jua-font;
+        }
+    }
+
+    .reply-box {
+        padding: 10px 25px;
+
+        &::after {
+            width: 9px;
+            height: 9px;
+            top: 47%;
+            left: 6px;
+            transform: translateY(-50%);
+        }
+    }
+
+    .reply-open-btn { 
+        padding: 5px 10px;
+        font-size: 0.7rem;
+    }
+
+    .comment-update-box {
+        .comment-delete-icon {
+            font-size: 1.1rem;
+            margin-right: 10px;
+        }
+
+        .comment-update-icon {
+            font-size: 1.1rem;
+            margin-right: 10px;
+        }
+    }
+}
+@media screen and (max-width: 360px) { 
+    .detail-comment {
+        height: 110px;
+        padding: 20px 10px 20px 10px;
+
+        .comment-title {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+    }
+    .comment-submit-box {
+        .comment-contents {
+            font-size: 0.6rem;
+            height: 35px;
+            padding: 5px 5px 5px 5px;
+        }
+
+        .comment-submit-btn {
+            font-size: 0.6rem;
+            height: 35px;
+        }
+    }
+
+    .comment-student-id{
+        font-size: 0.8rem;
+
+        span { 
+            font-family: $Jua-font;
+        }
+    }
+
+    .comment-content {
+        font-size: 1rem;
+
+        span { 
+            font-family: $Jua-font;
+        }
+    }
+
+    .comment-comment-date {
+        font-size: 0.7rem;
+
+        span { 
+            font-family: $Jua-font;
+        }
+    }
+
+    .reply-open-btn { 
+        padding: 4px 10px;
+        font-size: 0.6rem;
     }
 }
