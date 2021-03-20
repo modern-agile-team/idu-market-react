@@ -91,8 +91,6 @@ const ReplyComment = ({ comment, num, categoryName }) => {
         type: COMMENT_DELETE_REQUEST,
         payload: body,
       });
-      
-      alert("답글이 삭제되었습니다.");
   
       setTimeout(() => {
         dispatch({
