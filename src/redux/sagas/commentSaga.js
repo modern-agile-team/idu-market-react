@@ -1,5 +1,5 @@
 import axios from "axios";
-import { all, fork, put, takeEvery, call } from "redux-saga/effects";
+import { all, fork, put, takeEvery, call, delay } from "redux-saga/effects";
 import {
   COMMENT_GET_REQUEST,
   COMMENT_GET_SUCCESS,
@@ -16,6 +16,7 @@ import {
   COMMENT_DELETE_REQUEST,
   COMMENT_DELETE_SUCCESS,
   COMMENT_DELETE_FAILURE,
+  BOARD_DETAIL_REQUEST,
 } from "../types";
 
 //Comment GET
@@ -67,6 +68,7 @@ function* commentUpload(action) {
       type: COMMENT_UPLOAD_SUCCESS,
       payload: result.data,
     });
+
   } catch (e) {
     yield put({
       type: COMMENT_UPLOAD_FAILURE,

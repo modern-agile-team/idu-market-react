@@ -74,6 +74,8 @@ const SingleComment = ({ comment, categoryName, num }) => {
       groupNum,
     };
 
+    console.log(body);
+
     if (body.content.length === 0) {
       alert("댓글이 비었습니다.");
     } else {
@@ -90,6 +92,11 @@ const SingleComment = ({ comment, categoryName, num }) => {
       }, 100);
 
       resetValue.current.value = "";
+
+      setFormValue({
+        ...formValue,
+        content: "",
+      })
     }
   };
 
@@ -157,6 +164,8 @@ const SingleComment = ({ comment, categoryName, num }) => {
         payload: body,
       });
     }, 100);
+
+    alert("댓글이 삭제되었습니다.");
 
     setOpenReply(false);
     setOpenUpdate(false);

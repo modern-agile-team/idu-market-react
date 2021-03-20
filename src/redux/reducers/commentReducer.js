@@ -51,8 +51,6 @@ const comment = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        studentId: "",
-        content: "",
         msg: "",
       };
 
@@ -112,23 +110,26 @@ const comment = (state = initialState, action) => {
         isLoading: false,
         msg: action.payload.data.msg,
       };
+
     case COMMENT_DELETE_REQUEST:
       return {
         ...state,
         isLoading: true,
         msg: "",
       };
+
     case COMMENT_DELETE_SUCCESS:
       return {
         ...state,
         isLoading: false,
         msg: action.payload.msg,
       };
+
     case COMMENT_DELETE_FAILURE:
       return {
         ...state,
         isLoading: false,
-        msg: action.payload.data.msg,
+        msg: action.payload.msg,
       };
     default:
       return state;

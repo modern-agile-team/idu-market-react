@@ -9,9 +9,10 @@ import {
 
 const ReplyComment = ({ comment, num, categoryName }) => {
   const userId = useSelector((state) => state.auth.id);
-  const [openUpdate, setOpenUpdate] = useState(false);
   const dispatch = useDispatch();
 
+  const [openUpdate, setOpenUpdate] = useState(false);
+  
   const [updateFormValue, setUpdateFormValue] = useState({
     content: comment.content,
     studentId: userId,
@@ -20,7 +21,7 @@ const ReplyComment = ({ comment, num, categoryName }) => {
     num,
     groupNum: comment.groupNum,
   });
-
+  
   const onOpenUpdate = () => {
     setOpenUpdate(!openUpdate);
   };
@@ -87,6 +88,8 @@ const ReplyComment = ({ comment, num, categoryName }) => {
       type: COMMENT_DELETE_REQUEST,
       payload: body,
     });
+    
+    alert("답글이 삭제되었습니다.");
 
     setTimeout(() => {
       dispatch({
@@ -94,6 +97,7 @@ const ReplyComment = ({ comment, num, categoryName }) => {
         payload: body,
       });
     }, 100);
+
   };
 
   return (

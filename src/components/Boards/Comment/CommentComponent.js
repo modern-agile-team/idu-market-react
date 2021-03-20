@@ -54,11 +54,11 @@ const CommentComponent = ({ categoryName, num }) => {
   return (
     <>
       {commentList ? (
-        commentList.map((comment, index) => {
+        commentList.map((comment) => {
           return (
             <SingleComment
               comment={comment}
-              key={index}
+              key={comment.num}
               categoryName={categoryName}
               num={num}
             />
