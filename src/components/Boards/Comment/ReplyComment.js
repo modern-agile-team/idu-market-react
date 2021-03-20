@@ -83,21 +83,24 @@ const ReplyComment = ({ comment, num, categoryName }) => {
       studentId: userId,
       depth: comment.depth,
     };
-
-    dispatch({
-      type: COMMENT_DELETE_REQUEST,
-      payload: body,
-    });
     
-    alert("답글이 삭제되었습니다.");
+    const deleteConfirm = window.confirm("답글을 삭제하시겠습니까?");
 
-    setTimeout(() => {
+    if (deleteConfirm) {
       dispatch({
-        type: COMMENT_GET_REQUEST,
+        type: COMMENT_DELETE_REQUEST,
         payload: body,
       });
-    }, 100);
-
+      
+      alert("답글이 삭제되었습니다.");
+  
+      setTimeout(() => {
+        dispatch({
+          type: COMMENT_GET_REQUEST,
+          payload: body,
+        });
+      }, 100);
+    }
   };
 
   return (

@@ -148,22 +148,26 @@ const SingleComment = ({ comment, categoryName, num }) => {
       depth: comment.depth,
     };
 
-    dispatch({
-      type: COMMENT_DELETE_REQUEST,
-      payload: body,
-    });
+    const deleteConfirm = window.confirm("답글을 삭제하시겠습니까?");
 
-    alert("댓글이 삭제되었습니다.");
-
-    setTimeout(() => {
+    if (deleteConfirm) {
       dispatch({
-        type: COMMENT_GET_REQUEST,
+        type: COMMENT_DELETE_REQUEST,
         payload: body,
       });
-    }, 100);
+      
+      alert("답글이 삭제되었습니다.");
+  
+      setTimeout(() => {
+        dispatch({
+          type: COMMENT_GET_REQUEST,
+          payload: body,
+        });
+      }, 100);
 
-    setOpenReply(false);
-    setOpenUpdate(false);
+      setOpenReply(false);
+      setOpenUpdate(false);
+    }
   };
 
   return (
