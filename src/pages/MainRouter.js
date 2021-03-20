@@ -39,70 +39,73 @@ import Auth from "../hoc/auth";
 //Profile
 import ProfilePage from "./Profile/ProfilePage";
 import WatchlistPage from "./WatchlistPage/WatchlistPage";
+import ScrollToTop from "../components/ScrollToTop";
 
 const MainRouter = () => {
   return (
     <>
       <Header></Header>
-      <Switch>
-        <Route component={Auth(HomePage, null)} path="/" exact />
-        <Route component={Auth(LoginPage, false)} path="/login" exact />
-        <Route component={Auth(RegisterPage, false)} path="/register" exact />
-        <Route component={Auth(FindIdPage, false)} path="/findId" exact />
-        <Route
-          component={Auth(FindPasswordPage, false)}
-          path="/findPwd"
-          exact
-        />
-        {/* boards list */}
-        <Route component={Auth(BookListPage, null)} path="/boards/book" exact />
-        <Route
-          component={Auth(DeviceListPage, null)}
-          path="/boards/device"
-          exact
-        />
-        <Route
-          component={Auth(ClothesListPage, null)}
-          path="/boards/clothes"
-          exact
-        />
-        <Route
-          component={Auth(FreeBoardPage, null)}
-          path="/boards/free"
-          exact
-        />
-        <Route
-          component={Auth(NoticeBoardPage, null)}
-          path="/boards/notice"
-          exact
-        />
-        <Route
-          component={Auth(PostWritePage, true)}
-          path="/boards/:categoryName/new"
-          exact
-        />
-        <Route
-          component={Auth(PostUpdatePage, "update")}
-          path="/boards/:categoryName/:num/update"
-          exact
-        />
-        {/* Market Search */}
-        <Route
-          component={Auth(MarketSearchPage, null)}
-          path="/boards/:categoryName/search/"
-          exact
-        />
-        {/* boards Detail */}
-        <Route
-          component={Auth(BoardDetailPage, null)}
-          path="/boards/:categoryName/:num"
-          exact
-        />
-        {/* Profile */}
-        <Route component={ProfilePage} path="/students" exact />
-        {/* watchlist */}
-        <Route component={WatchlistPage} path="/watchlist" exact />
-      </Switch>
+      <ScrollToTop>
+        <Switch>
+          <Route component={Auth(HomePage, null)} path="/" exact />
+          <Route component={Auth(LoginPage, false)} path="/login" exact />
+          <Route component={Auth(RegisterPage, false)} path="/register" exact />
+          <Route component={Auth(FindIdPage, false)} path="/findId" exact />
+          <Route
+            component={Auth(FindPasswordPage, false)}
+            path="/findPwd"
+            exact
+          />
+          {/* boards list */}
+          <Route component={Auth(BookListPage, null)} path="/boards/book" exact />
+          <Route
+            component={Auth(DeviceListPage, null)}
+            path="/boards/device"
+            exact
+          />
+          <Route
+            component={Auth(ClothesListPage, null)}
+            path="/boards/clothes"
+            exact
+          />
+          <Route
+            component={Auth(FreeBoardPage, null)}
+            path="/boards/free"
+            exact
+          />
+          <Route
+            component={Auth(NoticeBoardPage, null)}
+            path="/boards/notice"
+            exact
+          />
+          <Route
+            component={Auth(PostWritePage, true)}
+            path="/boards/:categoryName/new"
+            exact
+          />
+          <Route
+            component={Auth(PostUpdatePage, "update")}
+            path="/boards/:categoryName/:num/update"
+            exact
+          />
+          {/* Market Search */}
+          <Route
+            component={Auth(MarketSearchPage, null)}
+            path="/boards/:categoryName/search/"
+            exact
+          />
+          {/* boards Detail */}
+          <Route
+            component={Auth(BoardDetailPage, null)}
+            path="/boards/:categoryName/:num"
+            exact
+          />
+          {/* Profile */}
+          <Route component={ProfilePage} path="/students" exact />
+          {/* watchlist */}
+          <Route component={WatchlistPage} path="/watchlist" exact />
+        </Switch>
+      </ScrollToTop>
       <Footer></Footer>
     </>
   );
