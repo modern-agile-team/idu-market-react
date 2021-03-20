@@ -74,8 +74,6 @@ const SingleComment = ({ comment, categoryName, num }) => {
       groupNum,
     };
 
-    console.log(body);
-
     if (body.content.length === 0) {
       alert("댓글이 비었습니다.");
     } else {
@@ -103,7 +101,6 @@ const SingleComment = ({ comment, categoryName, num }) => {
   const onUpdate = (e) => {
     e.preventDefault();
 
-    console.log(comment);
     const {
       content,
       categoryName,
@@ -120,8 +117,6 @@ const SingleComment = ({ comment, categoryName, num }) => {
       num,
       groupNum,
     };
-
-    console.log(body);
 
     if (body.content.length === 0) {
       alert("댓글이 비었습니다.");
@@ -214,8 +209,8 @@ const SingleComment = ({ comment, categoryName, num }) => {
                 <textarea
                   type="textarea"
                   name="content"
-                  id="comment-contents"
-                  className="comment-contents update"
+                  id="comment-content-area"
+                  className="comment-content-area update"
                   onChange={onUpdateChange}
                   placeholder="Comment"
                   defaultValue={comment.content}
@@ -240,8 +235,8 @@ const SingleComment = ({ comment, categoryName, num }) => {
                       ref={resetValue}
                       type="textarea"
                       name="content"
-                      id="comment-contents"
-                      className="comment-contents"
+                      id="comment-content-area"
+                      className="comment-content-area"
                       onChange={onChange}
                       placeholder="Comment"
                     />

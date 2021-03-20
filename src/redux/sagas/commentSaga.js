@@ -16,7 +16,6 @@ import {
   COMMENT_DELETE_REQUEST,
   COMMENT_DELETE_SUCCESS,
   COMMENT_DELETE_FAILURE,
-  BOARD_DETAIL_REQUEST,
 } from "../types";
 
 //Comment GET
@@ -30,6 +29,7 @@ function CommentGetAPI(action) {
 function* commentGet(action) {
   try {
     const result = yield call(CommentGetAPI, action.payload);
+
     console.log(result);
 
     yield put({
@@ -52,8 +52,6 @@ function commentUploadAPI(action) {
     studentId: action.studentId,
     content: action.content,
   };
-  console.log(action);
-  console.log(body);
 
   return axios.post(`/api/boards/${categoryName}/${num}`, body);
 }
@@ -61,8 +59,6 @@ function commentUploadAPI(action) {
 function* commentUpload(action) {
   try {
     const result = yield call(commentUploadAPI, action.payload);
-
-    console.log(result);
 
     yield put({
       type: COMMENT_UPLOAD_SUCCESS,
@@ -125,7 +121,6 @@ function* commentDelete(action) {
   try {
     const result = yield call(commentDeleteAPI, action.payload);
 
-    console.log(result);
     yield put({
       type: COMMENT_DELETE_SUCCESS,
       payload: result.data,
@@ -154,7 +149,6 @@ function replyUploadAPI(action) {
 function* replyUpload(action) {
   try {
     const result = yield call(replyUploadAPI, action.payload);
-    console.log(result);
 
     yield put({
       type: REPLY_UPLOAD_SUCCESS,

@@ -118,8 +118,8 @@ const ReplyComment = ({ comment, num, categoryName }) => {
             <textarea
               type="textarea"
               name="content"
-              id="comment-contents"
-              className="comment-contents update"
+              id="comment-content-area"
+              className="comment-content-area update"
               onChange={onUpdateChange}
               placeholder="Comment"
               defaultValue={comment.content}

@@ -17,7 +17,7 @@
     display: flex;
     margin-top: 10px;
     
-    .comment-contents {
+    .comment-content-area {
         font-family: $Jua-font;
         width: 100%;
         border-radius: 5px;
@@ -170,7 +170,7 @@
         }
     }
     .comment-submit-box {
-        .comment-contents {
+        .comment-content-area {
             font-size: 0.8rem;
             height: 50px;
             padding: 8px 5px 8px 5px;
@@ -249,7 +249,7 @@
         }
     }
     .comment-submit-box {
-        .comment-contents {
+        .comment-content-area {
             font-size: 0.6rem;
             height: 35px;
             padding: 5px 5px 5px 5px;

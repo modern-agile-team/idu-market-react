@@ -77,8 +77,8 @@ const CommentComponent = ({ categoryName, num }) => {
                 ref={resetValue}
                 type="textarea"
                 name="content"
-                id="comment-contents"
-                className="comment-contents"
+                id="comment-content-area"
+                className="comment-content-area"
                 onChange={onChange}
                 placeholder="Comment"
               />
