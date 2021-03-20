@@ -56,6 +56,10 @@ const MarketListComponent = ({ categoryName }) => {
     }
   }, []);
 
+  const scrollTop = () =>{
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  };
+
   useEffect(() => {
     getMoreData();
     window.addEventListener("scroll", handleScroll);
@@ -70,10 +74,10 @@ const MarketListComponent = ({ categoryName }) => {
     <section className="market" id="market">
       {loading ? (
         <>
-          <a href="#board-banner" className="scroll-top-btn">
+          <button className="scroll-top-btn" onClick={scrollTop}>
             <AiOutlineArrowUp />
-          </a>
-          <SearchComponent categoryName={categoryName} />
+          </button>
+          <SearchComponent categoryName={categoryName}/>
           <div className="container">
             <BoardListItem
               productList={productList}

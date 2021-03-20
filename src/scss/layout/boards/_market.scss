@@ -198,6 +198,7 @@
     bottom: 120px;
     background: transparent;
     cursor: pointer;
+    outline: none;
 
     svg {
         font-size: 3.5rem;
@@ -207,7 +208,7 @@
         content: "Scroll-Top";
         position: absolute;
         bottom: -10px;
-        left: -10px;
+        left: -20px;
         width: 100px;
     }
 
@@ -356,7 +357,7 @@
 
         &::before {
             font-size: 0.5rem;
-            left: -5px;
+            left: -28px;
         }
     }
 }
@@ -414,8 +415,8 @@
         }
 
         &::before {
+            left: -35px;
             font-size: 0.3rem;
-            left: -5px;
         }
     }
 } 
@@ -465,7 +466,18 @@
             top: 10px;
         }
     }
+    .scroll-top-btn { 
+        right: 5px;
 
+        svg {
+            font-size: 2rem;
+        }
+
+        &::before {
+            content: "Top";
+            left: -33px;
+        }
+    }
 
 }
 
