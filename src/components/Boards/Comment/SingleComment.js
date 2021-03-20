@@ -148,7 +148,7 @@ const SingleComment = ({ comment, categoryName, num }) => {
       depth: comment.depth,
     };
 
-    const deleteConfirm = window.confirm("답글을 삭제하시겠습니까?");
+    const deleteConfirm = window.confirm("댓글을 삭제하시겠습니까?");
 
     if (deleteConfirm) {
       dispatch({
@@ -156,7 +156,7 @@ const SingleComment = ({ comment, categoryName, num }) => {
         payload: body,
       });
       
-      alert("답글이 삭제되었습니다.");
+      alert("댓글이 삭제되었습니다.");
   
       setTimeout(() => {
         dispatch({
