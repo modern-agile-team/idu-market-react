@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { COMMENT_UPLOAD_REQUEST } from "../../../redux/types";
 
@@ -71,18 +71,24 @@ const CommentComponent = ({ categoryName, num }) => {
       <form className="detail-comment">
         <h1 className="comment-title">Write comments</h1>
         <div className="comment-submit-box">
-          <textarea
-            ref={resetValue}
-            type="textarea"
-            name="content"
-            id="comment-contents"
-            className="comment-contents"
-            onChange={onChange}
-            placeholder="Comment"
-          />
-          <button className="comment-submit-btn" onClick={onSubmit}>
-            Submit
-          </button>
+          {userId ? (
+            <>
+              <textarea
+                ref={resetValue}
+                type="textarea"
+                name="content"
+                id="comment-contents"
+                className="comment-contents"
+                onChange={onChange}
+                placeholder="Comment"
+              />
+              <button className="comment-submit-btn" onClick={onSubmit}>
+                Submit
+              </button>
+            </>
+          ) : (
+            <p className="not-login-comment">로그인 후에 댓글을 생성하실 수 있습니다.</p>
+          )}
         </div>
       </form>
     </>
