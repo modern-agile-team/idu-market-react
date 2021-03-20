@@ -157,6 +157,9 @@ const SingleComment = ({ comment, categoryName, num }) => {
         payload: body,
       });
     }, 100);
+
+    setOpenReply(false);
+    setOpenUpdate(false);
   };
 
   return (
@@ -222,19 +225,26 @@ const SingleComment = ({ comment, categoryName, num }) => {
 
             {openReply ? (
               <div className="comment-submit-box">
-                <textarea
-                  ref={resetValue}
-                  type="textarea"
-                  name="content"
-                  id="comment-contents"
-                  className="comment-contents"
-                  onChange={onChange}
-                  placeholder="Comment"
-                />
+                {userId ? (
+                  <>
+                    <textarea
+                      ref={resetValue}
+                      type="textarea"
+                      name="content"
+                      id="comment-contents"
+                      className="comment-contents"
+                      onChange={onChange}
+                      placeholder="Comment"
+                    />
 
-                <button className="comment-submit-btn" onClick={onSubmit}>
-                  Submit
-                </button>
+                    <button className="comment-submit-btn" onClick={onSubmit}>
+                      Submit
+                    </button>
+                  </>
+                ) : (
+                  <p className="not-login-comment">로그인 후에 답글을 생성하실 수 있습니다.</p>
+                )}
+                
               </div>
             ) : (
               <></>
