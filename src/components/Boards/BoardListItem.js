@@ -23,7 +23,7 @@ const BoardListItem = ({ productList, categoryName }) => {
             <p className="market-item-price">{board.price}원</p>
             <p className="market-item-id">
               <AiOutlineUser />
-              ssi02014 &nbsp;
+                {board.studentId} &nbsp;
               <AiOutlineComment />
               {board.commentCount}
             </p>

@@ -28,7 +28,6 @@ const SearchListComponent = (props) => {
       .then((response) => {
         if (response.data.success) {
           const result = response.data.boards;
-          console.log(result);
 
           setLoading(true);
           setProductList(result);
