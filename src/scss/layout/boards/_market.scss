@@ -11,6 +11,7 @@
         justify-content: flex-start;
         align-items: center;
         flex-wrap: wrap;
+        padding-top: 30px;
     }
 }
 
@@ -272,14 +273,14 @@
 
 @media screen and (max-width: 970px) { 
     .market-items { 
-        width: 35%;
+        width: 40%;
 
         &:nth-child(3n-2) {
             margin-left: 2%;
         }
 
         &:nth-child(2n-1) {
-            margin-left: 12%;
+            margin-left: 8%;
         }
     }
 
@@ -303,19 +304,13 @@
 
 @media screen and (max-width: 760px) { 
     .market-items { 
-        width: 70%;
-
         &:nth-child(2n-1) {
-            margin-left: 2%;
-        }
-
-        &:nth-child(n) {
-            margin-left: 15%;
+            margin-left: 8%;
         }
     }
 
     .market-item-title {
-        width: 230px;
+        width: 210px;
     }
 
     .market-item-price {
@@ -361,6 +356,37 @@
         }
     }
 }
+@media screen and (max-width: 670px) { 
+    .market-items { 
+        width: 45%;
+        margin-bottom: 4%;
+
+        &:nth-child(2n-1) {
+            margin-left: 4%;
+        }
+    }
+
+    .market-item-title {
+        width: 175px;
+        font-size: 1rem;
+    }
+
+    .market-item-price {
+        font-size: 0.9rem;
+    }
+
+    .market-item-id {
+        font-size: 0.9rem;
+    }
+
+    .scroll-top-btn { 
+        right: 3px;
+        &::before {
+            content: "Top";
+            left: -30px;
+        }
+    }
+}
 
 @media screen and (max-width: 480px) {
     .market-items { 
@@ -371,6 +397,7 @@
             margin-left: 10%;
         }
     }
+
     .market-item-price {
         left: 38%;
     }
@@ -419,6 +446,19 @@
             font-size: 0.3rem;
         }
     }
+
+    .market-item-title {
+        width: 200px;
+        font-size: 1.2rem;
+    }
+
+    .market-item-price {
+        font-size: 1rem;
+    }
+
+    .market-item-id {
+        font-size: 1rem;
+    }
 } 
 
 @media screen and (max-width: 360px) {
@@ -461,11 +501,13 @@
             width: 150px;
             font-size: 0.9rem;
         }
+
         .markget-search-btn { 
             font-size: 1rem;
             top: 10px;
         }
     }
+    
     .scroll-top-btn { 
         right: 5px;
 
