@@ -103,7 +103,7 @@
     width: 900px;
   }
   &.ck-editor__editable_inline {
-    padding: 10px 20px;
+    padding: 10px
   }
 }
 
@@ -186,41 +186,41 @@
   //CKEditor5 Setting
   .ck {
     .ck-editor {
-        width: 300px;
+        width: 320px;
     }
     .ck-toolbar {
-      width: 300px;
+      width: 320px;
     }
   }
 
   .ck-editor__editable {
     min-height: 30rem;
-    width: 300px;
+    width: 320px;
   }
 
   .ck-editor__editable_inline {
     min-height: 30rem;
-    width: 300px;
+    width: 320px;
   }
  }
 
  @media screen and (max-width: 360px) { 
   .ck {
     .ck-editor {
-        width: 250px;
+        width: 260px;
     }
     .ck-toolbar {
-      width: 250px;
+      width: 260px;
     }
   }
 
   .ck-editor__editable {
     min-height: 25rem;
-    width: 250px;
+    width: 260px;
   }
 
   .ck-editor__editable_inline {
     min-height: 25rem;
-    width: 250px;
+    width: 260px;
   }
  }
