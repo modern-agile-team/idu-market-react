@@ -105,7 +105,11 @@ const MainRouter = () => {
             exact
           />
           {/* Profile */}
-          <Route component={ProfilePage} path="/students/:studentId" exact />
+          <Route
+            component={Auth(ProfilePage)}
+            path="/students/:studentId"
+            exact
+          />
           {/* watchlist */}
           <Route component={WatchlistPage} path="/watchlist" exact />
         </Switch>

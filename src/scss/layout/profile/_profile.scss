@@ -26,6 +26,7 @@
 }
 
 .profile-img-box {
+    position: relative;
     width: 200px;
     height: 200px;
     display: flex;
@@ -38,6 +39,20 @@
         height: 100%;
         border-radius: 50%;
         border: 2px solid $main-color-5;
+    }
+    .profile-img-update {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        bottom: 20px;
+        right: 15px;
+        z-index: 10;
+        font-size: 1.5rem;
+        border-radius: 50%;
+        background-color: $bg-color-2;
+        padding: 4px;
+        border: 2px solid $main-color-5;
+        cursor: pointer;
     }
 }
 

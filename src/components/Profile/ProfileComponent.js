@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import testImg from "../../img/신발.jpg";
-import { MdEmail } from "react-icons/md";
+import { MdEmail, MdCancel } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
+import { BiPencil } from "react-icons/bi";
 import {
   IoIosArrowDropdownCircle,
   IoIosArrowDropupCircle,
@@ -17,8 +18,10 @@ const ProfileComponent = (props) => {
   const studentId = props.match.params.studentId;
   const dispatch = useDispatch();
   const [openBtnBox, setOpenBtnBox] = useState(false);
+  const [openImgSelectModal, setOpenImgSelectModal] = useState(false);
 
   const profileList = useSelector((state) => state.profile.profile);
+  const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch({
@@ -26,6 +29,15 @@ const ProfileComponent = (props) => {
       payload: studentId,
     });
   }, [dispatch]);
+
+  if (auth.id) {
+    if (auth.id !== studentId) {
+      alert("잘못된 접근 방식입니다.");
+      props.history.push("/");
+    }
+  } else {
+    props.history.push("/");
+  }
 
   return (
     <>
@@ -36,6 +48,10 @@ const ProfileComponent = (props) => {
               <>
                 <div className="profile-img-box">
                   <img src={testImg} alt="test" className="profile-img" />
+                  <BiPencil
+                    className="profile-img-update"
+                    onClick={() => setOpenImgSelectModal(true)}
+                  />
                 </div>
 
                 <p className="profile-id">{profileList.id}</p>
@@ -96,6 +112,22 @@ const ProfileComponent = (props) => {
             <></>
           )}
         </div>
+        {openImgSelectModal ? (
+          <div className="profile-img-select">
+            <div className="img-select-box">
+              <img src={`${testImg}`} alt="프로필 이미지 선택" />
+            </div>
+            <div className="img-select-box">
+              <img src={`${testImg}`} alt="프로필 이미지 선택" />
+            </div>
+            <div className="img-select-box">
+              <img src={`${testImg}`} alt="프로필 이미지 선택" />
+            </div>
+            <MdCancel onClick={() => setOpenImgSelectModal(false)} />
+          </div>
+        ) : (
+          <></>
+        )}
       </section>
     </>
   );

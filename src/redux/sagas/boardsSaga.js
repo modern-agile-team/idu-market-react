@@ -97,6 +97,8 @@ function* boardUpdate(action) {
       payload: result.data,
     });
 
+    yield delay(1500);
+
     yield put(
       push(`/boards/${action.payload.categoryName}/${action.payload.num}`)
     );
