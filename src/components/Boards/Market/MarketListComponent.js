@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import BoardListItem from "../BoardListItem";
 import axios from "axios";
@@ -7,24 +7,13 @@ import SearchComponent from "../Search/SearchComponent";
 const MarketListComponent = ({ categoryName }) => {
   const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [formValues, setFormValues] = useState({
-    content: "",
-    categoryName,
-  });
 
   const LAST_COUNT = 9;
 
   let isLoading = false;
   let lastNum = 0;
 
-  const onChange = (e) => {
-    setFormValues({
-      ...formValues,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const getMoreData = useCallback(async () => {
+  const getMoreData = async () => {
     isLoading = true;
 
     await axios
@@ -43,9 +32,9 @@ const MarketListComponent = ({ categoryName }) => {
         }
       });
     isLoading = false;
-  }, []);
+  };
 
-  const handleScroll = useCallback(() => {
+  const handleScroll = () => {
     const { documentElement } = document;
     const scrollHeight = documentElement.scrollHeight;
     const scrollTop = documentElement.scrollTop;
@@ -54,7 +43,7 @@ const MarketListComponent = ({ categoryName }) => {
     if (scrollTop + clientHeight + 200 >= scrollHeight && isLoading === false) {
       getMoreData();
     }
-  }, []);
+  };
 
   const scrollTop = () =>{
     window.scrollTo({top: 0, behavior: 'smooth'});
