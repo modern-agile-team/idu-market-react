@@ -53,6 +53,10 @@
         padding: 4px;
         border: 2px solid $main-color-5;
         cursor: pointer;
+
+        &:hover {
+            background-color: #ddc5b3;
+        }
     }
 }
 
