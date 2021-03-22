@@ -8,6 +8,7 @@ import { LOGOUT_REQUEST } from "../../redux/types";
 
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
+import { BiUserCircle } from "react-icons/bi";
 
 const Header = () => {
   const [sidebar, setSidebar] = useState(false);
@@ -56,9 +57,22 @@ const Header = () => {
           </ul>
 
           {auth.jwt ? (
-            <Link to="/login" className="header-btn" onClick={onLogoutHandler}>
-              Logout
-            </Link>
+            <>
+              <Link
+                to="/boards/book"
+                className="header-profile-btn"
+                onClick={() => setSidebar(!sidebar)}
+              >
+                <BiUserCircle />
+              </Link>
+              <Link
+                to="/login"
+                className="header-btn"
+                onClick={onLogoutHandler}
+              >
+                Logout
+              </Link>
+            </>
           ) : (
             <>
               <Link
