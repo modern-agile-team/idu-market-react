@@ -59,14 +59,13 @@
 
 /* 페이지버튼 */
 .pagination-container {
-    position: absolute;
-    bottom: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     font-size: 1.3rem;
     outline: none;
+    margin-top: 20px;
 
     a {
         display: flex;

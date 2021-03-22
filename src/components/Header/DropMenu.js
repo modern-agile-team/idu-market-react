@@ -25,7 +25,7 @@ const DropMenu = ({ item, showSidebar }) => {
         onClick={item.subMenu && showDropMenu}
         ref={refEl}
       >
-        <a>{item.title}</a>
+        {item.title}
 
         <ul className="header-menu-drop">
           {dropMenu &&

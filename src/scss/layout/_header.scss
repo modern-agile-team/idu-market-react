@@ -31,66 +31,81 @@
     }
 }
 
-.header-nav{
+.header-nav {
     display: flex;
     align-items: center;
     z-index: 999;
 
-    .header-list{
+    .header-list {
         display: flex;
         align-items: center;
         width: 100%;
     }
 
-    .header-menu{
+    .header-menu {
+        position: relative;
+        font-family: $Nunito-font;
         position: relative;
         font-size: 1rem;
         text-align: center;
         font-weight: 600;
-        padding: 20px 20px;
+        padding: 20px 50px;
         cursor: pointer;
 
-        & > a {
-            font-family: $Nunito-font;
-            padding: 20px 40px;
-            &:hover {
-                border-bottom: 3px solid #333;
-                color: #222;
+        &:hover {
+            &::before {
+                position: absolute;
+                bottom: -5px;
+                left: 50%;
+                transform: translateX(-50%);
+                content: "";
+                height: 3px;
+                width: 110px;
+                background-color: #222;
             }
         }
     }
 
     .header-menu-drop {
         position: absolute;
-        width: 90%;
+        width: 100%;
         top: 70px;
-        left: 5%;
+        left: 0;
         z-index: 10;
         text-align: center;
         overflow: hidden;
-    }
 
-    .header-menu-drop li {
-        background: #e4e4e4;
-        height: 50px;
-        border-bottom: 1px solid  #b8b6b6;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+        li {
+            background: #e4e4e4;
+            height: 50px;
+            border-bottom: 1px solid  #b8b6b6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-    .header-menu-drop li:last-child { 
-        border-bottom: none; 
-    }
+            &:last-child {
+                border-bottom: none; 
+            }
 
-    .header-menu-drop li a {
-        font-family: $Nunito-font;
-        font-size: 1rem;
-        padding: 10px 50px;
+            a {
+                font-family: $Nunito-font;
+                font-size: 1rem;
+                padding: 10px 45px;
 
-        &:hover { 
-            color: #5c5c5c; 
+                &:hover { 
+                    color: #7c7c7c; 
+                }
+            }
         }
+    }
+}
+.header-profile-btn {
+    color: #cfac8c;
+    font-size: 2rem;
+    margin: 0 20px;
+
+    &:hover { 
+        color: $main-color-6; 
     }
 }
 
@@ -125,114 +140,159 @@
 
  /* 0 ~ 1220 : 데스크탑2  */
  @media screen and (max-width: 1220px) {
-     .header-nav{ 
-         display: none; 
-         .header-menu-drop li {
+    .header-nav { 
+        display: none;
+
+        .header-menu-drop li {
             height: 40px;
-         }
         }
-     .menuToggle {
-         display: flex;
-         font-size: 1.5rem;
-     }
-     .header-nav.active {
-         width: 40%;
-         height: 90vh;
-         position: fixed;
-         top: 70px;
-         right: 0;
-         display: flex;
-         justify-content: center;
-         flex-direction: column;
-         background: rgba(241, 241, 241, 0.97);
-
-         .header-menu {
-             width: 80%;
-             margin: 10px 0;
-             padding: 10px;
-             height: 150px;
-             & > a {
-                 border-bottom: none;
-                 padding: 5px 10px;
-             }
-
-             & > a:hover { 
-                 border-bottom: 3px solid #b8b6b6; 
-            }
-         }
-
-         .header-menu-drop {
-             position: static;
-             margin: 15px auto;
-         }
-     }
-
-    .header-nav.active .header-list { 
-         display: flex; 
-         flex-direction: column;
     }
 
-     .header-btn {
-         border: 2px solid $main-color-2;
-         text-align: center;
-         width: 50%;
-         margin: 15px 0;
-         font-size: 1.2rem;
+    .menuToggle {
+        display: flex;
+        font-size: 1.5rem;
+    }
 
-         &:hover {
-             background-color: $main-color-2;
-             color: #fff;
-         }
-     }
- }
+    .header-nav.active {
+        width: 40%;
+        height: 90vh;
+        position: fixed;
+        top: 65px;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background: rgba(241, 241, 241, 0.97);
 
- /* 0 ~ 1024 : 데스크탑3  */
- @media screen and (max-width: 1024px) {}
+        .header-menu {
+            width: 60%;
+            margin: 15px 0;
+            padding: 10px;
+            &:hover {
+                color: $main-color-2;
+                
+                &::before {
+                    width: 0;
+                }
+            }
+        }
 
- /* 0 ~ 960 : 테블릿1  */
- @media screen and (max-width: 960px){}
+        .header-menu-drop {
+            position: static;
+            margin: 15px auto;
 
- /* 0 ~ 768px : 테블릿2 */
- @media screen and (max-width: 768px){
- }
+            li  { 
+                a {
+                    padding: 10px 140px;
+                } 
+            }
+        }
+    }
+
+    .header-nav.active .header-list { 
+        display: flex; 
+        flex-direction: column;
+    }
+
+    .header-btn {
+        border: 2px solid $main-color-2;
+        text-align: center;
+        width: 50%;
+        margin: 15px 0;
+        font-size: 1.2rem;
+
+        &:hover {
+            background-color: $main-color-2;
+            color: #fff;
+        }
+    }
+
+    .header-profile-btn {
+        margin: 30px 0;
+    }
+}
+
+/* 0 ~ 1024 : 데스크탑3  */
+@media screen and (max-width: 1024px) {}
+
+/* 0 ~ 960 : 테블릿1  */
+@media screen and (max-width: 960px){
+    .header-nav.active {
+
+        .header-menu {
+            width: 75%;
+        }
+    }
+}
+
+
+/* 0 ~ 768px : 테블릿2 */
+@media screen and (max-width: 768px){
+}
 
  /* 0 ~ 670px : 테블릿3 */
- @media screen and (max-width: 670px){
+@media screen and (max-width: 670px){
+    
     .header-nav.active {
-        width: 50%;
+        width: 60%;
+
         .header-menu {
-            & > a { padding: 5px 20px; }
+            & > a { 
+                padding: 5px 20px; 
+            }
+            &:hover {
+                color: $main-color-2;
+            }
         }
 
         .header-menu-drop{
             margin: 10px auto;
-            li a { padding: 5px 30px; }
+
+            li  { 
+                a {
+                    padding: 10px 100px;
+                } 
+            }
         } 
     }
- }
+    .header-btn {
+        width: 70%;
+    }
+}
  
  /* 0 ~ 480px : 모바일1 */
- @media screen and (max-width: 480px){
+@media screen and (max-width: 480px){
     .header-nav.active {
         width: 100%;
+
         .header-menu {
-            height: 120px;
+            width: 65%;
         }
     }
 
-    .header-nav .header-menu-drop li {
-        height: 30px;
-
-        a { 
-            font-size: 0.8rem; 
+    .header-nav {
+        .header-menu-drop {
+            li {
+                height: 45px;
+            }
         }
     }
 
     .header-btn {
         width: 50%;
-        font-size: 1rem;
     }
- }
+}
  
  /* 0 ~ 360px : 모바일1 */
- @media screen and (max-width: 360px){}
+ @media screen and (max-width: 360px){
+    .header-nav.active {
+        width: 100%;
+
+        .header-menu {
+            width: 80%;
+        }
+    }
+    .header-btn {
+        width: 65%;
+    }
+ }

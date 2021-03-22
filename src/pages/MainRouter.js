@@ -57,7 +57,11 @@ const MainRouter = () => {
             exact
           />
           {/* boards list */}
-          <Route component={Auth(BookListPage, null)} path="/boards/book" exact />
+          <Route
+            component={Auth(BookListPage, null)}
+            path="/boards/book"
+            exact
+          />
           <Route
             component={Auth(DeviceListPage, null)}
             path="/boards/device"
