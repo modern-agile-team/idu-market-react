@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
-import testImg from "../../img/신발.jpg";
 import { MdEmail, MdCancel } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
 import { BiPencil } from "react-icons/bi";
@@ -53,7 +52,7 @@ const ProfileComponent = (props) => {
             {profileList ? (
               <>
                 <div className="profile-img-box">
-                  <img src={testImg} alt="test" className="profile-img" />
+                  <img src="https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/profile/default.png" alt="test" className="profile-img" />
                   <BiPencil
                     className="profile-img-update"
                     onClick={() => setOpenImgSelectModal(true)}
