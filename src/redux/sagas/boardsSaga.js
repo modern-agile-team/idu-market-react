@@ -158,6 +158,8 @@ function* boardDetail(action) {
       type: BOARD_DETAIL_FAILURE,
       payload: e.response,
     });
+
+    yield put(push(`/boards/${action.payload.categoryName}`));
   }
 }
 
