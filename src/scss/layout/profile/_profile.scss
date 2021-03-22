@@ -1,118 +1,125 @@
 .profile {
     width: 100%;
-    height: 1200px;
+    height: 750px;
     margin: 0 auto;
-    padding-top: 100px;
+    padding-top: 80px;
 
     .container {
+        position: relative;
         width: 80%;
         height: 100%;
         margin: 0 auto;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         flex-direction: column;
     }
 }
 
 .profile-box {
-    width: 30%;
-    height: 900px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+}
+
+.profile-img-box {
+    width: 200px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 3px solid $main-color-3;
-}
 
-.profile-util-box {
-    width: 80%;
-    border: 1px solid $main-color-5;
-}
-
-// 이미지
-.profile-img {
-    width: 300px;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    img {
+    .profile-img {
         width: 100%;
         height: 100%;
-        border-radius: 150px;
+        border-radius: 50%;
+        border: 2px solid $main-color-5;
     }
 }
 
-// 정보
+.profile-id {
+    font-size: 1rem;
+    margin-top: 10px;
+    font-family: $Nunito-font;
+    font-weight: bold;
+}
 
 .profile-information-box {
-    font-size: 1rem;
-    margin-top: 20px;
-    width: 300px;
-    height: 200px;
-    label {
-        font-family: $Jua-font;
-        color: #999;
-    }
-    .profile-information-name {
-        border-bottom: 1px solid #222;
-        font-family: $Jua-font;
-        padding: 10px;
-        font-size: 1.3rem;
-        font-weight: 300;
-        
-    }
-}
+    position: relative;
+    margin-top: 30px;
+    padding: 10px 30px;
+    background-color: $bg-color-2;
+    border-radius: 12px;
+    z-index: 10;
 
-// 버튼
-.profile-btnbox {
-    display: flex;
-    justify-content: center;
-    margin-top: 80px;
-    height: 100px;
-    width: 100%;
-    font-size: 0.7rem;
-    .profile-btnbox-btn {
-        position: relative;
-        outline: none;
-        background: #fff;
-        width: 100px;
-        height: 100px;
-        border: 2px solid $main-color-5;
-        border-radius: 10px;
-        padding-top: 40px;
+    .profile-information {
+        font-family: $Jua-font;
+        font-size: 1.2rem;
+        margin: 20px 0;
+        padding-bottom: 7px;
         display: flex;
-        margin: 0 5px;
-        margin-left: 10px;
-        justify-content: center;
+        justify-content: flex-start;
+        align-items: center;
         
-        p {
-            margin-top: 5px;
-            font-family: $Jua-font;
-            position: absolute;
-            top: 0;
-            border-bottom: 1px solid $main-color-5;
-        }
+    }
+    span {
+        margin-right: 20px;
+        font-size: 1.5rem;
+    }
 
-    &:hover {
+    .open-profile-btn {
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.3rem;
         cursor: pointer;
     }
+}
+
+.profile-btn-box {
+    position: absolute;
+    background-color: $bg-color-2;
+    border-radius: 12px;
+    margin-top: 20px;
+    padding: 20px 30px;
+    display: flex;
+    bottom: 95px;
+    animation: btn-slide-down 0.8s;
+    
+    p {
+        font-size: 2.5rem;
+        margin: 0 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        &:last-child {
+            margin-right: 0;
+        }
+        &:first-child {
+            margin-left: 0;
+        }
+        a {
+            font-family: $Jua-font;
+            font-size: 0.9rem;
+        }
     }
 }
 
-
-
-
-// .profile-information-fix { 
-//     width: 15%;
-//     margin-top: 80px;
-//     border: 2px solid #222;
-//     padding: 5px 10px;
-//     &:hover {
-//         cursor: pointer;
-//     }
-//     p {
-//         font-family: $Jua-font;
-//     }
-// }
-
+@keyframes btn-slide-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-200%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

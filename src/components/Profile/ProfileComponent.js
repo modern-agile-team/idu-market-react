@@ -1,80 +1,104 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import testImg from "../../img/신발.jpg";
+import { MdEmail } from "react-icons/md";
+import { FaUserAlt } from "react-icons/fa";
 import {
-  FaCartArrowDown,
-  FaHeart,
-  FaRegClipboard,
-  FaEnvelope,
-  FaUserAlt,
-} from "react-icons/fa";
-import { BsFillChatDotsFill } from "react-icons/bs";
+  IoIosArrowDropdownCircle,
+  IoIosArrowDropupCircle,
+  IoIosHeart,
+  IoIosListBox,
+} from "react-icons/io";
 
 import { PROFILE_GET_REQUEST } from "../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
 
-const ProfileComponent = (students) => {
+const ProfileComponent = (props) => {
+  const studentId = props.match.params.studentId;
   const dispatch = useDispatch();
-  const profilelist = useSelector((state) => state.profile.profile);
+  const [openBtnBox, setOpenBtnBox] = useState(false);
+
+  const profileList = useSelector((state) => state.profile.profile);
 
   useEffect(() => {
     dispatch({
       type: PROFILE_GET_REQUEST,
-      payload: students,
+      payload: studentId,
     });
   }, [dispatch]);
-
-  const profileInfo = profilelist.map((el) => {
-    return (
-      <div className="profile-information-box">
-        <label>Name</label>
-        <p className="profile-information-name">{el.name}</p>
-        <label>ID</label>
-        <p className="profile-information-name">{el.id}</p>
-        <label>Email</label>
-        <p className="profile-information-name">{el.email}</p>
-      </div>
-    );
-  });
 
   return (
     <>
       <section className="profile" id="profile">
         <div className="container">
           <div className="profile-box">
-            <div className="profile-img">
-              <img src={testImg} alt="test" />
-            </div>
+            {profileList ? (
+              <>
+                <div className="profile-img-box">
+                  <img src={testImg} alt="test" className="profile-img" />
+                </div>
 
-            <div className="profile-information">{profileInfo}</div>
+                <p className="profile-id">{profileList.id}</p>
 
-            <div className="profile-btnbox">
-              <Link to="/" className="profile-btnbox-btn">
-                <p>관심목록</p>
-                <FaHeart size="48" />
-              </Link>
-              <Link to="/" className="profile-btnbox-btn">
-                <p>판매목록</p>
-                <FaCartArrowDown size="48" />
-              </Link>
-              <Link to="/" className="profile-btnbox-btn">
-                <p>구매목록</p>
-                <FaCartArrowDown size="48" />
-              </Link>
-              <Link to="/" className="profile-btnbox-btn">
-                <p>댓글</p>
-                <BsFillChatDotsFill size="48" />
-              </Link>
-              <Link to="/" className="profile-btnbox-btn">
-                <p>게시글</p>
-                <FaRegClipboard size="48" />
-              </Link>
-            </div>
+                <div className="profile-information-box">
+                  <p className="profile-information">
+                    <span>
+                      <FaUserAlt />
+                    </span>
+                    {profileList.name}
+                  </p>
+                  <p className="profile-information">
+                    <span>
+                      <MdEmail />
+                    </span>
+                    {profileList.email}
+                  </p>
+
+                  {openBtnBox ? (
+                    <IoIosArrowDropupCircle
+                      className="open-profile-btn"
+                      onClick={() => setOpenBtnBox(!openBtnBox)}
+                    />
+                  ) : (
+                    <IoIosArrowDropdownCircle
+                      className="open-profile-btn"
+                      onClick={() => setOpenBtnBox(!openBtnBox)}
+                    />
+                  )}
+                </div>
+              </>
+            ) : (
+              <> </>
+            )}
           </div>
+          {openBtnBox ? (
+            <div className="profile-btn-box">
+              <p>
+                <span>
+                  <IoIosHeart />
+                </span>
+                <Link to="/">관심목록</Link>
+              </p>
+              <p>
+                <span>
+                  <IoIosListBox />
+                </span>
+                <Link to="/">판매목록</Link>
+              </p>
+              <p>
+                <span>
+                  <IoIosListBox />
+                </span>
+                <Link to="/">구매목록</Link>
+              </p>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </section>
     </>
   );
 };
 
-export default ProfileComponent;
+export default withRouter(ProfileComponent);

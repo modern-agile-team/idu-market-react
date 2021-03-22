@@ -8,8 +8,11 @@ import {
 
 //profile
 function profileGetAPI(action) {
-  const students = action;
-  return axios.get(`/api/students`, action);
+  const studentId = action;
+
+  console.log(studentId);
+
+  return axios.get(`/api/students/${studentId}`);
 }
 
 function* profileGet(action) {
@@ -19,7 +22,7 @@ function* profileGet(action) {
 
     yield put({
       type: PROFILE_GET_SUCCESS,
-      payload: result.profile,
+      payload: result.data,
     });
   } catch (e) {
     yield put({
@@ -36,22 +39,3 @@ function* watchProfileGet() {
 export default function* profileSaga() {
   yield all([fork(watchProfileGet)]);
 }
-
-// import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
-
-// import { REQUEST_API_DATA, receiveApiData } from "./actions";
-// import { fetchData } from "./api";
-
-// function* getApiData(action) {
-//   try {
-//     // do api call
-//     const data = yield call(fetchData);
-//     yield put(receiveApiData(data));
-//   } catch (e) {
-//     console.log(e);
-//   }
-// }
-
-// export default function* mySaga() {
-//   yield takeLatest(REQUEST_API_DATA, getApiData);
-// }

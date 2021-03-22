@@ -59,7 +59,7 @@ const Header = () => {
           {auth.jwt ? (
             <>
               <Link
-                to="/boards/book"
+                to={`/students/${auth.id}`}
                 className="header-profile-btn"
                 onClick={() => setSidebar(!sidebar)}
               >
