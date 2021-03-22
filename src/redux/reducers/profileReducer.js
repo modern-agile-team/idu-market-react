@@ -5,11 +5,9 @@ import {
 } from "../types";
 
 const initialState = {
-  profile: [],
-  title: [],
-  comments: [],
+  profile: null,
   loading: false,
-  responseMsg: "",
+  msg: "",
 };
 
 const profile = (state = initialState, action) => {
@@ -18,22 +16,23 @@ const profile = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        responseMsg: "",
+        msg: "",
       };
 
     case PROFILE_GET_SUCCESS:
       return {
         ...state,
-        profile: [...action.payload.profile],
+        profile: action.payload.profile,
         loading: false,
-        responseMsg: action.payload.msg,
+        msg: action.payload.msg,
       };
 
     case PROFILE_GET_FAILURE:
       return {
         ...state,
         loading: false,
-        responseMsg: "",
+        profile: [],
+        msg: action.payload.data.msg,
       };
 
     default:
