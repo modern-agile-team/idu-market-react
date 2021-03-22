@@ -4,9 +4,7 @@ import BannerImage from "../../../img/main-banner.png";
 const MainBannerComponent = () => {
   const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => setShow(true), 400);
-  }, []);
+  setTimeout(() => setShow(true), 400);
 
   return (
     <section id="main-banner" className="main-banner">

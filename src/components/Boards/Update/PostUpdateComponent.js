@@ -3,7 +3,10 @@ import { Link, withRouter } from "react-router-dom";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { FcCancel } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
-import { BOARD_DETAIL_REQUEST, BOARD_UPDATE_REQUEST } from "../../../redux/types";
+import {
+  BOARD_DETAIL_REQUEST,
+  BOARD_UPDATE_REQUEST,
+} from "../../../redux/types";
 
 //CKEditor
 import { CKEditor } from "@ckeditor/ckeditor5-react";
@@ -33,24 +36,23 @@ const PostUpdateComponent = (props) => {
   const boardDetail = useSelector((state) => state.boards);
 
   useEffect(() => {
-      dispatch({
-          type: BOARD_DETAIL_REQUEST,
-          payload: {
-            categoryName,
-            num,
-          },
-      });
-
-      setFormValues({
-        studentId: localStorage.getItem("userId"),
-        title: boardDetail.title,
-        content: boardDetail.content,
-        thumbnail: boardDetail.thumbnail,
-        price: boardDetail.price,
+    dispatch({
+      type: BOARD_DETAIL_REQUEST,
+      payload: {
         categoryName,
         num,
-      });
+      },
+    });
 
+    setFormValues({
+      studentId: localStorage.getItem("userId"),
+      title: boardDetail.title,
+      content: boardDetail.content,
+      thumbnail: boardDetail.thumbnail,
+      price: boardDetail.price,
+      categoryName,
+      num,
+    });
   }, [dispatch]);
 
   const getDataFromCKEditor = (event, editor) => {
@@ -114,15 +116,9 @@ const PostUpdateComponent = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if(categoryName === 'free' || categoryName === 'notice') {
-      const {
-        studentId,
-        title,
-        content,
-        categoryName,
-        num,
-      } = formValues;
-  
+    if (categoryName === "free" || categoryName === "notice") {
+      const { studentId, title, content, categoryName, num } = formValues;
+
       const body = {
         studentId,
         title,
@@ -132,14 +128,11 @@ const PostUpdateComponent = (props) => {
       };
 
       console.log(body);
-      
-      
+
       dispatch({
         type: BOARD_UPDATE_REQUEST,
         payload: body,
       });
-            
-      
     } else {
       let {
         studentId,
@@ -162,26 +155,25 @@ const PostUpdateComponent = (props) => {
       };
 
       while (true) {
-        let matcher = price.match(',');
+        let matcher = price.match(",");
 
         if (matcher) {
-            price = price.replace(",", "");
-        } 
-        else break;
+          price = price.replace(",", "");
+        } else break;
 
-        body ={
-            ...body,
-            price: price,
-        }
+        body = {
+          ...body,
+          price: price,
+        };
         console.log(body);
       }
-  
+
       //유효성 검사
       if (title === "") {
         setModal(true);
         setModalError(true);
         setModalErrorMsg("타이틀을 적어주세요.");
-  
+
         setTimeout(() => {
           setModal(false);
         }, 1500);
@@ -191,38 +183,34 @@ const PostUpdateComponent = (props) => {
         setModal(true);
         setModalError(true);
         setModalErrorMsg("가격을 숫자만 입력해주세요.");
-  
+
         setTimeout(() => {
           setModal(false);
         }, 1500);
-      } 
-      else if (price.length >= 8) {
+      } else if (price.length >= 8) {
         setModal(true);
         setModalError(true);
         setModalErrorMsg("가격은 0 ~ 9999999까지만 입력해주세요.");
-  
+
         setTimeout(() => {
           setModal(false);
         }, 1500);
-      }
-      else if (content === "") {
+      } else if (content === "") {
         setModal(true);
         setModalError(true);
         setModalErrorMsg("빈 본문입니다.");
-  
+
         setTimeout(() => {
           setModal(false);
         }, 1500);
-      } 
-      else {
-
+      } else {
         dispatch({
-            type: BOARD_UPDATE_REQUEST,
-            payload: body,
+          type: BOARD_UPDATE_REQUEST,
+          payload: body,
         });
 
         setModal(true);
-        setModalMsg("게시글 업로드에 성공하셨습니다.");
+        setModalMsg("게시글 업데이트에 성공하셨습니다.");
         setModalError(false);
       }
     }
@@ -245,9 +233,9 @@ const PostUpdateComponent = (props) => {
             <span className="post-write-border"></span>
           </div>
 
-          {categoryName === 'free' || categoryName === 'notice' ? (
+          {categoryName === "free" || categoryName === "notice" ? (
             ""
-          ): (
+          ) : (
             <div className="form-group price">
               <input
                 type="text"
@@ -262,7 +250,6 @@ const PostUpdateComponent = (props) => {
               <span className="price-won">원 (숫자만 입력 ex. 1000)</span>
             </div>
           )}
-          
 
           <div className="form-group">
             <CKEditor
