@@ -1,5 +1,5 @@
 import axios from "axios";
-import { all, fork, put, takeEvery, call, delay } from "redux-saga/effects";
+import { all, fork, put, takeEvery, call } from "redux-saga/effects";
 import {
   COMMENT_GET_REQUEST,
   COMMENT_GET_SUCCESS,

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import BannerImage from "../../../img/main-banner.png";
 
 const MainBannerComponent = () => {
