@@ -45,7 +45,7 @@ function BasicBoardComponent({ categoryName }) {
               {boardItem.title}
             </Link>
           </td>
-          <td>{boardItem.studentId}</td>
+          <td><Link to={`/students/${boardItem.studentId}`}>{boardItem.studentId}</Link></td>
           <td>{boardItem.inDate.substring(0, 10)}</td>
           <td>{boardItem.hit}</td>
         </tr>
