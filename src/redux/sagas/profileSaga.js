@@ -13,8 +13,6 @@ import {
 function profileGetAPI(action) {
   const studentId = action;
 
-  console.log(studentId);
-
   return axios.get(`/api/students/${studentId}`);
 }
 

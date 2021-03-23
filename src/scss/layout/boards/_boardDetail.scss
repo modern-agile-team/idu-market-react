@@ -42,6 +42,7 @@
   display: flex;
   right: 0px;
   top: 80px;
+  
 
   .detail-btn-edit{
     font-family: $Jua-font;
@@ -53,6 +54,11 @@
     font-size: 1.2rem;
     background-color: #efefef;
     cursor: pointer;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: rgb(219, 218, 218);
+    }
   }
 
   .detail-btn-delete {
@@ -62,6 +68,10 @@
     font-size: 1.2rem;
     margin: 0 10px;
     cursor: pointer;
+    border-radius: 4px;
+    &:hover {
+      background-color: rgb(219, 218, 218);
+    }
   }
   
   .detail-btn-list {
@@ -74,6 +84,10 @@
     font-size: 1.2rem;
     background-color: #efefef;
     cursor: pointer;
+    border-radius: 4px;
+    &:hover {
+      background-color: rgb(219, 218, 218);
+    }
   }
 }
 .detail-trade-status-box {

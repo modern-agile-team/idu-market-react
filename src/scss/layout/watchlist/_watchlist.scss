@@ -1,8 +1,8 @@
 .watchlist-btn-box {
     position: absolute;
-    top: 90px;
+    top: 80px;
     right: 80px;
-    padding: 4px 18px;
+    padding: 8px 20px;
     // background-color: rgb(255, 93, 93);
     background-color: #efefef;
     border-radius: 4px;
@@ -20,8 +20,32 @@
     }
     
     .watchlist-btn {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         // color: rgb(173, 5, 5);
         color: #999;
+    }
+}
+.watchlist-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-family: $Jua-font;
+    border-bottom: 2px solid $bg-color-2;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 767px){ 
+    .watchlist-btn-box {
+        top: 90px;
+        padding: 5px 18px;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .watchlist-title {
+        font-size: 1.4rem;
+        padding-bottom: 10px;
     }
 }
