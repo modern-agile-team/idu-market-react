@@ -92,7 +92,7 @@
 }
 .detail-trade-status-box {
   position: absolute;
-  width: 100px;
+  width: 110px;
   right: 240px;
   top: 85px;
   text-align: center;
@@ -106,11 +106,34 @@
     &:hover .detail-trade-status-drop {
       display: block;
     }
+
     .detail-trade-status-drop {
       display: none; 
+
       li {
-        margin: 5px 0;
+        padding-left: 10px;
+        margin: 7px 0;
         font-family: $Jua-font;
+        text-align: start;
+      }
+    }
+
+    .trade-status {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: #222;
+      border-radius: 50%;
+      margin-right: 8px;
+
+      &.sale {
+        background-color: rgb(1, 129, 1);
+      }
+      &.reservation {
+        background-color: rgb(211, 211, 0);
+      }
+      &.complete {
+        background-color: rgb(192, 3, 3);
       }
     }
   }

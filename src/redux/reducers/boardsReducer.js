@@ -14,6 +14,9 @@ import {
   BOARD_DETAIL_REQUEST,
   BOARD_DETAIL_SUCCESS,
   BOARD_DETAIL_FAILURE,
+  BOARD_STATUS_REQUEST,
+  BOARD_STATUS_SUCCESS,
+  BOARD_STATUS_FAILURE,
   IMAGE_DELETE_REQUEST,
   IMAGE_DELETE_SUCCESS,
   IMAGE_DELETE_FAILURE,
@@ -29,6 +32,7 @@ const initialState = {
   content: "",
   hit: "",
   price: "",
+  status: "",
   inDate: "",
   updateDate: "",
   isLoading: false,
@@ -37,6 +41,7 @@ const initialState = {
 
 const boards = (state = initialState, action) => {
   switch (action.type) {
+    case BOARD_STATUS_REQUEST:
     case IMAGE_DELETE_REQUEST:
     case BOARD_DELETE_REQUEST:
     case BASIC_BOARD_GET_REQUEST:
@@ -104,6 +109,7 @@ const boards = (state = initialState, action) => {
         studentId: action.payload.board.studentId,
         title: action.payload.board.title,
         content: action.payload.board.content,
+        status: action.payload.board.status,
         hit: action.payload.board.hit,
         price: action.payload.board.price,
         inDate: action.payload.board.inDate,
@@ -118,6 +124,7 @@ const boards = (state = initialState, action) => {
         studentName: "",
         title: "",
         content: "",
+        status: "",
         hit: "",
         price: "",
         inDate: "",
@@ -125,7 +132,8 @@ const boards = (state = initialState, action) => {
         isLoading: false,
         msg: action.payload.data.msg,
       };
-
+      
+    case BOARD_STATUS_SUCCESS:
     case IMAGE_DELETE_SUCCESS:
     case BOARD_DELETE_SUCCESS:
       return {
@@ -134,6 +142,7 @@ const boards = (state = initialState, action) => {
         msg: action.payload.msg,
       };
 
+    case BOARD_STATUS_FAILURE:
     case IMAGE_DELETE_FAILURE:
     case BOARD_DELETE_FAILURE:
       return {
@@ -141,7 +150,6 @@ const boards = (state = initialState, action) => {
         loading: false,
         msg: action.payload.data.msg,
       };
-      
     default:
       return state;
   }
