@@ -15,7 +15,7 @@ export default function Auth(SpecificComponent, option, adminRoute = null) {
 
     useEffect(() => {
       //로그인하지 않은 상태
-      if (!auth.jwt) {
+      if (auth.jwt === null) {
         if (option === true) {
           setTimeout(() => {
             props.history.push("/login");

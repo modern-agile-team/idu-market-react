@@ -106,7 +106,7 @@ const MainRouter = () => {
           />
           {/* Profile */}
           <Route
-            component={Auth(ProfilePage, true)}
+            component={Auth(ProfilePage, null)}
             path="/students/:studentId"
             exact
           />

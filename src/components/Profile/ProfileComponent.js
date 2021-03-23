@@ -30,7 +30,6 @@ const ProfileComponent = (props) => {
   }, [dispatch]);
 
   const onSelectImage = e => {
-    console.log(e.target.src);
     const body = {
       studentId,
       profilePath: e.target.src

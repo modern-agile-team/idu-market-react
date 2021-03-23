@@ -14,7 +14,7 @@ import {
 } from "../types";
 
 const initialState = {
-  jwt: "",
+  jwt: null,
   isLoading: false,
   successMsg: "",
   loginErrorMsg: "",
@@ -117,7 +117,7 @@ const auth = (state = initialState, action) => {
     case LOADING_FAILURE:
       return {
         ...state,
-        jwt: "",
+        jwt: null,
         isLoading: false,
         id: "",
         email: "",
