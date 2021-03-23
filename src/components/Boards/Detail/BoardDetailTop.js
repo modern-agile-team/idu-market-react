@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { AiOutlineUser } from "react-icons/ai";
@@ -6,18 +6,20 @@ import { BsCalendar } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import {
   BOARD_DELETE_REQUEST,
+  BOARD_STATUS_REQUEST,
   IMAGE_DELETE_REQUEST,
 } from "../../../redux/types";
 
 import WatchlistAddComponent from '../../Watchlist/WatchlistAddComponent';
 import WatchlistDeleteComponent from "../../Watchlist/WathlistDeleteComponent";
 
-const BoardDetailTop = ({ boardDetail, categoryName, num, match }) => {
+const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
+
   const dispatch = useDispatch();
-  const creatorId = useSelector((state) => state.boards.studentId);
+  const boards = useSelector((state) => state.boards);
   const studentId = useSelector((state) => state.auth.id);
 
-  const [tradeStatus, setTradeStatue] = useState("판매중");
+  const [tradeSentence, setTradeSentence] = useState("판매중");
 
   const deleteImage = () => {
     const imgList = [];
@@ -47,9 +49,48 @@ const BoardDetailTop = ({ boardDetail, categoryName, num, match }) => {
     }
   };
 
-  const onTradeStatusClick = (e) => {
+  const onTradeSentenceClick = (e) => {
     e.preventDefault();
-    setTradeStatue(e.target.textContent);
+    setTradeSentence(e.target.textContent);
+
+    if(e.target.textContent === "판매중") {
+
+      const body = {
+        categoryName,
+        num: boardDetail.num,
+        status: 0
+      };
+
+      dispatch({
+        type: BOARD_STATUS_REQUEST,
+        payload: body,
+      })
+    }
+    if (e.target.textContent === "예약중") {
+      const body = {
+        categoryName,
+        num: boardDetail.num,
+        status: 1
+
+      };
+      dispatch({
+        type: BOARD_STATUS_REQUEST,
+        payload: body,
+      })
+    }
+    if (e.target.textContent === "거래완료") {
+      const body = {
+        categoryName,
+        num: boardDetail.num,
+        status: 2
+      };
+
+      dispatch({
+        type: BOARD_STATUS_REQUEST,
+        payload: body,
+      })
+    }
+    
   };
 
   const onDelete = (e) => {
@@ -85,7 +126,7 @@ const BoardDetailTop = ({ boardDetail, categoryName, num, match }) => {
       )}
 
       <div className="detail-btn-box">
-        {creatorId === studentId ? (
+        {boards.studentId === studentId ? (
           <>
             <Link
               to={`/boards/${categoryName}/${num}/update`}
@@ -125,20 +166,38 @@ const BoardDetailTop = ({ boardDetail, categoryName, num, match }) => {
         <></>
       ) : (
         <>
-          {creatorId === studentId ? (
+          {boards.studentId === studentId ? (
             <div className="detail-trade-status-box">
               <ul>
                 <li className="detail-trade-status">
-                  {tradeStatus} <IoMdArrowDropdown />
+                  {
+                    (function() {
+                      if (tradeSentence === "판매중") return (
+                        <>
+                          <span className="trade-status sale"></span> {tradeSentence}<IoMdArrowDropdown />
+                        </>
+                      ) 
+                      if (tradeSentence === "예약중") return (
+                        <>
+                          <span className="trade-status reservation"></span> {tradeSentence}<IoMdArrowDropdown />
+                        </>
+                      ) 
+                      if (tradeSentence === "거래완료") return (
+                        <>
+                          <span className="trade-status complete"></span> {tradeSentence}<IoMdArrowDropdown />
+                        </>
+                      ) 
+                    })()
+                  }
                   <ul className="detail-trade-status-drop">
-                    <li value="판매중" onClick={onTradeStatusClick}>
-                      판매중
+                    <li value="판매중" onClick={onTradeSentenceClick}>
+                      <span className="trade-status sale"></span>판매중
                     </li>
-                    <li value="예약중" onClick={onTradeStatusClick}>
-                      예약중
+                    <li value="예약중" onClick={onTradeSentenceClick}>
+                      <span className="trade-status reservation"></span>예약중
                     </li>
-                    <li value="거래완료" onClick={onTradeStatusClick}>
-                      거래완료
+                    <li value="거래완료" onClick={onTradeSentenceClick}>
+                      <span className="trade-status complete"></span>거래완료
                     </li>
                   </ul>
                 </li>
@@ -154,7 +213,7 @@ const BoardDetailTop = ({ boardDetail, categoryName, num, match }) => {
         <></>
       ) : (
         <>
-          {creatorId === studentId ? (
+          {boards.studentId === studentId ? (
             <></>
           ) : (
             categoryName === 'watchlist' ? (
