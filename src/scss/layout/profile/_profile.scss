@@ -268,7 +268,12 @@
     .profile-img-box {
         width: 150px;
         height: 150px;
+        .profile-img-update {
+            right: 5px;
+            bottom: 15px;
+        }
     }
+
     .profile-information-box {
         padding: 10px 20px;
 
@@ -284,6 +289,7 @@
             font-size: 1.2rem;
         }
     }
+
     .profile-btn-box {
         padding: 10px 20px;
         bottom: 50px;
@@ -297,12 +303,10 @@
         }
     }
 
-    .profile-img-modal {
-        top: 48%;
-    }
     .profile-img-modal { 
         width: 300px;
         height: 600px;
+        top: 48%;
 
         .img-select-box {
             width: 110px;
@@ -312,12 +316,10 @@
 }
 
 @media screen and (max-width: 360px){ 
-    .profile-img-modal {
-        top: 48%;
-    }
     .profile-img-modal { 
         width: 250px;
         height: 500px;
+        top: 48%;
 
         .img-select-box {
             width: 90px;
