@@ -29,15 +29,6 @@ const ProfileComponent = (props) => {
     });
   }, [dispatch]);
 
-  if (auth.id) {
-    if (auth.id !== studentId) {
-      alert("잘못된 접근 방식입니다.");
-      props.history.push("/");
-    }
-  } else {
-    props.history.push("/");
-  }
-
   const onSelectImage = e => {
     console.log(e.target.src);
     const body = {
@@ -62,10 +53,15 @@ const ProfileComponent = (props) => {
               <>
                 <div className="profile-img-box">
                   <img src={profileList.profilePath} alt="test" className="profile-img" />
-                  <BiPencil
-                    className="profile-img-update"
-                    onClick={() => setOpenImgSelectModal(true)}
-                  />
+
+                  {auth.id === studentId ? (
+                    <BiPencil
+                      className="profile-img-update"
+                      onClick={() => setOpenImgSelectModal(true)}
+                    />
+                  ) : (
+                    <></>
+                  )}
                 </div>
 
                 <p className="profile-id">{profileList.id}</p>
@@ -84,16 +80,20 @@ const ProfileComponent = (props) => {
                     {profileList.email}
                   </p>
 
-                  {openBtnBox ? (
-                    <IoIosArrowDropupCircle
-                      className="open-profile-btn"
-                      onClick={() => setOpenBtnBox(!openBtnBox)}
-                    />
+                  {auth.id === studentId ? (
+                    openBtnBox ? (
+                      <IoIosArrowDropupCircle
+                        className="open-profile-btn"
+                        onClick={() => setOpenBtnBox(!openBtnBox)}
+                      />
+                    ) : (
+                      <IoIosArrowDropdownCircle
+                        className="open-profile-btn"
+                        onClick={() => setOpenBtnBox(!openBtnBox)}
+                      />
+                    )
                   ) : (
-                    <IoIosArrowDropdownCircle
-                      className="open-profile-btn"
-                      onClick={() => setOpenBtnBox(!openBtnBox)}
-                    />
+                    <></>
                   )}
                 </div>
               </>

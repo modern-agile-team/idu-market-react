@@ -22,8 +22,7 @@ const BoardListItem = ({ productList, categoryName }) => {
             </Link>
             <p className="market-item-price">{board.price}원</p>
             <p className="market-item-id">
-              <AiOutlineUser />
-                {board.studentId} &nbsp;
+                <Link to={`/students/${board.studentId}`}><AiOutlineUser />{board.studentId} &nbsp;</Link>
               <AiOutlineComment />
               {board.commentCount}
             </p>
