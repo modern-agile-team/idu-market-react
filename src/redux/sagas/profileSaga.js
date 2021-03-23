@@ -40,8 +40,7 @@ function profileImageUpdateAPI(action) {
   const body = {
     profilePath: action.profilePath
   }
-
-  console.log(body);
+  
   return axios.patch(`/api/students/${studentId}/update`, body);
 }
 

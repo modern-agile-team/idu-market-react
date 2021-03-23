@@ -43,7 +43,7 @@ const profile = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        profile: { ...state.profile, profile_path: action.payload.profilePath},
+        profile: { ...state.profile, profilePath: action.payload.profilePath},
         msg: action.payload.msg,
       }
     case PROFILE_IMAGE_UPDATE_FAILURE:

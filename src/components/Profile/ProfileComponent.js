@@ -61,7 +61,7 @@ const ProfileComponent = (props) => {
             {profileList ? (
               <>
                 <div className="profile-img-box">
-                  <img src={profileList.profile_path} alt="test" className="profile-img" />
+                  <img src={profileList.profilePath} alt="test" className="profile-img" />
                   <BiPencil
                     className="profile-img-update"
                     onClick={() => setOpenImgSelectModal(true)}
