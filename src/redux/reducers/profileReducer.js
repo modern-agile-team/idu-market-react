@@ -2,6 +2,9 @@ import {
   PROFILE_GET_REQUEST,
   PROFILE_GET_SUCCESS,
   PROFILE_GET_FAILURE,
+  PROFILE_IMAGE_UPDATE_REQUEST,
+  PROFILE_IMAGE_UPDATE_SUCCESS,
+  PROFILE_IMAGE_UPDATE_FAILURE,
 } from "../types";
 
 const initialState = {
@@ -12,6 +15,7 @@ const initialState = {
 
 const profile = (state = initialState, action) => {
   switch (action.type) {
+    case PROFILE_IMAGE_UPDATE_REQUEST:
     case PROFILE_GET_REQUEST:
       return {
         ...state,
@@ -22,7 +26,7 @@ const profile = (state = initialState, action) => {
     case PROFILE_GET_SUCCESS:
       return {
         ...state,
-        profile: action.payload.profile,
+        profile: action.payload,
         loading: false,
         msg: action.payload.msg,
       };
@@ -31,9 +35,26 @@ const profile = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        profile: [],
+        profile: null,
         msg: action.payload.data.msg,
       };
+
+    case PROFILE_IMAGE_UPDATE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        profile: { ...state.profile, profile_path: action.payload.profilePath},
+        msg: action.payload.msg,
+      }
+    case PROFILE_IMAGE_UPDATE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        profile: null,
+        msg: action.payload.data.msg,
+      };
+
+      
 
     default:
       return state;

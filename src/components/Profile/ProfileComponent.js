@@ -10,7 +10,7 @@ import {
   IoIosListBox,
 } from "react-icons/io";
 
-import { PROFILE_GET_REQUEST } from "../../redux/types";
+import { PROFILE_GET_REQUEST, PROFILE_IMAGE_UPDATE_REQUEST } from "../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProfileComponent = (props) => {
@@ -40,6 +40,15 @@ const ProfileComponent = (props) => {
 
   const onSelectImage = e => {
     console.log(e.target.src);
+    const body = {
+      studentId,
+      profilePath: e.target.src
+    }
+
+    dispatch({
+      type: PROFILE_IMAGE_UPDATE_REQUEST,
+      payload: body,
+    })
 
     setOpenImgSelectModal(false);
   }
@@ -52,7 +61,7 @@ const ProfileComponent = (props) => {
             {profileList ? (
               <>
                 <div className="profile-img-box">
-                  <img src="https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/profile/default.png" alt="test" className="profile-img" />
+                  <img src={profileList.profile_path} alt="test" className="profile-img" />
                   <BiPencil
                     className="profile-img-update"
                     onClick={() => setOpenImgSelectModal(true)}
