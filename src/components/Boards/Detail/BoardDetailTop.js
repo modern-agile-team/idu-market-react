@@ -9,12 +9,13 @@ import {
   IMAGE_DELETE_REQUEST,
 } from "../../../redux/types";
 
-import WatchlistBtnComponent from '../../Watchlist/WatchlistBtnComponent';
+import WatchlistAddComponent from '../../Watchlist/WatchlistAddComponent';
+import WatchlistDeleteComponent from "../../Watchlist/WathlistDeleteComponent";
 
-const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
+const BoardDetailTop = ({ boardDetail, categoryName, num, match }) => {
   const dispatch = useDispatch();
   const creatorId = useSelector((state) => state.boards.studentId);
-  const userId = useSelector((state) => state.auth.id);
+  const studentId = useSelector((state) => state.auth.id);
 
   const [tradeStatus, setTradeStatue] = useState("판매중");
 
@@ -84,7 +85,7 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
       )}
 
       <div className="detail-btn-box">
-        {creatorId === userId ? (
+        {creatorId === studentId ? (
           <>
             <Link
               to={`/boards/${categoryName}/${num}/update`}
@@ -95,13 +96,14 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
             <button className="detail-btn-delete" onClick={onDelete}>
               삭제
             </button>
-            <Link to={`/boards/${categoryName}`} className="detail-btn-list">
+            <Link 
+              to={`/boards/${categoryName}`} className="detail-btn-list">
               목록
             </Link>
           </>
         ) : (
           <>
-            <Link to={`/boards/${categoryName}`} className="detail-btn-list">
+            <Link to={categoryName === 'watchlist' ? `/watchlist/${studentId}` : `/boards/${categoryName}`} className="detail-btn-list">
               목록
             </Link>
           </>
@@ -123,7 +125,7 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
         <></>
       ) : (
         <>
-          {creatorId === userId ? (
+          {creatorId === studentId ? (
             <div className="detail-trade-status-box">
               <ul>
                 <li className="detail-trade-status">
@@ -152,10 +154,14 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
         <></>
       ) : (
         <>
-          {creatorId === userId ? (
+          {creatorId === studentId ? (
             <></>
           ) : (
-            <WatchlistBtnComponent></WatchlistBtnComponent>
+            categoryName === 'watchlist' ? (
+              <WatchlistDeleteComponent />
+            ) : (
+              <WatchlistAddComponent categoryName={categoryName} />
+            )
           )}
         </>
       )}

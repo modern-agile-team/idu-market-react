@@ -103,22 +103,28 @@ const ProfileComponent = (props) => {
           {openBtnBox ? (
             <div className="profile-btn-box">
               <p>
-                <span>
-                  <IoIosHeart />
-                </span>
-                <Link to="/">관심목록</Link>
+                <Link to={`/watchlist/${studentId}`}>
+                  <span>
+                    <IoIosHeart />
+                  </span>
+                  관심목록
+                </Link>
               </p>
               <p>
-                <span>
-                  <IoIosListBox />
-                </span>
-                <Link to="/">판매목록</Link>
+                <Link to="/">
+                  <span>
+                    <IoIosListBox />
+                  </span>
+                  판매목록
+                </Link>
               </p>
               <p>
-                <span>
-                  <IoIosListBox />
-                </span>
-                <Link to="/">구매목록</Link>
+                <Link to="/">
+                  <span>
+                    <IoIosListBox />
+                  </span>
+                  구매목록
+                </Link>
               </p>
             </div>
           ) : (

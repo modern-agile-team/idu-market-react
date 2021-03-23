@@ -138,8 +138,7 @@ function* boardDelete(action) {
 function boardDetailAPI(action) {
   const categoryName = action.categoryName;
   const num = action.num;
-
-  console.log(categoryName, num);
+  
   return axios.get(`/api/boards/${categoryName}/${num}`);
 }
 
