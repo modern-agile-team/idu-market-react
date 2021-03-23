@@ -9,6 +9,8 @@ import {
   IMAGE_DELETE_REQUEST,
 } from "../../../redux/types";
 
+import WatchlistBtnComponent from '../../Watchlist/WatchlistBtnComponent';
+
 const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
   const dispatch = useDispatch();
   const creatorId = useSelector((state) => state.boards.studentId);
@@ -142,6 +144,18 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
             </div>
           ) : (
             <></>
+          )}
+        </>
+      )}
+
+      {categoryName === "free" || categoryName === "notice" ? (
+        <></>
+      ) : (
+        <>
+          {creatorId === userId ? (
+            <></>
+          ) : (
+            <WatchlistBtnComponent></WatchlistBtnComponent>
           )}
         </>
       )}
