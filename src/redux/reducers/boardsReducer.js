@@ -14,9 +14,6 @@ import {
   BOARD_DETAIL_REQUEST,
   BOARD_DETAIL_SUCCESS,
   BOARD_DETAIL_FAILURE,
-  BOARD_SEARCH_REQUEST,
-  BOARD_SEARCH_SUCCESS,
-  BOARD_SEARCH_FAILURE,
   IMAGE_DELETE_REQUEST,
   IMAGE_DELETE_SUCCESS,
   IMAGE_DELETE_FAILURE,
@@ -144,26 +141,7 @@ const boards = (state = initialState, action) => {
         loading: false,
         msg: action.payload.data.msg,
       };
-
-    case BOARD_SEARCH_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        data: [],
-      };
-
-    case BOARD_SEARCH_SUCCESS:
-      return {
-        ...state,
-        data: [action.payload.boards],
-        msg: action.payload.msg,
-      };
-
-    case BOARD_SEARCH_FAILURE:
-      return {
-        ...state,
-      };
-
+      
     default:
       return state;
   }

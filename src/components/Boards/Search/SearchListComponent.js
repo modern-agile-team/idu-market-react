@@ -60,33 +60,40 @@ const SearchListComponent = (props) => {
           <SearchComponent categoryName={categoryName} />
           {loading ? (
             <div className="container">
-              <table className="boardlist-common-tables">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>등록일</th>
-                    <th>조회수</th>
-                  </tr>
-                </thead>
-
-                <tbody id="boardlist-common-body">{displayBoardList}</tbody>
-              </table>
-
-              <div className="pagination-container">
-                <ReactPaginate
-                  previousLabel={<FaAngleLeft />}
-                  nextLabel={<FaAngleRight />}
-                  pageCount={pageCount}
-                  onPageChange={changePage}
-                  containerClassName={"pagination-container"}
-                  previousLinkClassName={"previousBtn"}
-                  nextLinkClassName={"nextBtn"}
-                  disabledClassName={"disabled"}
-                  activeLinkClassName={"active"}
-                />
-              </div>
+              {productList.length === 0 ? (
+                <p className="search-null-desc">검색어와 관련된 게시물이 존재하지 않습니다.</p>
+              ) : (
+                <>
+                <table className="boardlist-common-tables">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>제목</th>
+                      <th>작성자</th>
+                      <th>등록일</th>
+                      <th>조회수</th>
+                    </tr>
+                  </thead>
+                  <tbody id="boardlist-common-body">
+                    {displayBoardList}
+                  </tbody>
+                </table>
+                
+                <div className="pagination-container">
+                  <ReactPaginate
+                    previousLabel={<FaAngleLeft />}
+                    nextLabel={<FaAngleRight />}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    containerClassName={"pagination-container"}
+                    previousLinkClassName={"previousBtn"}
+                    nextLinkClassName={"nextBtn"}
+                    disabledClassName={"disabled"}
+                    activeLinkClassName={"active"}
+                  />
+                </div>
+              </>
+              )}
             </div>
           ) : (
             <>
@@ -104,10 +111,14 @@ const SearchListComponent = (props) => {
               <SearchComponent categoryName={categoryName} />
 
             <div className="container"> 
-              <BoardListItem
-                productList={productList}
-                categoryName={categoryName}
-              />
+              {productList.length === 0 ? (
+                <p className="search-null-desc">검색어와 관련된 게시물이 존재하지 않습니다.</p>
+              ) : (
+                <BoardListItem
+                  productList={productList}
+                  categoryName={categoryName}
+                />
+              )}
             </div>
             </>
           ) : (

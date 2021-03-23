@@ -2,6 +2,7 @@
     position: relative;
     width: 80%;
     height: 100%;
+    min-height: 340px;
     margin: 0 auto;
     margin-top: 100px;
     margin-bottom: 30px;
@@ -254,6 +255,16 @@
         font-weight: bold;
     }
 }
+
+.search-null-desc {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    font-family: $Jua-font;
+    text-align: center;
+    font-size: 1.3rem;
+}
   
 
 @media screen and (max-width: 1300px) { 
@@ -309,7 +320,10 @@
     }
 }
 
-@media screen and (max-width: 760px) { 
+@media screen and (max-width: 768px) { 
+    .market { 
+        min-height: 220px;
+    }
     .market-items { 
         &:nth-child(2n-1) {
             margin-left: 8%;
@@ -396,6 +410,9 @@
 }
 
 @media screen and (max-width: 480px) {
+    .market { 
+        min-height: 290px;
+    }
     .market-items { 
         width: 80%;
         margin: 3%;
@@ -464,6 +481,9 @@
     }
 
     .market-item-id {
+        font-size: 1rem;
+    }
+    .search-null-desc {
         font-size: 1rem;
     }
 } 
