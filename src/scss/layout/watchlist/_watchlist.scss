@@ -1,17 +1,27 @@
 .watchlist-btn-box {
     position: absolute;
-    top: 80px;
+    top: 90px;
     right: 80px;
-    padding: 7px 18px;
-    background-color: rgb(255, 93, 93);
+    padding: 4px 18px;
+    // background-color: rgb(255, 93, 93);
+    background-color: #efefef;
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+
+    &:hover {
+        background-color: rgb(255, 93, 93);
+
+        .watchlist-btn {
+            color: rgb(173, 5, 5);
+        }
+    }
     
     .watchlist-btn {
         font-size: 1.3rem;
-        color: rgb(173, 5, 5);
+        // color: rgb(173, 5, 5);
+        color: #999;
     }
 }

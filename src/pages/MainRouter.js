@@ -111,7 +111,7 @@ const MainRouter = () => {
             exact
           />
           {/* watchlist */}
-          <Route component={WatchlistPage} path="/watchlist" exact />
+          <Route component={WatchlistPage} path="/watchlist/:studentId" exact />
         </Switch>
       </ScrollToTop>
       <Footer></Footer>
