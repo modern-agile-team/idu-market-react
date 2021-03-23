@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import { withRouter } from "react-router-dom";
-import { AiFillHeart } from 'react-icons/ai'
 import BoardListItem from '../../components/Boards/BoardListItem';
 
 
