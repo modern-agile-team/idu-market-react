@@ -5,7 +5,7 @@ import {
 } from "../types";
 
 const initialState = {
-    profile: null,
+  buyers: null,
     loading: false,
     msg: "",
     list: null,
@@ -23,7 +23,7 @@ const trade = (state = initialState, action) => {
       case TRADE_COMMET_GET_SUCCESS:
         return {
           ...state,
-          profile: action.payload.buyers,
+          buyers: action.payload.buyers,
           loading: false,
           msg: action.payload.msg,
         };
@@ -32,7 +32,7 @@ const trade = (state = initialState, action) => {
         return {
           ...state,
           loading: false,
-          list: null,
+          buyers: null,
           msg: action.payload.data.msg,
         };
 

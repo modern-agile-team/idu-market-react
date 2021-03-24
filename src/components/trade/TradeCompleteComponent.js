@@ -6,20 +6,10 @@ import { TRADE_COMMET_GET_REQUEST } from '../../redux/types';
 const TradeCompleteComponent = (props) => {
     const categoryName = props.match.params.categoryName;
     const num = props.match.params.num;
+
     const dispatch = useDispatch();
     const auth = useSelector(state => state.auth);
-
-    const datalist = [
-        {
-            id: 'ssi02014'
-        },
-        {
-            id: 'woorim123',
-        },
-        {
-            id: 'jiwon',
-        }
-    ];
+    const buyers = useSelector(state => state.trade.buyers);
 
     useEffect(() => {
         const body = {
@@ -31,20 +21,44 @@ const TradeCompleteComponent = (props) => {
             type: TRADE_COMMET_GET_REQUEST,
             payload: body,
         })
-    }, [dispatch, auth.id, categoryName, num]);
+    }, [dispatch, categoryName, num]);
+
+    const onConfirmTrade = e => {
+        const confirmBuyer = window.confirm(`${e.target.textContent}님으로 결정하시겠습니까?`);
+
+        if(confirmBuyer) {
+            
+        }
+    }
 
     return (
         <section className="trade-complete" id="trade-complete">
             <div className="container">
-                <h1 className="trade-buyer-number">{`구매 요청 인원 (${datalist.length})`}</h1>
+                {buyers ? (
+                    <h1 className="trade-buyer-number">{`구매 요청 인원 (${buyers.length - 1})`}</h1>
+                ) : (
+                    <></>
+                )}
                 <div className="trade-buyer-box">
-                    {datalist.map((data, index) => {
-                        return (
-                            <div className="trade-buyer" key={index}>
-                                {data.id}
-                            </div>
-                        )
-                    })}
+                    {buyers ?   (
+                        <>
+                            {buyers.map((buyer, index) => {
+                                if (buyer.id !== auth.id) {
+                                    return (
+                                        <div 
+                                            className="trade-buyer" 
+                                            key={index} 
+                                            onClick={onConfirmTrade}
+                                        >
+                                            {buyer.id}
+                                        </div>
+                                    )
+                                }
+                            })}
+                        </>
+                    ) : (
+                        <></>
+                    )}
                 </div>
             </div>
         </section>

@@ -103,6 +103,8 @@ function loadingAPI(token) {
 //LOADING
 function* loading(action) {
   const result = yield call(loadingAPI, action.payload);
+
+  console.log(result);
   try {
     yield put({
       type: LOADING_SUCCESS,
