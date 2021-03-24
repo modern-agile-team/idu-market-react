@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import { BOARD_DETAIL_REQUEST, TRADE_COMMET_GET_REQUEST } from '../../redux/types';
+import { BOARD_DETAIL_REQUEST, TRADE_COMMET_GET_REQUEST, TRADE_COMPLETE_REQUEST } from '../../redux/types';
 
 const TradeCompleteComponent = (props) => {
     const categoryName = props.match.params.categoryName;
@@ -27,14 +27,25 @@ const TradeCompleteComponent = (props) => {
             type: BOARD_DETAIL_REQUEST,
             payload: body,
         });
-        
+
     }, [dispatch, categoryName, num]);
 
     const onConfirmTrade = e => {
         const confirmBuyer = window.confirm(`${e.target.textContent}님으로 결정하시겠습니까?`);
 
         if(confirmBuyer) {
+            const body = {
+                categoryName,
+                boardNum: num,
+                studentId: e.target.textContent
+            }
 
+            dispatch({
+                type: TRADE_COMPLETE_REQUEST,
+                payload: body,
+            });
+
+            alert("거래가 종료되었습니다.");
         }
     }
 
