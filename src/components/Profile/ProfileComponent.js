@@ -10,7 +10,7 @@ import {
   IoIosListBox,
 } from "react-icons/io";
 
-import { PROFILE_GET_REQUEST, PROFILE_IMAGE_UPDATE_REQUEST } from "../../redux/types";
+import { LOADING_REQUEST, PROFILE_GET_REQUEST, PROFILE_IMAGE_UPDATE_REQUEST } from "../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProfileComponent = (props) => {
@@ -38,7 +38,7 @@ const ProfileComponent = (props) => {
     dispatch({
       type: PROFILE_IMAGE_UPDATE_REQUEST,
       payload: body,
-    })
+    });
 
     setOpenImgSelectModal(false);
   }
