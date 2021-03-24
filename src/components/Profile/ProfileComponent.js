@@ -27,7 +27,7 @@ const ProfileComponent = (props) => {
       type: PROFILE_GET_REQUEST,
       payload: studentId,
     });
-  }, [dispatch]);
+  }, [dispatch, studentId]);
 
   const onSelectImage = e => {
     const body = {

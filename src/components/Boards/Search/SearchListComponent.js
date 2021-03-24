@@ -33,7 +33,7 @@ const SearchListComponent = (props) => {
           setProductList(result);
         }
       });
-  }, [content]);
+  }, [content, categoryName]);
 
   const displayBoardList = productList
     .slice(pageVisited, pageVisited + perPage)

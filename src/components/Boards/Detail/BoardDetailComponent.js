@@ -35,7 +35,7 @@ const BoardDetailComponent = (props) => {
         num,
       },
     });
-  }, [dispatch]);
+  }, [dispatch, categoryName, num]);
 
   return (
     <section id="board-Detail" className="board-Detail">
