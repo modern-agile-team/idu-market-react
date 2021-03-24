@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import { TRADE_COMMET_GET_REQUEST } from '../../redux/types';
+import { BOARD_DETAIL_REQUEST, TRADE_COMMET_GET_REQUEST } from '../../redux/types';
 
 const TradeCompleteComponent = (props) => {
     const categoryName = props.match.params.categoryName;
@@ -22,6 +22,12 @@ const TradeCompleteComponent = (props) => {
             type: TRADE_COMMET_GET_REQUEST,
             payload: body,
         });
+
+        dispatch({
+            type: BOARD_DETAIL_REQUEST,
+            payload: body,
+        });
+        
     }, [dispatch, categoryName, num]);
 
     const onConfirmTrade = e => {
@@ -29,6 +35,13 @@ const TradeCompleteComponent = (props) => {
 
         if(confirmBuyer) {
 
+        }
+    }
+
+    if (studentId) {
+        if (studentId !== auth.id) {
+            alert("잘못된 접근입니다.");
+            props.history.push(`/boards/${categoryName}/${num}`);
         }
     }
 
@@ -42,7 +55,7 @@ const TradeCompleteComponent = (props) => {
                     <></>
                 )}
                 <div className="trade-buyer-box">
-                    {buyers && studentId?    (
+                    {buyers && studentId ?    (
                         <>
                             {buyers.map((buyer, index) => {
                                 if (buyer.id !== studentId) {
