@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 function BasicBoardComponent({ categoryName }) {
   const [pageNumber, setPageNumber] = useState(0);
-  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
   const freeBoardList = useSelector((state) => state.boards.data);
@@ -18,21 +17,16 @@ function BasicBoardComponent({ categoryName }) {
   const pageVisited = pageNumber * perPage;
   const pageCount = Math.ceil(freeBoardList.length / perPage);
 
-  const changePage = ({ selected }) => {
-    setPageNumber(selected);
-  };
-
   useEffect(() => {
-    if (!loading) {
-      setLoading(true);
       dispatch({
         type: BASIC_BOARD_GET_REQUEST,
         payload: categoryName,
       });
-    } else {
-      setLoading(false);
-    }
-  }, [dispatch]);
+  }, [dispatch, categoryName]);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
 
   const displayBoardList = freeBoardList
     .slice(pageVisited, pageVisited + perPage)
@@ -55,44 +49,35 @@ function BasicBoardComponent({ categoryName }) {
   return (
     <section id="boardlist-common" className="boardlist-common">
       <SearchComponent categoryName={categoryName} />
-      {loading ? (
-        <div className="container">
-          <table className="boardlist-common-tables">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>등록일</th>
-                <th>조회수</th>
-              </tr>
-            </thead>
+      <div className="container">
+        <table className="boardlist-common-tables">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>제목</th>
+              <th>작성자</th>
+              <th>등록일</th>
+              <th>조회수</th>
+            </tr>
+          </thead>
 
-            <tbody id="boardlist-common-body">{displayBoardList}</tbody>
-          </table>
+          <tbody id="boardlist-common-body">{displayBoardList}</tbody>
+        </table>
 
-          <div className="pagination-container">
-            <ReactPaginate
-              previousLabel={<FaAngleLeft />}
-              nextLabel={<FaAngleRight />}
-              pageCount={pageCount}
-              onPageChange={changePage}
-              containerClassName={"pagination-container"}
-              previousLinkClassName={"previousBtn"}
-              nextLinkClassName={"nextBtn"}
-              disabledClassName={"disabled"}
-              activeLinkClassName={"active"}
-            />
-          </div>
+        <div className="pagination-container">
+          <ReactPaginate
+            previousLabel={<FaAngleLeft />}
+            nextLabel={<FaAngleRight />}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"pagination-container"}
+            previousLinkClassName={"previousBtn"}
+            nextLinkClassName={"nextBtn"}
+            disabledClassName={"disabled"}
+            activeLinkClassName={"active"}
+          />
         </div>
-      ) : (
-        <>
-          <div className="market-loading">
-            <div className="spin"></div>
-            <p className="market-loading-msg">Loading</p>
-          </div>
-        </>
-      )}
+      </div>
     </section>
   );
 }
