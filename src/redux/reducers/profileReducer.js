@@ -40,12 +40,15 @@ const profile = (state = initialState, action) => {
       };
 
     case PROFILE_IMAGE_UPDATE_SUCCESS:
+      localStorage.removeItem("jwt");
+      localStorage.setItem("jwt", action.payload.jwt);
       return {
         ...state,
         loading: false,
         profile: { ...state.profile, profilePath: action.payload.profilePath},
         msg: action.payload.msg,
       }
+
     case PROFILE_IMAGE_UPDATE_FAILURE:
       return {
         ...state,

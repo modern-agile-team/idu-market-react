@@ -1,5 +1,5 @@
 import axios from "axios";
-import { all, fork, put, takeEvery, call } from "redux-saga/effects";
+import { all, fork, put, takeEvery, call, delay } from "redux-saga/effects";
 import {
   PROFILE_GET_REQUEST,
   PROFILE_GET_SUCCESS,
@@ -7,6 +7,7 @@ import {
   PROFILE_IMAGE_UPDATE_REQUEST,
   PROFILE_IMAGE_UPDATE_SUCCESS,
   PROFILE_IMAGE_UPDATE_FAILURE,
+  LOADING_REQUEST,
 } from "../types";
 
 //Profile Get
@@ -39,7 +40,7 @@ function profileImageUpdateAPI(action) {
     profilePath: action.profilePath
   }
   
-  return axios.patch(`/api/students/${studentId}/update`, body);
+  return axios.patch(`/api/students/${studentId}`, body);
 }
 
 function* profileImageUpdate(action) {
@@ -52,6 +53,14 @@ function* profileImageUpdate(action) {
       type: PROFILE_IMAGE_UPDATE_SUCCESS,
       payload: result.data,
     });
+
+    yield delay(100);
+
+    yield put({
+      type: LOADING_REQUEST,
+      payload: localStorage.getItem("jwt")
+    });
+
   } catch (e) {
     yield put({
       type: PROFILE_IMAGE_UPDATE_FAILURE,

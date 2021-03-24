@@ -59,10 +59,10 @@ const Header = () => {
             <>
               <Link
                 to={`/students/${auth.id}`}
-                className="header-profile-btn"
+                className="profile-icon-btn"
                 onClick={() => setSidebar(!sidebar)}
               >
-                <div className="header-profile-box">
+                <div className="profile-icon-box">
                   <img src={auth.profilePath} alt="프로필 이미지" />
                 </div>
               </Link>
