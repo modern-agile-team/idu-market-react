@@ -98,6 +98,22 @@
   text-align: center;
   margin-right: 10px;
 
+  .trade-complete-btn {
+    position: absolute;
+    padding: 4px 10px;
+    font-family: $Jua-font;
+    font-size: 1.2rem;
+    right: 10px;
+    top: -40px;
+    background-color: $bg-color-2;
+    border: 2px solid $main-color-6;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $main-color-2;
+    }
+  }
+
   .detail-trade-status {
     font-family: $Jua-font;
     font-size: 1.2rem;
@@ -201,6 +217,13 @@
     right: 200px;
     top: 95px;
     margin-right: 0;
+
+    .trade-complete-btn {
+      padding: 3px 8px;
+      font-size: 1rem;
+      right: 10px;
+      top: -40px;
+    }
 
     .detail-trade-status {
       font-size: 1rem;

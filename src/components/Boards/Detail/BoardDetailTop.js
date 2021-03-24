@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { AiOutlineUser } from "react-icons/ai";
@@ -20,6 +20,18 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
   const studentId = useSelector((state) => state.auth.id);
 
   const [tradeSentence, setTradeSentence] = useState("판매중");
+
+  useEffect(() => {
+    if(boards.status === 0) {
+      setTradeSentence("판매중");
+    }
+    else if(boards.status === 1) {
+      setTradeSentence("예약중");
+    }
+    else if(boards.status === 2){
+      setTradeSentence("거래완료");
+    }
+  }, [boards]);
 
   const deleteImage = () => {
     const imgList = [];
@@ -90,7 +102,6 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
         payload: body,
       })
     }
-    
   };
 
   const onDelete = (e) => {
@@ -168,21 +179,27 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
         <>
           {boards.studentId === studentId ? (
             <div className="detail-trade-status-box">
+              {boards.status === 2 ? (
+                  <Link to={`/boards/${categoryName}/${num}/complete`} className="trade-complete-btn">거래완료</Link>
+              ) : (
+                <></>
+              )}
+
               <ul>
                 <li className="detail-trade-status">
                   {
                     (function() {
-                      if (tradeSentence === "판매중") return (
+                      if (boards.status === 0) return (
                         <>
                           <span className="trade-status sale"></span> {tradeSentence}<IoMdArrowDropdown />
                         </>
                       ) 
-                      if (tradeSentence === "예약중") return (
+                      if (boards.status === 1) return (
                         <>
                           <span className="trade-status reservation"></span> {tradeSentence}<IoMdArrowDropdown />
                         </>
                       ) 
-                      if (tradeSentence === "거래완료") return (
+                      if (boards.status === 2) return (
                         <>
                           <span className="trade-status complete"></span> {tradeSentence}<IoMdArrowDropdown />
                         </>
