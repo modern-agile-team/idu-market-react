@@ -3,6 +3,7 @@ import authSaga from "./authSaga";
 import boardsSaga from "./boardsSaga";
 import profileSaga from "./profileSaga";
 import commentSaga from "./commentSaga";
+import tradeSaga from "./tradeSaga";
 import axios from "axios";
 import dotenv from "dotenv";
 
@@ -16,5 +17,6 @@ export default function* rootSaga() {
     fork(boardsSaga),
     fork(profileSaga),
     fork(commentSaga),
+    fork(tradeSaga),
   ]);
 }

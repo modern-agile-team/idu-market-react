@@ -41,6 +41,9 @@ import ProfilePage from "./Profile/ProfilePage";
 import WatchlistPage from "./WatchlistPage/WatchlistPage";
 import ScrollToTop from "../components/ScrollToTop";
 
+//Trade Complete
+import TradeCompletePage from '../pages/Trade/TradeCompletePage'
+
 const MainRouter = () => {
   return (
     <>
@@ -112,6 +115,9 @@ const MainRouter = () => {
           />
           {/* watchlist */}
           <Route component={WatchlistPage} path="/watchlist/:studentId" exact />
+
+          {/* watchlist */}
+          <Route component={TradeCompletePage} path="/boards/:categoryName/:num/complete" exact />
         </Switch>
       </ScrollToTop>
       <Footer></Footer>
