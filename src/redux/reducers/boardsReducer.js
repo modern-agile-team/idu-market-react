@@ -156,6 +156,7 @@ const boards = (state = initialState, action) => {
         msg: action.payload.msg,
         status: action.payload.status,
       };
+      
     case BOARD_STATUS_FAILURE:
       return {
         ...state,

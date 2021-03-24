@@ -25,6 +25,8 @@ const initialState = {
   name: "",
   exp: "",
   iss: "",
+  profilePath: "",
+  isAdmin: "",
 };
 
 const auth = (state = initialState, action) => {
@@ -112,6 +114,8 @@ const auth = (state = initialState, action) => {
         name: action.payload.user.name,
         exp: action.payload.user.exp,
         iss: action.payload.user.iss,
+        profilePath: action.payload.user.profilePath,
+        isAdmin: action.payload.user.isAdmin,
       };
 
     case LOADING_FAILURE:
@@ -124,6 +128,8 @@ const auth = (state = initialState, action) => {
         name: "",
         exp: "",
         iss: "",
+        profilePath: "",
+        isAdmin: "",
       };
 
     default:

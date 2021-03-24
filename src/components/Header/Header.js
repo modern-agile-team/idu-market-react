@@ -8,7 +8,6 @@ import { LOGOUT_REQUEST } from "../../redux/types";
 
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import { BiUserCircle } from "react-icons/bi";
 
 const Header = () => {
   const [sidebar, setSidebar] = useState(false);
@@ -63,7 +62,9 @@ const Header = () => {
                 className="header-profile-btn"
                 onClick={() => setSidebar(!sidebar)}
               >
-                <BiUserCircle />
+                <div className="header-profile-box">
+                  <img src={auth.profilePath} alt="프로필 이미지" />
+                </div>
               </Link>
               <Link
                 to="/login"
