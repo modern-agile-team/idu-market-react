@@ -50,7 +50,7 @@ const Header = () => {
                   item={item}
                   key={index}
                   showSidebar={showSidebar}
-                ></DropMenu>
+                />
               );
             })}
           </ul>

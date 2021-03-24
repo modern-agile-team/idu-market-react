@@ -25,7 +25,11 @@ const DropMenu = ({ item, showSidebar }) => {
         onClick={item.subMenu && showDropMenu}
         ref={refEl}
       >
-        {item.title}
+        {item.path ?
+         <Link to={`${item.path}`}>{item.title}</Link> 
+         : 
+         <>{item.title}</>
+        }
 
         <ul className="header-menu-drop">
           {dropMenu &&
