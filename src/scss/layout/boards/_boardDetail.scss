@@ -99,14 +99,16 @@
   margin-right: 10px;
 
   .trade-complete-btn {
+    width: 90px;
     position: absolute;
     padding: 4px 10px;
     font-family: $Jua-font;
     font-size: 1.2rem;
-    right: 10px;
-    top: -40px;
+    right: 130px;
+    top: 0px;
     background-color: $bg-color-2;
     border: 2px solid $main-color-6;
+    border-radius: 8px;
     cursor: pointer;
 
     &:hover {
@@ -221,8 +223,8 @@
     .trade-complete-btn {
       padding: 3px 8px;
       font-size: 1rem;
-      right: 10px;
-      top: -40px;
+      width: 80px;
+      right: 110px;
     }
 
     .detail-trade-status {
@@ -269,6 +271,16 @@
   .detail-edtior {
     margin: 50px 0;
   }
+
+  .detail-trade-status-box {
+    .trade-complete-btn {
+      width: 70px;
+      padding: 3px 5px;
+      font-size: 0.9rem;
+      right: -200px;
+      top: -50px;
+    }
+  }
 }
 
 @media screen and (max-width: 360px) { 
@@ -304,7 +316,9 @@
     .detail-trade-status {
       font-size: 0.9rem;
       cursor: pointer;
-
+    }
+    .trade-complete-btn {
+      right: -180px;
     }
   }
 }
