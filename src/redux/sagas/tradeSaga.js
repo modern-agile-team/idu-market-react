@@ -2,9 +2,9 @@ import axios from "axios";
 import { all, fork, put, takeEvery, call } from "redux-saga/effects";
 import { push } from "connected-react-router";
 import {
-  TRADE_COMMET_GET_REQUEST,
-  TRADE_COMMET_GET_SUCCESS,
-  TRADE_COMMET_GET_FAILURE,
+  TRADE_COMMENT_GET_REQUEST,
+  TRADE_COMMENT_GET_SUCCESS,
+  TRADE_COMMENT_GET_FAILURE,
   TRADE_COMPLETE_REQUEST,
   TRADE_COMPLETE_SUCCESS,
   TRADE_COMPLETE_FAILURE,
@@ -24,12 +24,12 @@ function* tradeCommentGet(action) {
     console.log(result);
 
     yield put({
-      type: TRADE_COMMET_GET_SUCCESS,
+      type: TRADE_COMMENT_GET_SUCCESS,
       payload: result.data,
     });
   } catch (e) {
     yield put({
-      type: TRADE_COMMET_GET_FAILURE,
+      type: TRADE_COMMENT_GET_FAILURE,
       payload: e.response,
     });
   }
@@ -70,7 +70,7 @@ function* tradeComplete(action) {
 }
   
 function* watchTradeCommentGet() {
-  yield takeEvery(TRADE_COMMET_GET_REQUEST, tradeCommentGet);
+  yield takeEvery(TRADE_COMMENT_GET_REQUEST, tradeCommentGet);
 }
 
 function* watchTradeComplete() {

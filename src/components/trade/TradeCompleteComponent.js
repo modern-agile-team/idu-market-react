@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import { BOARD_DETAIL_REQUEST, TRADE_COMMET_GET_REQUEST, TRADE_COMPLETE_REQUEST } from '../../redux/types';
+import { BOARD_DETAIL_REQUEST, TRADE_COMMENT_GET_REQUEST, TRADE_COMPLETE_REQUEST } from '../../redux/types';
 
 const TradeCompleteComponent = (props) => {
     const categoryName = props.match.params.categoryName;
@@ -10,25 +10,42 @@ const TradeCompleteComponent = (props) => {
     const dispatch = useDispatch();
     const auth = useSelector(state => state.auth);
     const buyers = useSelector(state => state.trade.buyers);
-    const studentId = useSelector(state => state.boards.studentId);
+    const { studentId, status } = useSelector(state => state.boards);
 
     useEffect(() => {
-        const body = {
-            categoryName,
-            num,
-        };
+        if (categoryName === 'book' 
+        || categoryName === 'device'
+        || categoryName === 'clothes') {
+            if(auth.id === studentId) {
+                const body = {
+                    categoryName,
+                    num,
+                };
+        
+                dispatch({
+                    type: TRADE_COMMENT_GET_REQUEST,
+                    payload: body,
+                });
+        
+                dispatch({
+                    type: BOARD_DETAIL_REQUEST,
+                    payload: body,
+                });
+            } else {
+                alert("잘못된 접근입니다.");
+                props.history.push('/');
+            }
+        } else {
+            alert("잘못된 접근입니다.");
+            props.history.push('/');
+        }
 
-        dispatch({
-            type: TRADE_COMMET_GET_REQUEST,
-            payload: body,
-        });
+        if(status === 0 || status === 1) {
+            alert("거래 완료 상태가 아닙니다.");
+            props.history.push('/');
+        }
 
-        dispatch({
-            type: BOARD_DETAIL_REQUEST,
-            payload: body,
-        });
-
-    }, [dispatch, categoryName, num]);
+    }, [dispatch, categoryName, num, props.history, status]);
 
     const onConfirmTrade = e => {
         const confirmBuyer = window.confirm(`${e.target.textContent}님으로 결정하시겠습니까?`);
@@ -61,7 +78,7 @@ const TradeCompleteComponent = (props) => {
         <section className="trade-complete" id="trade-complete">
             <div className="container">
                 {buyers ? (
-                    <h1 className="trade-buyer-number">{`구매 요청 인원 (${buyers.length === 0 ? 0 : buyers.length - 1})`}</h1>
+                    <h1 className="trade-buyer-number">{`구매 요청 인원 (${buyers.length - 1 === -1 ? 0 : buyers.length - 1})`}</h1>
                 ) : (
                     <></>
                 )}

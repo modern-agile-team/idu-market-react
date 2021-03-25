@@ -20,21 +20,30 @@ const BoardDetailComponent = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({
-      type: BOARD_DETAIL_REQUEST,
-      payload: {
-        categoryName,
-        num,
-      },
-    });
-
-    dispatch({
-      type: COMMENT_GET_REQUEST,
-      payload: {
-        categoryName,
-        num,
-      },
-    });
+    if (categoryName === 'book' 
+    || categoryName === 'device'
+    || categoryName === 'clothes'
+    || categoryName === 'free'
+    || categoryName === 'notice') {
+      dispatch({
+        type: BOARD_DETAIL_REQUEST,
+        payload: {
+          categoryName,
+          num,
+        },
+      });
+  
+      dispatch({
+        type: COMMENT_GET_REQUEST,
+        payload: {
+          categoryName,
+          num,
+        },
+      });
+    } else {
+      alert("잘못된 접근입니다.");
+      props.history.push("/");
+    }
   }, [dispatch, categoryName, num]);
 
   return (

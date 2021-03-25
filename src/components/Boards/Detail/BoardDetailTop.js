@@ -20,6 +20,7 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
   const studentId = useSelector((state) => state.auth.id);
 
   const [tradeSentence, setTradeSentence] = useState("판매중");
+  const [dropStatus, setDropStatus] = useState(false);
 
   useEffect(() => {
     if(boards.status === 0) {
@@ -186,7 +187,7 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
               )}
 
               <ul>
-                <li className="detail-trade-status">
+                <li className="detail-trade-status" onClick={() => setDropStatus(!dropStatus)}>
                   {
                     (function() {
                       if (boards.status === 0) return (
@@ -206,17 +207,22 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
                       ) 
                     })()
                   }
-                  <ul className="detail-trade-status-drop">
-                    <li value="판매중" onClick={onTradeSentenceClick}>
-                      <span className="trade-status sale"></span>판매중
-                    </li>
-                    <li value="예약중" onClick={onTradeSentenceClick}>
-                      <span className="trade-status reservation"></span>예약중
-                    </li>
-                    <li value="거래완료" onClick={onTradeSentenceClick}>
-                      <span className="trade-status complete"></span>거래완료
-                    </li>
-                  </ul>
+
+                  {dropStatus ? (
+                    <ul className="detail-trade-status-drop">
+                      <li value="판매중" onClick={onTradeSentenceClick}>
+                        <span className="trade-status sale"></span>판매중
+                      </li>
+                      <li value="예약중" onClick={onTradeSentenceClick}>
+                        <span className="trade-status reservation"></span>예약중
+                      </li>
+                      <li value="거래완료" onClick={onTradeSentenceClick}>
+                        <span className="trade-status complete"></span>거래완료
+                      </li>
+                    </ul>
+                  ) : (
+                    <></>
+                  )}
                 </li>
               </ul>
             </div>

@@ -1,7 +1,7 @@
 import {
-  TRADE_COMMET_GET_REQUEST,
-  TRADE_COMMET_GET_SUCCESS,
-  TRADE_COMMET_GET_FAILURE,
+  TRADE_COMMENT_GET_REQUEST,
+  TRADE_COMMENT_GET_SUCCESS,
+  TRADE_COMMENT_GET_FAILURE,
   TRADE_COMPLETE_REQUEST,
   TRADE_COMPLETE_SUCCESS,
   TRADE_COMPLETE_FAILURE,
@@ -17,14 +17,14 @@ const initialState = {
 const trade = (state = initialState, action) => {
     switch (action.type) {
       case TRADE_COMPLETE_REQUEST:
-      case TRADE_COMMET_GET_REQUEST:
+      case TRADE_COMMENT_GET_REQUEST:
         return {
           ...state,
           loading: true,
           msg: "",
         };
   
-      case TRADE_COMMET_GET_SUCCESS:
+      case TRADE_COMMENT_GET_SUCCESS:
         return {
           ...state,
           buyers: action.payload.buyers,
@@ -32,7 +32,7 @@ const trade = (state = initialState, action) => {
           msg: action.payload.msg,
         };
   
-      case TRADE_COMMET_GET_FAILURE:
+      case TRADE_COMMENT_GET_FAILURE:
         return {
           ...state,
           loading: false,

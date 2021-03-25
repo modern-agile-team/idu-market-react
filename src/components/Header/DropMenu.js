@@ -26,7 +26,7 @@ const DropMenu = ({ item, showSidebar }) => {
         ref={refEl}
       >
         {item.path ?
-         <Link to={`${item.path}`}>{item.title}</Link> 
+         <Link to={`${item.path}`} onClick={showSidebar}>{item.title}</Link> 
          : 
          <>{item.title}</>
         }

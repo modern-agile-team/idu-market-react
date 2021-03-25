@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 //Header, Footer
 import Header from "../components/Header/Header";
@@ -118,9 +118,11 @@ const MainRouter = () => {
 
           {/* watchlist */}
           <Route component={TradeCompletePage} path="/boards/:categoryName/:num/complete" exact />
+
+          <Redirect from="*" to="/" />
         </Switch>
       </ScrollToTop>
-      <Footer></Footer>
+      <Footer />
     </>
   );
 };
