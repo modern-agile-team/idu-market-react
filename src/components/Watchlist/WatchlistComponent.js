@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import BoardListItem from '../../components/Boards/BoardListItem';
+import { useSelector } from 'react-redux';
 
 
 
@@ -9,22 +10,28 @@ const WatchlistComponent = (props) => {
     const studentId = props.match.params.studentId
     const [productList, setProductList] = useState([]);
     const [loading, setLoading] = useState(false);
+    const auth = useSelector(state => state.auth);
 
     useEffect(() => {
-        axios
-        .get(`/api/watchlist/${studentId}`)
-        .then((response) => {
-            console.log(response.data);
-            if (response.data.success) {
-            const result = response.data.boards;
-            setLoading(true);
-            setProductList(result);
-            }
-        })
-        .catch(e => {
-            console.log(e);
-        })
-    }, [studentId]);
+        if (studentId !== auth.id) {
+            alert("잘못된 접근입니다.");
+            props.history.push("/");
+        } else {
+            axios
+            .get(`/api/watchlist/${studentId}`)
+            .then((response) => {
+                console.log(response.data);
+                if (response.data.success) {
+                const result = response.data.boards;
+                setLoading(true);
+                setProductList(result);
+                }
+            })
+            .catch(e => {
+                console.log(e);
+            })
+        }
+    }, [studentId, auth.id, props.history]);
 
     return (
         <section className="market" id="market">

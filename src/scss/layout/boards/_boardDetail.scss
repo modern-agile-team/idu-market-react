@@ -121,13 +121,7 @@
     font-size: 1.2rem;
     cursor: pointer;
 
-    &:hover .detail-trade-status-drop {
-      display: block;
-    }
-
     .detail-trade-status-drop {
-      display: none; 
-
       li {
         padding-left: 10px;
         margin: 7px 0;
