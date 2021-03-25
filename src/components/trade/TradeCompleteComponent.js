@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import { BOARD_DETAIL_REQUEST, TRADE_COMMENT_GET_REQUEST, TRADE_COMPLETE_REQUEST } from '../../redux/types';
+import { TRADE_COMMENT_GET_REQUEST, TRADE_COMPLETE_REQUEST } from '../../redux/types';
 
 const TradeCompleteComponent = (props) => {
     const categoryName = props.match.params.categoryName;
@@ -16,27 +16,22 @@ const TradeCompleteComponent = (props) => {
         if (categoryName === 'book' 
         || categoryName === 'device'
         || categoryName === 'clothes') {
+
+            if (status === 0 || status === 1) {
+                alert("거래 완료 상태가 아닙니다.");
+                props.history.push('/');
+            }
+            
             if (auth.id === studentId) {
                 const body = {
                     categoryName,
                     num,
                 };
-                
-                if (status === 0 || status === 1) {
-                    alert("거래 완료 상태가 아닙니다.");
-                    props.history.push('/');
-                }
-
+    
                 dispatch({
                     type: TRADE_COMMENT_GET_REQUEST,
                     payload: body,
                 });
-        
-                dispatch({
-                    type: BOARD_DETAIL_REQUEST,
-                    payload: body,
-                });
-
             } else {
                 alert("잘못된 접근입니다.");
                 props.history.push('/');
@@ -46,7 +41,7 @@ const TradeCompleteComponent = (props) => {
             props.history.push('/');
         }
 
-    }, [dispatch, categoryName, num, props.history, status]);
+    }, [dispatch, categoryName, num, status, auth.id, studentId, props.history]);
 
     const onConfirmTrade = e => {
         const confirmBuyer = window.confirm(`${e.target.textContent}님으로 결정하시겠습니까?`);
@@ -88,8 +83,8 @@ const TradeCompleteComponent = (props) => {
                                         >
                                             {buyer.id}
                                         </div>
-                                    )
-                                }
+                                    );
+                                } else return null
                             })}
                         </>
                     ) : (
