@@ -10,7 +10,7 @@ import {
   IoIosListBox,
 } from "react-icons/io";
 
-import { LOADING_REQUEST, PROFILE_GET_REQUEST, PROFILE_IMAGE_UPDATE_REQUEST } from "../../redux/types";
+import { PROFILE_GET_REQUEST, PROFILE_IMAGE_UPDATE_REQUEST } from "../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProfileComponent = (props) => {
@@ -111,7 +111,7 @@ const ProfileComponent = (props) => {
                 </Link>
               </p>
               <p>
-                <Link to="/">
+                <Link to={`/sale-list/${studentId}`}>
                   <span>
                     <IoIosListBox />
                   </span>
@@ -119,7 +119,7 @@ const ProfileComponent = (props) => {
                 </Link>
               </p>
               <p>
-                <Link to="/">
+                <Link to={`/purchase-list/${studentId}`}>
                   <span>
                     <IoIosListBox />
                   </span>

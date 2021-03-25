@@ -4,9 +4,7 @@ import { withRouter } from "react-router-dom";
 import BoardListItem from '../../components/Boards/BoardListItem';
 import { useSelector } from 'react-redux';
 
-
-
-const WatchlistComponent = (props) => {
+const SaleListComponent = (props) => {
     const studentId = props.match.params.studentId
     const [productList, setProductList] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -15,14 +13,14 @@ const WatchlistComponent = (props) => {
     useEffect(() => {
         if (studentId !== auth.id) {
             alert("잘못된 접근입니다.");
-            props.history.push(`/`);
+            props.history.push("/");
         } else {
             axios
-            .get(`/api/watchlist/${studentId}`)
+            .get(`/api/sale-list/${studentId}`)
             .then((response) => {
                 console.log(response.data);
                 if (response.data.success) {
-                const result = response.data.boards;
+                const result = response.data.saleLists;
                 setLoading(true);
                 setProductList(result);
                 }
@@ -38,12 +36,12 @@ const WatchlistComponent = (props) => {
             {loading ? (
                 <>
                     <h1 className="watchlist-title">
-                        {`관심 목록 (${productList.length})`}
+                        {`판매 목록 (${productList.length})`}
                     </h1>
                     <div className="container">
                         <BoardListItem
                             productList={productList}
-                            watchlist
+                            saleList
                         />
                     </div>
                 </>
@@ -59,4 +57,4 @@ const WatchlistComponent = (props) => {
     );
 };
 
-export default withRouter(WatchlistComponent);
+export default withRouter(SaleListComponent);
