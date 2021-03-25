@@ -44,6 +44,10 @@ import ScrollToTop from "../components/ScrollToTop";
 //Trade Complete
 import TradeCompletePage from '../pages/Trade/TradeCompletePage'
 
+//Purchase, Sale List
+import PurchaseListPage from "./purchaseAndSaleList/PurchaseListPage";
+import SaleListPage from "./purchaseAndSaleList/SaleListPage";
+
 const MainRouter = () => {
   return (
     <>
@@ -114,11 +118,19 @@ const MainRouter = () => {
             exact
           />
           {/* watchlist */}
-          <Route component={WatchlistPage} path="/watchlist/:studentId" exact />
+          <Route component={Auth(WatchlistPage, true)} path="/watchlist/:studentId" exact />
 
-          {/* watchlist */}
-          <Route component={TradeCompletePage} path="/boards/:categoryName/:num/complete" exact />
+          {/* Trade Complet */}
+          <Route component={Auth(TradeCompletePage, true)} path="/boards/:categoryName/:num/complete" exact />
 
+          {/* Purchase List*/}
+          <Route component={Auth(PurchaseListPage, true)} path="/purchase-list/:studentId" exact />
+
+          {/* Purchase List*/}
+          <Route component={Auth(SaleListPage, true)} path="/sale-list/:studentId" exact />
+
+
+          {/* Redirect */}
           <Redirect from="*" to="/" />
         </Switch>
       </ScrollToTop>

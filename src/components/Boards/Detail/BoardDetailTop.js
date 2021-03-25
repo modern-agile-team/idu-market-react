@@ -122,7 +122,7 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
       });
     }
   };
-
+  console.log(categoryName);
   return (
     <div className="detail-top-box">
       {boardDetail ? (
@@ -150,13 +150,20 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
               삭제
             </button>
             <Link 
-              to={`/boards/${categoryName}`} className="detail-btn-list">
+              to={function() {
+                if (categoryName === 'purchase-list') return `/purchase-list/${studentId}`
+                else if (categoryName === 'sale-list') return `/sale-list/${studentId}`
+                else return `/boards/${categoryName}`
+              }()} className="detail-btn-list">
               목록
             </Link>
           </>
         ) : (
           <>
-            <Link to={categoryName === 'watchlist' ? `/watchlist/${studentId}` : `/boards/${categoryName}`} className="detail-btn-list">
+            <Link to={function() {
+                if (categoryName === 'watchlist') return `/watchlist/${studentId}`
+                else return `/boards/${categoryName}`
+              }()} className="detail-btn-list">
               목록
             </Link>
           </>

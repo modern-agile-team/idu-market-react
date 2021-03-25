@@ -37,6 +37,8 @@ const initialState = {
   updateDate: "",
   isLoading: false,
   msg: "",
+  watchListFlag: null,
+  categoryName: "",
 };
 
 const boards = (state = initialState, action) => {
@@ -115,6 +117,8 @@ const boards = (state = initialState, action) => {
         inDate: action.payload.board.inDate,
         updateDate: action.payload.board.updateDate,
         msg: action.payload.msg,
+        watchListFlag: action.payload.watchListFlag,
+        categoryName: action.payload.categoryName,
       };
 
     case BOARD_DETAIL_FAILURE:
