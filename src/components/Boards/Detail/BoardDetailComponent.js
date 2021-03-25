@@ -44,7 +44,7 @@ const BoardDetailComponent = (props) => {
       alert("잘못된 접근입니다.");
       props.history.push("/");
     }
-  }, [dispatch, categoryName, num]);
+  }, [dispatch, categoryName, num, props.history]);
 
   return (
     <section id="board-Detail" className="board-Detail">
