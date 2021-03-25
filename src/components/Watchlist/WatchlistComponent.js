@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import BoardListItem from '../../components/Boards/BoardListItem';
 import { useSelector } from 'react-redux';
 
@@ -37,6 +37,11 @@ const WatchlistComponent = (props) => {
         <section className="market" id="market">
             {loading ? (
                 <>
+                    <Link 
+                        to={`/students/${studentId}`}
+                        className="profile-move-btn"
+                        >Profile
+                    </Link>
                     <h1 className="watchlist-title">
                         {`관심 목록 (${productList.length})`}
                     </h1>

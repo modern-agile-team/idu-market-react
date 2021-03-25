@@ -35,6 +35,19 @@
     align-items: center;
     justify-content: center;
 }
+.profile-move-btn {
+    position: absolute;
+    top: -50px;
+    font-size: 1rem;
+    padding: 3px 15px;
+    font-family: $Jua-font;
+    border: 2px solid $main-color-4;
+    margin-bottom: 20px; 
+
+    &:hover {
+        background: $main-color-1;
+    }
+}
 
 @media screen and (max-width: 767px){ 
     .watchlist-btn-box {
@@ -47,5 +60,12 @@
     .watchlist-title {
         font-size: 1.4rem;
         padding-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 360px){
+    .profile-move-btn {
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
