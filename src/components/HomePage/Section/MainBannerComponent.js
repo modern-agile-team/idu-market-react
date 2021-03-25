@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import BannerImage from "../../../img/main-banner.png";
 
 const MainBannerComponent = () => {
-  const [show, setShow] = useState(false);
-
-  setTimeout(() => setShow(true), 400);
 
   return (
     <section id="main-banner" className="main-banner">
@@ -12,7 +9,7 @@ const MainBannerComponent = () => {
         <h1>
           <span>Idu</span> Used Article Marke<em>t</em>
         </h1>
-        <p className={show ? "show" : ""}>by. Woowahan Agile</p>
+        <p className="show">by. Woowahan Agile</p>
       </div>
       <div className="banner-img">
         <img className="show" src={BannerImage} alt="배너 이미지" />
