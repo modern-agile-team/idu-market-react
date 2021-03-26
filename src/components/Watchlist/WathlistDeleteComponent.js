@@ -2,31 +2,27 @@ import axios from "axios";
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { AiFillHeart } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { BOARD_WATCHLIST_DELETE_REQUEST } from "../../redux/types";
 
 function WatchlistDeleteComponent(props) {
+  const dispatch = useDispatch();
   const boardDetail = useSelector((state) => state.boards);
   const auth = useSelector((state) => state.auth);
 
   const onDeleteWatchlist = () => {
     const confirmWatchlist = window.confirm("관심목록에서 제거하시겠습니까?");
 
+    const body = {
+      boardNum: boardDetail.num,
+      studentId: auth.id,
+    };
+
     if (confirmWatchlist) {
-      axios
-        .delete(`/api/watchlist/${auth.id}`, {
-          data: {
-            boardNum: boardDetail.num,
-          },
-        })
-        .then((response) => {
-          if (response.data.success) {
-            alert(response.data.msg);
-          }
-        })
-        .catch((err) => {
-          const response = err.response;
-          alert(response.data.msg);
-        });
+      dispatch({
+        type: BOARD_WATCHLIST_DELETE_REQUEST,
+        payload: body,
+      });
     }
   };
 
