@@ -44,7 +44,11 @@ const SaleListComponent = (props) => {
             {`판매 목록 (${productList.length})`}
           </h1>
           <div className="container">
-            <BoardListItem productList={productList} saleList />
+            <BoardListItem
+              productList={productList}
+              profile
+              studentId={studentId}
+            />
           </div>
         </>
       ) : (

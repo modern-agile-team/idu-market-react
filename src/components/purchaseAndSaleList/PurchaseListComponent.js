@@ -44,7 +44,11 @@ const PurchaseListComponent = (props) => {
             {`구매 목록 (${productList.length})`}
           </h1>
           <div className="container">
-            <BoardListItem productList={productList} purchaseList />
+            <BoardListItem
+              productList={productList}
+              profile
+              studentId={studentId}
+            />
           </div>
         </>
       ) : (
