@@ -21,10 +21,6 @@ function WatchlistDeleteComponent(props) {
         .then((response) => {
           if (response.data.success) {
             alert(response.data.msg);
-
-            setTimeout(() => {
-              props.history.push(`/watchlist/${auth.id}`);
-            }, 300);
           }
         })
         .catch((err) => {
