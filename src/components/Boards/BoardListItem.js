@@ -2,7 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineUser, AiOutlineComment } from "react-icons/ai";
 
-const BoardListItem = ({ productList, categoryName, watchlist, purchaseList, saleList }) => {
+const BoardListItem = ({
+  studentId,
+  productList,
+  categoryName,
+  watchlist,
+  purchaseList,
+  saleList,
+}) => {
   console.log(productList);
   return (
     <>
@@ -10,12 +17,14 @@ const BoardListItem = ({ productList, categoryName, watchlist, purchaseList, sal
         return (
           <div className="market-items" key={board.num}>
             <Link
-              to={function() {
-                if (watchlist) return `/boards/watchlist/${board.num}`
-                else if (purchaseList) return `/boards/purchase-list/${board.num}`
-                else if (saleList) return `/boards/sale-list/${board.num}`
-                else return `/boards/${categoryName}/${board.num}`
-              }()}
+              to={(function () {
+                if (watchlist)
+                  return `/boards/watchlist/${board.num}/${studentId}`;
+                else if (purchaseList)
+                  return `/boards/purchase-list/${board.num}`;
+                else if (saleList) return `/boards/sale-list/${board.num}`;
+                else return `/boards/${categoryName}/${board.num}/${studentId}`;
+              })()}
               className="market-img-box-link"
             >
               <div className="market-img-box">
@@ -23,13 +32,14 @@ const BoardListItem = ({ productList, categoryName, watchlist, purchaseList, sal
               </div>
             </Link>
 
-            <Link 
-              to={function() {
-                if (watchlist) return `/boards/watchlist/${board.num}`
-                else if (purchaseList) return `/boards/purchase-list/${board.num}`
-                else if (saleList) return `/boards/sale-list/${board.num}`
-                else return `/boards/${categoryName}/${board.num}`
-              }()}
+            <Link
+              to={(function () {
+                if (watchlist) return `/boards/watchlist/${board.num}`;
+                else if (purchaseList)
+                  return `/boards/purchase-list/${board.num}`;
+                else if (saleList) return `/boards/sale-list/${board.num}`;
+                else return `/boards/${categoryName}/${board.num}/${studentId}`;
+              })()}
             >
               <h1 className="market-item-title">{board.title}</h1>
             </Link>
@@ -40,13 +50,15 @@ const BoardListItem = ({ productList, categoryName, watchlist, purchaseList, sal
               {board.seller ? (
                 <>
                   <Link to={`/students/${board.seller}`}>
-                    <AiOutlineUser />{board.seller} &nbsp;
+                    <AiOutlineUser />
+                    {board.seller} &nbsp;
                   </Link>
                 </>
               ) : (
                 <>
                   <Link to={`/students/${board.studentId}`}>
-                    <AiOutlineUser />{board.studentId} &nbsp;
+                    <AiOutlineUser />
+                    {board.studentId} &nbsp;
                   </Link>
                 </>
               )}

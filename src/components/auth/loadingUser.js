@@ -1,10 +1,10 @@
 import store from "../../store";
 import { LOADING_REQUEST } from "../../redux/types";
 
-const loadingUser = () => {
+const loadingUser = async () => {
   try {
     if (localStorage.getItem("jwt")) {
-      store.dispatch({
+      await store.dispatch({
         type: LOADING_REQUEST,
         payload: localStorage.getItem("jwt"),
       });

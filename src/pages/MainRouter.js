@@ -42,7 +42,7 @@ import WatchlistPage from "./WatchlistPage/WatchlistPage";
 import ScrollToTop from "../components/ScrollToTop";
 
 //Trade Complete
-import TradeCompletePage from '../pages/Trade/TradeCompletePage'
+import TradeCompletePage from "../pages/Trade/TradeCompletePage";
 
 //Purchase, Sale List
 import PurchaseListPage from "./purchaseAndSaleList/PurchaseListPage";
@@ -108,7 +108,7 @@ const MainRouter = () => {
           {/* boards Detail */}
           <Route
             component={Auth(BoardDetailPage, null)}
-            path="/boards/:categoryName/:num"
+            path="/boards/:categoryName/:num/:studentId"
             exact
           />
           {/* Profile */}
@@ -118,17 +118,32 @@ const MainRouter = () => {
             exact
           />
           {/* watchlist */}
-          <Route component={Auth(WatchlistPage, true)} path="/watchlist/:studentId" exact />
+          <Route
+            component={Auth(WatchlistPage, null)}
+            path="/watchlist/:studentId"
+            exact
+          />
 
           {/* Trade Complet */}
-          <Route component={Auth(TradeCompletePage, true)} path="/boards/:categoryName/:num/complete" exact />
+          <Route
+            component={Auth(TradeCompletePage, null)}
+            path="/boards/:categoryName/:num/complete"
+            exact
+          />
 
           {/* Purchase List*/}
-          <Route component={Auth(PurchaseListPage, true)} path="/purchase-list/:studentId" exact />
+          <Route
+            component={Auth(PurchaseListPage, null)}
+            path="/purchase-list/:studentId"
+            exact
+          />
 
           {/* Purchase List*/}
-          <Route component={Auth(SaleListPage, true)} path="/sale-list/:studentId" exact />
-
+          <Route
+            component={Auth(SaleListPage, null)}
+            path="/sale-list/:studentId"
+            exact
+          />
 
           {/* Redirect */}
           <Redirect from="*" to="/" />

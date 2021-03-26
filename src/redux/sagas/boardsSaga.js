@@ -141,8 +141,9 @@ function* boardDelete(action) {
 function boardDetailAPI(action) {
   const categoryName = action.categoryName;
   const num = action.num;
-  
-  return axios.get(`/api/boards/${categoryName}/${num}`);
+  const studentId = action.studentId;
+
+  return axios.get(`/api/boards/${categoryName}/${num}/${studentId}`);
 }
 
 function* boardDetail(action) {
@@ -192,7 +193,7 @@ function boardStatusAPI(action) {
   const num = action.num;
   const body = {
     status: action.status,
-  }
+  };
   return axios.patch(`/api/boards/${categoryName}/${num}/status`, body);
 }
 

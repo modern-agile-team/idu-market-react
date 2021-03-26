@@ -3,10 +3,12 @@ import { AiOutlineArrowUp } from "react-icons/ai";
 import BoardListItem from "../BoardListItem";
 import axios from "axios";
 import SearchComponent from "../Search/SearchComponent";
+import { useSelector } from "react-redux";
 
 const MarketListComponent = ({ categoryName }) => {
   const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const auth = useSelector((state) => state.auth);
 
   const LAST_COUNT = 9;
 
@@ -45,8 +47,8 @@ const MarketListComponent = ({ categoryName }) => {
     }
   };
 
-  const scrollTop = () =>{
-    window.scrollTo({top: 0, behavior: 'smooth'});
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -66,11 +68,25 @@ const MarketListComponent = ({ categoryName }) => {
           <button className="scroll-top-btn" onClick={scrollTop}>
             <AiOutlineArrowUp />
           </button>
-          <SearchComponent categoryName={categoryName}/>
+          <SearchComponent categoryName={categoryName} />
           <div className="container">
+            {auth.id.length === 0 ? (
+              <BoardListItem
+                productList={productList}
+                categoryName={categoryName}
+                studentId="not-login"
+              ></BoardListItem>
+            ) : (
+              <BoardListItem
+                productList={productList}
+                categoryName={categoryName}
+                studentId={auth.id}
+              ></BoardListItem>
+            )}
             <BoardListItem
               productList={productList}
               categoryName={categoryName}
+              studentId={auth.id}
             ></BoardListItem>
           </div>
         </>

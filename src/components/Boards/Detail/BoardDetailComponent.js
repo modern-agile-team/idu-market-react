@@ -15,39 +15,40 @@ import CommentComponent from "../Comment/CommentComponent";
 const BoardDetailComponent = (props) => {
   const categoryName = props.match.params.categoryName;
   const num = props.match.params.num;
+  const studentId = props.match.params.studentId;
 
   const boardDetail = useSelector((state) => state.boards);
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
-    if (categoryName === 'book' 
-    || categoryName === 'device'
-    || categoryName === 'clothes'
-    || categoryName === 'free'
-    || categoryName === 'notice'
-    || categoryName === 'sale-list'
-    || categoryName === 'purchase-list'
-    || categoryName === 'watchlist') {
-      dispatch({
-        type: BOARD_DETAIL_REQUEST,
-        payload: {
-          categoryName,
-          num,
-        },
-      });
-  
-      dispatch({
-        type: COMMENT_GET_REQUEST,
-        payload: {
-          categoryName,
-          num,
-        },
-      });
-    } else {
-      alert("잘못된 접근입니다.");
-      props.history.push("/");
+    if (studentId === "not-login") {
+      alert("로그인 후에 이용하실 수 있습니다.");
+      props.history.push("/login");
     }
-  }, [dispatch, categoryName, num,  props.history]);
+
+    if (auth.id.length !== 0) {
+      if (studentId === auth.id) {
+        dispatch({
+          type: BOARD_DETAIL_REQUEST,
+          payload: {
+            categoryName,
+            num,
+            studentId: auth.id,
+          },
+        });
+
+        dispatch({
+          type: COMMENT_GET_REQUEST,
+          payload: {
+            categoryName,
+            num,
+            studentId: auth.id,
+          },
+        });
+      }
+    }
+  }, [dispatch, categoryName, num, props.history, auth.id]);
 
   return (
     <section id="board-Detail" className="board-Detail">

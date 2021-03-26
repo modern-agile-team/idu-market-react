@@ -10,11 +10,10 @@ import {
   IMAGE_DELETE_REQUEST,
 } from "../../../redux/types";
 
-import WatchlistAddComponent from '../../Watchlist/WatchlistAddComponent';
+import WatchlistAddComponent from "../../Watchlist/WatchlistAddComponent";
 import WatchlistDeleteComponent from "../../Watchlist/WathlistDeleteComponent";
 
 const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
-
   const dispatch = useDispatch();
   const boards = useSelector((state) => state.boards);
   const studentId = useSelector((state) => state.auth.id);
@@ -23,13 +22,11 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
   const [dropStatus, setDropStatus] = useState(false);
 
   useEffect(() => {
-    if(boards.status === 0) {
+    if (boards.status === 0) {
       setTradeSentence("판매중");
-    }
-    else if(boards.status === 1) {
+    } else if (boards.status === 1) {
       setTradeSentence("예약중");
-    }
-    else if(boards.status === 2){
+    } else if (boards.status === 2) {
       setTradeSentence("거래완료");
     }
   }, [boards]);
@@ -66,42 +63,40 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
     e.preventDefault();
     setTradeSentence(e.target.textContent);
 
-    if(e.target.textContent === "판매중") {
-
+    if (e.target.textContent === "판매중") {
       const body = {
         categoryName,
         num: boardDetail.num,
-        status: 0
+        status: 0,
       };
 
       dispatch({
         type: BOARD_STATUS_REQUEST,
         payload: body,
-      })
+      });
     }
     if (e.target.textContent === "예약중") {
       const body = {
         categoryName,
         num: boardDetail.num,
-        status: 1
-
+        status: 1,
       };
       dispatch({
         type: BOARD_STATUS_REQUEST,
         payload: body,
-      })
+      });
     }
     if (e.target.textContent === "거래완료") {
       const body = {
         categoryName,
         num: boardDetail.num,
-        status: 2
+        status: 2,
       };
 
       dispatch({
         type: BOARD_STATUS_REQUEST,
         payload: body,
-      })
+      });
     }
   };
 
@@ -122,7 +117,7 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
       });
     }
   };
-  console.log(categoryName);
+
   return (
     <div className="detail-top-box">
       {boardDetail ? (
@@ -149,21 +144,29 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
             <button className="detail-btn-delete" onClick={onDelete}>
               삭제
             </button>
-            <Link 
-              to={function() {
-                if (categoryName === 'purchase-list') return `/purchase-list/${studentId}`
-                else if (categoryName === 'sale-list') return `/sale-list/${studentId}`
-                else return `/boards/${categoryName}`
-              }()} className="detail-btn-list">
+            <Link
+              to={(function () {
+                if (categoryName === "purchase-list")
+                  return `/purchase-list/${studentId}`;
+                else if (categoryName === "sale-list")
+                  return `/sale-list/${studentId}`;
+                else return `/boards/${categoryName}`;
+              })()}
+              className="detail-btn-list"
+            >
               목록
             </Link>
           </>
         ) : (
           <>
-            <Link to={function() {
-                if (categoryName === 'watchlist') return `/watchlist/${studentId}`
-                else return `/boards/${categoryName}`
-              }()} className="detail-btn-list">
+            <Link
+              to={(function () {
+                if (categoryName === "watchlist")
+                  return `/watchlist/${studentId}`;
+                else return `/boards/${categoryName}`;
+              })()}
+              className="detail-btn-list"
+            >
               목록
             </Link>
           </>
@@ -188,32 +191,47 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
           {boards.studentId === studentId ? (
             <div className="detail-trade-status-box">
               {boards.status === 2 ? (
-                  <Link to={`/boards/${categoryName}/${num}/complete`} className="trade-complete-btn">거래완료</Link>
+                <Link
+                  to={`/boards/${categoryName}/${num}/complete`}
+                  className="trade-complete-btn"
+                >
+                  거래완료
+                </Link>
               ) : (
                 <></>
               )}
 
               <ul>
-                <li className="detail-trade-status" onClick={() => setDropStatus(!dropStatus)}>
-                  {
-                    (function() {
-                      if (boards.status === 0) return (
+                <li
+                  className="detail-trade-status"
+                  onClick={() => setDropStatus(!dropStatus)}
+                >
+                  {(function () {
+                    if (boards.status === 0)
+                      return (
                         <>
-                          <span className="trade-status sale"></span> {tradeSentence}<IoMdArrowDropdown />
+                          <span className="trade-status sale"></span>{" "}
+                          {tradeSentence}
+                          <IoMdArrowDropdown />
                         </>
-                      ) 
-                      if (boards.status === 1) return (
+                      );
+                    if (boards.status === 1)
+                      return (
                         <>
-                          <span className="trade-status reservation"></span> {tradeSentence}<IoMdArrowDropdown />
+                          <span className="trade-status reservation"></span>{" "}
+                          {tradeSentence}
+                          <IoMdArrowDropdown />
                         </>
-                      ) 
-                      if (boards.status === 2) return (
+                      );
+                    if (boards.status === 2)
+                      return (
                         <>
-                          <span className="trade-status complete"></span> {tradeSentence}<IoMdArrowDropdown />
+                          <span className="trade-status complete"></span>{" "}
+                          {tradeSentence}
+                          <IoMdArrowDropdown />
                         </>
-                      ) 
-                    })()
-                  }
+                      );
+                  })()}
 
                   {dropStatus ? (
                     <ul className="detail-trade-status-drop">
@@ -245,12 +263,10 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
         <>
           {boards.studentId === studentId ? (
             <></>
+          ) : boards.watchListFlag === 1 ? (
+            <WatchlistDeleteComponent />
           ) : (
-            categoryName === 'watchlist' ? (
-              <WatchlistDeleteComponent />
-            ) : (
-              <WatchlistAddComponent categoryName={categoryName} />
-            )
+            <WatchlistAddComponent categoryName={categoryName} />
           )}
         </>
       )}

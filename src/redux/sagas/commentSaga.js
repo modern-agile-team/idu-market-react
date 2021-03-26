@@ -22,8 +22,9 @@ import {
 function CommentGetAPI(action) {
   const categoryName = action.categoryName;
   const num = action.num;
+  const studentId = action.studentId;
 
-  return axios.get(`/api/boards/${categoryName}/${num}`);
+  return axios.get(`/api/boards/${categoryName}/${num}/${studentId}`);
 }
 
 function* commentGet(action) {
@@ -64,7 +65,6 @@ function* commentUpload(action) {
       type: COMMENT_UPLOAD_SUCCESS,
       payload: result.data,
     });
-
   } catch (e) {
     yield put({
       type: COMMENT_UPLOAD_FAILURE,
