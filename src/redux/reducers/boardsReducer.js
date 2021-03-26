@@ -17,6 +17,12 @@ import {
   BOARD_STATUS_REQUEST,
   BOARD_STATUS_SUCCESS,
   BOARD_STATUS_FAILURE,
+  BOARD_WATCHLIST_ADD_REQUEST,
+  BOARD_WATCHLIST_ADD_SUCCESS,
+  BOARD_WATCHLIST_ADD_FAILURE,
+  BOARD_WATCHLIST_DELETE_REQUEST,
+  BOARD_WATCHLIST_DELETE_SUCCESS,
+  BOARD_WATCHLIST_DELETE_FAILURE,
   IMAGE_DELETE_REQUEST,
   IMAGE_DELETE_SUCCESS,
   IMAGE_DELETE_FAILURE,
@@ -159,7 +165,6 @@ const boards = (state = initialState, action) => {
         loading: false,
         msg: action.payload.msg,
         status: action.payload.status,
-        watchListFlag: action.payload.watchListFlag,
       };
 
     case BOARD_STATUS_FAILURE:
@@ -169,6 +174,38 @@ const boards = (state = initialState, action) => {
         msg: action.payload.data.msg,
         status: "",
         watchListFlag: null,
+      };
+
+    case BOARD_WATCHLIST_DELETE_REQUEST:
+    case BOARD_WATCHLIST_ADD_REQUEST:
+      return {
+        ...state,
+        loading: false,
+        msg: "",
+      };
+
+    case BOARD_WATCHLIST_ADD_SUCCESS:
+      return {
+        ...state,
+        loading: true,
+        watchListFlag: 1,
+        msg: action.payload.msg,
+      };
+
+    case BOARD_WATCHLIST_DELETE_SUCCESS:
+      return {
+        ...state,
+        loading: true,
+        watchListFlag: 0,
+        msg: action.payload.msg,
+      };
+    case BOARD_WATCHLIST_DELETE_FAILURE:
+    case BOARD_WATCHLIST_ADD_FAILURE:
+      return {
+        ...state,
+        loading: true,
+        watchListFlag: null,
+        msg: action.payload.data.msg,
       };
 
     default:

@@ -20,6 +20,12 @@ import {
   BOARD_STATUS_REQUEST,
   BOARD_STATUS_SUCCESS,
   BOARD_STATUS_FAILURE,
+  BOARD_WATCHLIST_ADD_REQUEST,
+  BOARD_WATCHLIST_ADD_SUCCESS,
+  BOARD_WATCHLIST_ADD_FAILURE,
+  BOARD_WATCHLIST_DELETE_REQUEST,
+  BOARD_WATCHLIST_DELETE_SUCCESS,
+  BOARD_WATCHLIST_DELETE_FAILURE,
   IMAGE_DELETE_REQUEST,
   IMAGE_DELETE_SUCCESS,
   IMAGE_DELETE_FAILURE,
@@ -214,6 +220,66 @@ function* boardStatus(action) {
   }
 }
 
+//Board Status
+function boardWatchlistAddAPI(action) {
+  const studentId = action.studentId;
+
+  const body = {
+    boardNum: action.boardNum,
+    categoryName: action.categoryName,
+  };
+
+  return axios.post(`/api/watchlist/${studentId}`, body);
+}
+
+function* boardWatchlistAdd(action) {
+  try {
+    const result = yield call(boardWatchlistAddAPI, action.payload);
+    console.log(result);
+
+    yield put({
+      type: BOARD_WATCHLIST_ADD_SUCCESS,
+      payload: result.data,
+    });
+  } catch (e) {
+    yield put({
+      type: BOARD_WATCHLIST_ADD_FAILURE,
+      payload: e.response,
+    });
+  }
+}
+
+//Board Delete
+function boardWatchlistDeleteAPI(action) {
+  const studentId = action.studentId;
+
+  console.log(action);
+  console.log(studentId);
+
+  return axios.delete(`/api/watchlist/${studentId}`, {
+    data: {
+      boardNum: action.boardNum,
+    },
+  });
+}
+
+function* boardWatchlistDelete(action) {
+  try {
+    const result = yield call(boardWatchlistDeleteAPI, action.payload);
+    console.log(result);
+
+    yield put({
+      type: BOARD_WATCHLIST_DELETE_SUCCESS,
+      payload: result.data,
+    });
+  } catch (e) {
+    yield put({
+      type: BOARD_WATCHLIST_DELETE_FAILURE,
+      payload: e.response,
+    });
+  }
+}
+
 //watch
 function* watchBasicBoardGet() {
   yield takeEvery(BASIC_BOARD_GET_REQUEST, basicBoardGet);
@@ -235,6 +301,14 @@ function* watchBoardStatus() {
   yield takeEvery(BOARD_STATUS_REQUEST, boardStatus);
 }
 
+function* watchBoardWatchlistAdd() {
+  yield takeEvery(BOARD_WATCHLIST_ADD_REQUEST, boardWatchlistAdd);
+}
+
+function* watchBoardWatchlistDelete() {
+  yield takeEvery(BOARD_WATCHLIST_DELETE_REQUEST, boardWatchlistDelete);
+}
+
 function* watchBoardDetailGet() {
   yield takeEvery(BOARD_DETAIL_REQUEST, boardDetail);
 }
@@ -251,6 +325,8 @@ export default function* boardsSaga() {
     fork(watchBoardUpdate),
     fork(watchBoardDelete),
     fork(watchBoardStatus),
+    fork(watchBoardWatchlistAdd),
+    fork(watchBoardWatchlistDelete),
     fork(watchImageDelete),
     fork(watchBoardDetailGet),
   ]);
