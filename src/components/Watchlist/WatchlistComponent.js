@@ -46,7 +46,7 @@ const WatchlistComponent = (props) => {
             <BoardListItem
               productList={productList}
               studentId={studentId}
-              watchlist
+              profile
             />
           </div>
         </>

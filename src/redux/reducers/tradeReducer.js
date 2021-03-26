@@ -9,55 +9,54 @@ import {
 
 const initialState = {
   buyers: null,
-    loading: false,
-    msg: "",
-    list: null,
+  loading: false,
+  msg: "",
+  list: null,
 };
 
 const trade = (state = initialState, action) => {
-    switch (action.type) {
-      case TRADE_COMPLETE_REQUEST:
-      case TRADE_COMMENT_GET_REQUEST:
-        return {
-          ...state,
-          loading: true,
-          msg: "",
-        };
-  
-      case TRADE_COMMENT_GET_SUCCESS:
-        return {
-          ...state,
-          buyers: action.payload.buyers,
-          loading: false,
-          msg: action.payload.msg,
-        };
-  
-      case TRADE_COMMENT_GET_FAILURE:
-        return {
-          ...state,
-          loading: false,
-          buyers: null,
-          msg: action.payload.data.msg,
-        };
-      
-      case TRADE_COMPLETE_SUCCESS:
-        return {
-          ...state,
-          loading: false,
-          msg: action.payload.msg,
-        }
-        
-      case TRADE_COMPLETE_FAILURE:
-        return {
-          ...state,
-          loading: false,
-          msg: action.payload.data.msg,
-        }
+  switch (action.type) {
+    case TRADE_COMPLETE_REQUEST:
+    case TRADE_COMMENT_GET_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        msg: "",
+      };
 
-      default:
-        return state;
-    }
-  };
-  
-  export default trade;
-  
+    case TRADE_COMMENT_GET_SUCCESS:
+      return {
+        ...state,
+        buyers: action.payload.comments,
+        loading: false,
+        msg: action.payload.msg,
+      };
+
+    case TRADE_COMMENT_GET_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        buyers: null,
+        msg: action.payload.data.msg,
+      };
+
+    case TRADE_COMPLETE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        msg: action.payload.msg,
+      };
+
+    case TRADE_COMPLETE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        msg: action.payload.data.msg,
+      };
+
+    default:
+      return state;
+  }
+};
+
+export default trade;

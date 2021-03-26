@@ -192,7 +192,7 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
             <div className="detail-trade-status-box">
               {boards.status === 2 ? (
                 <Link
-                  to={`/boards/${categoryName}/${num}/complete`}
+                  to={`/boards/${categoryName}/${num}/${studentId}/complete`}
                   className="trade-complete-btn"
                 >
                   거래완료

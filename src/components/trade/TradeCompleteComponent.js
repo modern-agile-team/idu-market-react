@@ -10,6 +10,7 @@ import {
 const TradeCompleteComponent = (props) => {
   const categoryName = props.match.params.categoryName;
   const num = props.match.params.num;
+  // const studentId = props.match.params.studentId;
 
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
@@ -81,9 +82,13 @@ const TradeCompleteComponent = (props) => {
     <section className="trade-complete" id="trade-complete">
       <div className="container">
         {buyers ? (
-          <h1 className="trade-buyer-number">{`구매 요청 인원 (${
-            buyers.length - 1 === -1 ? 0 : buyers.length - 1
-          })`}</h1>
+          <h1 className="trade-buyer-number">{`구매 요청 인원 (${(function () {
+            let count = 0;
+            for (let el in buyers) {
+              if (el !== studentId) count++;
+              return count;
+            }
+          })()})`}</h1>
         ) : (
           <></>
         )}
@@ -91,14 +96,14 @@ const TradeCompleteComponent = (props) => {
           {buyers && studentId ? (
             <>
               {buyers.map((buyer, index) => {
-                if (buyer.id !== studentId) {
+                if (buyer.studentId !== studentId) {
                   return (
                     <div
                       className="trade-buyer"
                       key={index}
                       onClick={onConfirmTrade}
                     >
-                      {buyer.id}
+                      {buyer.studentId}
                     </div>
                   );
                 } else return null;

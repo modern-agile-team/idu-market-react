@@ -127,7 +127,7 @@ const MainRouter = () => {
           {/* Trade Complet */}
           <Route
             component={Auth(TradeCompletePage, null)}
-            path="/boards/:categoryName/:num/complete"
+            path="/boards/:categoryName/:num/:studentId/complete"
             exact
           />
 
