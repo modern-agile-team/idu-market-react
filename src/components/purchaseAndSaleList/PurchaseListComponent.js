@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 const PurchaseListComponent = (props) => {
   const studentId = props.match.params.studentId;
   const [productList, setProductList] = useState([]);
-  const [loading, setLoading] = useState(false);
   const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
@@ -22,7 +21,6 @@ const PurchaseListComponent = (props) => {
             console.log(response.data);
             if (response.data.success) {
               const result = response.data.purchaseList;
-              setLoading(true);
               setProductList(result);
             }
           })
@@ -35,7 +33,6 @@ const PurchaseListComponent = (props) => {
 
   return (
     <section className="market" id="market">
-      {loading ? (
         <>
           <Link to={`/students/${studentId}`} className="profile-move-btn">
             Profile
@@ -51,14 +48,6 @@ const PurchaseListComponent = (props) => {
             />
           </div>
         </>
-      ) : (
-        <>
-          <div className="market-loading">
-            <div className="spin"></div>
-            <p className="market-loading-msg">Loading</p>
-          </div>
-        </>
-      )}
     </section>
   );
 };
