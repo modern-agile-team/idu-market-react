@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 
 const MarketListComponent = ({ categoryName }) => {
   const [productList, setProductList] = useState([]);
-  const [loading, setLoading] = useState(false);
   const auth = useSelector((state) => state.auth);
 
   const LAST_COUNT = 9;
@@ -29,7 +28,6 @@ const MarketListComponent = ({ categoryName }) => {
           } else {
             lastNum = result[LAST_COUNT].num;
           }
-          setLoading(true);
           setProductList((prev) => [...prev, ...result]);
         }
       });
@@ -57,13 +55,11 @@ const MarketListComponent = ({ categoryName }) => {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      setLoading(false);
     };
   }, []);
 
   return (
     <section className="market" id="market">
-      {loading ? (
         <>
           <button className="scroll-top-btn" onClick={scrollTop}>
             <AiOutlineArrowUp />
@@ -90,14 +86,6 @@ const MarketListComponent = ({ categoryName }) => {
             ></BoardListItem>
           </div>
         </>
-      ) : (
-        <>
-          <div className="market-loading">
-            <div className="spin"></div>
-            <p className="market-loading-msg">Loading</p>
-          </div>
-        </>
-      )}
     </section>
   );
 };

@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 const SaleListComponent = (props) => {
   const studentId = props.match.params.studentId;
   const [productList, setProductList] = useState([]);
-  const [loading, setLoading] = useState(false);
   const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
@@ -16,14 +15,12 @@ const SaleListComponent = (props) => {
         alert("잘못된 접근입니다.");
         props.history.push("/");
       } else {
-        console.log('hi');
         axios
           .get(`/api/sale-list/${studentId}`)
           .then((response) => {
             console.log(response.data);
             if (response.data.success) {
               const result = response.data.saleLists;
-              setLoading(true);
               setProductList(result);
             }
           })
@@ -36,7 +33,6 @@ const SaleListComponent = (props) => {
 
   return (
     <section className="market" id="market">
-      {loading ? (
         <>
           <Link to={`/students/${studentId}`} className="profile-move-btn">
             Profile
@@ -52,14 +48,6 @@ const SaleListComponent = (props) => {
             />
           </div>
         </>
-      ) : (
-        <>
-          <div className="market-loading">
-            <div className="spin"></div>
-            <p className="market-loading-msg">Loading</p>
-          </div>
-        </>
-      )}
     </section>
   );
 };
