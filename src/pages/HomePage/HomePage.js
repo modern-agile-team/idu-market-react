@@ -1,12 +1,13 @@
-import React from "react";
-import ArticlesComponent from "../../components/HomePage/Section/ArticlesComponent";
+import React, {lazy} from "react";
 import FunctionComponent from "../../components/HomePage/Section/FunctionComponent";
-import IntroduceComponent from "../../components/HomePage/Section/IntroduceComponent";
 import MainBannerComponent from "../../components/HomePage/Section/MainBannerComponent";
-import NoticeComponent from "../../components/HomePage/Section/NoticeComponent";
 import { SliderData } from "../../container/NoticeSliderData";
 
 const HomePage = () => {
+  const IntroduceComponent = lazy(() => import('../../components/HomePage/Section/IntroduceComponent'));
+  const ArticlesComponent = lazy(() => import('../../components/HomePage/Section/ArticlesComponent'));
+  const NoticeComponent = lazy(() => import('../../components/HomePage/Section/NoticeComponent'));
+
   return (
     <>
       <MainBannerComponent />

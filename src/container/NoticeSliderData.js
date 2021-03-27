@@ -1,18 +1,15 @@
-import noticeImage1 from "../img/notice-1.png";
-import noticeImage2 from "../img/notice-2.png";
-import noticeImage3 from "../img/notice-3.png";
 
 export const SliderData = [
   {
-    image: noticeImage1,
+    image: "https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/HomePage/notice-1.png",
     alt: "Notice1",
   },
   {
-    image: noticeImage2,
+    image: "https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/HomePage/notice-2.png",
     alt: "Notice1",
   },
   {
-    image: noticeImage3,
+    image: "https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/HomePage/notice-3.png",
     alt: "Notice1",
   },
 ];

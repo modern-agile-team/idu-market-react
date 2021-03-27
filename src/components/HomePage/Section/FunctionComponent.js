@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import communication from "../../../img/communication-2.png";
-import information from "../../../img/information-2.png";
-import shopping from "../../../img/shopping-2.png";
 
 const FunctionComponent = () => {
   const [scrollActionFuntion, setScrollActionFunction] = useState(false);
@@ -30,19 +27,19 @@ const FunctionComponent = () => {
           }
         >
           <div className="function-item shopping">
-            <img src={shopping} alt="중고거래" className="function-img" />
+            <img src="https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/HomePage/shopping-2.png" alt="중고거래" className="function-img" />
             <p className="function-desc">Deal With Article</p>
           </div>
           <div className="function-item communication">
             <img
-              src={communication}
+              src="https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/HomePage/communication-2.png"
               alt="커뮤니케이션"
               className="function-img"
             />
             <p className="function-desc">Communication</p>
           </div>
           <div className="function-item information">
-            <img src={information} alt="정보" className="function-img" />
+            <img src="https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/HomePage/information-2.png" alt="정보" className="function-img" />
             <p className="function-desc">
               University <br />
               Information
