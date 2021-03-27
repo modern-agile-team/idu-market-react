@@ -16,6 +16,7 @@ const SaleListComponent = (props) => {
         alert("잘못된 접근입니다.");
         props.history.push("/");
       } else {
+        console.log('hi');
         axios
           .get(`/api/sale-list/${studentId}`)
           .then((response) => {
