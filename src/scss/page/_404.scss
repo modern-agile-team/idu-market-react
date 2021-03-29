@@ -13,7 +13,7 @@
     }
   }
 
-.nomatch-text {
+.nomatch-text-box {
     display: flex;
     justify-content: start;
     align-items: center;
@@ -21,7 +21,7 @@
     margin-bottom: 50px;
 }
 
-.nomatch-span {
+.nomatch-404 {
     font-size: 12rem;
     font-family: $Thasadith-font;
 }
@@ -44,14 +44,18 @@
     font-size: 1.2rem;
 }
 
-@media screen and (max-width: 760px) {
-  
+
+@media screen and (max-width: 480px) {
+    .nomatch-404 {
+       font-size: 10rem;
+   }
 }
 
-@media screen and (max-width: 540px) {
-   
-}
-
-@media screen and (max-width: 330px) {
-   
+@media screen and (max-width: 380px) {
+    .nomatch-404 {
+       font-size: 9rem;
+   }
+   .nomatch-button {
+       font-size: 1rem;
+   }
 }
