@@ -100,7 +100,7 @@
       padding: 10px;
   }
   .ck-toolbar {
-    width: 900px;
+    max-width: 900px;
   }
   &.ck-editor__editable_inline {
     padding: 10px
@@ -125,7 +125,10 @@
         width: 700px;
     }
     .ck-toolbar {
-      width: 700px;
+      width: 200px !important;
+    }
+    .ck-toolbar_grouping {
+      width: 700px !important;
     }
   }
 
@@ -145,7 +148,10 @@
           width: 460px;
       }
       .ck-toolbar {
-        width: 460px;
+        width: 300px !important;
+      }
+      .ck-toolbar_grouping {
+        width: 460px !important;
       }
     }
   
@@ -160,7 +166,7 @@
     .price-won {
       font-size: 1.2rem;
       top: 5px;
-      right: -210px;
+      right: -150px;
     }
  }
  
@@ -174,7 +180,7 @@
   .price-won {
     font-size: 1rem;
     top: 10px;
-    right: -175px;
+    right: -120px;
   }
   .write-title {
     font-size: 1.3rem;
@@ -189,7 +195,10 @@
         width: 320px;
     }
     .ck-toolbar {
-      width: 320px;
+      width: 190px !important;
+    }
+    .ck-toolbar_grouping {
+      width: 320px !important;
     }
   }
 
@@ -210,7 +219,10 @@
         width: 260px;
     }
     .ck-toolbar {
-      width: 260px;
+      width: 180px !important;
+    }
+    .ck-toolbar_grouping {
+      width: 260px !important;
     }
   }
 
@@ -223,16 +235,9 @@
     min-height: 25rem;
     width: 260px;
   }
-
-  .form-group {
-    &.price {
-      width: 120px;
-    }
-  }
-
   .price-won {
-    font-size: 0.8rem;
-    top: 15px;
-    right: -135px;
+    font-size: 0.85rem;
+    top: 10px;
+    right: -90px;
   }
- }
+}

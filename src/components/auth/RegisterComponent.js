@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import { REGISTER_REQUEST } from "../../redux/types";
-import { BiDownArrowAlt } from 'react-icons/bi';
 
 const RegisterComponent = () => {
   const [errorMsg, setErrorMsg] = useState("");
@@ -43,6 +42,8 @@ const RegisterComponent = () => {
     e.preventDefault();
     const { id, name, nickname, email, psword, pswordConfirm, major } = formValues;
     const body = { id, name, nickname, email, psword, pswordConfirm, major };
+
+    console.log(body);
 
     // if ([id, name, nickname, email, psword, pswordConfirm].includes('')) {
     //   setErrorMsg('빈 칸을 모두 입력하세요.');
@@ -90,8 +91,8 @@ const RegisterComponent = () => {
           <h1 className="form-title">SignUp</h1>
 
           <div className="select-field" >
-            <select className="select-major" onChange={onHandlerSelect}>
-              <option selected value="">학과 선택 </option>
+            <select className="select-major" onChange={onHandlerSelect} defaultalue="">
+              <option value="" >학과 선택 </option>
               <option value="1">비서학과</option>
               <option value="2">관광서비스경영학과</option>
               <option value="3">휴먼사회복지학과</option>
