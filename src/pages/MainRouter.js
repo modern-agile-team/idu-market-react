@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import loadable from "@loadable/component";
 
 //Header, Footer
@@ -9,6 +9,7 @@ import Footer from "../components/Footer/Footer";
 import Auth from "../hoc/auth";
 import ScrollToTop from "../components/ScrollToTop";
 import LoadingPage from "./LoadingPage";
+import Page404 from "./Page404";
 
 const HomePage = loadable(() => import("./HomePage/HomePage"), {
   fallback: <LoadingPage />,
@@ -202,7 +203,8 @@ const MainRouter = () => {
           />
 
           {/* Redirect */}
-          <Redirect from="*" to="/" />
+          <Route from="*" component={Page404}/>
+
         </Switch>
       </ScrollToTop>
       <Footer />
