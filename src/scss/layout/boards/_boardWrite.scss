@@ -223,4 +223,16 @@
     min-height: 25rem;
     width: 260px;
   }
+
+  .form-group {
+    &.price {
+      width: 120px;
+    }
+  }
+
+  .price-won {
+    font-size: 0.8rem;
+    top: 15px;
+    right: -135px;
+  }
  }
