@@ -118,11 +118,11 @@
         width: 30px;
         height: 30px;
         
-        background: url(../../img/induk-icon.png) no-repeat;
+        background: url("https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/HomePage/induk-icon.png") no-repeat;
         background-size: contain;
 
         &:hover {
-            background: url(../../img/induk-icon2.png) no-repeat;
+            background: url("https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/HomePage/induk-icon2.png") no-repeat;
             background-size: contain;
         }
     }

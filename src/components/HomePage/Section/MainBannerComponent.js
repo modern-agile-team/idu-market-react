@@ -1,5 +1,4 @@
 import React from "react";
-import BannerImage from "../../../img/main-banner.png";
 
 const MainBannerComponent = () => {
 
@@ -12,7 +11,7 @@ const MainBannerComponent = () => {
         <p className="show">by. Woowahan Agile</p>
       </div>
       <div className="banner-img">
-        <img className="show" src={BannerImage} alt="배너 이미지" />
+        <img className="show" src="https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/HomePage/main-banner.png" alt="배너 이미지" />
         <a href="#home-function">START</a>
       </div>
     </section>

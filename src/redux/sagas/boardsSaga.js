@@ -173,7 +173,7 @@ function* boardDetail(action) {
 
 //Image Delete
 function imageDeleteAPI(action) {
-  return axios.post(`/api/image/delete`, action);
+  return axios.post(`/api/image/`, action);
 }
 
 function* imageDelete(action) {

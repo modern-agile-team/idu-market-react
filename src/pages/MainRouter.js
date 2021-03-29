@@ -1,45 +1,14 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import loadable from "@loadable/component";
 
 //Header, Footer
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
-//auth
-import HomePage from "./HomePage/HomePage";
-import LoginPage from "./authPages/LoginPage";
-import RegisterPage from "./authPages/RegisterPage";
-import FindIdPage from "./authPages/FindIdPage";
-import FindPasswordPage from "./authPages/FindPasswordPage";
-
-//market Boards
-import BookListPage from "./Boards/Market/BookListPage";
-import DeviceListPage from "./Boards/Market/DeviceListPage";
-import ClothesListPage from "./Boards/Market/ClothesListPage";
-
-//Basic Boards
-import NoticeBoardPage from "./Boards/Basic/NoticeBoardPage";
-import FreeBoardPage from "./Boards/Basic/FreeBoardPage";
-
-//Board Detail
-import BoardDetailPage from "./Boards/Detail/BoardDetailPage";
-
-//Board Search
-import MarketSearchPage from "./Boards/Search/MarketSearchPage";
-
-//PostWrite
-import PostWritePage from "./Boards/Write/PostWritePage";
-
-//Post Update
-import PostUpdatePage from "./Boards/Update/PostUpdatePage";
-
-//hoc
 import Auth from "../hoc/auth";
-
-//Profile
-import ProfilePage from "./Profile/ProfilePage";
-import WatchlistPage from "./WatchlistPage/WatchlistPage";
 import ScrollToTop from "../components/ScrollToTop";
+<<<<<<< HEAD
 
 //Trade Complete
 import TradeCompletePage from "../pages/Trade/TradeCompletePage";
@@ -48,11 +17,108 @@ import TradeCompletePage from "../pages/Trade/TradeCompletePage";
 import PurchaseListPage from "./purchaseAndSaleList/PurchaseListPage";
 import SaleListPage from "./purchaseAndSaleList/SaleListPage";
 import Page404 from "./Page404";
+=======
+import LoadingPage from "./LoadingPage";
+
+const HomePage = loadable(() => import("./HomePage/HomePage"), {
+  fallback: <LoadingPage />,
+});
+const LoginPage = loadable(() => import("./authPages/LoginPage"), {
+  fallback: <LoadingPage />,
+});
+const RegisterPage = loadable(() => import("./authPages/RegisterPage"), {
+  fallback: <LoadingPage />,
+});
+const FindIdPage = loadable(() => import("./authPages/FindIdPage"), {
+  fallback: <LoadingPage />,
+});
+const FindPasswordPage = loadable(
+  () => import("./authPages/FindPasswordPage"),
+  {
+    fallback: <LoadingPage />,
+  }
+);
+
+const BookListPage = loadable(() => import("./Boards/Market/BookListPage"), {
+  fallback: <LoadingPage />,
+});
+const DeviceListPage = loadable(
+  () => import("./Boards/Market/DeviceListPage"),
+  {
+    fallback: <LoadingPage />,
+  }
+);
+const ClothesListPage = loadable(
+  () => import("./Boards/Market/ClothesListPage"),
+  {
+    fallback: <LoadingPage />,
+  }
+);
+
+const NoticeBoardPage = loadable(
+  () => import("./Boards/Basic/NoticeBoardPage"),
+  {
+    fallback: <LoadingPage />,
+  }
+);
+const FreeBoardPage = loadable(() => import("./Boards/Basic/FreeBoardPage"), {
+  fallback: <LoadingPage />,
+});
+
+const BoardDetailPage = loadable(
+  () => import("./Boards/Detail/BoardDetailPage"),
+  {
+    fallback: <LoadingPage />,
+  }
+);
+const MarketSearchPage = loadable(
+  () => import("./Boards/Search/MarketSearchPage"),
+  {
+    fallback: <LoadingPage />,
+  }
+);
+
+const PostWritePage = loadable(() => import("./Boards/Write/PostWritePage"), {
+  fallback: <LoadingPage />,
+});
+const PostUpdatePage = loadable(
+  () => import("./Boards/Update/PostUpdatePage"),
+  {
+    fallback: <LoadingPage />,
+  }
+);
+
+const ProfilePage = loadable(() => import("./Profile/ProfilePage"), {
+  fallback: <LoadingPage />,
+});
+const WatchlistPage = loadable(() => import("./WatchlistPage/WatchlistPage"), {
+  fallback: <LoadingPage />,
+});
+
+const TradeCompletePage = loadable(
+  () => import("../pages/Trade/TradeCompletePage"),
+  {
+    fallback: <LoadingPage />,
+  }
+);
+const PurchaseListPage = loadable(
+  () => import("./purchaseAndSaleList/PurchaseListPage"),
+  {
+    fallback: <LoadingPage />,
+  }
+);
+const SaleListPage = loadable(
+  () => import("./purchaseAndSaleList/SaleListPage"),
+  {
+    fallback: <LoadingPage />,
+  }
+);
+>>>>>>> e7c394967ceeee66cf0b102645a83c30e7d7d2a7
 
 const MainRouter = () => {
   return (
     <>
-      <Header></Header>
+      <Header />
       <ScrollToTop>
         <Switch>
           <Route component={Auth(HomePage, null)} path="/" exact />

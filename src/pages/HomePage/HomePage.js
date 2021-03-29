@@ -1,8 +1,8 @@
 import React from "react";
-import ArticlesComponent from "../../components/HomePage/Section/ArticlesComponent";
 import FunctionComponent from "../../components/HomePage/Section/FunctionComponent";
-import IntroduceComponent from "../../components/HomePage/Section/IntroduceComponent";
 import MainBannerComponent from "../../components/HomePage/Section/MainBannerComponent";
+import IntroduceComponent from "../../components/HomePage/Section/IntroduceComponent";
+import ArticlesComponent from "../../components/HomePage/Section/ArticlesComponent";
 import NoticeComponent from "../../components/HomePage/Section/NoticeComponent";
 import { SliderData } from "../../container/NoticeSliderData";
 
