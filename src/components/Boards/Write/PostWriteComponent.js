@@ -11,11 +11,10 @@ import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor"
 import { editorConfiguration } from "../../Editor/EditorConfig";
 import Myinit from "../../Editor/UploadAdapter";
 
-
 const PostWriteComponent = (props) => {
   const categoryName = props.match.params.categoryName;
   const dispatch = useDispatch();
-  const userId = useSelector(state => state.auth.id);
+  const userId = useSelector((state) => state.auth.id);
 
   const [modal, setModal] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
@@ -91,14 +90,9 @@ const PostWriteComponent = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if(categoryName === 'free' || categoryName === 'notice') {
-      const {
-        studentId,
-        title,
-        content,
-        categoryName,
-      } = formValues;
-  
+    if (categoryName === "free" || categoryName === "notice") {
+      const { studentId, title, content, categoryName } = formValues;
+
       const body = {
         studentId,
         title,
@@ -113,21 +107,19 @@ const PostWriteComponent = (props) => {
         setModal(true);
         setModalError(true);
         setModalErrorMsg("타이틀을 적어주세요.");
-  
+
         setTimeout(() => {
           setModal(false);
         }, 1500);
-      }
-      else if (content === "") {
+      } else if (content === "") {
         setModal(true);
         setModalError(true);
         setModalErrorMsg("빈 본문입니다.");
-  
+
         setTimeout(() => {
           setModal(false);
         }, 1500);
-      } 
-      else {
+      } else {
         dispatch({
           type: BOARD_WRITE_REQUEST,
           payload: body,
@@ -136,7 +128,6 @@ const PostWriteComponent = (props) => {
         setModalMsg("게시글 업로드에 성공하셨습니다.");
         setModalError(false);
       }
-      
     } else {
       const {
         studentId,
@@ -146,7 +137,7 @@ const PostWriteComponent = (props) => {
         price,
         categoryName,
       } = formValues;
-  
+
       const body = {
         studentId,
         title,
@@ -155,13 +146,13 @@ const PostWriteComponent = (props) => {
         price,
         categoryName,
       };
-  
+
       //유효성 검사
       if (title === "") {
         setModal(true);
         setModalError(true);
         setModalErrorMsg("타이틀을 적어주세요.");
-  
+
         setTimeout(() => {
           setModal(false);
         }, 1500);
@@ -171,30 +162,27 @@ const PostWriteComponent = (props) => {
         setModal(true);
         setModalError(true);
         setModalErrorMsg("가격을 숫자만 입력해주세요.");
-  
+
         setTimeout(() => {
           setModal(false);
         }, 1500);
-      }
-      else if (price.length >= 8) {
+      } else if (price.length >= 8) {
         setModal(true);
         setModalError(true);
         setModalErrorMsg("가격은 9,999,999원 이하로 입력해주세요.");
-  
+
         setTimeout(() => {
           setModal(false);
         }, 1500);
-      }
-      else if (content === "") {
+      } else if (content === "") {
         setModal(true);
         setModalError(true);
         setModalErrorMsg("빈 본문입니다.");
-  
+
         setTimeout(() => {
           setModal(false);
         }, 1500);
-      } 
-      else {
+      } else {
         dispatch({
           type: BOARD_WRITE_REQUEST,
           payload: body,
@@ -223,9 +211,9 @@ const PostWriteComponent = (props) => {
             <span className="post-write-border"></span>
           </div>
 
-          {categoryName === 'free' || categoryName === 'notice' ? (
+          {categoryName === "free" || categoryName === "notice" ? (
             ""
-          ): (
+          ) : (
             <div className="form-group price">
               <input
                 type="text"
@@ -236,10 +224,9 @@ const PostWriteComponent = (props) => {
                 placeholder="Price"
               />
               <span className="post-write-border"></span>
-              <span className="price-won">원 (숫자만 입력 ex. 1000)</span>
+              <span className="price-won">원 (숫자만 입력)</span>
             </div>
           )}
-          
 
           <div className="form-group">
             <CKEditor
