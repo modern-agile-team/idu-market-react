@@ -62,6 +62,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-testing-library": "^3.9.2",
     "eslint-webpack-plugin": "^2.1.0",
+    "express": "^4.17.1",
     "file-loader": "6.1.1",
     "fs-extra": "^9.0.1",
     "history": "4.7.2",
@@ -105,12 +106,15 @@
     "webpack": "4.44.2",
     "webpack-dev-server": "3.11.0",
     "webpack-manifest-plugin": "2.2.0",
+    "webpack-node-externals": "^2.5.2",
     "workbox-webpack-plugin": "5.1.4"
   },
   "scripts": {
     "start": "set PORT=80 && node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "start:server": "node dist/server.js",
+    "build:server": "node scripts/build.server.js"
   },
   "eslintConfig": {
     "extends": [
@@ -130,7 +134,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://13.125.55.135:8080",
+  "proxy": "http://13.125.55.135:9800",
   "jest": {
     "roots": [
       "<rootDir>/src"

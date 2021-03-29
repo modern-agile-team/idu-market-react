@@ -6,9 +6,9 @@ import reportWebVitals from './reportWebVitals';
 
 loadingUser();
 
-ReactDOM.render(
+ReactDOM.hydrate(
     <React.StrictMode>
-        <App />
+      <App />
     </React.StrictMode>,
   document.getElementById('root')
 );
