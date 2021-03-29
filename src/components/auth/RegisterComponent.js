@@ -8,8 +8,11 @@ const RegisterComponent = () => {
   const [formValues, setFormValues] = useState({
     id: "",
     name: "",
+    nickname: "",
     email: "",
     psword: "",
+    pswordConfirm: "",
+    major: "",
   });
 
   const dispatch = useDispatch();
@@ -28,11 +31,52 @@ const RegisterComponent = () => {
     });
   };
 
-  const onSubmitHandler = (e) => {
-    const { id, name, email, psword } = formValues;
-    const body = { id, name, email, psword };
+  const onHandlerSelect = e => {
+    setFormValues({
+      ...formValues,
+      major: e.target.value
+    })
+  }
 
+  const onSubmitHandler = (e) => {
     e.preventDefault();
+    const { id, name, nickname, email, psword, pswordConfirm, major } = formValues;
+    const body = { id, name, nickname, email, psword, pswordConfirm, major };
+
+    console.log(body);
+
+    // if ([id, name, nickname, email, psword, pswordConfirm].includes('')) {
+    //   setErrorMsg('빈 칸을 모두 입력하세요.');
+    //   return;
+    // }
+
+    // if (id.match(/^[0-9]{9}$/) === null) {
+    //   setErrorMsg('학번은 숫자 9자리만 입력가능합니다.')
+    // } else if (name.match(/^[가-힣]{0,15}$/) === null) {
+    //   setErrorMsg('이름은 공백없이 한글만 입력해주세요 ')
+    // } else if (
+    //   email !== '' &&
+    //   email.match(
+    //     /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/,
+    //   ) === null
+    // ) {
+    //   setErrorMsg('이메일 형식을 유지해주세요.')
+    // } else if (
+    //   psword.match(/^.*(?=^.{9,20}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/) === null
+    // ) {
+    //   setErrorMsg('비밀번호가 양식(영대소문자, 숫자, 특수문자 조합 9-20자)에 벗어났습니다.')
+    // }
+
+    // if (psword !== pswordConfirm) {
+    //   setErrorMsg('비밀번호가 일치하지 않습니다.');
+    //   return;
+    // }
+
+    if (major.length === 0) {
+      setErrorMsg('학과를 선택해주세요');
+    } else {
+      setErrorMsg('');
+    }
 
     dispatch({
       type: REGISTER_REQUEST,
@@ -45,6 +89,38 @@ const RegisterComponent = () => {
       <div className="container">
         <form className="form-field">
           <h1 className="form-title">SignUp</h1>
+
+          <div className="select-field" >
+            <select className="select-major" onChange={onHandlerSelect} defaultalue="">
+              <option value="" >학과 선택 </option>
+              <option value="1">비서학과</option>
+              <option value="2">관광서비스경영학과</option>
+              <option value="3">휴먼사회복지학과</option>
+              <option value="4">비지니스영어과</option>
+              <option value="5">비즈니스중국어과</option>
+              <option value="6">비즈니스일본어과</option>
+              <option value="7">세무회계학과</option>
+              <option value="8">글로벌항공서비스학과</option>
+              <option value="9">건축학과</option>
+              <option value="10">토목공학과</option>
+              <option value="11">실내건축과</option>
+              <option value="12">디지털산업디자인학과</option>
+              <option value="13">시각디자인과</option>
+              <option value="14">주얼리디자인학과</option>
+              <option value="15">멀티미디어디자인학과</option>
+              <option value="16">정보통신공학과</option>
+              <option value="17">리빙세라믹디자인학과</option>
+              <option value="18">게임/vr디자인학과</option>
+              <option value="19">방송영상미디어학과</option>
+              <option value="20">방송뷰티학과</option>
+              <option value="21">기계자동화학과</option>
+              <option value="22">컴퓨터전자공학과</option>
+              <option value="23">산업경영공학과</option>
+              <option value="24">컴퓨터소프트웨어학과</option>
+              <option value="25">메카트로닉스공학과</option>
+              <option value="26">융합기계공학과</option>
+            </select>
+          </div>
 
           <div className="text-field">
             <input
@@ -60,7 +136,7 @@ const RegisterComponent = () => {
             <label
               className={formValues.id ? "input-label fix" : "input-label"}
             >
-              ID
+              학번
             </label>
           </div>
 
@@ -78,7 +154,25 @@ const RegisterComponent = () => {
             <label
               className={formValues.name ? "input-label fix" : "input-label"}
             >
-              Name
+              이름
+            </label>
+          </div>
+
+          <div className="text-field">
+            <input
+              type="text"
+              name="nickname"
+              onChange={onChange}
+              className="input-text"
+              autoComplete="off"
+            />
+            <span
+              className={formValues.nickname ? "input-border fill" : "input-border"}
+            />
+            <label
+              className={formValues.nickname ? "input-label fix" : "input-label"}
+            >
+              별명
             </label>
           </div>
 
@@ -98,7 +192,7 @@ const RegisterComponent = () => {
             <label
               className={formValues.email ? "input-label fix" : "input-label"}
             >
-              Email
+              이메일
             </label>
           </div>
 
@@ -118,7 +212,27 @@ const RegisterComponent = () => {
             <label
               className={formValues.psword ? "input-label fix" : "input-label"}
             >
-              Password
+              비밀번호 <label className="psword-text">(영대소문자, 숫자, 특수문자 포함 9-20자)</label>
+            </label>
+          </div>
+
+          <div className="text-field">
+            <input
+              type="password"
+              name="pswordConfirm"
+              onChange={onChange}
+              className="input-text"
+              autoComplete="off"
+            />
+            <span
+              className={
+                formValues.pswordConfirm ? "input-border fill" : "input-border"
+              }
+            />
+            <label
+              className={formValues.pswordConfirm ? "input-label fix" : "input-label"}
+            >
+              비밀번호 확인
             </label>
           </div>
 
