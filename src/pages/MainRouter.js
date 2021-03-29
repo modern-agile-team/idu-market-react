@@ -47,6 +47,7 @@ import TradeCompletePage from "../pages/Trade/TradeCompletePage";
 //Purchase, Sale List
 import PurchaseListPage from "./purchaseAndSaleList/PurchaseListPage";
 import SaleListPage from "./purchaseAndSaleList/SaleListPage";
+import Page404 from "./Page404";
 
 const MainRouter = () => {
   return (
@@ -146,7 +147,8 @@ const MainRouter = () => {
           />
 
           {/* Redirect */}
-          <Redirect from="*" to="/" />
+          <Route from="*" component={Page404}/>
+
         </Switch>
       </ScrollToTop>
       <Footer />
