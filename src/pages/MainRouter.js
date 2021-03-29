@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import loadable from "@loadable/component";
 
 //Header, Footer
@@ -8,17 +8,8 @@ import Footer from "../components/Footer/Footer";
 
 import Auth from "../hoc/auth";
 import ScrollToTop from "../components/ScrollToTop";
-<<<<<<< HEAD
-
-//Trade Complete
-import TradeCompletePage from "../pages/Trade/TradeCompletePage";
-
-//Purchase, Sale List
-import PurchaseListPage from "./purchaseAndSaleList/PurchaseListPage";
-import SaleListPage from "./purchaseAndSaleList/SaleListPage";
-import Page404 from "./Page404";
-=======
 import LoadingPage from "./LoadingPage";
+import Page404 from "./Page404";
 
 const HomePage = loadable(() => import("./HomePage/HomePage"), {
   fallback: <LoadingPage />,
@@ -113,7 +104,6 @@ const SaleListPage = loadable(
     fallback: <LoadingPage />,
   }
 );
->>>>>>> e7c394967ceeee66cf0b102645a83c30e7d7d2a7
 
 const MainRouter = () => {
   return (
