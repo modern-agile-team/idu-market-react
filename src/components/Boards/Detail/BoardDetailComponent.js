@@ -21,6 +21,24 @@ const BoardDetailComponent = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if(auth.id.length === 0) {
+      dispatch({
+        type: BOARD_DETAIL_REQUEST,
+        payload: {
+          categoryName,
+          num,
+          studentId: 'not-login',
+        },
+      });
+      dispatch({
+        type: COMMENT_GET_REQUEST,
+        payload: {
+          categoryName,
+          num,
+          studentId: 'not-login',
+        },
+      });
+    } else {
       dispatch({
         type: BOARD_DETAIL_REQUEST,
         payload: {
@@ -38,6 +56,7 @@ const BoardDetailComponent = (props) => {
           studentId: auth.id,
         },
       });
+    }
   }, [dispatch, categoryName, num, props.history, auth.id]);
 
   return (
