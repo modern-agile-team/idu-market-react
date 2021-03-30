@@ -44,7 +44,6 @@ const SaleListComponent = (props) => {
             <BoardListItem
               productList={productList}
               profile
-              studentId={studentId}
             />
           </div>
         </>

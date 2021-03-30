@@ -15,39 +15,29 @@ import CommentComponent from "../Comment/CommentComponent";
 const BoardDetailComponent = (props) => {
   const categoryName = props.match.params.categoryName;
   const num = props.match.params.num;
-  const studentId = props.match.params.studentId;
 
   const boardDetail = useSelector((state) => state.boards);
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (studentId === "not-login") {
-      alert("로그인 후에 이용하실 수 있습니다.");
-      props.history.push("/login");
-    }
+      dispatch({
+        type: BOARD_DETAIL_REQUEST,
+        payload: {
+          categoryName,
+          num,
+          studentId: auth.id,
+        },
+      });
 
-    if (auth.id.length !== 0) {
-      if (studentId === auth.id) {
-        dispatch({
-          type: BOARD_DETAIL_REQUEST,
-          payload: {
-            categoryName,
-            num,
-            studentId: auth.id,
-          },
-        });
-
-        dispatch({
-          type: COMMENT_GET_REQUEST,
-          payload: {
-            categoryName,
-            num,
-            studentId: auth.id,
-          },
-        });
-      }
-    }
+      dispatch({
+        type: COMMENT_GET_REQUEST,
+        payload: {
+          categoryName,
+          num,
+          studentId: auth.id,
+        },
+      });
   }, [dispatch, categoryName, num, props.history, auth.id]);
 
   return (

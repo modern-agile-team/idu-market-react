@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { AiFillHeart } from "react-icons/ai";

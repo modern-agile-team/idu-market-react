@@ -25,7 +25,7 @@ export default function Auth(SpecificComponent, option, adminRoute = null) {
         //로그인한 상태
         if (option === false) props.history.push("/");
       }
-    }, [auth.jwt]);
+    }, [auth.jwt, props.history]);
 
     //update page 올바르지 못한 접근 방지
     if (option === "update") {

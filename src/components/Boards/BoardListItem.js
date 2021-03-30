@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineUser, AiOutlineComment } from "react-icons/ai";
 
-const BoardListItem = ({ studentId, productList, categoryName, profile }) => {
+const BoardListItem = ({ productList, categoryName, profile }) => {
   console.log(productList);
   return (
     <>
@@ -12,8 +12,8 @@ const BoardListItem = ({ studentId, productList, categoryName, profile }) => {
             <Link
               to={
                 profile
-                  ? `/boards/${board.categoryName}/${board.num}/${studentId}`
-                  : `/boards/${categoryName}/${board.num}/${studentId}`
+                  ? `/boards/${board.categoryName}/${board.num}`
+                  : `/boards/${categoryName}/${board.num}`
               }
               className="market-img-box-link"
             >
@@ -25,8 +25,8 @@ const BoardListItem = ({ studentId, productList, categoryName, profile }) => {
             <Link
               to={
                 profile
-                  ? `/boards/${board.categoryName}/${board.num}/${studentId}`
-                  : `/boards/${categoryName}/${board.num}/${studentId}`
+                  ? `/boards/${board.categoryName}/${board.num}`
+                  : `/boards/${categoryName}/${board.num}`
               }
             >
               <h1 className="market-item-title">{board.title}</h1>

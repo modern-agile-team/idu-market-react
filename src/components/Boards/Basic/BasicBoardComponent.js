@@ -12,7 +12,7 @@ function BasicBoardComponent({ categoryName }) {
 
   const dispatch = useDispatch();
   const freeBoardList = useSelector((state) => state.boards.data);
-  const auth = useSelector(state => state.auth);
+  // const auth = useSelector(state => state.auth);
 
   const perPage = 10;
   const pageVisited = pageNumber * perPage;
@@ -36,7 +36,7 @@ function BasicBoardComponent({ categoryName }) {
         <tr key={boardItem.num}>
           <td>{boardItem.num}</td>
           <td className="boardlist-common-title">
-            <Link to={`/boards/${categoryName}/${boardItem.num}/${auth.id}`}>
+            <Link to={`/boards/${categoryName}/${boardItem.num}`}>
               {boardItem.title}
             </Link>
           </td>
