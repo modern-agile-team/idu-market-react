@@ -105,6 +105,7 @@ const ReplyComment = ({ comment, num, categoryName }) => {
     <>
       <div className="reply-box">
         <div className="comment-student-id">
+          <img src={comment.profilePath} alt="프로필 이미지" className="comment-profile-img" />
           <span>{comment.studentId}</span>
         </div>
         <div className="comment-content">

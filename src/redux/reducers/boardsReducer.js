@@ -45,6 +45,7 @@ const initialState = {
   msg: "",
   watchListFlag: null,
   categoryName: "",
+  profilePath: "",
 };
 
 const boards = (state = initialState, action) => {
@@ -124,7 +125,8 @@ const boards = (state = initialState, action) => {
         updateDate: action.payload.board.updateDate,
         msg: action.payload.msg,
         watchListFlag: action.payload.watchListFlag,
-        categoryName: action.payload.categoryName,
+        categoryName: action.payload.board.categoryName,
+        profilePath: action.payload.board.profilePath,
       };
 
     case BOARD_DETAIL_FAILURE:
@@ -140,6 +142,7 @@ const boards = (state = initialState, action) => {
         inDate: "",
         updateDate: "",
         isLoading: false,
+        profilePath: "",
         msg: action.payload.data.msg,
       };
 

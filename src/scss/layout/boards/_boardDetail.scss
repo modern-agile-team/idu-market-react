@@ -158,6 +158,9 @@
   p {
     font-size: 1.1rem;
     font-family: $Jua-font;
+    display: flex;
+    align-items: center;
+    margin: 3px 0;
   }
 }
 
@@ -167,6 +170,14 @@
   align-items: center;
   margin: 50px 0 100px 0;
   border: 2px solid #999;
+}
+
+.detail-profile-img {
+  width: 25px;
+  border-radius: 50%;
+  border: 1px solid $main-color-5;
+  margin-left: -3px;
+  margin-right: 3px;
 }
 
 @media screen and (max-width: 1220px) {
@@ -274,6 +285,11 @@
       right: -200px;
       top: -50px;
     }
+  }
+
+  .detail-profile-img {
+    width: 20px;
+    margin-left: -3px;
   }
 }
 
