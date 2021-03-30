@@ -75,7 +75,7 @@ function* boardWrite(action) {
     yield delay(1500);
 
     yield put(
-      push(`/boards/${action.payload.categoryName}/${result.data.num}`)
+      push(`/boards/${action.payload.categoryName}/${result.data.num}/${action.payload.studentId}`)
     );
   } catch (e) {
     yield put({
