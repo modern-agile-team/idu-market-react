@@ -174,12 +174,16 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
 
       <div className="detail-date-student">
         <p>
-          <img src={boards.profilePath} alt="프로필 이미지" className="detail-profile-img" />
+          <img
+            src={boards.profilePath}
+            alt="프로필 이미지"
+            className="detail-profile-img"
+          />
           &nbsp;{boardDetail.studentId}
         </p>
         <p>
           <BsCalendar />
-          &nbsp;{boardDetail.inDate}
+          &nbsp;{boardDetail.inDate.substring(0, 16)}
         </p>
       </div>
 
@@ -256,7 +260,9 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
         </>
       )}
 
-      {categoryName === "free" || categoryName === "notice"  || studentId.length === 0 ? (
+      {categoryName === "free" ||
+      categoryName === "notice" ||
+      studentId.length === 0 ? (
         <></>
       ) : (
         <>
