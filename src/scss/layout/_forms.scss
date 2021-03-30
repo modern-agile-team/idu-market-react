@@ -1,6 +1,6 @@
 .form-template {
     width: 100%;
-    height: 835px;
+    height: 1000px;
     padding-top: 63px;
 
     .container {
@@ -27,14 +27,37 @@
         color: #222;
     }
 }
+// select
+.select-field {
+    margin-top: 20px;
+    border-bottom: 2px solid #999;
+}
+
+.select-major {
+    -moz-appearance: none;
+    padding: 3px;
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    font-family: $Montserrat-font;
+    font-size: 1rem;
+    color:#999;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    option {
+        color: #222;
+    }    
+}
 
 .text-field {
     position: relative;
     border-bottom: 2px solid #adadad;
-    margin: 40px 0;
+    margin: 30px 0;
 
     .input-text {
-        font-family: 'Montserrat', sans-serif;
+        font-family: $Montserrat-font;
         width: 100%;
         padding: 0 5px;
         height: 40px;
@@ -82,6 +105,10 @@
             top: -5px;
             color: $main-color-4;
         }
+    }
+
+    .psword-text {
+        font-size: 0.8rem;
     }
 }
 
@@ -160,6 +187,7 @@
     }
 }
 
+
 //modal
 .modal-wrapper {
     width: 550px;
@@ -220,7 +248,7 @@
 @media screen and (max-width: 670px){ 
     .form-template {
         width: 100%;
-        height: 655px;
+        height: 800px;
         padding-top: 120px;
     }
     .form-field {
@@ -234,10 +262,10 @@
     }
 
     .text-field {
-        margin: 32px 0;
+        margin: 30px 0;
 
         .input-label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
     }
     
@@ -284,12 +312,12 @@
 
 /* 0 ~ 360 : 모바일  */
 @media screen and (max-width: 360px){ 
-    .form-template {
-        height: 625px;
-    }
+    // .form-template {
+    //     height: 625px;
+    // }
 
     .form-field {
-        width: 300px;
+        width: 280px;
         padding: 0 22px;
 
         .form-title {
@@ -306,7 +334,18 @@
     }
 
     .modal-wrapper {
-        width: 250px;
+        width: 240px;
+    }
+    .select-major {
+        font-size: 0.8rem;
+    }
+    .form-question {
+        p {
+            font-size: 0.8rem;
+        }
+        a {
+            font-size: 0.8rem;
+        }
     }
 }
 

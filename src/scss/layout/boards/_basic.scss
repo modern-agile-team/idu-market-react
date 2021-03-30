@@ -92,6 +92,13 @@
     
 }
 
+.board-profile-img {
+    width: 20px;
+    border-radius: 50%;
+    border: 1px solid $main-color-5;
+    margin-right: 5px;
+}
+
 /* 0 ~ 1024 : 데스크탑3  */
 @media screen and (max-width: 1024px) {
     .boardlist-common-tables {

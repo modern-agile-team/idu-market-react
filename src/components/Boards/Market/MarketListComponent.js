@@ -70,19 +70,19 @@ const MarketListComponent = ({ categoryName }) => {
               <BoardListItem
                 productList={productList}
                 categoryName={categoryName}
-                studentId="not-login"
+                // studentId="not-login"
               ></BoardListItem>
             ) : (
               <BoardListItem
                 productList={productList}
                 categoryName={categoryName}
-                studentId={auth.id}
+                // studentId={auth.id}
               ></BoardListItem>
             )}
             <BoardListItem
               productList={productList}
               categoryName={categoryName}
-              studentId={auth.id}
+              // studentId={auth.id}
             ></BoardListItem>
           </div>
         </>

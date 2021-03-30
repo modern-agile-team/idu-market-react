@@ -61,7 +61,7 @@
     position: relative;
     width: 100%;
     border-bottom: 2px solid #999;
-    padding: 10px;
+    padding: 13px;
 }
 
 .reply-box {
@@ -86,6 +86,15 @@
 
 .comment-student-id{
     color: #999;
+    display: flex;
+    align-items: center;
+
+    .comment-profile-img {
+        width: 25px;
+        border-radius: 50%;
+        border: 1px solid $main-color-5;
+        margin-right: 5px;
+    }
 
     span { 
         font-family: $Jua-font;
@@ -227,6 +236,7 @@
     }
 
     .comment-update-box {
+        top: 12px;
         .comment-delete-icon {
             font-size: 1.1rem;
             margin-right: 10px;

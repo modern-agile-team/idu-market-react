@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { AiOutlineUser } from "react-icons/ai";
 import { BsCalendar } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -175,8 +174,8 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
 
       <div className="detail-date-student">
         <p>
-          <AiOutlineUser />
-          &nbsp;{boardDetail.studentName}
+          <img src={boards.profilePath} alt="프로필 이미지" className="detail-profile-img" />
+          &nbsp;{boardDetail.studentId}
         </p>
         <p>
           <BsCalendar />
@@ -257,7 +256,7 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
         </>
       )}
 
-      {categoryName === "free" || categoryName === "notice" ? (
+      {categoryName === "free" || categoryName === "notice"  || studentId.length === 0 ? (
         <></>
       ) : (
         <>

@@ -165,7 +165,7 @@ const MainRouter = () => {
           {/* boards Detail */}
           <Route
             component={Auth(BoardDetailPage, null)}
-            path="/boards/:categoryName/:num/:studentId"
+            path="/boards/:categoryName/:num/"
             exact
           />
           {/* Profile */}
