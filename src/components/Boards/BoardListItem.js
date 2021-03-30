@@ -35,17 +35,21 @@ const BoardListItem = ({ productList, categoryName, profile }) => {
             <p className="market-item-price">{board.price}원</p>
 
             <p className="market-item-id">
-              {board.sellerId ? (
+              {board.seller ? (
                 <>
-                  <Link to={`/students/${board.sellerId}`}>
+                  <Link to={`/students/${board.seller}`}>
                     <AiOutlineUser />
-                    {board.sellerId} &nbsp;
+                    {board.seller} &nbsp;
                   </Link>
                 </>
               ) : (
                 <>
                   <Link to={`/students/${board.studentId}`}>
-                    <img src={board.profilePath} alt="프로필 이미지" className="board-profile-img" />
+                    <img
+                      src={board.profilePath}
+                      alt="프로필 이미지"
+                      className="board-profile-img"
+                    />
                     {board.studentId} &nbsp;
                   </Link>
                 </>
