@@ -45,32 +45,30 @@ const RegisterComponent = () => {
 
     console.log(body);
 
-    // if ([id, name, nickname, email, psword, pswordConfirm].includes('')) {
-    //   setErrorMsg('빈 칸을 모두 입력하세요.');
-    //   return;
-    // }
+    if ([id, name, nickname, email, psword, pswordConfirm].includes('')) {
+      setErrorMsg('빈 칸을 모두 입력하세요.');
+      return;
+    }
 
-    // if (id.match(/^[0-9]{9}$/) === null) {
-    //   setErrorMsg('학번은 숫자 9자리만 입력가능합니다.')
-    // } else if (name.match(/^[가-힣]{0,15}$/) === null) {
-    //   setErrorMsg('이름은 공백없이 한글만 입력해주세요 ')
-    // } else if (
-    //   email !== '' &&
-    //   email.match(
-    //     /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/,
-    //   ) === null
-    // ) {
-    //   setErrorMsg('이메일 형식을 유지해주세요.')
-    // } else if (
-    //   psword.match(/^.*(?=^.{9,20}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/) === null
-    // ) {
-    //   setErrorMsg('비밀번호가 양식(영대소문자, 숫자, 특수문자 조합 9-20자)에 벗어났습니다.')
-    // }
+    if (id.match(/^[0-9]{9}$/) === null) setErrorMsg('학번은 숫자 9자리만 입력가능합니다.')
+    else if (name.match(/^[가-힣]{0,15}$/) === null) setErrorMsg('이름은 공백없이 한글만 입력해주세요 ')
+    else if (
+      email !== '' &&
+      email.match(
+        /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/,
+      ) === null
+    ) {
+      setErrorMsg('이메일 형식을 유지해주세요.')
+    } else if (
+      psword.match(/^.*(?=^.{9,20}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/) === null
+    ) {
+      setErrorMsg('비밀번호가 양식(영대소문자, 숫자, 특수문자 조합 9-20자)에 벗어났습니다.')
+    }
 
-    // if (psword !== pswordConfirm) {
-    //   setErrorMsg('비밀번호가 일치하지 않습니다.');
-    //   return;
-    // }
+    if (psword !== pswordConfirm) {
+      setErrorMsg('비밀번호가 일치하지 않습니다.');
+      return;
+    }
 
     if (major.length === 0) {
       setErrorMsg('학과를 선택해주세요');
