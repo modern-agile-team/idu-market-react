@@ -19,10 +19,10 @@ function BasicBoardComponent({ categoryName }) {
   const pageCount = Math.ceil(freeBoardList.length / perPage);
 
   useEffect(() => {
-      dispatch({
-        type: BASIC_BOARD_GET_REQUEST,
-        payload: categoryName,
-      });
+    dispatch({
+      type: BASIC_BOARD_GET_REQUEST,
+      payload: categoryName,
+    });
   }, [dispatch, categoryName]);
 
   const changePage = ({ selected }) => {
@@ -40,7 +40,11 @@ function BasicBoardComponent({ categoryName }) {
               {boardItem.title}
             </Link>
           </td>
-          <td><Link to={`/students/${boardItem.studentId}`}>{boardItem.studentId}</Link></td>
+          <td>
+            <Link to={`/students/${boardItem.studentId}`}>
+              {boardItem.nickname}
+            </Link>
+          </td>
           <td>{boardItem.inDate.substring(0, 10)}</td>
           <td>{boardItem.hit}</td>
         </tr>

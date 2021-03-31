@@ -75,7 +75,7 @@ function* boardWrite(action) {
     yield delay(1500);
 
     yield put(
-      push(`/boards/${action.payload.categoryName}/${result.data.num}/${action.payload.studentId}`)
+      push(`/boards/${action.payload.categoryName}/${result.data.num}`)
     );
   } catch (e) {
     yield put({
@@ -166,14 +166,20 @@ function* boardDetail(action) {
       type: BOARD_DETAIL_FAILURE,
       payload: e.response,
     });
-    
+
     yield put(push(`/boards/${action.payload.categoryName}`));
   }
 }
 
 //Image Delete
 function imageDeleteAPI(action) {
-  return axios.post(`/api/image/`, action);
+  console.log(action);
+  console.log(action.url);
+  return axios.delete(`/api/image`, {
+    data: {
+      url: action.url,
+    },
+  });
 }
 
 function* imageDelete(action) {
