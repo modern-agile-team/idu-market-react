@@ -16,9 +16,7 @@ const RegisterComponent = () => {
   });
 
   const dispatch = useDispatch();
-  const { registerErrorMsg } = useSelector(
-    (state) => state.auth
-  );
+  const { registerErrorMsg } = useSelector((state) => state.auth);
 
   useEffect(() => {
     setErrorMsg(registerErrorMsg);
@@ -31,60 +29,69 @@ const RegisterComponent = () => {
     });
   };
 
-  const onHandlerSelect = e => {
+  const onHandlerSelect = (e) => {
     setFormValues({
       ...formValues,
-      major: e.target.value
-    })
-  }
+      major: e.target.value,
+    });
+  };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
-    const { id, name, nickname, email, psword, pswordConfirm, major } = formValues;
+    const {
+      id,
+      name,
+      nickname,
+      email,
+      psword,
+      pswordConfirm,
+      major,
+    } = formValues;
     const body = { id, name, nickname, email, psword, pswordConfirm, major };
 
     console.log(body);
 
-    if ([id, name, nickname, email, psword, pswordConfirm].includes('')) {
-      setErrorMsg('빈 칸을 모두 입력하세요.');
+    if ([id, name, nickname, email, psword, pswordConfirm].includes("")) {
+      setErrorMsg("빈 칸을 모두 입력하세요.");
       return;
     }
 
     if (major.length === 0) {
-      setErrorMsg('학과를 선택해주세요');
+      setErrorMsg("학과를 선택해주세요");
       return;
     } else {
-      setErrorMsg('');
+      setErrorMsg("");
     }
 
-    if (id.match(/^[1-2][0|9][0-9]{7}$/) === null) { 
-      setErrorMsg('학번은 숫자 9자리만 입력가능합니다.');
+    if (id.match(/^[1-2][0|9][0-9]{7}$/) === null) {
+      setErrorMsg("학번은 숫자 9자리만 입력가능합니다.");
       return;
-    }
-    else if (name.match(/^[가-힣]{2,6}$/) === null) {
-      setErrorMsg('이름은 공백없이 한글만 입력해주세요 ')
+    } else if (name.match(/^[가-힣]{2,6}$/) === null) {
+      setErrorMsg("이름은 공백없이 한글만 입력해주세요 ");
       return;
-    }
-    else if (nickname.match(/^[a-zA-Z가-힣0-9]{2,10}$/) === null) { 
-      setErrorMsg('별명은 2~10자리입니다. 모음,자음 따로입력 불가')
-      return;
-    }
-    else if (
-      email !== '' &&
-      email.match(
-        /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
-      ) === null
-    ) {
-      setErrorMsg('이메일 형식을 유지해주세요.')
+    } else if (nickname.match(/^[a-zA-Z가-힣0-9]{2,10}$/) === null) {
+      setErrorMsg("별명은 2~10자리입니다. 모음,자음 따로입력 불가");
       return;
     } else if (
-      psword.match(/^.*(?=^.{9,20}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/) === null
+      email !== "" &&
+      email.match(
+        /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+      ) === null
     ) {
-      setErrorMsg('비밀번호가 양식(영대소문자, 숫자, 특수문자 조합 9-20자)에 벗어났습니다.')
+      setErrorMsg("이메일 형식을 유지해주세요.");
+      return;
+    } else if (
+      psword.match(
+        /^.*(?=^.{9,20}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/
+      ) === null
+    ) {
+      setErrorMsg(
+        "비밀번호가 양식(영대소문자, 숫자, 특수문자 조합 9-20자)에 벗어났습니다."
+      );
       return;
     } else if (psword !== pswordConfirm) {
-      setErrorMsg('비밀번호가 일치하지 않습니다.');
+      setErrorMsg("비밀번호가 일치하지 않습니다.");
       return;
     }
 
@@ -100,9 +107,13 @@ const RegisterComponent = () => {
         <form className="form-field">
           <h1 className="form-title">SignUp</h1>
 
-          <div className="select-field" >
-            <select className="select-major" onChange={onHandlerSelect} defaultalue="">
-              <option value="" >학과 선택 </option>
+          <div className="select-field">
+            <select
+              className="select-major"
+              onChange={onHandlerSelect}
+              defaultalue=""
+            >
+              <option value="">학과 선택 </option>
               <option value="1">비서학과</option>
               <option value="2">관광서비스경영학과</option>
               <option value="3">휴먼사회복지학과</option>
@@ -177,10 +188,14 @@ const RegisterComponent = () => {
               autoComplete="off"
             />
             <span
-              className={formValues.nickname ? "input-border fill" : "input-border"}
+              className={
+                formValues.nickname ? "input-border fill" : "input-border"
+              }
             />
             <label
-              className={formValues.nickname ? "input-label fix" : "input-label"}
+              className={
+                formValues.nickname ? "input-label fix" : "input-label"
+              }
             >
               별명
             </label>
@@ -222,7 +237,10 @@ const RegisterComponent = () => {
             <label
               className={formValues.psword ? "input-label fix" : "input-label"}
             >
-              비밀번호 <label className="psword-text">(영대소문자, 숫자, 특수문자 포함 9-20자)</label>
+              비밀번호{" "}
+              <label className="psword-text">
+                (영대소문자, 숫자, 특수문자 포함 9-20자)
+              </label>
             </label>
           </div>
 
@@ -240,7 +258,9 @@ const RegisterComponent = () => {
               }
             />
             <label
-              className={formValues.pswordConfirm ? "input-label fix" : "input-label"}
+              className={
+                formValues.pswordConfirm ? "input-label fix" : "input-label"
+              }
             >
               비밀번호 확인
             </label>

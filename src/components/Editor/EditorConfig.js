@@ -186,7 +186,7 @@ export const editorConfiguration = {
   language: "ko",
 
   simpleUpload: {
-    uploadUrl: `${process.env.REACT_APP_BASIC_SERVER_URL}/api/image`,
+    // uploadUrl: `${process.env.REACT_APP_BASIC_SERVER_URL}/api/image`,
 
     // Headers sent along with the XMLHttpRequest to the upload server.
 

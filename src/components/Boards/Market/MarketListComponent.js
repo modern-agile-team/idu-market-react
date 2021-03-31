@@ -60,32 +60,32 @@ const MarketListComponent = ({ categoryName }) => {
 
   return (
     <section className="market" id="market">
-        <>
-          <button className="scroll-top-btn" onClick={scrollTop}>
-            <AiOutlineArrowUp />
-          </button>
-          <SearchComponent categoryName={categoryName} />
-          <div className="container">
-            {auth.id.length === 0 ? (
-              <BoardListItem
-                productList={productList}
-                categoryName={categoryName}
-                // studentId="not-login"
-              ></BoardListItem>
-            ) : (
-              <BoardListItem
-                productList={productList}
-                categoryName={categoryName}
-                // studentId={auth.id}
-              ></BoardListItem>
-            )}
+      <>
+        <button className="scroll-top-btn" onClick={scrollTop}>
+          <AiOutlineArrowUp />
+        </button>
+        <SearchComponent categoryName={categoryName} />
+        <div className="container">
+          {auth.id.length === 0 ? (
+            <BoardListItem
+              productList={productList}
+              categoryName={categoryName}
+              // studentId="not-login"
+            ></BoardListItem>
+          ) : (
             <BoardListItem
               productList={productList}
               categoryName={categoryName}
               // studentId={auth.id}
             ></BoardListItem>
-          </div>
-        </>
+          )}
+          <BoardListItem
+            productList={productList}
+            categoryName={categoryName}
+            // studentId={auth.id}
+          ></BoardListItem>
+        </div>
+      </>
     </section>
   );
 };

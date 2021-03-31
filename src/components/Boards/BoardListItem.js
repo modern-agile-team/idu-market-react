@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineUser, AiOutlineComment } from "react-icons/ai";
+import { AiOutlineComment } from "react-icons/ai";
 
 const BoardListItem = ({ productList, categoryName, profile }) => {
   console.log(productList);
@@ -35,11 +35,15 @@ const BoardListItem = ({ productList, categoryName, profile }) => {
             <p className="market-item-price">{board.price}원</p>
 
             <p className="market-item-id">
-              {board.seller ? (
+              {board.sellerName ? (
                 <>
-                  <Link to={`/students/${board.seller}`}>
-                    <AiOutlineUser />
-                    {board.seller} &nbsp;
+                  <Link to={`/students/${board.sellerId}`}>
+                    <img
+                      src={board.profilePath}
+                      alt="프로필 이미지"
+                      className="board-profile-img"
+                    />
+                    {board.sellerName} &nbsp;
                   </Link>
                 </>
               ) : (
@@ -50,7 +54,7 @@ const BoardListItem = ({ productList, categoryName, profile }) => {
                       alt="프로필 이미지"
                       className="board-profile-img"
                     />
-                    {board.studentId} &nbsp;
+                    {board.nickname} &nbsp;
                   </Link>
                 </>
               )}

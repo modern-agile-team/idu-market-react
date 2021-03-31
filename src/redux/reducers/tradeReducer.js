@@ -27,7 +27,7 @@ const trade = (state = initialState, action) => {
     case TRADE_COMMENT_GET_SUCCESS:
       return {
         ...state,
-        buyers: action.payload.comments,
+        buyers: action.payload.buyers,
         loading: false,
         msg: action.payload.msg,
       };

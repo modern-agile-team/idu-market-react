@@ -10,7 +10,10 @@ import {
   IoIosListBox,
 } from "react-icons/io";
 
-import { PROFILE_GET_REQUEST, PROFILE_IMAGE_UPDATE_REQUEST } from "../../redux/types";
+import {
+  PROFILE_GET_REQUEST,
+  PROFILE_IMAGE_UPDATE_REQUEST,
+} from "../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProfileComponent = (props) => {
@@ -29,11 +32,11 @@ const ProfileComponent = (props) => {
     });
   }, [dispatch, studentId]);
 
-  const onSelectImage = e => {
+  const onSelectImage = (e) => {
     const body = {
       studentId,
-      profilePath: e.target.src
-    }
+      profilePath: e.target.src,
+    };
 
     dispatch({
       type: PROFILE_IMAGE_UPDATE_REQUEST,
@@ -41,8 +44,7 @@ const ProfileComponent = (props) => {
     });
 
     setOpenImgSelectModal(false);
-  }
-
+  };
   return (
     <>
       <section className="profile" id="profile">
@@ -51,7 +53,11 @@ const ProfileComponent = (props) => {
             {profileList ? (
               <>
                 <div className="profile-img-box">
-                  <img src={profileList.profilePath} alt="test" className="profile-img" />
+                  <img
+                    src={profileList.profilePath}
+                    alt="test"
+                    className="profile-img"
+                  />
 
                   {auth.id === studentId ? (
                     <BiPencil
@@ -134,29 +140,50 @@ const ProfileComponent = (props) => {
           {openImgSelectModal ? (
             <div className="profile-img-modal">
               <div className="img-select-box" onClick={onSelectImage}>
-                <img src='https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/profile/1.png' alt="프로필 이미지 선택" />
+                <img
+                  src="https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/profile/1.png"
+                  alt="프로필 이미지 선택"
+                />
               </div>
               <div className="img-select-box" onClick={onSelectImage}>
-                <img src='https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/profile/2.png' alt="프로필 이미지 선택" />
+                <img
+                  src="https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/profile/2.png"
+                  alt="프로필 이미지 선택"
+                />
               </div>
               <div className="img-select-box" onClick={onSelectImage}>
-                <img src='https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/profile/3.png' alt="프로필 이미지 선택" />
+                <img
+                  src="https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/profile/3.png"
+                  alt="프로필 이미지 선택"
+                />
               </div>
               <div className="img-select-box" onClick={onSelectImage}>
-                <img src='https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/profile/4.png' alt="프로필 이미지 선택" />
+                <img
+                  src="https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/profile/4.png"
+                  alt="프로필 이미지 선택"
+                />
               </div>
               <div className="img-select-box" onClick={onSelectImage}>
-                <img src='https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/profile/5.png' alt="프로필 이미지 선택" />
+                <img
+                  src="https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/profile/5.png"
+                  alt="프로필 이미지 선택"
+                />
               </div>
               <div className="img-select-box" onClick={onSelectImage}>
-                <img src='https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/profile/6.png' alt="프로필 이미지 선택" />
+                <img
+                  src="https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/profile/6.png"
+                  alt="프로필 이미지 선택"
+                />
               </div>
               <div className="img-modal-top">
                 <p className="img-modal-title">
                   IUAM
                   <span>Select Profile Image</span>
                 </p>
-                <MdCancel onClick={() => setOpenImgSelectModal(false)} className="img-modal-cancel" />
+                <MdCancel
+                  onClick={() => setOpenImgSelectModal(false)}
+                  className="img-modal-cancel"
+                />
               </div>
             </div>
           ) : (
