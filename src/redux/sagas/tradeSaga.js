@@ -12,12 +12,12 @@ import {
 
 //Trade Comment Get
 function tradeCommentGetAPI(action) {
-    const categoryName = action.categoryName
-    const num = action.num
-    
-    return axios.get(`/api/boards/${categoryName}/${num}/comments`);
-  }
-  
+  const categoryName = action.categoryName;
+  const num = action.num;
+
+  return axios.get(`/api/boards/${categoryName}/${num}/comments`);
+}
+
 function* tradeCommentGet(action) {
   try {
     const result = yield call(tradeCommentGetAPI, action.payload);
@@ -35,16 +35,18 @@ function* tradeCommentGet(action) {
   }
 }
 
-  //Trade Complete
+//Trade Complete
 function tradeCompleteAPI(action) {
   const boardNum = action.boardNum;
-  const studentId = action.studentId;
+  const nickname = action.nickname;
 
   const body = {
     boardNum,
-    studentId,
-  }
-  
+    nickname,
+  };
+
+  console.log(body);
+
   return axios.post(`/api/purchase-list`, body);
 }
 
@@ -59,8 +61,9 @@ function* tradeComplete(action) {
       payload: result.data,
     });
 
-    yield put(push(`/boards/${action.payload.categoryName}/${action.payload.boardNum}`));
-    
+    yield put(
+      push(`/boards/${action.payload.categoryName}/${action.payload.boardNum}`)
+    );
   } catch (e) {
     yield put({
       type: TRADE_COMPLETE_FAILURE,
@@ -68,7 +71,7 @@ function* tradeComplete(action) {
     });
   }
 }
-  
+
 function* watchTradeCommentGet() {
   yield takeEvery(TRADE_COMMENT_GET_REQUEST, tradeCommentGet);
 }

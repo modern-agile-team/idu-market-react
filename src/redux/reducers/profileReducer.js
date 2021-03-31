@@ -26,7 +26,7 @@ const profile = (state = initialState, action) => {
     case PROFILE_GET_SUCCESS:
       return {
         ...state,
-        profile: action.payload,
+        profile: action.payload.profile,
         loading: false,
         msg: action.payload.msg,
       };
@@ -45,9 +45,9 @@ const profile = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        profile: { ...state.profile, profilePath: action.payload.profilePath},
+        profile: { ...state.profile, profilePath: action.payload.profilePath },
         msg: action.payload.msg,
-      }
+      };
 
     case PROFILE_IMAGE_UPDATE_FAILURE:
       return {
@@ -56,8 +56,6 @@ const profile = (state = initialState, action) => {
         profile: null,
         msg: action.payload.data.msg,
       };
-
-      
 
     default:
       return state;

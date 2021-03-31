@@ -15,7 +15,7 @@ const TradeCompleteComponent = (props) => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const buyers = useSelector((state) => state.trade.buyers);
-  const { studentId, status } = useSelector((state) => state.boards);
+  const { studentId, status, nickname } = useSelector((state) => state.boards);
 
   console.log(studentId);
 
@@ -66,7 +66,7 @@ const TradeCompleteComponent = (props) => {
       const body = {
         categoryName,
         boardNum: num,
-        studentId: e.target.textContent,
+        nickname: e.target.textContent,
       };
 
       dispatch({
@@ -85,7 +85,7 @@ const TradeCompleteComponent = (props) => {
           <h1 className="trade-buyer-number">{`구매 요청 인원 (${(function () {
             let count = 0;
             for (let el in buyers) {
-              if (el !== studentId) count++;
+              if (el !== nickname) count++;
               return count;
             }
           })()})`}</h1>
@@ -93,10 +93,10 @@ const TradeCompleteComponent = (props) => {
           <></>
         )}
         <div className="trade-buyer-box">
-          {buyers && studentId ? (
+          {buyers && nickname ? (
             <>
               {buyers.map((buyer, index) => {
-                if (buyer.studentId !== studentId) {
+                if (buyer.nickname !== nickname) {
                   return (
                     <div
                       className="trade-buyer"

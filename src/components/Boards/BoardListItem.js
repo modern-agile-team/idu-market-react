@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineComment } from "react-icons/ai";
 
 const BoardListItem = ({ productList, categoryName, profile }) => {
+  console.log(productList);
   return (
     <>
       {productList.map((board) => {

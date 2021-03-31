@@ -115,6 +115,7 @@ const boards = (state = initialState, action) => {
         isLoading: false,
         num: action.payload.board.num,
         studentName: action.payload.board.studentName,
+        nickname: action.payload.board.nickname,
         studentId: action.payload.board.studentId,
         title: action.payload.board.title,
         content: action.payload.board.content,

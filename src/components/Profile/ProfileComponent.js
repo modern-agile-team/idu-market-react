@@ -54,7 +54,7 @@ const ProfileComponent = (props) => {
               <>
                 <div className="profile-img-box">
                   <img
-                    src={profileList.profile.profilePath}
+                    src={profileList.profilePath}
                     alt="test"
                     className="profile-img"
                   />
@@ -69,20 +69,20 @@ const ProfileComponent = (props) => {
                   )}
                 </div>
 
-                <p className="profile-id">{profileList.profile.id}</p>
+                <p className="profile-id">{profileList.id}</p>
 
                 <div className="profile-information-box">
                   <p className="profile-information">
                     <span>
                       <FaUserAlt />
                     </span>
-                    {profileList.profile.name}
+                    {profileList.name}
                   </p>
                   <p className="profile-information">
                     <span>
                       <MdEmail />
                     </span>
-                    {profileList.profile.email}
+                    {profileList.email}
                   </p>
 
                   {auth.id === studentId ? (
