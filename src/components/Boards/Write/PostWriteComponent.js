@@ -90,17 +90,18 @@ const PostWriteComponent = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
+    const reg = /(https:\/\/woowahan-agile.s3.ap-northeast-2.amazonaws.com\/board\/){1}/g;
+    const changeURL = `https://resize-woowahan-agile/`;
+
     if (categoryName === "free" || categoryName === "notice") {
       const { studentId, title, content, categoryName } = formValues;
 
       const body = {
         studentId,
         title,
-        content,
+        content: content.replace(reg, changeURL),
         categoryName,
       };
-
-      console.log(body);
 
       //유효성 검사
       if (title === "") {
@@ -141,7 +142,7 @@ const PostWriteComponent = (props) => {
       const body = {
         studentId,
         title,
-        content,
+        content: content.replace(reg, changeURL),
         thumbnail,
         price,
         categoryName,
@@ -183,10 +184,11 @@ const PostWriteComponent = (props) => {
           setModal(false);
         }, 1500);
       } else {
-        dispatch({
-          type: BOARD_WRITE_REQUEST,
-          payload: body,
-        });
+        console.log(body);
+        // dispatch({
+        //   type: BOARD_WRITE_REQUEST,
+        //   payload: body,
+        // });
 
         setModal(true);
         setModalMsg("게시글 업로드에 성공하셨습니다.");
