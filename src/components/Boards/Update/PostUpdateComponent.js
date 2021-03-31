@@ -18,12 +18,16 @@ const PostUpdateComponent = (props) => {
   const categoryName = props.match.params.categoryName;
   const num = props.match.params.num;
 
+  const dispatch = useDispatch();
+  const boardDetail = useSelector((state) => state.boards);
+  const auth = useSelector((state) => state.auth);
+
   const [modal, setModal] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
   const [modalErrorMsg, setModalErrorMsg] = useState("");
   const [modalError, setModalError] = useState(false);
   const [formValues, setFormValues] = useState({
-    studentId: localStorage.getItem("userId"),
+    studentId: auth.id,
     title: "",
     content: "",
     thumbnail: "",
@@ -31,9 +35,6 @@ const PostUpdateComponent = (props) => {
     categoryName,
     num,
   });
-
-  const dispatch = useDispatch();
-  const boardDetail = useSelector((state) => state.boards);
 
   useEffect(() => {
     dispatch({
@@ -45,7 +46,7 @@ const PostUpdateComponent = (props) => {
     });
 
     setFormValues({
-      studentId: localStorage.getItem("userId"),
+      studentId: auth.id,
       title: boardDetail.title,
       content: boardDetail.content,
       thumbnail: boardDetail.thumbnail,
