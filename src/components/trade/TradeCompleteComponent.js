@@ -103,7 +103,7 @@ const TradeCompleteComponent = (props) => {
                       key={index}
                       onClick={onConfirmTrade}
                     >
-                      {buyer.studentId}
+                      {buyer.nickname}
                     </div>
                   );
                 } else return null;
