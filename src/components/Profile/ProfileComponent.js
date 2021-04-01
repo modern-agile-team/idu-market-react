@@ -99,6 +99,8 @@ const ProfileComponent = (props) => {
                         {profileList.major}
                       </p>
 
+                      <Link to={`/students/${studentId}/update`} className="profile-update-btn"><BiPencil /></Link>
+
                       {openBtnBox ? (
                         <IoIosArrowDropupCircle
                           className="open-profile-btn"
