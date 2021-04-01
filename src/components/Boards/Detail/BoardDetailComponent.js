@@ -22,13 +22,6 @@ const BoardDetailComponent = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({
-      type: BOARD_HIT_REQUEST,
-      payload: {
-        categoryName,
-        num,
-      }
-    });
     if(auth.id.length === 0) {
       dispatch({
         type: BOARD_DETAIL_REQUEST,
@@ -47,6 +40,13 @@ const BoardDetailComponent = (props) => {
         },
       });
     } else {
+      dispatch({
+        type: BOARD_HIT_REQUEST,
+        payload: {
+          categoryName,
+          num,
+        }
+      });
       dispatch({
         type: BOARD_DETAIL_REQUEST,
         payload: {

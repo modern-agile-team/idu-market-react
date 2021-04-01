@@ -72,15 +72,18 @@ const PostWritePage = loadable(() => import("./Boards/Write/PostWritePage"), {
   fallback: <LoadingPage />,
 });
 const PostUpdatePage = loadable(
-  () => import("./Boards/Update/PostUpdatePage"),
-  {
-    fallback: <LoadingPage />,
-  }
+  () => import("./Boards/Update/PostUpdatePage")
 );
 
 const ProfilePage = loadable(() => import("./Profile/ProfilePage"), {
   fallback: <LoadingPage />,
 });
+
+
+const ProfileUpdatePage = loadable(() => import("./Profile/ProfileUpdatePage"), {
+  fallback: <LoadingPage />,
+});
+
 const WatchlistPage = loadable(() => import("./WatchlistPage/WatchlistPage"), {
   fallback: <LoadingPage />,
 });
@@ -171,6 +174,11 @@ const MainRouter = () => {
           <Route
             component={Auth(ProfilePage, null)}
             path="/students/:studentId"
+            exact
+          />
+          <Route
+            component={Auth(ProfileUpdatePage, null)}
+            path="/students/:studentId/update"
             exact
           />
           {/* watchlist */}

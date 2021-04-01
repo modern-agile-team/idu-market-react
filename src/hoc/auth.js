@@ -29,11 +29,12 @@ export default function Auth(SpecificComponent, option, adminRoute = null) {
 
     //update page 올바르지 못한 접근 방지
     if (option === "update") {
-      if (creatorId !== auth.id) {
-        alert("잘못된 접근 방식입니다.");
-        setTimeout(() => {
-          props.history.push("/");
-        }, 300);
+      if(creatorId.length > 0 && auth.id.length > 0) {
+        if (creatorId !== auth.id) {
+          setTimeout(() => {
+            props.history.push("/");
+          }, 500);
+        }
       }
     }
 
