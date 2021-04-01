@@ -52,12 +52,33 @@ const ProfileUpdateComponent = (props) => {
     e.preventDefault();
 
     const { email, nickname, major } = formValues;
+    
     let body = {
         email,
         nickname,
         major,
       };
-      setErrorMsg("하이");
+
+    if ([nickname, email].includes("")) {
+        setErrorMsg("빈 칸을 모두 입력하세요.");
+    }
+    else if (nickname.match(/^[a-zA-Z가-힣0-9]{2,10}$/) === null) {
+        setErrorMsg("별명은 2~10자리입니다. 모음,자음 따로입력 불가");
+    }
+    else if (
+        email !== "" &&
+        email.match(
+          /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+        ) === null
+    ) {
+        setErrorMsg("이메일 형식을 유지해주세요.");
+    }
+    else if (major.length === 0) {
+        setErrorMsg("학과를 선택해주세요.");
+    } 
+    else {
+        setErrorMsg("");
+    }
       console.log(body);
   }
 
@@ -133,7 +154,7 @@ const ProfileUpdateComponent = (props) => {
                                     <option value="26">융합기계공학과</option>
                                 </select>
                             </div>
-                            <p className="form-errmsg">{errorMsg}</p>
+                            <p className="update-errmsg">{errorMsg}</p>
                             <button className="update-btn" onClick={onUpdateProfile}>Update</button>
                         </div>
                     ) : (
