@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { BsCalendar } from "react-icons/bs";
+import { BsCalendar, BsTag } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import {
   BOARD_DELETE_REQUEST,
@@ -186,6 +186,10 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
         <p>
           <BsCalendar />
           &nbsp;{boardDetail.inDate.substring(0, 16)}
+        </p>
+        <p>
+          <BsTag />
+          &nbsp;{boardDetail.hit}
         </p>
       </div>
 
