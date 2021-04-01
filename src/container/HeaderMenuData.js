@@ -1,25 +1,25 @@
 export const HeaderMenuData = [
   {
-    title: "NoticeBoard",
+    title: "공지게시판",
     path: "/boards/notice",
   },
   {
-    title: "FreeBoard",
+    title: "자유게시판",
     path: "/boards/free",
   },
   {
-    title: "Market",
+    title: "장터",
     subMenu: [
       {
-        title: "Book",
+        title: "책",
         path: "/boards/book",
       },
       {
-        title: "Device",
+        title: "전자기기",
         path: "/boards/device",
       },
       {
-        title: "Clothes",
+        title: "의류",
         path: "/boards/clothes",
       },
     ],

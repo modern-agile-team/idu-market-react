@@ -44,21 +44,21 @@
 
     .header-menu {
         position: relative;
-        font-family: $Nunito-font;
+        font-family: $Jua-font;
         text-align: center;
-        font-weight: 600;
-        padding: 20px 40px;
+        font-weight: 400;
+        padding: 25px 40px;
         cursor: pointer;
 
         a {
-            font-family: $Nunito-font;
-            padding: 20px 30px;
+            font-family: $Jua-font;
+            padding: 25px 30px;
         }
 
         &:hover {
             &::before {
                 position: absolute;
-                bottom: -5px;
+                bottom: 5px;
                 left: 50%;
                 transform: translateX(-50%);
                 content: "";
@@ -91,10 +91,11 @@
             }
 
             a {
-                font-family: $Nunito-font;
+                font-family: $Jua-font;
                 font-size: 1rem;
                 padding: 10px 45px;
-
+                white-space : nowrap;
+                font-weight: 400;
                 &:hover { 
                     color: #7c7c7c; 
                 }
@@ -125,12 +126,12 @@
 
 .header-btn {
     color: #cfac8c;
-    font-family: $Nunito-font;
+    font-family: $Jua-font;
     margin: 0 20px;
     padding: 5px 15px;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1.2rem;
-
+    white-space : nowrap;
     &:hover { 
         color: $main-color-6; 
     }

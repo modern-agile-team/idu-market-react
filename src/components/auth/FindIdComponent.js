@@ -73,7 +73,7 @@ const FindIdComponent = (props) => {
             <label
               className={formValues.name ? "input-label fix" : "input-label"}
             >
-              Name
+              이름
             </label>
           </div>
 
@@ -93,7 +93,7 @@ const FindIdComponent = (props) => {
             <label
               className={formValues.email ? "input-label fix" : "input-label"}
             >
-              Email
+              이메일
             </label>
           </div>
 
@@ -101,9 +101,9 @@ const FindIdComponent = (props) => {
 
           <div className="form-search">
             <p>
-              <Link to="/login">Login</Link>
+              <Link to="/login">로그인</Link>
               <span> / </span>
-              <Link to="/register">Sign Up</Link>
+              <Link to="/register">회원가입</Link>
             </p>
           </div>
 
