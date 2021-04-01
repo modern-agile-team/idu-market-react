@@ -35,7 +35,6 @@
     position: relative;
     display: block;
     width: 180px;
-    margin: 0 auto;
     font-family: $Montserrat-font;
     // font-size: 1rem;
     color:#222;
@@ -64,4 +63,12 @@
         color: $main-color-5;
         border: 2px solid $main-color-5;
     }
+}
+.update-errmsg {
+    width: 200px;
+    color:red;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-left: 12px;
 }
