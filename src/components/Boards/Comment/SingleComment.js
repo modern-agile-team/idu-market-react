@@ -181,7 +181,7 @@ const SingleComment = ({ comment, categoryName, num }) => {
               <>
                 <div className="comment-student-id">
                   <img src={comment.profilePath} alt="프로필 이미지" className="comment-profile-img" />
-                  <span>{comment.studentId}</span>
+                  <span>{comment.nickname}</span>
                 </div>
                 <div className="comment-content">
                   <span dangerouslySetInnerHTML={ {__html: comment.content} }></span>
