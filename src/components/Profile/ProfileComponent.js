@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { MdEmail, MdCancel } from "react-icons/md";
-import { FaUserAlt } from "react-icons/fa";
+import { FaUserAlt, FaGraduationCap } from "react-icons/fa";
 import { BiPencil } from "react-icons/bi";
 import {
   IoIosArrowDropdownCircle,
@@ -68,39 +68,74 @@ const ProfileComponent = (props) => {
                     <></>
                   )}
                 </div>
+                
+                {auth.id === studentId ? (
+                  <>
+                    <p className="profile-id">{profileList.id}</p>
 
-                <p className="profile-id">{profileList.id}</p>
+                    <div className="profile-information-box">
+                      <p className="profile-information">
+                        <span>
+                          <FaUserAlt />
+                        </span>
+                        {profileList.name}
+                      </p>
+                      <p className="profile-information">
+                        <span>
+                          <FaUserAlt />
+                        </span>
+                        {profileList.nickname}
+                      </p>
+                      <p className="profile-information">
+                        <span>
+                          <MdEmail />
+                        </span>
+                        {profileList.email}
+                      </p>
+                      <p className="profile-information">
+                        <span>
+                          <FaGraduationCap />
+                        </span>
+                        {profileList.major}
+                      </p>
 
-                <div className="profile-information-box">
-                  <p className="profile-information">
-                    <span>
-                      <FaUserAlt />
-                    </span>
-                    {profileList.name}
-                  </p>
-                  <p className="profile-information">
-                    <span>
-                      <MdEmail />
-                    </span>
-                    {profileList.email}
-                  </p>
-
-                  {auth.id === studentId ? (
-                    openBtnBox ? (
-                      <IoIosArrowDropupCircle
-                        className="open-profile-btn"
-                        onClick={() => setOpenBtnBox(!openBtnBox)}
-                      />
-                    ) : (
-                      <IoIosArrowDropdownCircle
-                        className="open-profile-btn"
-                        onClick={() => setOpenBtnBox(!openBtnBox)}
-                      />
-                    )
-                  ) : (
-                    <></>
-                  )}
-                </div>
+                      {openBtnBox ? (
+                        <IoIosArrowDropupCircle
+                          className="open-profile-btn"
+                          onClick={() => setOpenBtnBox(!openBtnBox)}
+                        />
+                      ) : (
+                        <IoIosArrowDropdownCircle
+                          className="open-profile-btn"
+                          onClick={() => setOpenBtnBox(!openBtnBox)}
+                        />
+                      )}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="profile-information-box">
+                      <p className="profile-information">
+                        <span>
+                          <FaUserAlt />
+                        </span>
+                        {profileList.nickname}
+                      </p>
+                      <p className="profile-information">
+                        <span>
+                          <MdEmail />
+                        </span>
+                        {profileList.email}
+                      </p>
+                      <p className="profile-information">
+                        <span>
+                          <FaGraduationCap />
+                        </span>
+                        {profileList.major}
+                      </p>
+                    </div>
+                  </>
+                )}
               </>
             ) : (
               <> </>
