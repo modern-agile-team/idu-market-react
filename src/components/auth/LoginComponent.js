@@ -56,7 +56,7 @@ const LoginComponent = () => {
             <label
               className={formValues.id ? "input-label fix" : "input-label"}
             >
-              ID
+              학번
             </label>
           </div>
 
@@ -76,7 +76,7 @@ const LoginComponent = () => {
             <label
               className={formValues.psword ? "input-label fix" : "input-label"}
             >
-              Password
+              비밀번호
             </label>
           </div>
 

@@ -73,7 +73,7 @@ const FindPasswordComponent = (props) => {
             <label
               className={formValues.id ? "input-label fix" : "input-label"}
             >
-              ID
+              학번
             </label>
           </div>
 
@@ -93,7 +93,7 @@ const FindPasswordComponent = (props) => {
             <label
               className={formValues.email ? "input-label fix" : "input-label"}
             >
-              Email
+              이메일
             </label>
           </div>
 
@@ -101,9 +101,9 @@ const FindPasswordComponent = (props) => {
 
           <div className="form-search">
             <p>
-              <Link to="/login">Login</Link>
+              <Link to="/login">로그인</Link>
               <span> / </span>
-              <Link to="/register">Sign Up</Link>
+              <Link to="/register">회원가입</Link>
             </p>
           </div>
 

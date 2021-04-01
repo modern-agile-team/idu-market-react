@@ -71,7 +71,7 @@ const Header = () => {
                 className="header-btn"
                 onClick={onLogoutHandler}
               >
-                Logout
+                로그아웃
               </Link>
             </>
           ) : (
@@ -81,7 +81,7 @@ const Header = () => {
                 className="header-btn"
                 onClick={() => setSidebar(!sidebar)}
               >
-                Login
+                로그인
               </Link>
 
               <Link
@@ -89,7 +89,7 @@ const Header = () => {
                 className="header-btn"
                 onClick={() => setSidebar(!sidebar)}
               >
-                SignUp
+                회원가입
               </Link>
             </>
           )}
