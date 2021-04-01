@@ -20,6 +20,9 @@ import {
   BOARD_STATUS_REQUEST,
   BOARD_STATUS_SUCCESS,
   BOARD_STATUS_FAILURE,
+  BOARD_HIT_REQUEST,
+  BOARD_HIT_SUCCESS,
+  BOARD_HIT_FAILURE,
   BOARD_WATCHLIST_ADD_REQUEST,
   BOARD_WATCHLIST_ADD_SUCCESS,
   BOARD_WATCHLIST_ADD_FAILURE,
@@ -226,7 +229,33 @@ function* boardStatus(action) {
   }
 }
 
-//Board Status
+//Board Hit
+function boardHitAPI(action) {
+  const categoryName = action.categoryName;
+  const num = action.num;
+
+  console.log(categoryName, num);
+  return axios.patch(`/api/boards/${categoryName}/${num}`);
+}
+
+function* boardHit(action) {
+  try {
+    const result = yield call(boardHitAPI, action.payload);
+    console.log(result);
+
+    yield put({
+      type: BOARD_HIT_SUCCESS,
+      payload: result.data,
+    });
+  } catch (e) {
+    yield put({
+      type: BOARD_HIT_FAILURE,
+      payload: e.response,
+    });
+  }
+}
+
+//Board watchlist Add
 function boardWatchlistAddAPI(action) {
   const studentId = action.studentId;
 
@@ -307,6 +336,11 @@ function* watchBoardStatus() {
   yield takeEvery(BOARD_STATUS_REQUEST, boardStatus);
 }
 
+function* watchBoardHit() {
+  yield takeEvery(BOARD_HIT_REQUEST, boardHit);
+}
+
+
 function* watchBoardWatchlistAdd() {
   yield takeEvery(BOARD_WATCHLIST_ADD_REQUEST, boardWatchlistAdd);
 }
@@ -331,6 +365,7 @@ export default function* boardsSaga() {
     fork(watchBoardUpdate),
     fork(watchBoardDelete),
     fork(watchBoardStatus),
+    fork(watchBoardHit),
     fork(watchBoardWatchlistAdd),
     fork(watchBoardWatchlistDelete),
     fork(watchImageDelete),
