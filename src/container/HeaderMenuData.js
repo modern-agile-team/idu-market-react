@@ -8,7 +8,7 @@ export const HeaderMenuData = [
     path: "/boards/free",
   },
   {
-    title: "장터",
+    title: "거래 장터",
     subMenu: [
       {
         title: "책",

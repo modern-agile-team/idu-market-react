@@ -17,6 +17,9 @@ import {
   BOARD_STATUS_REQUEST,
   BOARD_STATUS_SUCCESS,
   BOARD_STATUS_FAILURE,
+  BOARD_HIT_REQUEST,
+  BOARD_HIT_SUCCESS,
+  BOARD_HIT_FAILURE,
   BOARD_WATCHLIST_ADD_REQUEST,
   BOARD_WATCHLIST_ADD_SUCCESS,
   BOARD_WATCHLIST_ADD_FAILURE,
@@ -50,6 +53,9 @@ const initialState = {
 
 const boards = (state = initialState, action) => {
   switch (action.type) {
+    case BOARD_WATCHLIST_DELETE_REQUEST:
+    case BOARD_WATCHLIST_ADD_REQUEST:
+    case BOARD_HIT_REQUEST:
     case BOARD_STATUS_REQUEST:
     case IMAGE_DELETE_REQUEST:
     case BOARD_DELETE_REQUEST:
@@ -147,6 +153,7 @@ const boards = (state = initialState, action) => {
         msg: action.payload.data.msg,
       };
 
+    case BOARD_HIT_SUCCESS:
     case IMAGE_DELETE_SUCCESS:
     case BOARD_DELETE_SUCCESS:
       return {
@@ -155,6 +162,7 @@ const boards = (state = initialState, action) => {
         msg: action.payload.msg,
       };
 
+    case BOARD_HIT_FAILURE:
     case IMAGE_DELETE_FAILURE:
     case BOARD_DELETE_FAILURE:
       return {
@@ -178,14 +186,6 @@ const boards = (state = initialState, action) => {
         msg: action.payload.data.msg,
         status: "",
         watchListFlag: null,
-      };
-
-    case BOARD_WATCHLIST_DELETE_REQUEST:
-    case BOARD_WATCHLIST_ADD_REQUEST:
-      return {
-        ...state,
-        loading: false,
-        msg: "",
       };
 
     case BOARD_WATCHLIST_ADD_SUCCESS:

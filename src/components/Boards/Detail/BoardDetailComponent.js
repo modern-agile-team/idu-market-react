@@ -8,6 +8,7 @@ import BalloonEditor from "@ckeditor/ckeditor5-editor-balloon/src/ballooneditor"
 import { editorConfiguration } from "../../Editor/EditorConfig";
 import {
   BOARD_DETAIL_REQUEST,
+  BOARD_HIT_REQUEST,
   COMMENT_GET_REQUEST,
 } from "../../../redux/types";
 import CommentComponent from "../Comment/CommentComponent";
@@ -21,6 +22,13 @@ const BoardDetailComponent = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch({
+      type: BOARD_HIT_REQUEST,
+      payload: {
+        categoryName,
+        num,
+      }
+    });
     if(auth.id.length === 0) {
       dispatch({
         type: BOARD_DETAIL_REQUEST,
