@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { FcCancel } from "react-icons/fc";
@@ -14,20 +14,29 @@ import Myinit from "../../Editor/UploadAdapter";
 const PostWriteComponent = (props) => {
   const categoryName = props.match.params.categoryName;
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.auth.id);
+  const {id, isAdmin} = useSelector((state) => state.auth);
 
   const [modal, setModal] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
   const [modalErrorMsg, setModalErrorMsg] = useState("");
   const [modalError, setModalError] = useState(false);
   const [formValues, setFormValues] = useState({
-    studentId: userId,
+    studentId: id,
     title: "",
     content: "",
     thumbnail: "",
     price: "",
     categoryName,
   });
+
+  useEffect(() => {
+    if(categoryName === 'notice' && isAdmin === 0) {
+      setTimeout(() => {
+        alert("관리자 전용 페이지입니다.");
+        props.history.push("/");
+      }, 500)
+    }
+  }, [props.history, isAdmin, categoryName]);
 
   const getDataFromCKEditor = (event, editor) => {
     const data = editor.getData();
