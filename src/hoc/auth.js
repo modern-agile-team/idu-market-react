@@ -32,6 +32,7 @@ export default function Auth(SpecificComponent, option, adminRoute = null) {
       if(creatorId.length > 0 && auth.id.length > 0) {
         if (creatorId !== auth.id) {
           setTimeout(() => {
+            alert("올바르지 못한 접근입니다.");
             props.history.push("/");
           }, 500);
         }
