@@ -1,7 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import loadable from "@loadable/component";
-import { Helmet } from 'react-helmet';
 
 //Header, Footer
 import Header from "../components/Header/Header";
@@ -111,12 +110,6 @@ const SaleListPage = loadable(
 const MainRouter = () => {
   return (
     <>
-      <Helmet>
-        <title>IUAM</title>
-        <meta charSet="utf-8" />
-        <meta name="description" content="Idu Used Article Market" />
-        <meta name="keywords" content="IUAM, 인덕대학교, 아이두마켓, Idu, 중고시장, 중고마켓, 인덕대학교중고마켓, idu-market.shop" />
-      </Helmet>
       <Header />
       <ScrollToTop>
         <Switch>
