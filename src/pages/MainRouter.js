@@ -10,98 +10,98 @@ import Auth from "../hoc/auth";
 import LoadingPage from "./LoadingPage";
 import Page404 from "./Page404";
 
-const HomePage = loadable(() => import("./HomePage/HomePage"), {
+const HomePage = loadable(() => import(/* webpackChunkName: "HomePage" */ "./HomePage/HomePage"), {
   fallback: <LoadingPage />,
 });
-const LoginPage = loadable(() => import("./authPages/LoginPage"), {
+const LoginPage = loadable(() => import(/* webpackChunkName: "LoginPage" */ "./authPages/LoginPage"), {
   fallback: <LoadingPage />,
 });
-const RegisterPage = loadable(() => import("./authPages/RegisterPage"), {
+const RegisterPage = loadable(() => import(/* webpackChunkName: "RegisterPage" */ "./authPages/RegisterPage"), {
   fallback: <LoadingPage />,
 });
-const FindIdPage = loadable(() => import("./authPages/FindIdPage"), {
+const FindIdPage = loadable(() => import(/* webpackChunkName: "FindIdPage" */ "./authPages/FindIdPage"), {
   fallback: <LoadingPage />,
 });
 const FindPasswordPage = loadable(
-  () => import("./authPages/FindPasswordPage"),
+  () => import(/* webpackChunkName: "FindPasswordPage" */ "./authPages/FindPasswordPage"),
   {
     fallback: <LoadingPage />,
   }
 );
 
-const BookListPage = loadable(() => import("./Boards/Market/BookListPage"), {
+const BookListPage = loadable(() => import(/* webpackChunkName: "BookListPage" */ "./Boards/Market/BookListPage"), {
   fallback: <LoadingPage />,
 });
 const DeviceListPage = loadable(
-  () => import("./Boards/Market/DeviceListPage"),
+  () => import(/* webpackChunkName: "DeviceListPage" */ "./Boards/Market/DeviceListPage"),
   {
     fallback: <LoadingPage />,
   }
 );
 const ClothesListPage = loadable(
-  () => import("./Boards/Market/ClothesListPage"),
+  () => import(/* webpackChunkName: "ClothesListPage" */ "./Boards/Market/ClothesListPage"),
   {
     fallback: <LoadingPage />,
   }
 );
 
 const NoticeBoardPage = loadable(
-  () => import("./Boards/Basic/NoticeBoardPage"),
+  () => import(/* webpackChunkName: "NoticeBoardPage" */ "./Boards/Basic/NoticeBoardPage"),
   {
     fallback: <LoadingPage />,
   }
 );
-const FreeBoardPage = loadable(() => import("./Boards/Basic/FreeBoardPage"), {
+const FreeBoardPage = loadable(() => import(/* webpackChunkName: "FreeBoardPage" */ "./Boards/Basic/FreeBoardPage"), {
   fallback: <LoadingPage />,
 });
 
 const BoardDetailPage = loadable(
-  () => import("./Boards/Detail/BoardDetailPage"),
+  () => import(/* webpackChunkName: "BoardDetailPage" */ "./Boards/Detail/BoardDetailPage"),
   {
     fallback: <LoadingPage />,
   }
 );
 const MarketSearchPage = loadable(
-  () => import("./Boards/Search/MarketSearchPage"),
+  () => import(/* webpackChunkName: "MarketSearchpage" */ "./Boards/Search/MarketSearchPage"),
   {
     fallback: <LoadingPage />,
   }
 );
 
-const PostWritePage = loadable(() => import("./Boards/Write/PostWritePage"), {
+const PostWritePage = loadable(() => import(/* webpackChunkName: "PostWritePage" */ "./Boards/Write/PostWritePage"), {
   fallback: <LoadingPage />,
 });
 const PostUpdatePage = loadable(
-  () => import("./Boards/Update/PostUpdatePage")
+  () => import(/* webpackChunkName: "PostUpdatePage" */ "./Boards/Update/PostUpdatePage")
 );
 
-const ProfilePage = loadable(() => import("./Profile/ProfilePage"), {
+const ProfilePage = loadable(() => import(/* webpackChunkName: "ProfilePage" */ "./Profile/ProfilePage"), {
   fallback: <LoadingPage />,
 });
 
 
-const ProfileUpdatePage = loadable(() => import("./Profile/ProfileUpdatePage"), {
+const ProfileUpdatePage = loadable(() => import(/* webpackChunkName: "ProfileUpdatePage" */ "./Profile/ProfileUpdatePage"), {
   fallback: <LoadingPage />,
 });
 
-const WatchlistPage = loadable(() => import("./WatchlistPage/WatchlistPage"), {
+const WatchlistPage = loadable(() => import(/* webpackChunkName: "WatchlistPage" */ "./WatchlistPage/WatchlistPage"), {
   fallback: <LoadingPage />,
 });
 
 const TradeCompletePage = loadable(
-  () => import("../pages/Trade/TradeCompletePage"),
+  () => import(/* webpackChunkName: "TradeCompletePage" */ "../pages/Trade/TradeCompletePage"),
   {
     fallback: <LoadingPage />,
   }
 );
 const PurchaseListPage = loadable(
-  () => import("./purchaseAndSaleList/PurchaseListPage"),
+  () => import(/* webpackChunkName: "PurchaseListPage" */ "./purchaseAndSaleList/PurchaseListPage"),
   {
     fallback: <LoadingPage />,
   }
 );
 const SaleListPage = loadable(
-  () => import("./purchaseAndSaleList/SaleListPage"),
+  () => import(/* webpackChunkName: "SaleListPage" */ "./purchaseAndSaleList/SaleListPage"),
   {
     fallback: <LoadingPage />,
   }
