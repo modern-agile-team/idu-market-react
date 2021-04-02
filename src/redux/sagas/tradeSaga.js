@@ -81,6 +81,8 @@ function* watchTradeComplete() {
 }
 
 export default function* tradeSaga() {
-  yield all([fork(watchTradeCommentGet)]);
-  yield all([fork(watchTradeComplete)]);
+  yield all([
+    fork(watchTradeCommentGet),
+    fork(watchTradeComplete),
+  ]);
 }

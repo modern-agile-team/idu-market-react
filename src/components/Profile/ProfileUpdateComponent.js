@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { FaUserAlt, FaGraduationCap } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { PROFILE_UPDATE_REQUEST } from '../../redux/types';
+
 const ProfileUpdateComponent = (props) => {
   const studentId = props.match.params.studentId;
   
@@ -54,6 +56,7 @@ const ProfileUpdateComponent = (props) => {
     const { email, nickname, major } = formValues;
     
     let body = {
+        studentId: studentId,
         email,
         nickname,
         major,
@@ -78,8 +81,11 @@ const ProfileUpdateComponent = (props) => {
     } 
     else {
         setErrorMsg("");
+        dispatch({
+            type: PROFILE_UPDATE_REQUEST,
+            payload: body,
+        })
     }
-      console.log(body);
   }
 
     return (
