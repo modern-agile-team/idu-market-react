@@ -43,7 +43,6 @@ function basicBoardGetAPI(action) {
 function* basicBoardGet(action) {
   try {
     const result = yield call(basicBoardGetAPI, action.payload);
-    console.log(result);
 
     yield put({
       type: BASIC_BOARD_GET_SUCCESS,
@@ -154,7 +153,6 @@ function boardDetailAPI(action) {
 function* boardDetail(action) {
   try {
     const result = yield call(boardDetailAPI, action.payload);
-    console.log(result);
 
     yield put({
       type: BOARD_DETAIL_SUCCESS,
@@ -172,8 +170,6 @@ function* boardDetail(action) {
 
 //Image Delete
 function imageDeleteAPI(action) {
-  console.log(action);
-  console.log(action.url);
   return axios.delete(`/api/image`, {
     data: {
       url: action.url,
@@ -211,7 +207,6 @@ function boardStatusAPI(action) {
 function* boardStatus(action) {
   try {
     const result = yield call(boardStatusAPI, action.payload);
-    console.log(result);
 
     yield put({
       type: BOARD_STATUS_SUCCESS,
@@ -230,14 +225,12 @@ function boardHitAPI(action) {
   const categoryName = action.categoryName;
   const num = action.num;
 
-  console.log(categoryName, num);
   return axios.patch(`/api/boards/${categoryName}/${num}`);
 }
 
 function* boardHit(action) {
   try {
     const result = yield call(boardHitAPI, action.payload);
-    console.log(result);
 
     yield put({
       type: BOARD_HIT_SUCCESS,
@@ -283,9 +276,6 @@ function* boardWatchlistAdd(action) {
 //Board Delete
 function boardWatchlistDeleteAPI(action) {
   const studentId = action.studentId;
-
-  console.log(action);
-  console.log(studentId);
 
   return axios.delete(`/api/watchlist/${studentId}`, {
     data: {

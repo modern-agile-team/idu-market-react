@@ -21,7 +21,12 @@ const componentName = () => {
         </p>
         <div className="footer-icons">
           <button
-            onClick={() => window.open("https://www.notion.so/ko", "_blank")}
+            onClick={() =>
+              window.open(
+                "https://www.notion.so/e30b5df25a044809823784f0fee40686",
+                "_blank"
+              )
+            }
             className="footer-tooltip"
             data-tooltips="Wooahan Agile Notion"
           >

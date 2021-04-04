@@ -120,6 +120,7 @@ const PostUpdateComponent = (props) => {
         content,
         categoryName,
         num,
+        price: 0,
       };
 
       console.log(body);
@@ -128,6 +129,8 @@ const PostUpdateComponent = (props) => {
         type: BOARD_UPDATE_REQUEST,
         payload: body,
       });
+
+      alert("게시글 업데이트에 성공하셨습니다.");
     } else {
       let {
         studentId,
