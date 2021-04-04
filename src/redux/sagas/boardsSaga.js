@@ -75,8 +75,6 @@ function* boardWrite(action) {
       payload: result.data,
     });
 
-    yield delay(1500);
-
     yield put(
       push(`/boards/${action.payload.categoryName}/${result.data.num}`)
     );
@@ -105,8 +103,6 @@ function* boardUpdate(action) {
       type: BOARD_UPDATE_SUCCESS,
       payload: result.data,
     });
-
-    yield delay(1500);
 
     yield put(
       push(`/boards/${action.payload.categoryName}/${action.payload.num}`)
@@ -339,7 +335,6 @@ function* watchBoardStatus() {
 function* watchBoardHit() {
   yield takeEvery(BOARD_HIT_REQUEST, boardHit);
 }
-
 
 function* watchBoardWatchlistAdd() {
   yield takeEvery(BOARD_WATCHLIST_ADD_REQUEST, boardWatchlistAdd);

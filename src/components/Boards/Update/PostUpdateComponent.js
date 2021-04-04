@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { IoIosCheckmarkCircle } from "react-icons/io";
-import { FcCancel } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import {
   BOARD_DETAIL_REQUEST,
@@ -22,10 +20,6 @@ const PostUpdateComponent = (props) => {
   const boardDetail = useSelector((state) => state.boards);
   const auth = useSelector((state) => state.auth);
 
-  const [modal, setModal] = useState(false);
-  const [modalMsg, setModalMsg] = useState("");
-  const [modalErrorMsg, setModalErrorMsg] = useState("");
-  const [modalError, setModalError] = useState(false);
   const [formValues, setFormValues] = useState({
     studentId: auth.id,
     title: "",
@@ -171,48 +165,21 @@ const PostUpdateComponent = (props) => {
 
       //유효성 검사
       if (title === "") {
-        setModal(true);
-        setModalError(true);
-        setModalErrorMsg("타이틀을 적어주세요.");
-
-        setTimeout(() => {
-          setModal(false);
-        }, 1500);
+        alert("타이틀을 적어주세요.");
       }
       /// ^[0-9]+$/: 비어있지 않은 연속된 숫자 문자열
       else if (price.length > 0 && price.match(/^[0-9]+$/) === null) {
-        setModal(true);
-        setModalError(true);
-        setModalErrorMsg("가격을 숫자만 입력해주세요.");
-
-        setTimeout(() => {
-          setModal(false);
-        }, 1500);
+        alert("가격을 숫자만 입력해주세요.");
       } else if (price.length >= 8) {
-        setModal(true);
-        setModalError(true);
-        setModalErrorMsg("가격은 0 ~ 9999999까지만 입력해주세요.");
-
-        setTimeout(() => {
-          setModal(false);
-        }, 1500);
+        alert("가격은 0 ~ 9999999까지만 입력해주세요.");
       } else if (content === "") {
-        setModal(true);
-        setModalError(true);
-        setModalErrorMsg("빈 본문입니다.");
-
-        setTimeout(() => {
-          setModal(false);
-        }, 1500);
+        alert("빈 본문입니다.");
       } else {
         dispatch({
           type: BOARD_UPDATE_REQUEST,
           payload: body,
         });
-
-        setModal(true);
-        setModalMsg("게시글 업데이트에 성공하셨습니다.");
-        setModalError(false);
+        alert("게시글 업데이트에 성공하셨습니다.");
       }
     }
   };
@@ -271,26 +238,6 @@ const PostUpdateComponent = (props) => {
             </Link>
           </div>
         </form>
-
-        {modal ? (
-          <div className="modal-wrapper">
-            <div className="container">
-              {modalError ? (
-                <>
-                  <FcCancel className="modal-icon-error" />
-                  <h2 className="modal-msg-error">{modalErrorMsg}</h2>
-                </>
-              ) : (
-                <>
-                  <IoIosCheckmarkCircle className="modal-icon" />
-                  <h2 className="modal-msg">{modalMsg}</h2>
-                </>
-              )}
-            </div>
-          </div>
-        ) : (
-          ""
-        )}
       </div>
     </section>
   );
