@@ -10,6 +10,22 @@
     background: $bg-color-1;
 }
 
+.banner-start-btn {
+    position: relative;
+    font-size: 1.4rem;
+    margin-top: 130px;
+    margin-left: 20px;
+    font-family: $Fredoka-font;
+    cursor: pointer;
+    display: none;
+    background-color: $bg-color-2;
+    padding: 10px 20px;
+    border-radius: 5px;
+    &:hover {
+        color: $main-color-5;
+    }
+}
+
 .banner-img {
     position: relative;
     width: 520px;
@@ -39,8 +55,6 @@
             position: absolute;
             top: 110%;
             left: 50%;
-            width: 50px;
-            height: 50px;
             line-height: 50px;
             transform: translate(-50%, -50%);
             font-size: 3.5rem;
@@ -121,7 +135,7 @@
     .banner-title {
         margin-top: 0;
         h1 { 
-            font-size: 3.75rem; 
+            font-size: 3.72rem; 
         }
     }
 }
@@ -129,7 +143,7 @@
 /* 0 ~ 768px : 테블릿2 */
 @media screen and (max-width: 768px){
     .main-banner { 
-        height: 700px; 
+        height: 800px; 
     }
 
     .banner-img {
@@ -140,6 +154,9 @@
         h1 { 
             font-size: 3rem; 
         }
+    }
+    .banner-start-btn {
+        display: block;
     }
 }
 
@@ -159,12 +176,17 @@
             margin-top: -5px;
         }
     }
+    .banner-start-btn {
+        font-size: 1rem;
+        margin-top: 130px;
+        margin-left: 20px;
+    }
 }
 
 /* 0 ~ 480px : 모바일1 */
 @media screen and (max-width: 480px){
     #main-banner { 
-        height: 500px; 
+        height: 560px; 
     }
 
     .banner-title {
@@ -175,6 +197,13 @@
         p { 
             font-size: 0.6rem; 
         }
+    }
+    .banner-start-btn {
+        font-size: 0.8rem;
+        margin-top: 70px;
+        margin-bottom: -100px;
+        margin-left: 20px;
+        padding: 5px 10px;
     }
 }
 
@@ -217,7 +246,7 @@
 
 @keyframes arrow {
     0% { 
-        opacity: 0.4; 
+        opacity: 0.2; 
     }
     100% { 
         opacity: 1; 

@@ -37,7 +37,7 @@ class MyUploadAdapter {
     // could be different.
     xhr.open(
       "POST",
-      // `${process.env.REACT_APP_BASIC_SERVER_URL}/api/image`,
+      `${process.env.REACT_APP_BASIC_SERVER_URL}/api/image`,
       true
     );
     xhr.responseType = "json";

@@ -154,6 +154,8 @@ function* boardDetail(action) {
   try {
     const result = yield call(boardDetailAPI, action.payload);
 
+    console.log(result);
+
     yield put({
       type: BOARD_DETAIL_SUCCESS,
       payload: result.data,
@@ -231,6 +233,7 @@ function boardHitAPI(action) {
 function* boardHit(action) {
   try {
     const result = yield call(boardHitAPI, action.payload);
+    console.log(result);
 
     yield put({
       type: BOARD_HIT_SUCCESS,

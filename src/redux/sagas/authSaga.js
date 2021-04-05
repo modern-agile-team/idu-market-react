@@ -46,7 +46,7 @@ function* loginUser(action) {
 
 // REGISTER
 function registerAPI(registerData) {
-  return axios.post("/api/user", registerData);
+  return axios.post("/api/student", registerData);
 }
 
 function* registerUser(action) {
