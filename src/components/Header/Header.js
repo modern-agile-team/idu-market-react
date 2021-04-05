@@ -46,11 +46,7 @@ const Header = () => {
           <ul className="header-list">
             {HeaderMenuData.map((item, index) => {
               return (
-                <DropMenu
-                  item={item}
-                  key={index}
-                  showSidebar={showSidebar}
-                />
+                <DropMenu item={item} key={index} showSidebar={showSidebar} />
               );
             })}
           </ul>
