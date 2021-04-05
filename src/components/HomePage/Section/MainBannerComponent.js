@@ -9,13 +9,16 @@ const MainBannerComponent = () => {
         </h1>
         <p className="show">by. Woowahan Agile</p>
       </div>
+      <a href="#home-introduce" className="banner-start-btn">
+        START
+      </a>
       <div className="banner-img">
         <img
           className="show"
           src="https://wooahan-agile.s3.ap-northeast-2.amazonaws.com/HomePage/main-banner.png"
           alt="배너 이미지"
         />
-        <a href="#home-function">START</a>
+        <a href="#home-introduce">START</a>
       </div>
     </section>
   );
