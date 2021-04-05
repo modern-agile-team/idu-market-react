@@ -1,5 +1,6 @@
 import axios from "axios";
 import { all, fork, put, takeEvery, call, delay } from "redux-saga/effects";
+import { push } from "connected-react-router";
 import {
   PROFILE_GET_REQUEST,
   PROFILE_GET_SUCCESS,
@@ -64,6 +65,8 @@ function* profileUpdate(action) {
       type: PROFILE_UPDATE_FAILURE,
       payload: e.response,
     });
+
+    yield put(push(`/students/${action.payload.studentId}`));
   }
 }
 
