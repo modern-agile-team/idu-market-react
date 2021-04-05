@@ -44,9 +44,8 @@ function profileUpdateAPI(action) {
   const body = {
     email: action.email,
     nickname: action.nickname,
-    major: action.major,
+    majorNum: action.majorNum,
   }
-  console.log(body);
   
   return axios.put(`/api/students/${studentId}`, body);
 }
@@ -60,6 +59,7 @@ function* profileUpdate(action) {
       type: PROFILE_UPDATE_SUCCESS,
       payload: result.data,
     });
+    yield put(push(`/students/${action.payload.studentId}`));
   } catch (e) {
     yield put({
       type: PROFILE_UPDATE_FAILURE,

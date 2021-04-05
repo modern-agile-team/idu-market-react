@@ -16,7 +16,7 @@ const ProfileUpdateComponent = (props) => {
   const [formValues, setFormValues] = useState({
     email: "",
     nickname: "",
-    major: "",
+    majorNum: "",
   });
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const ProfileUpdateComponent = (props) => {
             setFormValues({
                 email: profileList.email,
                 nickname: profileList.nickname,
-                major: "",
+                majorNum: "",
             });
         }
     }
@@ -46,20 +46,20 @@ const ProfileUpdateComponent = (props) => {
   const onHandlerSelect = (e) => {
     setFormValues({
       ...formValues,
-      major: e.target.value,
+      majorNum: e.target.value,
     });
   };
 
   const onUpdateProfile = (e) => {
     e.preventDefault();
 
-    const { email, nickname, major } = formValues;
+    const { email, nickname, majorNum } = formValues;
     
     let body = {
         studentId: studentId,
         email,
         nickname,
-        major,
+        majorNum,
       };
 
     if ([nickname, email].includes("")) {
@@ -76,7 +76,7 @@ const ProfileUpdateComponent = (props) => {
     ) {
         setErrorMsg("이메일 형식을 유지해주세요.");
     }
-    else if (major.length === 0) {
+    else if (majorNum.length === 0) {
         setErrorMsg("학과를 선택해주세요.");
     } 
     else {
