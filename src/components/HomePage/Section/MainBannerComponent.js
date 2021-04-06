@@ -7,7 +7,7 @@ const MainBannerComponent = () => {
         <h1>
           <span>Idu</span> Used Article Marke<em>t</em>
         </h1>
-        <p className="show">by. Woowahan Agile</p>
+        <p className="show">by. Wooahan Agile</p>
       </div>
       <a href="#home-introduce" className="banner-start-btn">
         START
