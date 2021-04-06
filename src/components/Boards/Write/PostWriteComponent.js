@@ -35,7 +35,6 @@ const PostWriteComponent = (props) => {
   const getDataFromCKEditor = (event, editor) => {
     const data = editor.getData();
 
-    console.log(data);
     //ThumbNail Image 추출
     if (data && data.match("<img src=")) {
       const whereImgStart = data.indexOf("<img src=");
@@ -67,7 +66,6 @@ const PostWriteComponent = (props) => {
         resultImgUrl = data.substring(whereImgStart + 10, whereImgEnd + 3);
       }
 
-      console.log(resultImgUrl);
       setFormValues({
         ...formValues,
         thumbnail: resultImgUrl,
@@ -77,8 +75,7 @@ const PostWriteComponent = (props) => {
       //이미지 등록을 하지 않을 경우
       setFormValues({
         ...formValues,
-        thumbnail:
-          "",
+        thumbnail: "",
         content: data,
       });
     }
@@ -150,7 +147,6 @@ const PostWriteComponent = (props) => {
       } else if (content === "") {
         alert("빈 본문입니다.");
       } else {
-        console.log(body);
         dispatch({
           type: BOARD_WRITE_REQUEST,
           payload: body,

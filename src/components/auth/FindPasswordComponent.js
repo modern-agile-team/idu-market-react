@@ -8,7 +8,6 @@ const FindPasswordComponent = (props) => {
     id: "",
     email: "",
   });
-  const [modalMsg, setModalMsg] = useState("");
 
   const onChange = (e) => {
     setFormValues({

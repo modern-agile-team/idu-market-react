@@ -37,7 +37,6 @@ const ReplyComment = ({ comment, num, categoryName }) => {
   const onUpdate = (e) => {
     e.preventDefault();
 
-    console.log(comment);
     const {
       content,
       categoryName,

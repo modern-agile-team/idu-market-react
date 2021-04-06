@@ -24,7 +24,6 @@ function profileGetAPI(action) {
 function* profileGet(action) {
   try {
     const result = yield call(profileGetAPI, action.payload);
-    console.log(result);
 
     yield put({
       type: PROFILE_GET_SUCCESS,
@@ -45,15 +44,14 @@ function profileUpdateAPI(action) {
     email: action.email,
     nickname: action.nickname,
     majorNum: action.majorNum,
-  }
-  
+  };
+
   return axios.put(`/api/students/${studentId}`, body);
 }
 
 function* profileUpdate(action) {
   try {
     const result = yield call(profileUpdateAPI, action.payload);
-    console.log(result);
 
     yield put({
       type: PROFILE_UPDATE_SUCCESS,
@@ -73,17 +71,15 @@ function* profileUpdate(action) {
 function profileImageUpdateAPI(action) {
   const studentId = action.studentId;
   const body = {
-    profilePath: action.profilePath
-  }
-  
+    profilePath: action.profilePath,
+  };
+
   return axios.patch(`/api/students/${studentId}`, body);
 }
 
 function* profileImageUpdate(action) {
   try {
     const result = yield call(profileImageUpdateAPI, action.payload);
-
-    console.log(result);
 
     yield put({
       type: PROFILE_IMAGE_UPDATE_SUCCESS,
@@ -94,9 +90,8 @@ function* profileImageUpdate(action) {
 
     yield put({
       type: LOADING_REQUEST,
-      payload: localStorage.getItem("jwt")
+      payload: localStorage.getItem("jwt"),
     });
-
   } catch (e) {
     yield put({
       type: PROFILE_IMAGE_UPDATE_FAILURE,

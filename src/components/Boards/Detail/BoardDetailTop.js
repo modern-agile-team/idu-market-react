@@ -50,8 +50,6 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
 
     body.url = [...imgList];
 
-    console.log(body);
-
     if (body.url.length > 0) {
       dispatch({
         type: IMAGE_DELETE_REQUEST,

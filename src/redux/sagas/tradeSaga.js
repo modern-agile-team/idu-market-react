@@ -21,7 +21,6 @@ function tradeCommentGetAPI(action) {
 function* tradeCommentGet(action) {
   try {
     const result = yield call(tradeCommentGetAPI, action.payload);
-    console.log(result);
 
     yield put({
       type: TRADE_COMMENT_GET_SUCCESS,
@@ -45,16 +44,12 @@ function tradeCompleteAPI(action) {
     nickname,
   };
 
-  console.log(body);
-
   return axios.post(`/api/purchase-list`, body);
 }
 
 function* tradeComplete(action) {
   try {
     const result = yield call(tradeCompleteAPI, action.payload);
-
-    console.log(result);
 
     yield put({
       type: TRADE_COMPLETE_SUCCESS,
@@ -81,8 +76,5 @@ function* watchTradeComplete() {
 }
 
 export default function* tradeSaga() {
-  yield all([
-    fork(watchTradeCommentGet),
-    fork(watchTradeComplete),
-  ]);
+  yield all([fork(watchTradeCommentGet), fork(watchTradeComplete)]);
 }

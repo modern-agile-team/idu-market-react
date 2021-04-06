@@ -53,7 +53,6 @@ const PostUpdateComponent = (props) => {
   const getDataFromCKEditor = (event, editor) => {
     const data = editor.getData();
 
-    console.log(data);
     //ThumbNail Image 추출
     if (data && data.match("<img src=")) {
       const whereImgStart = data.indexOf("<img src=");
@@ -123,8 +122,6 @@ const PostUpdateComponent = (props) => {
         price: 0,
       };
 
-      console.log(body);
-
       dispatch({
         type: BOARD_UPDATE_REQUEST,
         payload: body,
@@ -163,7 +160,6 @@ const PostUpdateComponent = (props) => {
           ...body,
           price: price,
         };
-        console.log(body);
       }
 
       //유효성 검사
