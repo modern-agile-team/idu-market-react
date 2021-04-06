@@ -83,7 +83,7 @@ const RegisterComponent = () => {
       return;
     } else if (
       psword.match(
-        /^.*(?=^.{9,20}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/
+        /^.*(?=^.{9,20}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[~!@#$%^&+=]).*$/
       ) === null
     ) {
       setErrorMsg(
