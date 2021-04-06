@@ -53,7 +53,8 @@
 
     img {
         border-radius: 5px;
-        width: 100%
+        width: 200px;
+        height: 200px;
     }
 }
 
@@ -85,7 +86,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    a {
+
+    .shortId {
+        color: #999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            color: $main-color-6; 
+        }
+    }
+    .longId {
+        font-size: 0.8rem;
         color: #999;
         display: flex;
         justify-content: center;
@@ -403,7 +416,12 @@
     }
 
     .market-item-id {
-        font-size: 0.9rem;
+        .shortId {
+            font-size: 0.8rem;
+        }
+        .longId {
+            font-size: 0.6rem;
+        }
     }
 
     .scroll-top-btn { 
@@ -411,6 +429,13 @@
         &::before {
             content: "Top";
             left: -30px;
+        }
+    }
+    .market-img-box-link {
+        img {
+            border-radius: 5px;
+            width: 160px;
+            height: 160px;
         }
     }
 }
@@ -487,10 +512,22 @@
     }
 
     .market-item-id {
-        font-size: 1rem;
+        .shortId {
+            font-size: 1rem;
+        }
+        .longId {
+            font-size: 1rem;
+        }
     }
     .search-null-desc {
         font-size: 1rem;
+    }
+    .market-img-box-link {
+        img {
+            border-radius: 5px;
+            width: 200px;
+            height: 200px;
+        }
     }
 } 
 
