@@ -2,16 +2,11 @@ import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 
-import { IoIosCheckmarkCircle } from "react-icons/io";
-
 const FindIdComponent = (props) => {
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
   });
-  const [modal, setModal] = useState(false);
-  const [modalLoading, setModalLoading] = useState(false);
-  const [modalMsg, setModalMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
   const onChange = (e) => {
@@ -27,26 +22,17 @@ const FindIdComponent = (props) => {
     const { name, email } = formValues;
     const body = { name, email };
 
-    setModalLoading(true);
-
     axios
       .post("/api/forgot-id", body)
       .then((response) => {
         if (response.data.success) {
-          setModalLoading(false);
-          setModal(true);
-          console.log(response.data);
-          setModalMsg(response.data.msg);
-          setTimeout(() => {
-            props.history.push("/login");
-          }, 1500);
+          alert(response.data.msg);
+          props.history.push("/login");
         }
       })
       .catch((err) => {
         const response = err.response;
-        console.log(response);
         if (response.status === 400) {
-          setModalLoading(false);
           setErrorMsg(response.data.msg);
         }
         throw err;
@@ -114,27 +100,6 @@ const FindIdComponent = (props) => {
             className="form-submit"
           />
         </form>
-
-        {modal ? (
-          <div className="modal-wrapper">
-            <div className="container">
-              <IoIosCheckmarkCircle className="modal-icon" />
-              <h2 className="modal-msg">{modalMsg}</h2>
-            </div>
-          </div>
-        ) : (
-          ""
-        )}
-        {modalLoading ? (
-          <div className="modal-wrapper">
-            <div className="container">
-              <div className="loading" />
-              <h2 className="modal-msg">Loading</h2>
-            </div>
-          </div>
-        ) : (
-          ""
-        )}
       </div>
     </section>
   );
