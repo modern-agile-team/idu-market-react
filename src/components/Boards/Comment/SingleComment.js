@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   REPLY_UPLOAD_REQUEST,
   COMMENT_GET_REQUEST,
@@ -94,7 +95,7 @@ const SingleComment = ({ comment, categoryName, num }) => {
       setFormValue({
         ...formValue,
         content: "",
-      })
+      });
     }
   };
 
@@ -155,7 +156,7 @@ const SingleComment = ({ comment, categoryName, num }) => {
         type: COMMENT_DELETE_REQUEST,
         payload: body,
       });
-  
+
       setTimeout(() => {
         dispatch({
           type: COMMENT_GET_REQUEST,
@@ -180,11 +181,19 @@ const SingleComment = ({ comment, categoryName, num }) => {
             ) : (
               <>
                 <div className="comment-student-id">
-                  <img src={comment.profilePath} alt="프로필 이미지" className="comment-profile-img" />
-                  <span>{comment.nickname}</span>
+                  <img
+                    src={comment.profilePath}
+                    alt="프로필 이미지"
+                    className="comment-profile-img"
+                  />
+                  <Link to={`/students/${comment.studentId}`}>
+                    {comment.nickname}
+                  </Link>
                 </div>
                 <div className="comment-content">
-                  <span dangerouslySetInnerHTML={ {__html: comment.content} }></span>
+                  <span
+                    dangerouslySetInnerHTML={{ __html: comment.content }}
+                  ></span>
                 </div>
                 <div className="comment-comment-date">
                   <span>{comment.inDate}</span>
@@ -249,9 +258,10 @@ const SingleComment = ({ comment, categoryName, num }) => {
                     </button>
                   </>
                 ) : (
-                  <p className="not-login-comment">로그인 후에 답글을 생성하실 수 있습니다.</p>
+                  <p className="not-login-comment">
+                    로그인 후에 답글을 생성하실 수 있습니다.
+                  </p>
                 )}
-                
               </div>
             ) : (
               <></>
