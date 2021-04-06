@@ -78,7 +78,7 @@ const PostWriteComponent = (props) => {
       setFormValues({
         ...formValues,
         thumbnail:
-          "https://woowahan-agile.s3.ap-northeast-2.amazonaws.com/default-thumbnail/communication-2.png",
+          "",
         content: data,
       });
     }
