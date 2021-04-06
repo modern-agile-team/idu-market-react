@@ -41,11 +41,11 @@ function BasicBoardComponent({ categoryName }) {
             </Link>
           </td>
           <td>
-            <Link to={`/students/${boardItem.studentId}`}>
+            <Link to={`/students/${boardItem.studentId}`} className="boardlist-common-nickname">
               {boardItem.nickname}
             </Link>
           </td>
-          <td>{boardItem.inDate.substring(0, 10)}</td>
+          <td className="boardlist-common-td">{boardItem.inDate.substring(0, 10)}</td>
           <td>{boardItem.hit}</td>
         </tr>
       );
