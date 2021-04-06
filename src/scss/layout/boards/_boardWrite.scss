@@ -52,7 +52,7 @@
 
 .price-won {
   position: absolute;
-  right: -260px;
+  right: -180px;
   top: 3px;
   font-size: 1.5rem;
   font-family: $Jua-font;
@@ -145,22 +145,22 @@
     //CKEditor5 Setting
     .ck {
       .ck-editor {
-          width: 460px;
+          width: 430px;
       }
       .ck-toolbar {
         width: 300px !important;
       }
       .ck-toolbar_grouping {
-        width: 460px !important;
+        width: 430px !important;
       }
     }
   
     .ck-editor__editable {
-      width: 460px;
+      width: 430px;
     }
   
     .ck-editor__editable_inline {
-      width: 460px;
+      width: 430px;
     }
     
     .price-won {
@@ -192,24 +192,24 @@
   //CKEditor5 Setting
   .ck {
     .ck-editor {
-        width: 320px;
+        width: 300px;
     }
     .ck-toolbar {
       width: 190px !important;
     }
     .ck-toolbar_grouping {
-      width: 320px !important;
+      width: 300px !important;
     }
   }
 
   .ck-editor__editable {
     min-height: 30rem;
-    width: 320px;
+    width: 300px;
   }
 
   .ck-editor__editable_inline {
     min-height: 30rem;
-    width: 320px;
+    width: 300px;
   }
  }
 
