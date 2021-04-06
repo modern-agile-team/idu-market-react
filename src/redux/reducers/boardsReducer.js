@@ -153,7 +153,6 @@ const boards = (state = initialState, action) => {
         msg: action.payload.data.msg,
       };
 
-    case BOARD_HIT_SUCCESS:
     case IMAGE_DELETE_SUCCESS:
     case BOARD_DELETE_SUCCESS:
       return {
@@ -162,6 +161,13 @@ const boards = (state = initialState, action) => {
         msg: action.payload.msg,
       };
 
+    case BOARD_HIT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        msg: action.payload.msg,
+        hit: action.payload.hit,
+      }  
     case BOARD_HIT_FAILURE:
     case IMAGE_DELETE_FAILURE:
     case BOARD_DELETE_FAILURE:
