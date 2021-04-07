@@ -149,7 +149,7 @@ function boardDetailAPI(action) {
 function* boardDetail(action) {
   try {
     const result = yield call(boardDetailAPI, action.payload);
-
+    console.log(result);
     yield put({
       type: BOARD_DETAIL_SUCCESS,
       payload: result.data,

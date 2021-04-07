@@ -272,7 +272,7 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
         <>
           {boards.studentId === studentId ? (
             <></>
-          ) : boards.watchListFlag === 1 ? (
+          ) : boards.isWatchList === 1 ? (
             <WatchlistDeleteComponent />
           ) : (
             <WatchlistAddComponent categoryName={categoryName} />
