@@ -46,7 +46,7 @@ const initialState = {
   updateDate: "",
   isLoading: false,
   msg: "",
-  watchListFlag: null,
+  isWatchList: null,
   categoryName: "",
   profilePath: "",
 };
@@ -131,7 +131,7 @@ const boards = (state = initialState, action) => {
         inDate: action.payload.board.inDate,
         updateDate: action.payload.board.updateDate,
         msg: action.payload.msg,
-        watchListFlag: action.payload.watchListFlag,
+        isWatchList: action.payload.isWatchList,
         categoryName: action.payload.board.categoryName,
         profilePath: action.payload.board.profilePath,
       };
@@ -150,6 +150,7 @@ const boards = (state = initialState, action) => {
         updateDate: "",
         isLoading: false,
         profilePath: "",
+        isWatchList: "",
         msg: action.payload.data.msg,
       };
 
@@ -191,14 +192,14 @@ const boards = (state = initialState, action) => {
         loading: false,
         msg: action.payload.data.msg,
         status: "",
-        watchListFlag: null,
+        isWatchList: null,
       };
 
     case BOARD_WATCHLIST_ADD_SUCCESS:
       return {
         ...state,
         loading: true,
-        watchListFlag: 1,
+        isWatchList: 1,
         msg: action.payload.msg,
       };
 
@@ -206,7 +207,7 @@ const boards = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        watchListFlag: 0,
+        isWatchList: 0,
         msg: action.payload.msg,
       };
     case BOARD_WATCHLIST_DELETE_FAILURE:
@@ -214,7 +215,7 @@ const boards = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        watchListFlag: null,
+        isWatchList: null,
         msg: action.payload.data.msg,
       };
 

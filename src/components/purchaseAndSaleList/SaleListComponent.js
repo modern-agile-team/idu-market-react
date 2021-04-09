@@ -18,7 +18,6 @@ const SaleListComponent = (props) => {
         axios
           .get(`/api/sale-list/${studentId}`)
           .then((response) => {
-            console.log(response.data);
             if (response.data.success) {
               const result = response.data.saleLists;
               setProductList(result);
@@ -33,20 +32,17 @@ const SaleListComponent = (props) => {
 
   return (
     <section className="market" id="market">
-        <>
-          <Link to={`/students/${studentId}`} className="profile-move-btn">
-            Profile
-          </Link>
-          <h1 className="watchlist-title">
-            {`판매 목록 (${productList.length})`}
-          </h1>
-          <div className="container">
-            <BoardListItem
-              productList={productList}
-              profile
-            />
-          </div>
-        </>
+      <>
+        <Link to={`/students/${studentId}`} className="profile-move-btn">
+          Profile
+        </Link>
+        <h1 className="watchlist-title">
+          {`판매 목록 (${productList.length})`}
+        </h1>
+        <div className="container">
+          <BoardListItem productList={productList} profile />
+        </div>
+      </>
     </section>
   );
 };

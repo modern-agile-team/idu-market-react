@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { AiOutlineComment } from "react-icons/ai";
 
 const BoardListItem = ({ productList, categoryName, profile }) => {
-  console.log(productList);
   return (
     <>
       {productList.map((board) => {
@@ -37,7 +36,12 @@ const BoardListItem = ({ productList, categoryName, profile }) => {
             <p className="market-item-id">
               {board.sellerName ? (
                 <>
-                  <Link to={`/students/${board.sellerId}`}>
+                  <Link
+                    to={`/students/${board.sellerId}`}
+                    className={
+                      board.sellerName.length > 6 ? "longId" : "shortId"
+                    }
+                  >
                     <img
                       src={board.profilePath}
                       alt="프로필 이미지"
@@ -48,7 +52,10 @@ const BoardListItem = ({ productList, categoryName, profile }) => {
                 </>
               ) : (
                 <>
-                  <Link to={`/students/${board.studentId}`}>
+                  <Link
+                    to={`/students/${board.studentId}`}
+                    className={board.nickname.length > 6 ? "longId" : "shortId"}
+                  >
                     <img
                       src={board.profilePath}
                       alt="프로필 이미지"

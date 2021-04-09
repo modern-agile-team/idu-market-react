@@ -53,8 +53,6 @@ function* registerUser(action) {
   try {
     const result = yield call(registerAPI, action.payload);
 
-    console.log(result);
-
     yield put({
       type: REGISTER_SUCCESS,
       payload: result.data,
@@ -104,7 +102,6 @@ function loadingAPI(token) {
 function* loading(action) {
   const result = yield call(loadingAPI, action.payload);
 
-  console.log(result);
   try {
     yield put({
       type: LOADING_SUCCESS,

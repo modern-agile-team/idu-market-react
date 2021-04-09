@@ -18,7 +18,6 @@ const PurchaseListComponent = (props) => {
         axios
           .get(`/api/purchase-list/${studentId}`)
           .then((response) => {
-            console.log(response.data);
             if (response.data.success) {
               const result = response.data.purchaseList;
               setProductList(result);
@@ -33,20 +32,17 @@ const PurchaseListComponent = (props) => {
 
   return (
     <section className="market" id="market">
-        <>
-          <Link to={`/students/${studentId}`} className="profile-move-btn">
-            Profile
-          </Link>
-          <h1 className="watchlist-title">
-            {`구매 목록 (${productList.length})`}
-          </h1>
-          <div className="container">
-            <BoardListItem
-              productList={productList}
-              profile
-            />
-          </div>
-        </>
+      <>
+        <Link to={`/students/${studentId}`} className="profile-move-btn">
+          Profile
+        </Link>
+        <h1 className="watchlist-title">
+          {`구매 목록 (${productList.length})`}
+        </h1>
+        <div className="container">
+          <BoardListItem productList={productList} profile />
+        </div>
+      </>
     </section>
   );
 };

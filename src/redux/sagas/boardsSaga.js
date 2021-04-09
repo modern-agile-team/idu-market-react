@@ -60,14 +60,12 @@ function* basicBoardGet(action) {
 function boardWriteAPI(action) {
   const categoryName = action.categoryName;
 
-  console.log(action);
   return axios.post(`/api/boards/${categoryName}`, action);
 }
 
 function* boardWrite(action) {
   try {
     const result = yield call(boardWriteAPI, action.payload);
-    console.log(result);
 
     yield put({
       type: BOARD_WRITE_SUCCESS,
@@ -96,7 +94,6 @@ function boardUpdateAPI(action) {
 function* boardUpdate(action) {
   try {
     const result = yield call(boardUpdateAPI, action.payload);
-    console.log(result);
 
     yield put({
       type: BOARD_UPDATE_SUCCESS,
@@ -125,7 +122,6 @@ function boardDeleteAPI(action) {
 function* boardDelete(action) {
   try {
     const result = yield call(boardDeleteAPI, action.payload);
-    console.log(result);
 
     yield put({
       type: BOARD_DELETE_SUCCESS,
@@ -153,9 +149,7 @@ function boardDetailAPI(action) {
 function* boardDetail(action) {
   try {
     const result = yield call(boardDetailAPI, action.payload);
-
     console.log(result);
-
     yield put({
       type: BOARD_DETAIL_SUCCESS,
       payload: result.data,
@@ -182,7 +176,6 @@ function imageDeleteAPI(action) {
 function* imageDelete(action) {
   try {
     const result = yield call(imageDeleteAPI, action.payload);
-    console.log(result);
 
     yield put({
       type: IMAGE_DELETE_SUCCESS,
@@ -233,7 +226,6 @@ function boardHitAPI(action) {
 function* boardHit(action) {
   try {
     const result = yield call(boardHitAPI, action.payload);
-    console.log(result);
 
     yield put({
       type: BOARD_HIT_SUCCESS,
@@ -262,7 +254,6 @@ function boardWatchlistAddAPI(action) {
 function* boardWatchlistAdd(action) {
   try {
     const result = yield call(boardWatchlistAddAPI, action.payload);
-    console.log(result);
 
     yield put({
       type: BOARD_WATCHLIST_ADD_SUCCESS,
@@ -290,7 +281,6 @@ function boardWatchlistDeleteAPI(action) {
 function* boardWatchlistDelete(action) {
   try {
     const result = yield call(boardWatchlistDeleteAPI, action.payload);
-    console.log(result);
 
     yield put({
       type: BOARD_WATCHLIST_DELETE_SUCCESS,

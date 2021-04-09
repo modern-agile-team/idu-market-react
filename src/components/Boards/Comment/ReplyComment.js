@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { RiDeleteBin6Line, RiPencilLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   COMMENT_GET_REQUEST,
   COMMENT_UPDATE_REQUEST,
@@ -12,7 +13,7 @@ const ReplyComment = ({ comment, num, categoryName }) => {
   const dispatch = useDispatch();
 
   const [openUpdate, setOpenUpdate] = useState(false);
-  
+
   const [updateFormValue, setUpdateFormValue] = useState({
     content: comment.content,
     studentId: userId,
@@ -21,7 +22,7 @@ const ReplyComment = ({ comment, num, categoryName }) => {
     num,
     groupNum: comment.groupNum,
   });
-  
+
   const onOpenUpdate = () => {
     setOpenUpdate(!openUpdate);
   };
@@ -36,7 +37,6 @@ const ReplyComment = ({ comment, num, categoryName }) => {
   const onUpdate = (e) => {
     e.preventDefault();
 
-    console.log(comment);
     const {
       content,
       categoryName,
@@ -83,7 +83,7 @@ const ReplyComment = ({ comment, num, categoryName }) => {
       studentId: userId,
       depth: comment.depth,
     };
-    
+
     const deleteConfirm = window.confirm("답글을 삭제하시겠습니까?");
 
     if (deleteConfirm) {
@@ -91,7 +91,7 @@ const ReplyComment = ({ comment, num, categoryName }) => {
         type: COMMENT_DELETE_REQUEST,
         payload: body,
       });
-  
+
       setTimeout(() => {
         dispatch({
           type: COMMENT_GET_REQUEST,
@@ -105,8 +105,12 @@ const ReplyComment = ({ comment, num, categoryName }) => {
     <>
       <div className="reply-box">
         <div className="comment-student-id">
-          <img src={comment.profilePath} alt="프로필 이미지" className="comment-profile-img" />
-          <span>{comment.nickname}</span>
+          <img
+            src={comment.profilePath}
+            alt="프로필 이미지"
+            className="comment-profile-img"
+          />
+          <Link to={`/students/${comment.studentId}`}>{comment.nickname}</Link>
         </div>
         <div className="comment-content">
           <span>{comment.content}</span>

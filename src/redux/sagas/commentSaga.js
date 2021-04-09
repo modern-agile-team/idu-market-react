@@ -31,8 +31,6 @@ function* commentGet(action) {
   try {
     const result = yield call(CommentGetAPI, action.payload);
 
-    console.log(result);
-
     yield put({
       type: COMMENT_GET_SUCCESS,
       payload: result.data,
@@ -61,7 +59,6 @@ function* commentUpload(action) {
   try {
     const result = yield call(commentUploadAPI, action.payload);
 
-    console.log(result);
     yield put({
       type: COMMENT_UPLOAD_SUCCESS,
       payload: result.data,

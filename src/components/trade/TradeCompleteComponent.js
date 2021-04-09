@@ -17,8 +17,6 @@ const TradeCompleteComponent = (props) => {
   const buyers = useSelector((state) => state.trade.buyers);
   const { studentId, status, nickname } = useSelector((state) => state.boards);
 
-  console.log(studentId);
-
   useEffect(() => {
     const body = {
       categoryName,
@@ -86,8 +84,8 @@ const TradeCompleteComponent = (props) => {
             let count = 0;
 
             if (buyers.length === 1) {
-              if(buyers[0].nickname === nickname) {
-                return count = 0;
+              if (buyers[0].nickname === nickname) {
+                return (count = 0);
               }
             }
             for (let el in buyers) {
@@ -95,7 +93,7 @@ const TradeCompleteComponent = (props) => {
               return count;
             }
             if (buyers.length === 0) {
-              return count = 0;
+              return (count = 0);
             }
           })()})`}</h1>
         ) : (

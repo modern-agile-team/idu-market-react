@@ -50,8 +50,6 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
 
     body.url = [...imgList];
 
-    console.log(body);
-
     if (body.url.length > 0) {
       dispatch({
         type: IMAGE_DELETE_REQUEST,
@@ -274,7 +272,7 @@ const BoardDetailTop = ({ boardDetail, categoryName, num }) => {
         <>
           {boards.studentId === studentId ? (
             <></>
-          ) : boards.watchListFlag === 1 ? (
+          ) : boards.isWatchList === 1 ? (
             <WatchlistDeleteComponent />
           ) : (
             <WatchlistAddComponent categoryName={categoryName} />

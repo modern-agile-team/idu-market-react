@@ -2,17 +2,12 @@ import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 
-import { IoIosCheckmarkCircle } from "react-icons/io";
-
 const FindPasswordComponent = (props) => {
   const [errorMsg, setErrorMsg] = useState("");
   const [formValues, setFormValues] = useState({
     id: "",
     email: "",
   });
-  const [modal, setModal] = useState(false);
-  const [modalLoading, setModalLoading] = useState(false);
-  const [modalMsg, setModalMsg] = useState("");
 
   const onChange = (e) => {
     setFormValues({
@@ -27,27 +22,17 @@ const FindPasswordComponent = (props) => {
     const { id, email } = formValues;
     const body = { id, email };
 
-    console.log(body);
-    setModalLoading(true);
-
     axios
       .post("/api/forgot-password", body)
       .then((response) => {
         if (response.data.success) {
-          setModalLoading(false);
-          setModal(true);
-          console.log(response.data);
-          setModalMsg(response.data.mag);
-          setTimeout(() => {
-            props.history.push("/login");
-          }, 2500);
+          alert(response.data.msg);
+          props.history.push("/login");
         }
       })
       .catch((err) => {
         const response = err.response;
-        console.log(response);
         if (response.status === 400) {
-          setModalLoading(false);
           setErrorMsg(response.data.msg);
         }
         throw err;
@@ -114,27 +99,6 @@ const FindPasswordComponent = (props) => {
             className="form-submit"
           />
         </form>
-
-        {modal ? (
-          <div className="modal-wrapper">
-            <div className="container">
-              <IoIosCheckmarkCircle className="modal-icon" />
-              <h2 className="modal-msg">{modalMsg}</h2>
-            </div>
-          </div>
-        ) : (
-          ""
-        )}
-        {modalLoading ? (
-          <div className="modal-wrapper">
-            <div className="container">
-              <div className="loading" />
-              <h2 className="modal-msg">Loading</h2>
-            </div>
-          </div>
-        ) : (
-          ""
-        )}
       </div>
     </section>
   );
