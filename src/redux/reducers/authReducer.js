@@ -109,13 +109,13 @@ const auth = (state = initialState, action) => {
         ...state,
         jwt: localStorage.getItem("jwt"),
         isLoading: false,
-        id: action.payload.user.id,
-        email: action.payload.user.email,
-        name: action.payload.user.name,
-        exp: action.payload.user.exp,
-        iss: action.payload.user.iss,
-        profilePath: action.payload.user.profilePath,
-        isAdmin: action.payload.user.isAdmin,
+        id: action.payload.auth.id,
+        email: action.payload.auth.email,
+        name: action.payload.auth.name,
+        exp: action.payload.auth.exp,
+        iss: action.payload.auth.iss,
+        profilePath: action.payload.auth.profilePath,
+        isAdmin: action.payload.auth.isAdmin,
       };
 
     case LOADING_FAILURE:
