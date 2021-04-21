@@ -1,0 +1,49 @@
+//reset
+@import './base/reset';
+
+//variables
+@import './helpers/variables';
+
+//Header
+@import './layout/header';
+
+//Footer
+@import './layout//footer';
+
+//Login, Register form
+@import './layout/forms';
+
+//HomePage
+@import './layout/home/funtion';
+@import './layout/home/introduce';
+@import './layout/home/mainBanner';
+@import './layout/home/notice';
+@import './layout/home/articles';
+
+//Boards
+@import './layout/boards/boardBanner';
+@import './layout/boards/market';
+@import './layout/boards/basic';
+
+//Board Detail
+@import './layout/boards/boardDetail';
+@import './layout/boards/comment';
+
+//BoardWrite
+@import './layout/boards/boardWrite';
+
+//Profile
+@import './layout/profile/profile';
+@import './layout/profile/profileUpdate';
+
+//Watchlist
+@import './layout/watchlist/watchlist';
+
+//trade Complete
+@import './layout/trade/tradeComplete';
+
+//loading
+@import './page/loading';
+
+// 404page
+@import './page/404';

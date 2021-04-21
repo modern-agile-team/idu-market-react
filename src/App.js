@@ -1,10 +1,18 @@
-import './App.scss';
+import React from 'react';
+import store, { history } from './store';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
+import MainRouter from './pages/MainRouter';
+import './scss/main.scss';
 
 function App() {
+
   return (
-    <div className="App">
-      React App
-    </div>
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+              <MainRouter />
+        </ConnectedRouter>
+      </Provider>
   );
 }
 

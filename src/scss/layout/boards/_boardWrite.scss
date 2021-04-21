@@ -1,0 +1,243 @@
+.post-write {
+  width: 100%;
+  padding: 50px 0;
+
+  .container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
+
+.post-write-form {
+  position: relative;
+}
+
+.form-group {
+  position: relative;
+  width: 100%;
+  margin: 25px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &.price {
+    width: 200px;
+  }
+}
+
+.write-title {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+  padding: 10px;
+  margin-bottom: 7px;
+  font-family: $Jua-font;
+}
+
+.write-price {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+  padding: 10px;
+  margin-bottom: 7px;
+  font-family: $Jua-font;
+}
+
+.price-won {
+  position: absolute;
+  right: -180px;
+  top: 3px;
+  font-size: 1.5rem;
+  font-family: $Jua-font;
+}
+
+.post-write-border {
+  height: 2px;
+  width: 100%;
+  background-color: #999;
+}
+
+.post-btn-box {
+  position: absolute;
+  right: 0;
+  bottom: -20px;
+
+  .post-write-btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-right: 30px;
+    background-color: $main-color-2;
+    color: #fdfdfd;
+    font-size: 1.2rem;
+    outline: none;
+
+    &:hover {
+      background-color: $main-color-5;
+    }
+  }
+  .post-cancel-btn {
+    padding: 5px 10px;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border: 1px solid $main-color-2;
+  }
+}
+
+//CKEditor5 Setting
+.ck {
+  .ck-editor {
+      width: 900px;
+      padding: 10px;
+  }
+  .ck-toolbar {
+    max-width: 900px;
+  }
+  &.ck-editor__editable_inline {
+    padding: 10px
+  }
+}
+
+.ck-editor__editable {
+  min-height: 35rem;
+  width: 900px;
+}
+
+.ck-editor__editable_inline {
+  min-height: 35rem;
+  width: 900px;
+}
+
+@media screen and (max-width: 1024px) { 
+
+  //CKEditor5 Setting
+  .ck {
+    .ck-editor {
+        width: 700px;
+    }
+    .ck-toolbar {
+      width: 200px !important;
+    }
+    .ck-toolbar_grouping {
+      width: 700px !important;
+    }
+  }
+
+  .ck-editor__editable {
+    width: 700px;
+  }
+
+  .ck-editor__editable_inline {
+    width: 700px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+    //CKEditor5 Setting
+    .ck {
+      .ck-editor {
+          width: 430px;
+      }
+      .ck-toolbar {
+        width: 300px !important;
+      }
+      .ck-toolbar_grouping {
+        width: 430px !important;
+      }
+    }
+  
+    .ck-editor__editable {
+      width: 430px;
+    }
+  
+    .ck-editor__editable_inline {
+      width: 430px;
+    }
+    
+    .price-won {
+      font-size: 1.2rem;
+      top: 5px;
+      right: -150px;
+    }
+ }
+ 
+ @media screen and (max-width: 480px) {
+  .form-group {
+    &.price {
+      width: 150px;
+    }
+  }
+  
+  .price-won {
+    font-size: 1rem;
+    top: 10px;
+    right: -120px;
+  }
+  .write-title {
+    font-size: 1.3rem;
+  }
+  .write-price {
+    font-size: 1.3rem;
+  }
+  
+  //CKEditor5 Setting
+  .ck {
+    .ck-editor {
+        width: 300px;
+    }
+    .ck-toolbar {
+      width: 190px !important;
+    }
+    .ck-toolbar_grouping {
+      width: 300px !important;
+    }
+  }
+
+  .ck-editor__editable {
+    min-height: 30rem;
+    width: 300px;
+  }
+
+  .ck-editor__editable_inline {
+    min-height: 30rem;
+    width: 300px;
+  }
+ }
+
+ @media screen and (max-width: 360px) { 
+  .ck {
+    .ck-editor {
+        width: 260px;
+    }
+    .ck-toolbar {
+      width: 180px !important;
+    }
+    .ck-toolbar_grouping {
+      width: 260px !important;
+    }
+  }
+
+  .ck-editor__editable {
+    min-height: 25rem;
+    width: 260px;
+  }
+
+  .ck-editor__editable_inline {
+    min-height: 25rem;
+    width: 260px;
+  }
+  .price-won {
+    font-size: 0.85rem;
+    top: 10px;
+    right: -90px;
+  }
+}
