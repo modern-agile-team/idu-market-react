@@ -23,8 +23,6 @@ const initialState = {
   id: "",
   email: "",
   name: "",
-  exp: "",
-  iss: "",
   profilePath: "",
   isAdmin: "",
 };
@@ -112,8 +110,6 @@ const auth = (state = initialState, action) => {
         id: action.payload.auth.id,
         email: action.payload.auth.email,
         name: action.payload.auth.name,
-        exp: action.payload.auth.exp,
-        iss: action.payload.auth.iss,
         profilePath: action.payload.auth.profilePath,
         isAdmin: action.payload.auth.isAdmin,
       };
