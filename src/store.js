@@ -9,20 +9,17 @@ import { composeWithDevTools } from "redux-devtools-extension";
 export const history = createBrowserHistory();
 
 const sagaMiddleware = createSagaMiddleware();
+const middleware = [sagaMiddleware];
 
 // const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-const composeEnhancer =
+const enhancer =
   process.env.NODE_ENV === "production"
-    ? compose
-    : composeWithDevTools || compose;
+    ? compose(applyMiddleware(...middleware))
+    : composeWithDevTools(applyMiddleware(...middleware));
 
 const initialState = {};
 
-const store = createStore(
-  createRootReducer(history),
-  initialState,
-  composeEnhancer(applyMiddleware(sagaMiddleware, routerMiddleware(history)))
-);
+const store = createStore(createRootReducer(history), initialState, enhancer);
 
 sagaMiddleware.run(rootSaga);
 
