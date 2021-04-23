@@ -4,7 +4,6 @@ import App from './App';
 import loadingUser from './components/auth/loadingUser';
 import reportWebVitals from './reportWebVitals';
 
-
 loadingUser();
 
 ReactDOM.render(

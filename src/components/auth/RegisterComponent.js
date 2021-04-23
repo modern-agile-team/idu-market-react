@@ -48,31 +48,19 @@ const RegisterComponent = () => {
       pswordConfirm,
       major,
     } = formValues;
-    const body = { id, name, nickname, email, psword, pswordConfirm, major };
 
-    console.log(body);
+    const body = { id, name, nickname, email, psword, pswordConfirm, major };
 
     if ([id, name, nickname, email, psword, pswordConfirm].includes("")) {
       setErrorMsg("빈 칸을 모두 입력하세요.");
-      return;
-    }
-
-    if (major.length === 0) {
+    } else if (major.length === 0) {
       setErrorMsg("학과를 선택해주세요");
-      return;
-    } else {
-      setErrorMsg("");
-    }
-
-    if (id.match(/^[1-2][0|9][0-9]{7}$/) === null) {
+    } else if (id.match(/^[1-2][0|9][0-9]{7}$/) === null) {
       setErrorMsg("학번은 숫자 9자리만 입력가능합니다.");
-      return;
     } else if (name.match(/^[가-힣]{2,6}$/) === null) {
       setErrorMsg("이름은 공백없이 한글만 입력해주세요 ");
-      return;
     } else if (nickname.match(/^[a-zA-Z가-힣0-9]{2,10}$/) === null) {
       setErrorMsg("별명은 2~10자리입니다. 모음,자음 따로입력 불가");
-      return;
     } else if (
       email !== "" &&
       email.match(
@@ -80,7 +68,6 @@ const RegisterComponent = () => {
       ) === null
     ) {
       setErrorMsg("이메일 형식을 유지해주세요.");
-      return;
     } else if (
       psword.match(
         /^.*(?=^.{9,20}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[~!@#$%^&+=]).*$/
@@ -89,16 +76,14 @@ const RegisterComponent = () => {
       setErrorMsg(
         "비밀번호가 양식(영대소문자, 숫자, 특수문자 조합 9-20자)에 벗어났습니다."
       );
-      return;
     } else if (psword !== pswordConfirm) {
       setErrorMsg("비밀번호가 일치하지 않습니다.");
-      return;
+    } else {
+      dispatch({
+        type: REGISTER_REQUEST,
+        payload: body,
+      });
     }
-
-    dispatch({
-      type: REGISTER_REQUEST,
-      payload: body,
-    });
   };
 
   return (
